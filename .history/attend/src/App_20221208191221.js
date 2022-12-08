@@ -9,6 +9,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+
         <Routes>
           <Route exact path="/login" element={<Login />}></Route>
         </Routes>

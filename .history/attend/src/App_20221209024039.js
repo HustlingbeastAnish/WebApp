@@ -1,6 +1,5 @@
 import Navbar from "./Components/Navbar/navbar";
 import Login from "./Components/LogIn/login";
-import SignUp from "./Components/SignUp/signup";
 import TeachStu from "./Components/TeachStu/TeachStu";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -14,7 +13,7 @@ function App() {
           <Route exact path="/login" element={<Login />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/signup" element={<SignUp />}></Route>
+          <Route exact path="/signin" element={<SignIn />}></Route>
         </Routes>
         <Routes>
           <Route exact path="/" element={<TeachStu />}></Route>

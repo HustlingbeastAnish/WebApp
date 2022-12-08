@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function login() {
   return (
@@ -61,15 +60,8 @@ function login() {
                 >
                   Sign in
                 </button>
-                <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                  Don't have an account?
-                </p>
-                <Link
-                  to="/signup"
-                  class="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
-                >
-                  Register
-                </Link>
+                <p class="text-sm font-semibold mt-2 pt-1 mb-0">
+              Don't have an account?
               </form>
             </div>
           </div>

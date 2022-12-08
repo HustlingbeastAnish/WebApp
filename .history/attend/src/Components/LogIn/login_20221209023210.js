@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function login() {
   return (
@@ -8,11 +7,11 @@ function login() {
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-              <img
+              {/* <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                 className="w-full"
                 alt="Phone image"
-              />
+              /> */}
             </div>
             <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
               <form>
@@ -61,15 +60,6 @@ function login() {
                 >
                   Sign in
                 </button>
-                <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                  Don't have an account?
-                </p>
-                <Link
-                  to="/signup"
-                  class="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
-                >
-                  Register
-                </Link>
               </form>
             </div>
           </div>

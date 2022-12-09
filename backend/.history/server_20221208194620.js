@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 const connectDB = require("./server/database/connection");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
@@ -13,6 +13,6 @@ app.get("/", (req, res) => {
 app.use(morgan("tiny"));
 // Connection with MongoDB
 connectDB();
-app.listen(PORT, () => {
+app.listen(3000, () => {
   console.log(`Attendance Backend is running at http://localhost:${PORT}`);
 });

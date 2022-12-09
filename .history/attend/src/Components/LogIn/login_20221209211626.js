@@ -74,8 +74,7 @@ function login() {
                 </div>
 
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-blue-700 rounded w-96 mx-28">
-                  {/* <i className="fa-brands fa-google"></i> */}
-                  Continue with Google
+                  Continue with Google<i className="fa-brands fa-google"></i>
                 </button>
               </form>
             </div>

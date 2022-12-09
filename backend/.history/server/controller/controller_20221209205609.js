@@ -20,9 +20,9 @@ exports.create = (req, res) => {
     .then((data) => {
       res.redirect("add-user");
     })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occured",
-      });
+    .catch((err)=>{
+        res.status(500).send{
+            message:err.message
+        }
     });
 };

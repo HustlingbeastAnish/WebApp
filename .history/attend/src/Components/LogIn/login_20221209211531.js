@@ -72,9 +72,8 @@ function login() {
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                   <p className="text-center font-semibold mx-4 mb-0">OR</p>
                 </div>
-
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-blue-700 rounded w-96 mx-28">
-                  {/* <i className="fa-brands fa-google"></i> */}
+                {/* <i className="fa-brands fa-google"></i> */}
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-blue-700 rounded w-80">
                   Continue with Google
                 </button>
               </form>

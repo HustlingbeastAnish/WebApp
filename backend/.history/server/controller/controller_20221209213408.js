@@ -11,7 +11,7 @@ exports.create = (req, res) => {
   const user = new userdb({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: req.body.passwords,
   });
 
   // Saving the user in the database
@@ -32,31 +32,6 @@ exports.create = (req, res) => {
 exports.find = (req, res) => {
   if (req.query.id === null) {
     const id = req.query.id;
-
-    userdb
-      .findById(id)
-      .then((data) => {
-        if (data === null) {
-          res.status(400).send({
-            message: "No User Found",
-          });
-        } else {
-          res.send(data);
-        }
-      })
-      .catch((err) => {
-        console.log(`Error retrieving the user with the ${id}`);
-      });
-  } else {
-    userdb
-      .find()
-      .then((user) => {
-        res.send(user);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Error Occurred",
-        });
-      });
+    userdb.findbyid;
   }
 };

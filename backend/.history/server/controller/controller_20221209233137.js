@@ -48,15 +48,12 @@ exports.find = (req, res) => {
         console.log(`Error retrieving the user with the ${id}`);
       });
   } else {
-    userdb
-      .find()
-      .then((user) => {
-        res.send(user);
-      })
-      .catch((err) => {
+    userdb.find().then((user) => {
+      res.send(user);
+    }).catch((err)=>{
         res.status(500).send({
-          message: err.message || "Error Occurred",
-        });
-      });
+            message:err.message || 
+        })
+    });
   }
 };

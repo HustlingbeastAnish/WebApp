@@ -1,23 +1,12 @@
 import React from "react";
 import { useState } from "react";
-const Signup = () => {
+const signup = () => {
   // Creating and Initializing an empty array named user
   const [user, setuser] = useState({
     name: "",
     email: "",
     password: "",
   });
-
-  // Variables for refrencing
-  let name, value;
-
-  const handle = (e) => {
-    console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
-    setuser({ ...user, [name]: value });
-  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -27,7 +16,7 @@ const Signup = () => {
         <form action="">
           <div className="mt-4">
             <div>
-              <label className="block" htmlFor="Name">
+              <label className="block" for="Name">
                 Name
               </label>
               <input
@@ -40,7 +29,7 @@ const Signup = () => {
               />
             </div>
             <div className="mt-4">
-              <label className="block" htmlFor="email">
+              <label className="block" for="email">
                 Email
               </label>
               <input
@@ -90,4 +79,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default signup;

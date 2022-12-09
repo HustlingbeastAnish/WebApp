@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const bodyparser = require("body-parser");
 
 dotenv.config({ path: "./config.env" });
+
 app.get("/", (req, res) => {
   res.send("BackEnd");
 });

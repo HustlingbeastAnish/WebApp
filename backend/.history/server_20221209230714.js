@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const bodyparser = require("body-parser");
 
 dotenv.config({ path: "./config.env" });
+
 app.get("/", (req, res) => {
   res.send("BackEnd");
 });
@@ -17,7 +18,6 @@ connectDB();
 //Parse Request to the Body
 app.use(bodyparser.urlencoded({ extended: true }));
 
-// To Load The routers
 app.use("/", require("./server/routes/router"));
 
 app.listen(PORT, () => {

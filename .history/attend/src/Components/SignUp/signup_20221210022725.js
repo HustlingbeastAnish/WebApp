@@ -8,15 +8,8 @@ const Signup = () => {
     password: "",
   });
 
-  // Variables for refrencing
-  let name, value;
-
   const handle = (e) => {
     console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
-    setuser({ ...user, [name]: value });
   };
 
   return (

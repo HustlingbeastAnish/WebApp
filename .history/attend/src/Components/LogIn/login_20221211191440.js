@@ -19,7 +19,6 @@ function Login() {
   };
 
   const PostLogIn = async (e) => {
-    e.preventDefault();
     const { email, password } = user;
     const res = await fetch("/api/userf", {
       method: "POST",
@@ -40,7 +39,7 @@ function Login() {
       window.alert("Successfully Logged In");
       console.log("Successfully Logged In");
     }
-    navigate("/attendance");
+    navigate("/attendace");
   };
 
   return (

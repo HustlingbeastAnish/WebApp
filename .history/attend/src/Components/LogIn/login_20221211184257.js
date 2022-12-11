@@ -1,48 +1,14 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-function Login() {
-  const navigate = useNavigate();
+function login() {
   const [user, setuser] = useState({
+    name: "",
     email: "",
     password: "",
   });
 
-  let name, value;
-
-  const handle = (e) => {
-    console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
-    setuser({ ...user, [name]: value });
-  };
-
-  const PostLogIn = async (e) => {
-    e.preventDefault();
-    const { email, password } = user;
-    const res = await fetch("/api/userf", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-
-    const data = await res.json();
-    if (!data || data.status === 500) {
-      window.alert("Please Enter valid user Credentials");
-      console.log("Please enter valid user Credentials");
-    } else {
-      window.alert("Successfully Logged In");
-      console.log("Successfully Logged In");
-    }
-    navigate("/attendance");
-  };
-
+  const PostLogIn = (e) => {};
   return (
     <div>
       <section className="h-screen">
@@ -61,10 +27,9 @@ function Login() {
                   <input
                     type="text"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Email address"
+                    placeholder="Email address"\
                     name="email"
                     value={user.email}
-                    onChange={handle}
                   />
                 </div>
                 <div className="mb-6">
@@ -72,9 +37,6 @@ function Login() {
                     type="password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
-                    name="password"
-                    value={user.password}
-                    onChange={handle}
                   />
                 </div>
                 <div className="flex justify-between items-center mb-6">
@@ -134,4 +96,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default login;

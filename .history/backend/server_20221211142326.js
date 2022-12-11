@@ -6,7 +6,7 @@ const connectDB = require("./server/database/connection");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 
-// const bodyparser = require("body-parser");
+const bodyparser = require("body-parser");
 mongoose.set("strictQuery", true);
 dotenv.config({ path: "./config.env" });
 

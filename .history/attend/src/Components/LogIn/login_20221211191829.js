@@ -19,7 +19,6 @@ function Login() {
   };
 
   const PostLogIn = async (e) => {
-    e.preventDefault();
     const { email, password } = user;
     const res = await fetch("/api/userf", {
       method: "POST",

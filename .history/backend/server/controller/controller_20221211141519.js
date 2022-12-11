@@ -7,9 +7,10 @@ exports.create = async (req, res) => {
     res.status(400);
     console.log("None of the fields can be empty");
   }
+
   try {
     //check if user exist
-    const userExists = await userdb.findOne({ email });
+    const userExists = await User.findOne({ email });
     if (userExists) {
       res.status(400);
       throw new Error("User already exists");
@@ -35,7 +36,7 @@ exports.create = async (req, res) => {
 exports.find = async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password) {
+    if (!emaill || !password) {
       return res.status(400).json({ error: "None of the feilds can be empty" });
     }
 

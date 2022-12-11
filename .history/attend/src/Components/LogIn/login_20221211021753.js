@@ -1,47 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-function Login() {
-  const navigate = useNavigate();
-  const [user, setuser] = useState({
-    email: "",
-    password: "",
-  });
+import { Link } from "react-router-dom";
 
-  let name, value;
+function login() {
 
-  const handle = (e) => {
-    console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
-    setuser({ ...user, [name]: value });
-  };
-
-  const PostLogIn = async (e) => {
-    e.preventDefault();
-    const { email, password } = user;
-    const res = await fetch("/api/userf", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-
-    const data = await res.json();
-    if (!data || data.status === 500) {
-      window.alert("Please Enter valid user Credentials");
-      console.log("Please enter valid user Credentials");
-    } else {
-      window.alert("Successfully Logged In");
-      console.log("Successfully Logged In");
-    }
-    navigate("/attendance");
-  };
+  /api/userf
 
   return (
     <div>
@@ -50,9 +12,9 @@ function Login() {
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
               <img
-                src={`https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg`}
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                 className="w-full"
-                alt=""
+                alt="Phone image"
               />
             </div>
             <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
@@ -62,9 +24,6 @@ function Login() {
                     type="text"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Email address"
-                    name="email"
-                    value={user.email}
-                    onChange={handle}
                   />
                 </div>
                 <div className="mb-6">
@@ -72,9 +31,6 @@ function Login() {
                     type="password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
-                    name="password"
-                    value={user.password}
-                    onChange={handle}
                   />
                 </div>
                 <div className="flex justify-between items-center mb-6">
@@ -104,9 +60,8 @@ function Login() {
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
-                  onClick={PostLogIn}
                 >
-                  Log In
+                  Sign in
                 </button>
                 <p className="text-sm font-semibold mt-2 pt-1 mb-0">
                   Don't have an account?
@@ -134,4 +89,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default login;

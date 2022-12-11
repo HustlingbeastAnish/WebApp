@@ -18,12 +18,11 @@ var Schema = new mongoose.Schema({
 
 //For Hashing the password
 
-Schema.pre("save", async function (next) {
-  if (this.isModified("password")) {
-    this.password = await bcrypt.hash(this.password, 12);
-  }
-  next();
-});
+Schema.pre('save',async function(next){
+  if(this.isModified('password'))
+})
+
+
 
 const UserDB = mongoose.model("userdb", Schema);
 

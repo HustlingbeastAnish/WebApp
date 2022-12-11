@@ -1,25 +1,23 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 function Login() {
-  const navigate = useNavigate();
   const [user, setuser] = useState({
     email: "",
     password: "",
   });
 
-  let name, value;
+  let email, password;
 
   const handle = (e) => {
     console.log(e);
-    name = e.target.name;
-    value = e.target.value;
+    email = e.target.email;
+    password = e.target.password;
 
-    setuser({ ...user, [name]: value });
+    setuser({ ...user, [email]: password });
   };
 
   const PostLogIn = async (e) => {
-    e.preventDefault();
     const { email, password } = user;
     const res = await fetch("/api/userf", {
       method: "POST",
@@ -40,7 +38,6 @@ function Login() {
       window.alert("Successfully Logged In");
       console.log("Successfully Logged In");
     }
-    navigate("/attendance");
   };
 
   return (

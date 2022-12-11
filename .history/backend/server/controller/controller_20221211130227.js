@@ -2,22 +2,21 @@ var userdb = require("../model/model");
 
 exports.create = async (req, res) => {
   // If users submits an empty form while registering
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) {
-    res.status(400);
-    console.log("None of the fields can be empty");
+  if (req.body === null) {
+    res.status(400).send({ message: "None of the Feilds can be Empty" });
+    return;
   }
+
   try {
-    //check if user exist
-    const userExists = await userdb.findOne({ email });
+    // To check whether we have a user with same email existing
+    const userExists = await userdb.find({ email: req.body.email });
     if (userExists) {
-      res.status(400);
-      throw new Error("User already exists");
+      return res.status(422).json({ message: "The email alreaedy Exists" });
     }
     const user = new userdb({
-      name,
-      email,
-      password,
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
     });
 
     const signUp = await user.save();
@@ -35,11 +34,11 @@ exports.create = async (req, res) => {
 exports.find = async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password) {
+    if (email === null || password === null) {
       return res.status(400).json({ error: "None of the feilds can be empty" });
     }
 
-    const emailExists = await userdb.findOne({ email: req.body.email }).exec();
+    const emailExists = await userdb.findOnr({ email: req.body.email });
 
     if (emailExists === null) {
       res.status(500).json({ errr: "Login Failed" });

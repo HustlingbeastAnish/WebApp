@@ -7,6 +7,7 @@ exports.create = async (req, res) => {
     res.status(400);
     console.log("None of the fields can be empty");
   }
+
   try {
     //check if user exist
     const userExists = await userdb.findOne({ email });

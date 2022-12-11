@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/" element={<TeachStu />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/attendace" element={<Attendance />}></Route>
+          <Route exact path="/attendance" element={<Attendance />}></Route>
         </Routes>
       </BrowserRouter>
     </>

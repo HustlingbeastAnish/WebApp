@@ -1,48 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-function Login() {
-  const navigate = useNavigate();
+function login() {
   const [user, setuser] = useState({
     email: "",
     password: "",
   });
 
-  let name, value;
-
-  const handle = (e) => {
-    console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
-    setuser({ ...user, [name]: value });
-  };
-
-  const PostLogIn = async (e) => {
-    e.preventDefault();
-    const { email, password } = user;
-    const res = await fetch("/api/userf", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-
-    const data = await res.json();
-    if (!data || data.status === 500) {
-      window.alert("Please Enter valid user Credentials");
-      console.log("Please enter valid user Credentials");
-    } else {
-      window.alert("Successfully Logged In");
-      console.log("Successfully Logged In");
-    }
-    navigate("/attendance");
-  };
-
+  const PostLogIn = (e) => {};
   return (
     <div>
       <section className="h-screen">
@@ -74,7 +39,7 @@ function Login() {
                     placeholder="Password"
                     name="password"
                     value={user.password}
-                    onChange={handle}
+                    onChange={}
                   />
                 </div>
                 <div className="flex justify-between items-center mb-6">
@@ -134,4 +99,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default login;

@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route exact path="/takeattend" element={<TakeAttend />}></Route>
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );

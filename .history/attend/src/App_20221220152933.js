@@ -6,7 +6,6 @@ import Footer from "./Components/Footer/footer";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TakeAttend from "./Components/TakeAttend/TakeAttend";
 
 function App() {
   return (
@@ -26,9 +25,9 @@ function App() {
           <Route exact path="/tlogin" element={<Tlogin />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/takeattend" element={<TakeAttend />}></Route>
+          <Route exact path="/takeattend" element={<Tlogin />}></Route>
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );

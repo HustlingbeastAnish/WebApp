@@ -128,6 +128,7 @@ exports.findStud = async (req, res) => {
       console.log(password);
       return res.status(400).json({ error: "None of the feilds can be empty" });
     }
+
     const emailExists = await Slogintuser.findOne({ email: email });
     const PassMatch = await Slogintuser.findOne({ phone: password });
     console.log(emailExists);

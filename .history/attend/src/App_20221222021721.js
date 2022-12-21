@@ -3,6 +3,7 @@ import LoginT from "./Components/LogIn/login";
 import LoginS from "./Components/LogIn/LoginStud";
 import SignUp from "./Components/SignUp/signup";
 import TeachStu from "./Components/TeachStu/TeachStu";
+import Footer from "./Components/Footer/footer";
 import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import "./App.css";

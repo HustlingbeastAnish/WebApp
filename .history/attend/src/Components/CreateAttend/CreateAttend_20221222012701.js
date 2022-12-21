@@ -49,7 +49,6 @@ const CreateAttend = () => {
       console.log("Invalid Registration");
     } else {
       window.alert("Registration is done Successfully");
-      navigate("/tlogin");
     }
   };
   return (

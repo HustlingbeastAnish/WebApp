@@ -133,7 +133,7 @@ exports.findStud = async (req, res) => {
     }
 
     const emailExists = await Slogintuser.findOne({ email: email });
-    const PassMatch = await Slogintuser.findOne({ phone: password });
+    const PassMatch = await Slogintuser.findOne({ password: password });
     console.log(emailExists);
     if (emailExists && PassMatch) {
       console.log("Login as Student Succesfully");

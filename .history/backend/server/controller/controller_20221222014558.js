@@ -126,7 +126,7 @@ exports.findStud = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-    if (!email || !password) {
+    if (!email) {
       console.log(email);
       console.log(password);
       return res.status(400).json({ error: "None of the feilds can be empty" });
@@ -136,8 +136,7 @@ exports.findStud = async (req, res) => {
     const PassMatch = await Slogintuser.findOne({ phone: password });
     console.log(emailExists);
     if (emailExists && PassMatch) {
-      console.log("Login as Student Succesfully");
-      res.json({ message: "Welcome Student" });
+      console.log("Login as Student Succesfull");
     } else {
       res.status(400).json({ error: "Please Enter valid User Credentials" });
     }

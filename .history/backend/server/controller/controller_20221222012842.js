@@ -132,12 +132,18 @@ exports.findStud = async (req, res) => {
       return res.status(400).json({ error: "None of the feilds can be empty" });
     }
 
-    const emailExists = await Slogintuser.findOne({ email: email });
-    const PassMatch = await Slogintuser.findOne({ phone: password });
+    const emailExists = await userdb.findOne({ email: email });
     console.log(emailExists);
-    if (emailExists && PassMatch) {
-      console.log("Login as Student Succesfully");
-      res.json({ message: "Welcome Student" });
+    if (emailExists) {
+      const PassMatch = await bcrypt.compare(password, emailExists.password);
+
+      const token = await emailExists.generateAuthToken();
+
+      if (!PassMatch) {
+        res.status(400).json({ error: "Please Enter valid User Credentials" });
+      } else {
+        res.json({ message: "User SignIn Successfully" });
+      }
     } else {
       res.status(400).json({ error: "Please Enter valid User Credentials" });
     }

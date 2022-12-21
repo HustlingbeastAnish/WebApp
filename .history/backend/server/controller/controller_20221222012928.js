@@ -133,11 +133,17 @@ exports.findStud = async (req, res) => {
     }
 
     const emailExists = await Slogintuser.findOne({ email: email });
-    const PassMatch = await Slogintuser.findOne({ phone: password });
     console.log(emailExists);
-    if (emailExists && PassMatch) {
-      console.log("Login as Student Succesfully");
-      res.json({ message: "Welcome Student" });
+    if (emailExists) {
+      const PassMatch = await bcrypt.compare(password, emailExists.password);
+
+      const token = await emailExists.generateAuthToken();
+
+      if (!PassMatch) {
+        res.status(400).json({ error: "Please Enter valid User Credentials" });
+      } else {
+        res.json({ message: "User SignIn Successfully" });
+      }
     } else {
       res.status(400).json({ error: "Please Enter valid User Credentials" });
     }

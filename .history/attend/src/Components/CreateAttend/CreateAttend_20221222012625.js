@@ -1,8 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useNavigaet } from "react";
 const CreateAttend = () => {
-  const navigate = useNavigate();
   // Creation of the details of the student
   const [Student, setStudent] = useState({
     name: "",
@@ -49,7 +47,6 @@ const CreateAttend = () => {
       console.log("Invalid Registration");
     } else {
       window.alert("Registration is done Successfully");
-      navigate("/tlogin");
     }
   };
   return (

@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTheme } from "@mui/material/styles";
+import { ListItemText, Checkbox } from "@mui/material";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 const TakeAttend = () => {
-  const [Subject, setSubject] = useState("");
-
-  const handleChange = (e) => {
-    setSubject(e.target.value);
-  };
   return (
     <div className="flex border-black bg-gray-200 flex-col h-[550px] justify-center items-center">
       <h1 className="font-semibold text-3xl">
@@ -17,23 +15,17 @@ const TakeAttend = () => {
       </h1>
       <div className="mt-10">
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={Subject}
-            style={{ width: "450px" }}
-            label="Subjects"
+            value={age}
+            label="Age"
             onChange={handleChange}
           >
-            <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
-            <MenuItem value={"Operating System"}>Operating System</MenuItem>
-            <MenuItem value={"Computer Networks"}>Computer Networks</MenuItem>
-            <MenuItem value={"Object Oriented Programming"}>
-              Object Oriented Programming
-            </MenuItem>
-            <MenuItem value={"DBMS"}>DBMS</MenuItem>
-            <MenuItem value={"Numerical Methods"}>Numerical Methods</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
       </div>

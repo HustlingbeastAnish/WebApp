@@ -9,6 +9,7 @@ const TakeAttend = () => {
 
   const handleChange = (e) => {
     setSubject(e.target.value);
+    console.log(Subject);
   };
   return (
     <div className="flex border-black bg-gray-200 flex-col h-[550px] justify-center items-center">
@@ -23,7 +24,7 @@ const TakeAttend = () => {
             id="demo-simple-select"
             value={Subject}
             style={{ width: "450px" }}
-            label="Subjects"
+            label="ubjects"
             onChange={handleChange}
           >
             <MenuItem value={"Data Structures"}>Data Structures</MenuItem>

@@ -1,15 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTheme } from "@mui/material/styles";
+import { ListItemText, Checkbox } from "@mui/material";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 const TakeAttend = () => {
-  const [Subject, setSubject] = useState("");
-
-  const handleChange = (e) => {
-    setSubject(e.target.value);
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
   };
+
+  const names = [
+    "Data Structures",
+    "Operating System",
+    "Computer Networks",
+    "Object Oriented Programming",
+    "DBMS",
+    "Numerical Methods",
+  ];
+  function getStyles(name, personName, theme) {
+    return {
+      fontWeight:
+        personName.indexOf(name) === -1
+          ? theme.typography.fontWeightRegular
+          : theme.typography.fontWeightMedium,
+    };
+  }
+
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(typeof value === "string" ? value.split(",") : value);
+    console.log(personName);
+  };
+
   return (
     <div className="flex border-black bg-gray-200 flex-col h-[550px] justify-center items-center">
       <h1 className="font-semibold text-3xl">
@@ -17,23 +54,17 @@ const TakeAttend = () => {
       </h1>
       <div className="mt-10">
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={Subject}
-            style={{ width: "450px" }}
-            label="Subjects"
+            value={age}
+            label="Age"
             onChange={handleChange}
           >
-            <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
-            <MenuItem value={"Operating System"}>Operating System</MenuItem>
-            <MenuItem value={"Computer Networks"}>Computer Networks</MenuItem>
-            <MenuItem value={"Object Oriented Programming"}>
-              Object Oriented Programming
-            </MenuItem>
-            <MenuItem value={"DBMS"}>DBMS</MenuItem>
-            <MenuItem value={"Numerical Methods"}>Numerical Methods</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
       </div>
@@ -58,6 +89,8 @@ const TakeAttend = () => {
           </svg>
         </button>
       </div>
+
+      {/* <p>You have Selected : {value}</p> */}
     </div>
   );
 };

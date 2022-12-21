@@ -4,6 +4,19 @@ import { useState } from "react";
 
 function Login() {
   const navigate = useNavigate();
+  // const [user, setuser] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+
+  // let name, value;
+  // const handle = (e) => {
+  //   console.log(e);
+  //   name = e.target.name;
+  //   value = e.target.value;
+
+  //   setuser({ ...user, [name]: value });
+  // };
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
@@ -36,11 +49,10 @@ function Login() {
 
   return (
     <div>
-      <section className="h-screen bg-gray-500">
+      <section className="h-screen">
         <div className="container px-6 py-12 h-full">
-          <div className="flex justify-center items-center h-full g-6 text-gray-800 ">
-            <div className="border-black border-[4px] p-10 rounded-xl bg-gray-200">
-              <h1 className="text-center text-3xl font-semibold mb-5">LogIn</h1>
+          <div className="flex justify-center items-center h-full g-6 text-gray-800 bg-gray-400">
+            <div className="border-black border-5">
               <form method="POST">
                 <div className="mb-6" id="email">
                   <input

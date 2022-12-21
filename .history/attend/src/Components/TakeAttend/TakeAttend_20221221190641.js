@@ -9,6 +9,7 @@ const TakeAttend = () => {
 
   const handleChange = (e) => {
     setSubject(e.target.value);
+    console.log(e.target.value);
   };
   return (
     <div className="flex border-black bg-gray-200 flex-col h-[550px] justify-center items-center">
@@ -17,23 +18,21 @@ const TakeAttend = () => {
       </h1>
       <div className="mt-10">
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={Subject}
-            style={{ width: "450px" }}
-            label="Subjects"
+            style={{ width: "250px" }}
+            label="Age"
             onChange={handleChange}
           >
-            <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
-            <MenuItem value={"Operating System"}>Operating System</MenuItem>
-            <MenuItem value={"Computer Networks"}>Computer Networks</MenuItem>
-            <MenuItem value={"Object Oriented Programming"}>
-              Object Oriented Programming
-            </MenuItem>
-            <MenuItem value={"DBMS"}>DBMS</MenuItem>
-            <MenuItem value={"Numerical Methods"}>Numerical Methods</MenuItem>
+            <MenuItem value={"Data Structures"}>Ten</MenuItem>
+            <MenuItem value={"Operating System"}>Ten</MenuItem>
+            <MenuItem value={"Computer Networks"}>Ten</MenuItem>
+            <MenuItem value={"Object Oriented Programming"}>Ten</MenuItem>
+            <MenuItem value={"DBMS"}>Ten</MenuItem>
+            <MenuItem value={"Numerical Methods"}>Ten</MenuItem>
           </Select>
         </FormControl>
       </div>

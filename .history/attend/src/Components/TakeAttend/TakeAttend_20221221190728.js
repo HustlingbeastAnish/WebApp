@@ -9,6 +9,7 @@ const TakeAttend = () => {
 
   const handleChange = (e) => {
     setSubject(e.target.value);
+    console.log(e.target.value);
   };
   return (
     <div className="flex border-black bg-gray-200 flex-col h-[550px] justify-center items-center">
@@ -17,13 +18,13 @@ const TakeAttend = () => {
       </h1>
       <div className="mt-10">
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={Subject}
             style={{ width: "450px" }}
-            label="Subjects"
+            label="Age"
             onChange={handleChange}
           >
             <MenuItem value={"Data Structures"}>Data Structures</MenuItem>

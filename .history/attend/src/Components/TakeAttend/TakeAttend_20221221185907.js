@@ -7,7 +7,7 @@ import Select from "@mui/material/Select";
 const TakeAttend = () => {
   const [Subject, setSubject] = useState("");
 
-  const handleChange = (e) => {
+  const onChange = (e) => {
     setSubject(e.target.value);
   };
   return (
@@ -17,23 +17,17 @@ const TakeAttend = () => {
       </h1>
       <div className="mt-10">
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={Subject}
-            style={{ width: "450px" }}
-            label="Subjects"
+            label="Age"
             onChange={handleChange}
           >
-            <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
-            <MenuItem value={"Operating System"}>Operating System</MenuItem>
-            <MenuItem value={"Computer Networks"}>Computer Networks</MenuItem>
-            <MenuItem value={"Object Oriented Programming"}>
-              Object Oriented Programming
-            </MenuItem>
-            <MenuItem value={"DBMS"}>DBMS</MenuItem>
-            <MenuItem value={"Numerical Methods"}>Numerical Methods</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
       </div>

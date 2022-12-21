@@ -9,6 +9,7 @@ const TakeAttend = () => {
 
   const handleChange = (e) => {
     setSubject(e.target.value);
+    console.log(Subject);
   };
   return (
     <div className="flex border-black bg-gray-200 flex-col h-[550px] justify-center items-center">

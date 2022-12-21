@@ -56,7 +56,7 @@ exports.stucreate = async (req, res) => {
             email: email,
             phone: phone,
             subject: subject,
-            branch: branch,
+            brnach: branch,
           });
           stuser
             .save()

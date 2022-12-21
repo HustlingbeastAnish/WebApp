@@ -2,6 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 function tlogin() {
+  // Creation of the details of the student
+  const [Student, setStudent] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    branch: "",
+    subject: "",
+  });
+
+  // Variable for referencing
+  let name, value;
+
   return (
     <div>
       <div className="bg-gray-200 dark:bg-gray-800 flex">

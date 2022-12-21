@@ -1,6 +1,5 @@
 import Navbar from "./Components/Navbar/navbar";
-import LoginT from "./Components/LogIn/login";
-import LoginS from "./Components/LogIn/LoginStud";
+import Login from "./Components/LogIn/login";
 import SignUp from "./Components/SignUp/signup";
 import TeachStu from "./Components/TeachStu/TeachStu";
 import Footer from "./Components/Footer/footer";
@@ -16,10 +15,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route exact path="/loginteach" element={<LoginT />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/loginstud" element={<LoginS />}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
         </Routes>
         <Routes>
           <Route exact path="/signup" element={<SignUp />}></Route>
@@ -34,8 +30,9 @@ function App() {
           <Route exact path="/takeattend" element={<TakeAttend />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/createattend" element={<CreateAttend />}></Route>
+          <Route exact path="/createattend" element={<CreateAttend/>}
         </Routes>
+        {/* <Footer /> */}
       </BrowserRouter>
     </>
   );

@@ -1,6 +1,6 @@
 import Navbar from "./Components/Navbar/navbar";
-import LoginT from "./Components/LogIn/login";
-import LoginS from "./Components/LogIn/LoginStud";
+import LoginS from "./Components/LogIn/login";
+import LoginT from "./Components/LogIn/LoginStud";
 import SignUp from "./Components/SignUp/signup";
 import TeachStu from "./Components/TeachStu/TeachStu";
 import Footer from "./Components/Footer/footer";
@@ -36,6 +36,7 @@ function App() {
         <Routes>
           <Route exact path="/createattend" element={<CreateAttend />}></Route>
         </Routes>
+        {/* <Footer /> */}
       </BrowserRouter>
     </>
   );

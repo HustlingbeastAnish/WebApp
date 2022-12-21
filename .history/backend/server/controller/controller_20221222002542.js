@@ -40,7 +40,7 @@ exports.create = async (req, res) => {
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, branch, subject } = req.body;
-    if (!name || !email || !phone || !subject || !branch) {
+    if (!name || !email || !phone || !subject || !clas) {
       return res.status(422).json({ error: "fill in all details" });
     } else {
       console.log(req.body);
@@ -56,7 +56,7 @@ exports.stucreate = async (req, res) => {
             email: email,
             phone: phone,
             subject: subject,
-            branch: branch,
+            clas: clas,
           });
           stuser
             .save()

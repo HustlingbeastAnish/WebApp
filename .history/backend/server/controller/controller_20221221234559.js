@@ -1,7 +1,4 @@
 var userdb = require("../model/model");
-var Stuser = require("../model/stuModel");
-var Slogintuser = require("../model/stuLogin");
-
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
@@ -39,8 +36,8 @@ exports.create = async (req, res) => {
 
 exports.stucreate = async (req, res) => {
   try {
-    const { name, email, phone, branch, subject } = req.body;
-    if (!name || !email || !phone || !subject || !branch) {
+    const { name, email, phone, clas, subject } = req.body;
+    if (!name || !email || !phone || !subject || !clas) {
       return res.status(422).json({ error: "fill in all details" });
     } else {
       console.log(req.body);
@@ -56,7 +53,7 @@ exports.stucreate = async (req, res) => {
             email: email,
             phone: phone,
             subject: subject,
-            branch: branch,
+            clas: clas,
           });
           stuser
             .save()
@@ -90,7 +87,6 @@ exports.stucreate = async (req, res) => {
     console.log(err);
   }
 };
-
 // To find if the user is with us
 exports.find = async (req, res) => {
   try {

@@ -17,5 +17,4 @@ route.post("/api/users", controller.create);
 route.post("/api/userf", controller.find);
 
 route.post("/api/students", controller.stucreate);
-
 module.exports = route;

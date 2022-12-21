@@ -41,7 +41,7 @@ function Login() {
           <div className="flex justify-center items-center h-full g-6 text-gray-800 ">
             <div className="border-black border-[4px] p-10 rounded-xl bg-gray-200">
               <h1 className="text-center text-3xl font-semibold mb-5">
-                LogIn as Teacher
+                LogIn as Student
               </h1>
               <form method="POST">
                 <div className="mb-6" id="email">

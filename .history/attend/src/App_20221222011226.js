@@ -36,6 +36,7 @@ function App() {
         <Routes>
           <Route exact path="/createattend" element={<CreateAttend />}></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

@@ -7,7 +7,7 @@ import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TakeAttend from "./Components/TakeAttend/TakeAttend2";
+import TakeAttend from "./Components/TakeAttend/TakeAttend";
 import CreateAttend from "./Components/CreateAttend/CreateAttend";
 import MakeAttend from "./Components/MarkAttend/MarkAttend";
 

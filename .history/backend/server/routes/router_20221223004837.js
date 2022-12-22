@@ -15,9 +15,8 @@ route.post("/api/users", controller.create);
 // This is to find details of the user in the databse i.e checking during the Login
 // If he is registered with us or not
 route.post("/api/userf", controller.find);
-
 // Get request to get the details of student with a feild
-route.get("/api/studdata/:subject", controller.findStudWithFeild);
+route.get("/api/studdata", controller.findStudWithFeild);
 // To check if a student is registered or not
 route.post("/api/userstud", controller.findStud);
 

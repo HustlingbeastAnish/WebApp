@@ -142,25 +142,10 @@ exports.findStud = async (req, res) => {
   }
 };
 
-exports.findStudWithFeild = async (req, res) => {
-  try {
-    if (!req.body) {
-      return res.status(404).json({ err: "Feilds cannot be empty" });
-    }
 
-    const subj = req.params.subject;
-    Stuser.find({ subject: subj })
-      .then((data) => {
-        if (!data) {
-          res.status(404).json({ err: "No student with a branch found" });
-        } else {
-          res.send(data);
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({ message: "Some error occurred" });
-      });
-  } catch (err) {
-    console.log(err);
+exports.findStudWithFeild=async(req,res)=>{
+  try{
+    const subject=req.params.subject
+    stuser.find({})
   }
-};
+}

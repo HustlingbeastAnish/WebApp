@@ -6,6 +6,7 @@ import Select from "@mui/material/Select";
 import { Link } from "react-router-dom";
 import { useContext, createContext } from "react";
 import MarkAttend from "../MarkAttend/MarkAttend";
+var date = moment();
 
 // Created a context to Share resources
 // const TeacherQueries = createContext();
@@ -82,7 +83,7 @@ const TakeAttend = (props) => {
           </div>
           <input
             datepicker="true"
-            data-date={props.currentDate}
+            data-date="02/25/2022"
             type="date"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Select date"

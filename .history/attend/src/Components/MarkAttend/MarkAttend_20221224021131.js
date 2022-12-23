@@ -30,7 +30,7 @@ function MarkAttend(props) {
   return (
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
-        <h2 className="text-center font-semibold text-3xl mt-2 text-white">
+        <h2 className="text-center font-semibold text-3xl mt-2">
           Showing Details for {props.currentDate}
         </h2>
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">

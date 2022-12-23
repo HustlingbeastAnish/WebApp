@@ -30,7 +30,7 @@ function MarkAttend(props) {
   return (
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
-        <h2 className="text-center font-semibold text-3xl mt-2 text-white">
+        <h2 className="text-center font-semibold text-3xl mt-2">
           Showing Details for {props.currentDate}
         </h2>
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
@@ -88,7 +88,7 @@ function MarkAttend(props) {
             </div>
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-black dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="py-3 px-6 text-white">
                   No.

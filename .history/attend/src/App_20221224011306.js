@@ -73,13 +73,7 @@ function App() {
           <Route
             exact
             path="/makeattend"
-            element={
-              <MarkAttend
-                Subject={Subject}
-                Branch={Branch}
-                currentDate={currentDate}
-              />
-            }
+            element={<MarkAttend Subject={Subject} Branch={Branch} />}
           ></Route>
         </Routes>
       </BrowserRouter>

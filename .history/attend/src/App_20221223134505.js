@@ -54,7 +54,6 @@ function App() {
                 Subject={Subject}
                 Branch={Branch}
                 handleChangeBranch={handleChangeBranch}
-                handleChange={handleChange}
               />
             }
           ></Route>

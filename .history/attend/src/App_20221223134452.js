@@ -49,14 +49,7 @@ function App() {
           <Route
             exact
             path="/takeattend"
-            element={
-              <TakeAttend
-                Subject={Subject}
-                Branch={Branch}
-                handleChangeBranch={handleChangeBranch}
-                handleChange={handleChange}
-              />
-            }
+            element={<TakeAttend Subject={Subject} Branch={Branch} />}
           ></Route>
         </Routes>
         <Routes>

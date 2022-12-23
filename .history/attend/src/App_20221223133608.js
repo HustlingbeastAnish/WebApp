@@ -15,14 +15,6 @@ import MarkAttend from "./Components/MarkAttend/MarkAttend";
 function App() {
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
-
-  const handleChange = (e) => {
-    setSubject(e.target.value);
-  };
-
-  const handleChangeBranch = (e) => {
-    setBranch(e.target.value);
-  };
   return (
     <>
       <BrowserRouter>
@@ -46,28 +38,13 @@ function App() {
           <Route exact path="/slogin" element={<Slogin />}></Route>
         </Routes>
         <Routes>
-          <Route
-            exact
-            path="/takeattend"
-            element={
-              <TakeAttend
-                Subject={Subject}
-                Branch={Branch}
-                handleChangeBranch={handleChangeBranch}
-                handleChange={handleChange}
-              />
-            }
-          ></Route>
+          <Route exact path="/takeattend" element={<TakeAttend />}></Route>
         </Routes>
         <Routes>
           <Route exact path="/createattend" element={<CreateAttend />}></Route>
         </Routes>
         <Routes>
-          <Route
-            exact
-            path="/makeattend"
-            element={<MarkAttend Subject={Subject} Branch={Branch} />}
-          ></Route>
+          <Route exact path="/makeattend" element={<MarkAttend />}></Route>
         </Routes>
       </BrowserRouter>
     </>

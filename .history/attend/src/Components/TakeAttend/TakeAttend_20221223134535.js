@@ -50,7 +50,7 @@ const TakeAttend = (props) => {
               value={props.Subject}
               style={{ width: "450px" }}
               label="Subjects"
-              onChange={props.handleChange}
+              onChange={handleChange}
             >
               <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
               <MenuItem value={"Operating System"}>Operating System</MenuItem>

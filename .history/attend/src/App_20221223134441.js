@@ -17,11 +17,11 @@ function App() {
   const [Branch, setBranch] = useState("");
 
   const handleChange = (e) => {
-    setSubject(e.target.value);
+    props.setSubject(e.target.value);
   };
 
   const handleChangeBranch = (e) => {
-    setBranch(e.target.value);
+    props.setBranch(e.target.value);
   };
   return (
     <>
@@ -49,14 +49,7 @@ function App() {
           <Route
             exact
             path="/takeattend"
-            element={
-              <TakeAttend
-                Subject={Subject}
-                Branch={Branch}
-                handleChangeBranch={handleChangeBranch}
-                handleChange={handleChange}
-              />
-            }
+            element={<TakeAttend Subject={Subject} Branch={Branch} />}
           ></Route>
         </Routes>
         <Routes>

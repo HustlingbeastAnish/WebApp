@@ -13,7 +13,13 @@ import MarkAttend from "../MarkAttend/MarkAttend";
 const TakeAttend = (props) => {
   //Array containing the values to be shared
   // const arr = [Subject, Branch];
+  const handleChange = (e) => {
+    setSubject(e.target.value);
+  };
 
+  const handleChangeBranch = (e) => {
+    setBranch(e.target.value);
+  };
   return (
     <>
       <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">
@@ -26,10 +32,10 @@ const TakeAttend = (props) => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={props.Branch}
+              value={Branch}
               style={{ width: "450px" }}
               label="Branches"
-              onChange={props.handleChangeBranch}
+              onChange={handleChangeBranch}
             >
               <MenuItem value={"CSE"}>CSE</MenuItem>
               <MenuItem value={"IT"}>IT</MenuItem>
@@ -47,10 +53,10 @@ const TakeAttend = (props) => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={props.Subject}
+              value={Subject}
               style={{ width: "450px" }}
               label="Subjects"
-              onChange={props.handleChange}
+              onChange={handleChange}
             >
               <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
               <MenuItem value={"Operating System"}>Operating System</MenuItem>

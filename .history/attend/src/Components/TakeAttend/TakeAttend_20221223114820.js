@@ -5,17 +5,26 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Link } from "react-router-dom";
 import { useContext, createContext } from "react";
-import MarkAttend from "../MarkAttend/MarkAttend";
 
 // Created a context to Share resources
-// const TeacherQueries = createContext();
+const TeacherQueries = createContext([Subject, Branch]);
 
-const TakeAttend = (props) => {
+const TakeAttend = () => {
+  const [Subject, setSubject] = useState("");
+  const [Branch, setBranch] = useState("");
+
   //Array containing the values to be shared
-  // const arr = [Subject, Branch];
+  const arr = [Subject, Branch];
 
+  const handleChange = (e) => {
+    setSubject(e.target.value);
+  };
+
+  const handleChangeBranch = (e) => {
+    setBranch(e.target.value);
+  };
   return (
-    <>
+    <TeacherQueries.Provider value={arr}>
       <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">
         <h1 className="font-semibold text-3xl">
           Please from the below DropDown
@@ -26,10 +35,10 @@ const TakeAttend = (props) => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={props.Branch}
+              value={Branch}
               style={{ width: "450px" }}
               label="Branches"
-              onChange={props.handleChangeBranch}
+              onChange={handleChangeBranch}
             >
               <MenuItem value={"CSE"}>CSE</MenuItem>
               <MenuItem value={"IT"}>IT</MenuItem>
@@ -47,10 +56,10 @@ const TakeAttend = (props) => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={props.Subject}
+              value={Subject}
               style={{ width: "450px" }}
               label="Subjects"
-              onChange={props.handleChange}
+              onChange={handleChange}
             >
               <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
               <MenuItem value={"Operating System"}>Operating System</MenuItem>
@@ -112,11 +121,8 @@ const TakeAttend = (props) => {
           </Link>
         </div>
       </div>
-      {/* <TeacherQueries.Provider value={"Siiuuu"}>
-        <MarkAttend />
-      </TeacherQueries.Provider> */}
-    </>
+    </TeacherQueries.Provider>
   );
 };
 export default TakeAttend;
-// export { TeacherQueries };
+export { TeacherQueries };

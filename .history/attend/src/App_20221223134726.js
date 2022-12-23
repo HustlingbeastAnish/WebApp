@@ -13,7 +13,7 @@ import CreateAttend from "./Components/CreateAttend/CreateAttend";
 import MarkAttend from "./Components/MarkAttend/MarkAttend";
 
 function App() {
-  const [Subject, setSubject] = useState("");
+  const [Subject, setSubject] = useState("DBMS");
   const [Branch, setBranch] = useState("");
 
   const handleChange = (e) => {

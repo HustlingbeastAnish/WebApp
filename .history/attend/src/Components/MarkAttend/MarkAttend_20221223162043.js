@@ -154,7 +154,7 @@ function MarkAttend(props) {
                   Branch
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Attendance
+                  Action
                 </th>
               </tr>
             </thead>
@@ -192,44 +192,23 @@ function MarkAttend(props) {
                     </th>
                     <td className="py-4 px-6">{elem.subject}</td>
                     <td className="py-4 px-6">{elem.branch}</td>
-                    <div>
-                      <th scope="col" className="p-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-all-search"
-                            type="checkbox"
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-all-search"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </th>
-                      <th scope="col" className="p-4">
-                        <div class="flex items-center">
-                          <input
-                            id="checkbox-all-search"
-                            type="checkbox"
-                            class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-all-search"
-                            className="sr-only"
-                          >
-                            Red
-                          </label>
-                        </div>
-                      </th>
-                    </div>
+                    <td className="py-4 px-6">
+                      {/* <!-- Modal toggle --> */}
+                      <a
+                        href="#/"
+                        type="button"
+                        data-modal-toggle="editUserModal"
+                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        Edit user
+                      </a>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
-        </div>
+          
       </div>
       {/* </TeacherQueries.Consumer> */}
     </>

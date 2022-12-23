@@ -8,7 +8,7 @@ const CreateAttend = () => {
     name: "",
     email: "",
     phone: "",
-    roll: "",
+    RollNumber: "",
     branch: "",
     subject: "",
   });
@@ -27,7 +27,7 @@ const CreateAttend = () => {
   const PostData = async (e) => {
     e.preventDefault();
     console.log("Post The Students Data");
-    const { name, email, phone, roll, branch, subject } = Student;
+    const { name, email, phone, branch, subject } = Student;
 
     // Making a post request to the route /api/students
     const res = await fetch("/api/students", {
@@ -39,7 +39,6 @@ const CreateAttend = () => {
         name: name,
         email: email,
         phone: phone,
-        roll: roll,
         branch: branch,
         subject: subject,
       }),
@@ -193,7 +192,7 @@ const CreateAttend = () => {
             </label>
             <input
               type="phone"
-              name="roll"
+              name="phone"
               value={Student.RollNumber}
               onChange={handle}
               className="form-control block

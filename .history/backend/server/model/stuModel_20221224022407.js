@@ -15,7 +15,7 @@ const stuSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  roll: {
+  RollNumber: {
     type: String,
     required: true,
     unique: true,

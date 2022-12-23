@@ -8,7 +8,7 @@ const CreateAttend = () => {
     name: "",
     email: "",
     phone: "",
-    roll: "",
+    RollNumber: "",
     branch: "",
     subject: "",
   });
@@ -27,7 +27,7 @@ const CreateAttend = () => {
   const PostData = async (e) => {
     e.preventDefault();
     console.log("Post The Students Data");
-    const { name, email, phone, roll, branch, subject } = Student;
+    const { name, email, phone, branch, subject } = Student;
 
     // Making a post request to the route /api/students
     const res = await fetch("/api/students", {
@@ -39,7 +39,6 @@ const CreateAttend = () => {
         name: name,
         email: email,
         phone: phone,
-        roll: roll,
         branch: branch,
         subject: subject,
       }),
@@ -165,36 +164,6 @@ const CreateAttend = () => {
               type="phone"
               name="phone"
               value={Student.phone}
-              onChange={handle}
-              className="form-control block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleInputPassword2"
-              placeholder="Password"
-            />
-          </div>
-          <div className="form-group mb-6">
-            <label
-              htmlFor="exampleInputPassword2"
-              className="form-label inline-block mb-2 text-gray-700"
-            >
-              Roll Number
-            </label>
-            <input
-              type="phone"
-              name="roll"
-              value={Student.RollNumber}
               onChange={handle}
               className="form-control block
             w-full

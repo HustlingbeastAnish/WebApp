@@ -39,7 +39,7 @@ exports.create = async (req, res) => {
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;
-    if (!name || !email || !phone || !roll || !subject || !branch) {
+    if (!name || !email || !phone || !subject || !branch) {
       return res.status(422).json({ error: "fill in all details" });
     } else {
       console.log(req.body);

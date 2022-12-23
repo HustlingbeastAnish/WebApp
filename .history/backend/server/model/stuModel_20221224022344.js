@@ -15,11 +15,10 @@ const stuSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  roll: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+  RollNumber:
+  {
+    type:String
+  }
   branch: {
     type: String,
     required: true,

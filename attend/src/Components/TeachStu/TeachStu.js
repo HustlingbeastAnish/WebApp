@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../Navbar/navbar.js"
 function teachstu() {
   return (
+    <div>
+      <Navbar/>
+    
     <div className="h-screen flex">
       <div className="flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center">
         <form>
@@ -34,6 +38,7 @@ function teachstu() {
           </Link>
         </form>
       </div>
+    </div>
     </div>
   );
 }

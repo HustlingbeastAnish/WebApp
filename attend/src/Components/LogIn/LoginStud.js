@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import Navbar from "../Navbar/navbar.js"
 function Login() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
@@ -36,6 +36,7 @@ function Login() {
 
   return (
     <div>
+    <Navbar/>
       <section className="h-screen bg-gray-500">
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center h-full g-6 text-gray-800 ">

@@ -32,7 +32,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        
+      
         <Routes>
           <Route exact path="/loginteach" element={<LoginT />}></Route>
         </Routes>

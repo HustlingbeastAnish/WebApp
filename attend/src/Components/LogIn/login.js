@@ -1,70 +1,60 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Navbar from "../Navbar/navbar.js"
 function Login() {
   const navigate = useNavigate();
-  const [user, setuser] = useState({
-    email: "",
-    password: "",
-  });
-
-  let name, value;
-
-  const handle = (e) => {
-    console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
-    setuser({ ...user, [name]: value });
-  };
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
   const PostLogIn = async (e) => {
     e.preventDefault();
-    const { email, password } = user;
+
     const res = await fetch("/api/userf", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email,
+        password,
       }),
     });
 
     const data = await res.json();
-    if (!data || data.status === 500) {
+    console.log(data);
+    if (data.status === 400 || !data || data.error) {
+      console.log(data);
       window.alert("Please Enter valid user Credentials");
       console.log("Please enter valid user Credentials");
     } else {
       window.alert("Successfully Logged In");
       console.log("Successfully Logged In");
+      navigate("/tlogin");
     }
-    navigate("/attendance");
   };
 
   return (
     <div>
-      <section className="h-screen">
+    <Navbar/>
+      <section className="h-screen bg-gray-500">
         <div className="container px-6 py-12 h-full">
-          <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-            <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-              <img
-                src={`https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg`}
-                className="w-full"
-                alt=""
-              />
-            </div>
-            <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
-              <form>
+          <div className="flex justify-center items-center h-full g-6 text-gray-800 ">
+            <div className="border-black border-[4px] p-10 rounded-xl bg-gray-200">
+              <h1 className="text-center text-3xl font-semibold mb-5">
+                LogIn as Teacher
+              </h1>
+              <form method="POST">
                 <div className="mb-6" id="email">
                   <input
                     type="text"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Email address"
                     name="email"
-                    value={user.email}
-                    onChange={handle}
+                    value={email}
+                    onChange={(e) => {
+                      setemail(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="mb-6">
@@ -73,8 +63,10 @@ function Login() {
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
                     name="password"
-                    value={user.password}
-                    onChange={handle}
+                    value={password}
+                    onChange={(e) => {
+                      setpassword(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="flex justify-between items-center mb-6">
@@ -83,7 +75,6 @@ function Login() {
                       type="checkbox"
                       className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       id="exampleCheck3"
-                      // checked
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"

@@ -7,15 +7,15 @@ import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TakeAttend from "./Components/TakeAttend/TakeAttend2";
+import TakeAttend from "./Components/TakeAttend/TakeAttend";
 import CreateAttend from "./Components/CreateAttend/CreateAttend";
-import MakeAttend from "./Components/MarkAttend/MarkAttend";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        
+      
         <Routes>
           <Route exact path="/loginteach" element={<LoginT />}></Route>
         </Routes>
@@ -39,9 +39,6 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/createattend" element={<CreateAttend />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/makeattend" element={<MakeAttend />}></Route>
         </Routes>
       </BrowserRouter>
     </>

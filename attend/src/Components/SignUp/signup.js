@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/navbar.js"
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -40,7 +41,8 @@ const Signup = () => {
     });
 
     const data = await res.json();
-    if (!data || data.status === 500) {
+    
+    if (!data || data.status === 400) {
       window.alert("Invalid Registration");
       console.log("Invalid Registration");
     } else {
@@ -48,10 +50,12 @@ const Signup = () => {
       console.log("Successfull Registration");
     }
     // Redirect to the login page once the user is registered
-    navigate("/login");
+    navigate("/loginteach");
   };
 
   return (
+    <div>
+    <Navbar/>
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
         <div className="flex justify-center"></div>
@@ -121,7 +125,9 @@ const Signup = () => {
           </div>
         </form>
       </div>
-    </div>
+    
+      </div>
+      </div>
   );
 };
 

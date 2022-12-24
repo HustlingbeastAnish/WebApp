@@ -46,9 +46,10 @@ const CreateAttend = () => {
     });
 
     const data = await res.json();
-    if (!data || data.status === 500) {
-      window.alert("Invalid Registration");
+    if (!data || data.status === 422||data.error) {
       console.log("Invalid Registration");
+      window.alert("Invalid Registration");
+      
     } else {
       window.alert("Registration is done Successfully");
       navigate("/tlogin");

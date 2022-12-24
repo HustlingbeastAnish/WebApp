@@ -43,7 +43,7 @@ const Signup = () => {
     const data = await res.json();
 
     if (data.status === 400 || !data || data.error) {
-      window.alert("User Already Exists");
+      window.alert("Invalid Registration");
       console.log("Invalid Registration");
     } else {
       window.alert("Successfull Registration");

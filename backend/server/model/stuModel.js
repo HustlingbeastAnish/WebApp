@@ -24,10 +24,7 @@ const stuSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  subject: {
-    type: String,
-    required: true,
-  },
+  subject: [String],
 });
 const Stuser = mongoose.model("STUSER", stuSchema);
 

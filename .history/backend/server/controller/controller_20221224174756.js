@@ -16,8 +16,8 @@ exports.create = async (req, res) => {
     //check if user exist
     const userExists = await userdb.findOne({ email });
     if (userExists) {
-      res.status(400).json({ error: "User already exists" });
-      // throw new Error("User already exists");
+      res.status(400).json({ error: "USer already exists" });
+      throw new Error("User already exists");
     }
     const user = new userdb({
       name,

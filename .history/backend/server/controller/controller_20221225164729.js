@@ -166,7 +166,7 @@ exports.findStudWithFeild = async (req, res) => {
 
     const subj = req.params.subject;
     const branch = req.params.branch;
-    Stuser.find({ subject: subj, branch: branch })
+    Stuser.find({ subject: subj })
       .then((data) => {
         if (!data) {
           res.status(404).json({ err: "No student with a branch found" });

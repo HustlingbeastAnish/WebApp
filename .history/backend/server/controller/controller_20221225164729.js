@@ -58,31 +58,11 @@ exports.stucreate = async (req, res) => {
                   console.log(data);
                 }
               }
-            })
-
-          Slogintuser.updateOne(
-             {email:email},
-              {$set:{[subject]:[]}},{upsert:false,
-                multi:true},(error,data)=>{
-                if(error)
-                {
-                  console.log(error);
-                }
-                else
-                {
-                  console.log(data);
-                }
-              })
-
-            
-            
-               return res.status(201).json({ message: "Registration Successful" });
-           
-       }
-                  );
+            );
 
             return res.status(201).json({ message: "Registration Successful" });
           }
+
           const stuser = new Stuser({
             name: name,
             email: email,
@@ -97,7 +77,6 @@ exports.stucreate = async (req, res) => {
               const stloginuser = new Slogintuser({
                 email: email,
                 phone: phone,
-                [subject]:[],
               });
               stloginuser
                 .save()
@@ -187,7 +166,7 @@ exports.findStudWithFeild = async (req, res) => {
 
     const subj = req.params.subject;
     const branch = req.params.branch;
-    Stuser.find({ subject: subj, branch: branch })
+    Stuser.find({ subject: subj })
       .then((data) => {
         if (!data) {
           res.status(404).json({ err: "No student with a branch found" });

@@ -58,11 +58,31 @@ exports.stucreate = async (req, res) => {
                   console.log(data);
                 }
               }
-            );
+            })
+
+          Slogintuser.updateOne(
+             {email:email},
+              {$set:{[subject]:[]}},{upsert:false,
+                multi:true},(error,data)=>{
+                if(error)
+                {
+                  console.log(error);
+                }
+                else
+                {
+                  console.log(data);
+                }
+              })
+
+            
+            
+               return res.status(201).json({ message: "Registration Successful" });
+           
+       }
+                  );
 
             return res.status(201).json({ message: "Registration Successful" });
           }
-
           const stuser = new Stuser({
             name: name,
             email: email,
@@ -77,6 +97,7 @@ exports.stucreate = async (req, res) => {
               const stloginuser = new Slogintuser({
                 email: email,
                 phone: phone,
+                [subject]:[],
               });
               stloginuser
                 .save()

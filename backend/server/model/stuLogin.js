@@ -11,7 +11,7 @@ const stuloginSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-});
+},{strict: false});
 
 const Stloginuser = mongoose.model("STLOGINUSER", stuloginSchema);
 

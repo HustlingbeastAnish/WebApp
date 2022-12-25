@@ -9,7 +9,7 @@ exports.create = async (req, res) => {
   // If users submits an empty form while registering
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
-    res.status(400);
+    res.status(400).json({ error: "fill all details" });
     console.log("None of the fields can be empty");
   }
   try {
@@ -29,31 +29,49 @@ exports.create = async (req, res) => {
     if (signUp) {
       res.status(201).json({ message: "Registration Successful" });
     } else {
-      res.status(500).json({ error: "Registration Failed" });
+      res.status(400).json({ error: "Registration Failed" });
     }
   } catch (err) {
     console.log(err);
   }
 };
-// Function to make a post request to the create a student
+
+
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;
     if (!name || !email || !phone || !roll || !subject || !branch) {
-      return res.status(422).json({ error: "fill in all details" });
+      res.status(422).json({ error: "fill in all details" });
     } else {
       console.log(req.body);
       Stuser.findOne({ email: email })
         .then((userexists) => {
           if (userexists) {
-            return res.status(422).json({ error: "user already exists" });
-          }
+           // db.stuser.updateOne({email: email},{$push:{ "subject":subject}})
+
+           Stuser.findOneAndUpdate(
+            { email: email }, 
+            { $push: { subject: subject } },(error,data)=>{
+              if(error)
+              {
+                console.log(error);
+              }
+              else
+              {
+                console.log(data);
+              }
+            })
+            
+  return res.status(201).json({ message: "Registration Successful" });
+           
+       }
+          
           const stuser = new Stuser({
             name: name,
             email: email,
             phone: phone,
             roll: roll,
-            subject: subject,
+            subject: [subject],
             branch: branch,
           });
           stuser
@@ -88,6 +106,7 @@ exports.stucreate = async (req, res) => {
     console.log(err);
   }
 };
+
 
 // To find if the user is with us
 exports.find = async (req, res) => {

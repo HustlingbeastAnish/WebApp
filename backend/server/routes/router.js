@@ -25,7 +25,7 @@ route.post("/api/userstud", controller.findStud);
 route.post("/api/students", controller.stucreate);
 
 route.get("/aftertlogin", authenticate,(req,res)=>{
-  console.log("hello from router");
+ 
   res.send(req.rootUser);
 });
 

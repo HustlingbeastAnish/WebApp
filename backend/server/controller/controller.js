@@ -205,6 +205,3 @@ exports.findStudWithFeild = async (req, res) => {
   }
 };
 
-exports.afterteachlogin=async(req,res)=>{
-  
-}

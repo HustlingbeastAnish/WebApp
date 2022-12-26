@@ -2,7 +2,6 @@ const express = require("express");
 const route = express.Router();
 const services = require("../services/render");
 const controller = require("../controller/controller");
-const authenticate=require("../middleware/authenticate.js");
 
 route.get("/", (req, res) => {
   res.render(`index`);
@@ -23,10 +22,5 @@ route.get("/api/studdata/:subject/:branch", controller.findStudWithFeild);
 route.post("/api/userstud", controller.findStud);
 
 route.post("/api/students", controller.stucreate);
-
-route.get("/aftertlogin", authenticate,(req,res)=>{
-  console.log("hello from router");
-  res.send(req.rootUser);
-});
 
 module.exports = route;

@@ -79,10 +79,7 @@ exports.stucreate = async (req, res) => {
                return res.status(201).json({ message: "Registration Successful" });
            
        }
-                  );
-
-            return res.status(201).json({ message: "Registration Successful" });
-          }
+                 
           const stuser = new Stuser({
             name: name,
             email: email,

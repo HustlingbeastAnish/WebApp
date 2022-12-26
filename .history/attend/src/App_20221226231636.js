@@ -15,7 +15,7 @@ import MarkAttend from "./Components/MarkAttend/MarkAttend";
 function App() {
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
-  const [SelectedDate, setSelectedDate] = useState(new Date());
+  const [SelectedDate, setSelectedDate] = useState(null);
 
   // const date = new Date();
   // let day = date.getDate();

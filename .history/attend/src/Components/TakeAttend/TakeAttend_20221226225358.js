@@ -64,7 +64,6 @@ const TakeAttend = (props) => {
         </div>
 
         <div className="relative mt-10">
-          <h2 className="font-semibold text-xl">Please Select the Date </h2>
           <DatePicker
             selected={props.SelectedDate}
             onChange={handleDate}
@@ -72,7 +71,6 @@ const TakeAttend = (props) => {
             dateFormat={`dd/MM/yyyy`}
             showYearDropdown
             scrollableMonthYearDropdown
-            isClearable
           />
         </div>
 

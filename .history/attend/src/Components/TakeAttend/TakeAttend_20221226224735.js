@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const TakeAttend = (props) => {
   const handleDate = (date) => {
-    props.setSelectedDate(date);
+    props.setSelectDate(date);
   };
   return (
     <>
@@ -64,16 +64,7 @@ const TakeAttend = (props) => {
         </div>
 
         <div className="relative mt-10">
-          <h2 className="font-semibold text-xl">Please Select the Date </h2>
-          <DatePicker
-            selected={props.SelectedDate}
-            onChange={handleDate}
-            filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
-            dateFormat={`dd/MM/yyyy`}
-            showYearDropdown
-            scrollableMonthYearDropdown
-            isClearable
-          />
+          <DatePicker selected={props.SelectedDate} onChange={handleDate} />
         </div>
 
         <div className="mt-40">

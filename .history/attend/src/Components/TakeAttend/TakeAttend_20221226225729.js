@@ -13,6 +13,18 @@ const TakeAttend = (props) => {
   const handleDate = (date) => {
     props.setSelectedDate(date);
   };
+  const Calendar = styled.div`
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(27, 37, 86, 0.16);
+    overflow: hidden;
+  `;
+
+  const Popper = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  `;
   return (
     <>
       <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">
@@ -64,7 +76,6 @@ const TakeAttend = (props) => {
         </div>
 
         <div className="relative mt-10">
-          <h2 className="font-semibold text-xl">Please Select the Date </h2>
           <DatePicker
             selected={props.SelectedDate}
             onChange={handleDate}
@@ -73,6 +84,8 @@ const TakeAttend = (props) => {
             showYearDropdown
             scrollableMonthYearDropdown
             isClearable
+            popperContainer={Popper}
+            calendarContainer={Calendar}
           />
         </div>
 

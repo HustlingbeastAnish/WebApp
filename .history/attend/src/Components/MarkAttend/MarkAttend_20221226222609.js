@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
 function MarkAttend(props) {
@@ -7,12 +7,10 @@ function MarkAttend(props) {
 
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
+    // console.log(currSubject);
     fetchStudentDetails();
   }, []);
 
-  const dayy = props.SelectedDate.getDate();
-  const monthh = props.SelectedDate.getMonth();
-  const yearr = props.SelectedDate.getYear();
   const fetchStudentDetails = () => {
     axios
       .get(`http://localhost:3002/api/studdata/${currSubject}/${currBranch}`)
@@ -29,7 +27,7 @@ function MarkAttend(props) {
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
-          Showing Details for {`${dayy}/${monthh}/${yearr}`}
+          Showing Details for {props.currentDate}
         </h2>
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
           <div className="flex justify-between items-center py-4 bg-white dark:bg-gray-800 ">

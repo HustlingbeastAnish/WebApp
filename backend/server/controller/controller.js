@@ -24,7 +24,6 @@ exports.create = async (req, res) => {
       email,
       password,
     });
-
     const signUp = await user.save();
     if (signUp) {
       res.status(201).json({ message: "Registration Successful" });

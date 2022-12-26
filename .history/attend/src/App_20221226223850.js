@@ -15,13 +15,13 @@ import MarkAttend from "./Components/MarkAttend/MarkAttend";
 function App() {
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
-  const [SelectedDate, setSelectedDate] = useState(new Date());
+  const [SelectedDate,setSelectedDate]
 
-  // const date = new Date();
-  // let day = date.getDate();
-  // let month = date.getMonth();
-  // let year = date.getFullYear();
-  // var currentDate = `${month}/${day}/${year}`;
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth();
+  let year = date.getFullYear();
+  var currentDate = `${month}/${day}/${year}`;
 
   const handleChange = (e) => {
     setSubject(e.target.value);
@@ -33,6 +33,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        
+      
         <Routes>
           <Route exact path="/loginteach" element={<LoginT />}></Route>
         </Routes>
@@ -61,8 +63,6 @@ function App() {
                 Branch={Branch}
                 handleChangeBranch={handleChangeBranch}
                 handleChange={handleChange}
-                SelectedDate={SelectedDate}
-                setSelectedDate={setSelectedDate}
               />
             }
           ></Route>
@@ -78,7 +78,7 @@ function App() {
               <MarkAttend
                 Subject={Subject}
                 Branch={Branch}
-                SelectedDate={SelectedDate}
+                currentDate={currentDate}
               />
             }
           ></Route>

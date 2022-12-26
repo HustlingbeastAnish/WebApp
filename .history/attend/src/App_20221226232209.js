@@ -61,7 +61,7 @@ function App() {
                 Branch={Branch}
                 handleChangeBranch={handleChangeBranch}
                 handleChange={handleChange}
-                SelectedDate={SelectedDate}
+                SelectedDate={[SelectedDate]}
                 setSelectedDate={setSelectedDate}
               />
             }
@@ -78,7 +78,7 @@ function App() {
               <MarkAttend
                 Subject={Subject}
                 Branch={Branch}
-                SelectedDate={SelectedDate}
+                SelectedDate={[SelectedDate]}
               />
             }
           ></Route>

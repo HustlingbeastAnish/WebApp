@@ -64,7 +64,7 @@ const TakeAttend = (props) => {
         </div>
 
         <div className="relative mt-10">
-          <h2 className="font-semibold text-xl">Please Select the Date </h2>
+          <h2 className="font-semibold font-3xl">Please Select the Date </h2>
           <DatePicker
             selected={props.SelectedDate}
             onChange={handleDate}

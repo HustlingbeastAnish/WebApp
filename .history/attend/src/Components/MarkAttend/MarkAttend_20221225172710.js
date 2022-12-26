@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
+import { useFetcher } from "react-router-dom";
+// import { TeacherQueries } from "../TakeAttend/TakeAttend";
 function MarkAttend(props) {
+  //   const value = useContext(TeacherQueries);
+
   const currSubject = props.Subject;
   const currBranch = props.Branch;
 
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
+    // console.log(currSubject);
     fetchStudentDetails();
   }, []);
 
-  const dayy = props.SelectedDate.getDate();
-  const monthh = props.SelectedDate.getMonth();
-  const yearr = props.SelectedDate.getYear();
   const fetchStudentDetails = () => {
     axios
       .get(`http://localhost:3002/api/studdata/${currSubject}/${currBranch}`)
@@ -29,7 +31,7 @@ function MarkAttend(props) {
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
-          Showing Details for {`${dayy}/${monthh}/${yearr}`}
+          Showing Details for {props.currentDate}
         </h2>
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
           <div className="flex justify-between items-center py-4 bg-white dark:bg-gray-800 ">
@@ -135,8 +137,7 @@ function MarkAttend(props) {
                     <td className="py-4 px-6">{elem.subject}</td>
                     <td className="py-4 px-6">{elem.branch}</td>
                     <div>
-                      <div className="flex">
-                        <h2 className="mt-3">Present</h2>
+                      <div>
                         <th scope="col" className="p-4">
                           <div className="flex items-center">
                             <input
@@ -153,24 +154,21 @@ function MarkAttend(props) {
                           </div>
                         </th>
                       </div>
-                      <div className="flex">
-                        <h2 className="mt-3">Absent</h2>
-                        <th scope="col" className="p-4">
-                          <div class="flex items-center">
-                            <input
-                              id="checkbox-all-search"
-                              type="checkbox"
-                              class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                            <label
-                              htmlFor="checkbox-all-search"
-                              className="sr-only"
-                            >
-                              Red
-                            </label>
-                          </div>
-                        </th>
-                      </div>
+                      <th scope="col" className="p-4">
+                        <div class="flex items-center">
+                          <input
+                            id="checkbox-all-search"
+                            type="checkbox"
+                            class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            htmlFor="checkbox-all-search"
+                            className="sr-only"
+                          >
+                            Red
+                          </label>
+                        </div>
+                      </th>
                     </div>
                     <td className="py-4 px-6">{`NULL`}</td>
                   </tr>
@@ -180,6 +178,7 @@ function MarkAttend(props) {
           </table>
         </div>
       </div>
+      {/* </TeacherQueries.Consumer> */}
     </>
   );
 }

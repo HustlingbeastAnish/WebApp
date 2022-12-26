@@ -75,11 +75,7 @@ function App() {
             exact
             path="/makeattend"
             element={
-              <MarkAttend
-                Subject={Subject}
-                Branch={Branch}
-                SelectedDate={SelectedDate}
-              />
+              <MarkAttend Subject={Subject} Branch={Branch} SelectedDate={[]} />
             }
           ></Route>
         </Routes>

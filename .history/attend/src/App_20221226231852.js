@@ -78,7 +78,9 @@ function App() {
               <MarkAttend
                 Subject={Subject}
                 Branch={Branch}
-                SelectedDate={SelectedDate}
+                SelectedDate={{
+                  date: new Date(date),
+                }}
               />
             }
           ></Route>

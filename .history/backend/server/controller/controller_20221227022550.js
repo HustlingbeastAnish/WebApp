@@ -107,15 +107,15 @@ exports.stucreate = async (req, res) => {
 exports.AbsentDates = async (req, res) => {
   try {
     const { email, subjectName, datee } = req.body;
-    if (!email || !subjectName || !datee) {
+    if (!email || !subject || !datee) {
       res.status(422).json({ error: "fill in all details" });
     } else {
       console.log(req.body);
       Slogintuser.findOne({ email: email }).then((StudentExists) => {
         if (StudentExists) {
-          Slogintuser.findOneAndUpdate(
+          Slogintuser.updateOne(
             { email: email },
-            { $push: { [subjectName]: datee } },
+            { $push: { subjectName: datee } },
             (error, data) => {
               if (error) {
                 console.log(error);

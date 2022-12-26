@@ -106,32 +106,8 @@ exports.stucreate = async (req, res) => {
 // To add the days when the student is absent
 exports.AbsentDates = async (req, res) => {
   try {
-    const { email, subjectName, datee } = req.body;
-    if (!email || !subjectName || !datee) {
-      res.status(422).json({ error: "fill in all details" });
-    } else {
-      console.log(req.body);
-      Slogintuser.findOne({ email: email }).then((StudentExists) => {
-        if (StudentExists) {
-          Slogintuser.findOneAndUpdate(
-            { email: email },
-            { $push: { [subjectName]: datee } },
-            (error, data) => {
-              if (error) {
-                console.log(error);
-              } else {
-                console.log(data);
-              }
-            }
-          );
-          return res
-            .status(201)
-            .json({ message: "Absent Marked SuccessFully" });
-        } else {
-          console.log("Please Make A valid Request");
-        }
-      });
-    }
+    const email = req.body.email;
+    Slogintuser.findOne({ email: email }).then(StudentExists);
   } catch (error) {
     console.log(error);
   }

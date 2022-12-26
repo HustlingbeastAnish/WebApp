@@ -16,8 +16,7 @@ const stuloginSchema = new mongoose.Schema({
   DataStructures: [String],
   OperatingSystem: [String],
   ComputerNetworks: [String],
-  ObjectOrientedProgramming: [String],
-  NumericalMethods: [String],
+  OperatingSystem: [String],
 });
 
 const Stloginuser = mongoose.model("STLOGINUSER", stuloginSchema);

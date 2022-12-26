@@ -5,12 +5,14 @@ const PORT = process.env.PORT || 3002;
 const connectDB = require("./server/database/connection");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const cookieParser = require('cookie-parser');
 
 // const bodyparser = require("body-parser");
 mongoose.set("strictQuery", true);
 dotenv.config({ path: "./config.env" });
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {

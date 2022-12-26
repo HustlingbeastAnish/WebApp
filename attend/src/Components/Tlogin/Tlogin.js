@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-function tlogin() {
+import { Link,useNavigate } from "react-router-dom";
+const Tlogin=()=> {
+  const navigate = useNavigate();
+  const callTlogin=async ()=>{
+    try{
+   const res=await fetch("/aftertlogin",{
+    method: "GET",
+    headers: {
+      Accept:"application/json",
+      "Content-Type": "application/json",
+    },
+    credentials:"include"
+  
+
+   });
+   const data=await res.json();
+   if(!res.status===200)
+   {
+    const error=new Error(res.error);
+   // navigate("/tlogin");
+    throw error;
+   }
+    }catch(err){
+  console.log(err);
+  navigate("/loginteach");
+    }
+
+  }
+
+     
+  useEffect(()=>{
+
+    callTlogin();
+  },[]);
   return (
     <div>
       <div className="bg-gray-200 dark:bg-gray-800 flex">
@@ -288,4 +320,4 @@ function tlogin() {
   );
 }
 
-export default tlogin;
+export default Tlogin;

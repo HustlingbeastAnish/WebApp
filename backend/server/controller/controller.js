@@ -81,7 +81,7 @@ exports.stucreate = async (req, res) => {
                return res.status(201).json({ message: "Registration Successful" });
            
        }
-          
+      
           const stuser = new Stuser({
             name: name,
             email: email,
@@ -142,6 +142,10 @@ exports.find = async (req, res) => {
       const PassMatch = await bcrypt.compare(password, emailExists.password);
 
       const token = await emailExists.generateAuthToken();
+      res.cookie("jwtoken",token,{
+        expires:new Date(Date.now()+25892000000),
+        httpOnly:true
+      })
 
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
@@ -201,3 +205,7 @@ exports.findStudWithFeild = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.afterteachlogin=async(req,res)=>{
+  
+}

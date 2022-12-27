@@ -51,14 +51,14 @@ const TakeAttend = (props) => {
               label="Subjects"
               onChange={props.handleChange}
             >
-              <MenuItem value={"Data Structures"}>Data_Structures</MenuItem>
-              <MenuItem value={"Operating System"}>Operating_System</MenuItem>
-              <MenuItem value={"Computer Networks"}>Computer_Networks</MenuItem>
+              <MenuItem value={"Data Structures"}>Data-Structures</MenuItem>
+              <MenuItem value={"Operating System"}>Operating-System</MenuItem>
+              <MenuItem value={"Computer Networks"}>Computer-Networks</MenuItem>
               <MenuItem value={"Object Oriented Programming"}>
-                Object_Oriented_Programming
+                Object-Oriented-Programming
               </MenuItem>
               <MenuItem value={"DBMS"}>DBMS</MenuItem>
-              <MenuItem value={"Numerical Methods"}>Numerical_Methods</MenuItem>
+              <MenuItem value={"Numerical Methods"}>Numerical-Methods</MenuItem>
             </Select>
           </FormControl>
         </div>

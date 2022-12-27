@@ -109,21 +109,18 @@ exports.AbsentDates = async (req, res) => {
     const { email, subjectName, datee } = req.body;
     if (!email || !subjectName || !datee) {
       res.status(422).json({ error: "fill in all details" });
-      console.log("fill in all details");
     } else {
       console.log(req.body);
       Slogintuser.findOne({ email: email }).then((StudentExists) => {
         if (StudentExists) {
           Slogintuser.findOneAndUpdate(
             { email: email },
-            { $addToSet: { [subjectName]: datee } },
+            { $push: { [subjectName]: datee } },
             (error, data) => {
               if (error) {
                 console.log(error);
-                console.log("There was some error");
               } else {
                 console.log(data);
-                console.log("Marked");
               }
             }
           );

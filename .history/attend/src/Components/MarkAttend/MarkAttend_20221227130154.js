@@ -16,8 +16,8 @@ function MarkAttend(props) {
   const yearr = props.SelectedDate.getYear();
 
   const datee = `${dayy}-${monthh}-${yearr}`;
-  const [currStudEmail, setcurrStudEmail] = useState("Alein1@gmail.com");
-  const [currStudSubj, setcurrStudSubj] = useState("Computer_Networks");
+  const [currStudEmail, setcurrStudEmail] = useState("");
+  const [currStudSubj, setcurrStudSubj] = useState("");
 
   const [FlagP, setFlagP] = useState(true);
   const [FlagA, setFlagA] = useState(true);
@@ -26,7 +26,6 @@ function MarkAttend(props) {
   };
 
   const PostAbs = async (e) => {
-    console.log(currStudSubj);
     const res = await fetch("/api/absentstud", {
       method: "POST",
       headers: {
@@ -197,7 +196,6 @@ function MarkAttend(props) {
                               id="checkbox-all-search"
                               type="checkbox"
                               onClick={(e) => {
-                                console.log(elem.subject);
                                 setFlagP(!FlagP);
                                 setcurrStudEmail(elem.email);
                                 setcurrStudSubj(elem.subject);

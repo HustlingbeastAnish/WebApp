@@ -116,14 +116,12 @@ exports.AbsentDates = async (req, res) => {
         if (StudentExists) {
           Slogintuser.findOneAndUpdate(
             { email: email },
-            { $addToSet: { [subjectName]: datee } },
+            { $push: { [subjectName]: datee } },
             (error, data) => {
               if (error) {
                 console.log(error);
-                console.log("There was some error");
               } else {
                 console.log(data);
-                console.log("Marked");
               }
             }
           );

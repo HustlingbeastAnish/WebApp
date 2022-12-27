@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
-import { handleBreakpoints } from "@mui/system";
 function MarkAttend(props) {
   const currSubject = props.Subject;
   const currBranch = props.Branch;
@@ -15,38 +14,18 @@ function MarkAttend(props) {
   const monthh = props.SelectedDate.getMonth();
   const yearr = props.SelectedDate.getYear();
 
-  const datee = `${dayy}-${monthh}-${yearr}`;
-  const [currStudEmail, setcurrStudEmail] = useState("Alein1@gmail.com");
-  const [currStudSubj, setcurrStudSubj] = useState("Computer_Networks");
+  const [currStudEmail, setcurrStudEmail] = useState("");
+  const [currStudSubj, setcurrStudSubj] = useState("");
 
   const [FlagP, setFlagP] = useState(true);
   const [FlagA, setFlagA] = useState(true);
   const ClickedCheckPresent = (e) => {
     setFlagA(!FlagA);
   };
-
-  const PostAbs = async (e) => {
-    console.log(currStudSubj);
-    const res = await fetch("/api/absentstud", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: currStudEmail,
-        subjectName: currStudSubj,
-        datee: datee,
-      }),
-    });
-    const data = await res.json();
-    console.log(data);
-    if (!data || data.status === 422 || data.error) {
-      console.log("Student has been marked absent");
-    } else {
-      console.log("Student has not been marked absent");
-    }
-  };
-
+  // const ClickedCheckAbsent = (e) => {
+  // setFlagP(!FlagP);
+  // setcurrStudEmail()
+  // };
   const fetchStudentDetails = () => {
     axios
       .get(`http://localhost:3002/api/studdata/${currSubject}/${currBranch}`)
@@ -197,11 +176,9 @@ function MarkAttend(props) {
                               id="checkbox-all-search"
                               type="checkbox"
                               onClick={(e) => {
-                                console.log(elem.subject);
                                 setFlagP(!FlagP);
                                 setcurrStudEmail(elem.email);
                                 setcurrStudSubj(elem.subject);
-                                PostAbs();
                               }}
                               disabled={!FlagA}
                               class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"

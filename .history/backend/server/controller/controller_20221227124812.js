@@ -120,10 +120,8 @@ exports.AbsentDates = async (req, res) => {
             (error, data) => {
               if (error) {
                 console.log(error);
-                console.log("There was some error");
               } else {
                 console.log(data);
-                console.log("Marked");
               }
             }
           );

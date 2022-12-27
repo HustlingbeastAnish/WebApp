@@ -26,7 +26,6 @@ function MarkAttend(props) {
   };
 
   const PostAbs = async (e) => {
-    console.log(currStudSubj);
     const res = await fetch("/api/absentstud", {
       method: "POST",
       headers: {
@@ -197,7 +196,6 @@ function MarkAttend(props) {
                               id="checkbox-all-search"
                               type="checkbox"
                               onClick={(e) => {
-                                console.log(elem.subject);
                                 setFlagP(!FlagP);
                                 setcurrStudEmail(elem.email);
                                 setcurrStudSubj(elem.subject);

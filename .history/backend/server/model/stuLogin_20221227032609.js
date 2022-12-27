@@ -16,7 +16,7 @@ const stuloginSchema = new mongoose.Schema({
   Data_Structures: [String],
   Operating_System: [String],
   Computer_Networks: [String],
-  Object_Oriented_Programming: [String],
+  ObjectOriented_Programming: [String],
   Numerical_Methods: [String],
 });
 

@@ -26,7 +26,7 @@ function MarkAttend(props) {
   };
 
   const PostAbs = async (e) => {
-    console.log(currStudSubj[0]);
+    console.log(currStudSubj);
     const res = await fetch("/api/absentstud", {
       method: "POST",
       headers: {

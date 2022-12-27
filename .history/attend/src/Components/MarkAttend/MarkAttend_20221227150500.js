@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "flowbite";
-import axios from "axios";
+import { axios } from "axios";
 import { handleBreakpoints } from "@mui/system";
 function MarkAttend(props) {
   const currSubject = props.Subject;
@@ -26,7 +26,7 @@ function MarkAttend(props) {
   };
 
   const PostAbs = async (e) => {
-    console.log(currStudSubj[0]);
+    console.log(currStudSubj);
     const res = await fetch("/api/absentstud", {
       method: "POST",
       headers: {

@@ -57,11 +57,29 @@ exports.stucreate = async (req, res) => {
                   console.log(data);
                 }
               }
-            );
+            )
 
-            return res.status(201).json({ message: "Registration Successful" });
-          }
+          Slogintuser.updateOne(
+             {email:email},
+              {$set:{[subject]:[]}},{upsert:false,
+                multi:true},(error,data)=>{
+                if(error)
+                {
+                  console.log(error);
+                }
+                else
+                {
+                  console.log(data);
+                }
+              })
 
+            
+            
+               return res.status(201).json({ message: "Registration Successful" });
+           
+       }
+      
+                 
           const stuser = new Stuser({
             name: name,
             email: email,
@@ -76,6 +94,7 @@ exports.stucreate = async (req, res) => {
               const stloginuser = new Slogintuser({
                 email: email,
                 phone: phone,
+                [subject]:[],
               });
               stloginuser
                 .save()
@@ -157,6 +176,10 @@ exports.find = async (req, res) => {
       const PassMatch = await bcrypt.compare(password, emailExists.password);
 
       const token = await emailExists.generateAuthToken();
+      res.cookie("jwtoken",token,{
+        expires:new Date(Date.now()+25892000000),
+        httpOnly:true
+      })
 
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
@@ -217,3 +240,4 @@ exports.findStudWithFeild = async (req, res) => {
     console.log(err);
   }
 };
+

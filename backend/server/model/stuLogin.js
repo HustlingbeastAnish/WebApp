@@ -11,6 +11,7 @@ const stuloginSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+<<<<<<< HEAD
   subject: [String],
   DBMS: [String],
   Data_Structures: [String],
@@ -19,6 +20,9 @@ const stuloginSchema = new mongoose.Schema({
   Object_Oriented_Programming: [String],
   Numerical_Methods: [String],
 });
+=======
+},{strict: false});
+>>>>>>> ccc40f58aa1d203914e5cea45eb955fa9916a29e
 
 const Stloginuser = mongoose.model("STLOGINUSER", stuloginSchema);
 

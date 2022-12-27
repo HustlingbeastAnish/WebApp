@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
-
+import { handleBreakpoints } from "@mui/system";
 function MarkAttend(props) {
   const currSubject = props.Subject;
   const currBranch = props.Branch;
-
-  const currSubjArr = currSubject.replaceAll(" ", "_");
-  console.log(currSubjArr);
 
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
@@ -29,11 +26,7 @@ function MarkAttend(props) {
   };
 
   const PostAbs = async (e) => {
-    console.log(currStudEmail);
-    console.log(currBranch);
-    console.log(currSubjArr);
-    console.log(datee);
-
+    console.log(currStudSubj[0]);
     const res = await fetch("/api/absentstud", {
       method: "POST",
       headers: {
@@ -41,12 +34,12 @@ function MarkAttend(props) {
       },
       body: JSON.stringify({
         email: currStudEmail,
-        subjectName: currSubjArr,
+        subjectName: currStudSubj,
         datee: datee,
       }),
     });
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
     if (!data || data.status === 422 || data.error) {
       console.log("Student has been marked absent");
     } else {
@@ -56,7 +49,7 @@ function MarkAttend(props) {
 
   const fetchStudentDetails = () => {
     axios
-      .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
+      .get(`http://localhost:3002/api/studdata/${currSubject}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
         console.log(res.data);
@@ -71,7 +64,7 @@ function MarkAttend(props) {
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
-          Showing Details for {`${dayy}/${monthh}/${yearr}`} and Subjects{" "}
+          Showing Details for {`${dayy}/${monthh}/${yearr}`} and Subjects
           {currSubject} {currBranch}
         </h2>
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
@@ -175,8 +168,8 @@ function MarkAttend(props) {
                       </div>
                     </th>
                     <td className="py-4 px-6">{`BTECH/10076/21`}</td>
-                    <td className="py-4 px-6">{currSubject}</td>
-                    <td className="py-4 px-6">{currBranch}</td>
+                    <td className="py-4 px-6">{currStudSubj}</td>
+                    <td className="py-4 px-6">{elem.branch}</td>
                     <div>
                       <div className="flex">
                         <h2 className="mt-3">Present</h2>
@@ -225,7 +218,7 @@ function MarkAttend(props) {
                         </th>
                       </div>
                     </div>
-                    <td className="py-4 px-6">NULL</td>
+                    <td className="py-4 px-6">{`NULL`}</td>
                   </tr>
                 );
               })}

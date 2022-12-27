@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
-
+import { handleBreakpoints } from "@mui/system";
 function MarkAttend(props) {
   const currSubject = props.Subject;
+  // props.handleChange(currSubject.replace(" ", "_"));
   const currBranch = props.Branch;
 
-  const currSubjArr = currSubject.replaceAll(" ", "_");
+  const currSubjArr = currSubject.replace(" ", "_");
   console.log(currSubjArr);
 
   const [studentData, setstudentData] = useState([{}]);
@@ -29,11 +30,6 @@ function MarkAttend(props) {
   };
 
   const PostAbs = async (e) => {
-    console.log(currStudEmail);
-    console.log(currBranch);
-    console.log(currSubjArr);
-    console.log(datee);
-
     const res = await fetch("/api/absentstud", {
       method: "POST",
       headers: {
@@ -41,12 +37,12 @@ function MarkAttend(props) {
       },
       body: JSON.stringify({
         email: currStudEmail,
-        subjectName: currSubjArr,
+        subjectName: currStudSubj,
         datee: datee,
       }),
     });
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
     if (!data || data.status === 422 || data.error) {
       console.log("Student has been marked absent");
     } else {
@@ -175,8 +171,7 @@ function MarkAttend(props) {
                       </div>
                     </th>
                     <td className="py-4 px-6">{`BTECH/10076/21`}</td>
-                    <td className="py-4 px-6">{currSubject}</td>
-                    <td className="py-4 px-6">{currBranch}</td>
+                    <td className="py-4 px-6">`${currSubjArr}`</td>
                     <div>
                       <div className="flex">
                         <h2 className="mt-3">Present</h2>
@@ -225,7 +220,7 @@ function MarkAttend(props) {
                         </th>
                       </div>
                     </div>
-                    <td className="py-4 px-6">NULL</td>
+                    <td className="py-4 px-6">{`NULL`}</td>
                   </tr>
                 );
               })}

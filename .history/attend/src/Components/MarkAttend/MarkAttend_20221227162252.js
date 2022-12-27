@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
-
+import { handleBreakpoints } from "@mui/system";
 function MarkAttend(props) {
   const currSubject = props.Subject;
+  // props.handleChange(currSubject.replace(" ", "_"));
   const currBranch = props.Branch;
 
-  const currSubjArr = currSubject.replaceAll(" ", "_");
+  const currSubjArr = currSubject.replace(" ", "_");
   console.log(currSubjArr);
 
   const [studentData, setstudentData] = useState([{}]);
@@ -31,9 +32,6 @@ function MarkAttend(props) {
   const PostAbs = async (e) => {
     console.log(currStudEmail);
     console.log(currBranch);
-    console.log(currSubjArr);
-    console.log(datee);
-
     const res = await fetch("/api/absentstud", {
       method: "POST",
       headers: {
@@ -46,7 +44,7 @@ function MarkAttend(props) {
       }),
     });
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
     if (!data || data.status === 422 || data.error) {
       console.log("Student has been marked absent");
     } else {

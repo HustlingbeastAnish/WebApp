@@ -174,7 +174,7 @@ function MarkAttend(props) {
                         </div>
                       </div>
                     </th>
-                    <td className="py-4 px-6">{`BTECH/10076/21`}</td>
+                    <td className="py-4 px-6">{elem.roll}</td>
                     <td className="py-4 px-6">{currSubject}</td>
                     <td className="py-4 px-6">{currBranch}</td>
                     <div>

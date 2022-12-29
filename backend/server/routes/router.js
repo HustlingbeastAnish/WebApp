@@ -26,6 +26,8 @@ route.post("/api/students", controller.stucreate);
 
 route.post("/api/absentstud", controller.AbsentDates);
 
+route.post("/api/alldates", controller.AllDates);
+
 route.get("/aftertlogin", authenticate, (req, res) => {
   res.send(req.rootUser);
 });

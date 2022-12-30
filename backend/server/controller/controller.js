@@ -1,6 +1,7 @@
 var userdb = require("../model/model");
 var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
+var Subjectsatt = require("../model/subjects.js");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -227,6 +228,7 @@ exports.findStudWithFeild = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 exports.update = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Data to be updated cannot be empty" });
@@ -246,3 +248,73 @@ exports.update = (req, res) => {
       res.status(500).send({ message: "Error Update user false Information " });
     });
 };
+=======
+exports.AllDates = async (req, res) => {
+  try {
+    const {subjectName, datee } = req.body;
+    if (!subjectName || !datee) {
+      res.status(422).json({ error: "fill in all details" });
+      console.log("fill in all details");
+    } else {
+       
+    
+       Subjectsatt.find({ [subjectName]:{$exists:true} })
+        .then((data) => {
+          console.log(data);
+        if (!data[0]) {
+         
+          const newuser = new Subjectsatt({
+        
+        [subjectName]: [datee],
+        });
+        newuser
+        .save()
+        .then(() => {
+          return res
+            .status(201)
+            .json({ message: "added attendance date to database" });
+        })
+        .catch((err) =>{
+          res.status(500).json({
+            error: "Failed in adding attendance date to database",
+          }) 
+        } )
+      }
+        else {
+          
+         
+          Subjectsatt.updateOne(
+            {[subjectName]: { $exists: true} },
+          { $addToSet: { [subjectName]: datee } },
+            (error, data) => {
+              if (error) {
+                console.log(error);
+                console.log("There was some error");
+              } else {
+                console.log(data);
+                console.log("addedattendance date to database");
+              }
+            }
+          );
+          return res
+            .status(201)
+            .json({ message: "added attendance date to database" });
+
+        }
+        })
+        .catch((err) =>{
+          res.status(500).json({
+            error: "Failed in adding attendance date to database",
+          })
+        });
+        }
+       } 
+        catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+
+>>>>>>> 1553978a45bcef0bda0b0f0185fd383431f05f40

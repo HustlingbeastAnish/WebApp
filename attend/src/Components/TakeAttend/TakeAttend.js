@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, createContext } from "react";
 import MarkAttend from "../MarkAttend/MarkAttend";
 import DatePicker from "react-datepicker";
@@ -13,6 +13,35 @@ const TakeAttend = (props) => {
   const handleDate = (date) => {
     props.setSelectedDate(date);
   };
+  const navigate = useNavigate();
+
+
+
+  const PostAtt = async (e) => {
+    
+    const res = await fetch("/api/alldates", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        
+        subjectName: props.Subject,
+        datee: props.SelectedDate,
+
+        
+      }),
+    });
+    const data = await res.json();
+    
+    if (!data || data.status === 422 || data.error) {
+      console.log("DATE NOT INCLUDED");
+    } else {
+      console.log("DATE INCLUDED");
+      navigate("/makeattend");
+    }
+  };
+
   return (
     <>
       <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">
@@ -51,14 +80,14 @@ const TakeAttend = (props) => {
               label="Subjects"
               onChange={props.handleChange}
             >
-              <MenuItem value={"Data Structures"}>Data_Structures</MenuItem>
-              <MenuItem value={"Operating System"}>Operating_System</MenuItem>
-              <MenuItem value={"Computer Networks"}>Computer_Networks</MenuItem>
-              <MenuItem value={"Object Oriented Programming"}>
+              <MenuItem value={"Data_Structures"}>Data_Structures</MenuItem>
+              <MenuItem value={"Operating_System"}>Operating_System</MenuItem>
+              <MenuItem value={"Computer_Networks"}>Computer_Networks</MenuItem>
+              <MenuItem value={"Object_Oriented_Programming"}>
                 Object_Oriented_Programming
               </MenuItem>
               <MenuItem value={"DBMS"}>DBMS</MenuItem>
-              <MenuItem value={"Numerical Methods"}>Numerical_Methods</MenuItem>
+              <MenuItem value={"Numerical_Methods"}>Numerical_Methods</MenuItem>
             </Select>
           </FormControl>
         </div>
@@ -77,9 +106,12 @@ const TakeAttend = (props) => {
         </div>
 
         <div className="mt-40">
-          <Link to="/makeattend">
+         
             <button
               type="button"
+              onClick={
+                                PostAtt
+                              }
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Mark Attendance
@@ -97,7 +129,7 @@ const TakeAttend = (props) => {
                 ></path>
               </svg>
             </button>
-          </Link>
+        
         </div>
       </div>
       {/* <TeacherQueries.Provider value={"Siiuuu"}>

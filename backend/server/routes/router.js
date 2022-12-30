@@ -25,8 +25,12 @@ route.post("/api/students", controller.stucreate);
 
 route.post("/api/absentstud", controller.AbsentDates);
 
+<<<<<<< HEAD
 // To Update a user using the put request
 route.put("/api/studdata/:id", controller.update);
+=======
+route.post("/api/alldates", controller.AllDates);
+>>>>>>> 1553978a45bcef0bda0b0f0185fd383431f05f40
 
 route.get("/aftertlogin", authenticate, (req, res) => {
   res.send(req.rootUser);

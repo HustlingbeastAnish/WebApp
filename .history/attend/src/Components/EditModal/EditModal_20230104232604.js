@@ -23,30 +23,31 @@ const EditModal = (props) => {
     console.log(updatedStud);
     e.preventDefault();
     const { _id, name, email, subject, phone, roll } = updatedStud;
-    console.log(_id);
-    const res = await fetch(`/api/studdata/${_id}`, {
+
+    const res = await fetch("/api/studdata/_id", {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      // content: "application/json",
-      body: JSON.stringify({
+      // headers: { "Content-Type": "application/json" },
+      content: "application/json",
+      body: {
         _id: _id,
         name: name,
         email: email,
         subject: subject,
         phone: phone,
         roll: roll,
-      }),
+      },
     });
+
     // const { data } = await axios({
     //   method: "put",
     //   url: "/api/studdata",
     //   body: {
     //     _id: _id,
-    // name: name,
-    // email: email,
-    // subject: subject,
-    // phone: phone,
-    // roll: roll,
+    //     name: name,
+    //     email: email,
+    //     subject: subject,
+    //     phone: phone,
+    //     roll: roll,
     //   },
     // });
     // console.log(data);

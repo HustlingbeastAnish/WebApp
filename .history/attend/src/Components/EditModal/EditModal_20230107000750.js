@@ -28,25 +28,19 @@ const EditModal = (props) => {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       // content: "application/json",
-      body: JSON.stringify({
-        _id: _id,
-        name: name,
-        email: email,
-        subject: subject,
-        phone: phone,
-        roll: roll,
-      }),
+      body: JSON.stringify(updatedStud);
     });
+
     // const { data } = await axios({
     //   method: "put",
     //   url: "/api/studdata",
     //   body: {
     //     _id: _id,
-    // name: name,
-    // email: email,
-    // subject: subject,
-    // phone: phone,
-    // roll: roll,
+    //     name: name,
+    //     email: email,
+    //     subject: subject,
+    //     phone: phone,
+    //     roll: roll,
     //   },
     // });
     // console.log(data);

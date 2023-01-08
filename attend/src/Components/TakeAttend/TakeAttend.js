@@ -28,7 +28,7 @@ const TakeAttend = (props) => {
         
         subjectName: props.Subject,
         datee: props.SelectedDate,
-
+        branch:props.Branch
         
       }),
     });

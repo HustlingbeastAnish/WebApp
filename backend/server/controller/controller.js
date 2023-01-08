@@ -249,17 +249,17 @@ exports.update = (req, res) => {
 };
 exports.AllDates = async (req, res) => {
   try {
-    const { subjectName, datee } = req.body;
-    if (!subjectName || !datee) {
+    const { subjectName, datee,branch } = req.body;
+    if (!subjectName || !datee||!branch) {
       res.status(422).json({ error: "fill in all details" });
       console.log("fill in all details");
     } else {
-      Subjectsatt.find({ [subjectName]: { $exists: true } })
+      Subjectsatt.find({ [subjectName+"_"+branch]: { $exists: true } })
         .then((data) => {
           console.log(data);
           if (!data[0]) {
             const newuser = new Subjectsatt({
-              [subjectName]: [datee],
+              [subjectName+"_"+branch]: [datee],
             });
             newuser
               .save()
@@ -275,8 +275,8 @@ exports.AllDates = async (req, res) => {
               });
           } else {
             Subjectsatt.updateOne(
-              { [subjectName]: { $exists: true } },
-              { $addToSet: { [subjectName]: datee } },
+              { [subjectName+"_"+branch]: { $exists: true } },
+              { $addToSet: { [subjectName+"_"+branch]: datee } },
               (error, data) => {
                 if (error) {
                   console.log(error);

@@ -34,24 +34,24 @@ function Slogin() {
           </svg>
         </div>
       </button>
-      <div className="flex ">
+      <div className="flex p-4">
         <SideNavbar open={open} />
         <div className="flex flex-col">
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
+          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
             <a href="/#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Veiws Subjects In which You are enrolled
+                Noteworthy technology acquisitions 2021
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              See the lists of Subjects in which you are enrolled for the
-              current semester
+              Here are the biggest enterprise technology acquisitions of 2021 so
+              far, in reverse chronological order.
             </p>
             <a
               href="/#"
               class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Go
+              Read more
               <svg
                 aria-hidden="true"
                 class="w-4 h-4 ml-2 -mr-1"
@@ -67,21 +67,21 @@ function Slogin() {
               </svg>
             </a>
           </div>
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
+          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
             <a href="/#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Check Attendance in the respective subjects
+                Noteworthy technology acquisitions 2021
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Get details for your attendance percentage ,number of present days
-              ,number of leaves etc
+              Here are the biggest enterprise technology acquisitions of 2021 so
+              far, in reverse chronological order.
             </p>
             <a
               href="/#"
               class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Go
+              Read more
               <svg
                 aria-hidden="true"
                 class="w-4 h-4 ml-2 -mr-1"

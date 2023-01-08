@@ -74,8 +74,8 @@ function Slogin() {
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Get details for your attendance percentage ,number of present days
-              ,number of leaves etc
+              Get your attendance percentage ,number of present days ,number of
+              leaves etc
             </p>
             <a
               href="/#"

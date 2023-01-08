@@ -8,7 +8,7 @@ function SideNavbar(props) {
     >
       <div
         class={`px-3 py-4 overflow-y-auto rounded bg-gray-${
-          !props.open ? 900 : 100
+          !props.open ? 900 : 500
         } dark:bg-gray-800`}
       >
         <ul class="space-y-2">

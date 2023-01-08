@@ -43,15 +43,12 @@ function Slogin() {
                 Veiws Subjects In which You are enrolled
               </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              See the lists of Subjects in which you are enrolled for the
-              current semester
-            </p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"></p>
             <a
               href="/#"
               class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Go
+              Read more
               <svg
                 aria-hidden="true"
                 class="w-4 h-4 ml-2 -mr-1"
@@ -74,14 +71,14 @@ function Slogin() {
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Get details for your attendance percentage ,number of present days
-              ,number of leaves etc
+              Here are the biggest enterprise technology acquisitions of 2021 so
+              far, in reverse chronological order.
             </p>
             <a
               href="/#"
               class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Go
+              Read more
               <svg
                 aria-hidden="true"
                 class="w-4 h-4 ml-2 -mr-1"

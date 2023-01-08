@@ -44,8 +44,8 @@ function Slogin() {
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              See the lists of Subjects in which you are enrolled for the
-              current semester
+              Here are the biggest enterprise technology acquisitions of 2021 so
+              far, in reverse chronological order.
             </p>
             <a
               href="/#"
@@ -74,8 +74,8 @@ function Slogin() {
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Get details for your attendance percentage ,number of present days
-              ,number of leaves etc
+              Here are the biggest enterprise technology acquisitions of 2021 so
+              far, in reverse chronological order.
             </p>
             <a
               href="/#"

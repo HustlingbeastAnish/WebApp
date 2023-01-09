@@ -3,6 +3,7 @@ const route = express.Router();
 const services = require("../services/render");
 const controller = require("../controller/controller");
 const authenticate = require("../middleware/authenticate.js");
+const { Router } = require("express");
 
 route.get("/", (req, res) => {
   res.render(`index`);
@@ -32,5 +33,10 @@ route.post("/api/alldates", controller.AllDates);
 route.get("/aftertlogin", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
+
+route.get("/logout",(req,res)=>{
+  res.clearCookie('jwtoken',{path:'/'});
+  res.status(200).send('user logout');
+})
 
 module.exports = route;

@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 const Tlogin = () => {
   const navigate = useNavigate();
+
+  //jwt authorisation
+  const[userData,setUserData]=useState({});
   const callTlogin = async () => {
     try {
       const res = await fetch("/aftertlogin", {
@@ -14,6 +17,7 @@ const Tlogin = () => {
         credentials: "include",
       });
       const data = await res.json();
+      setUserData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
         // navigate("/tlogin");
@@ -23,6 +27,27 @@ const Tlogin = () => {
       console.log(err);
       navigate("/loginteach");
     }
+  };
+
+//logout functionality
+  const handlelogout = () => {
+    
+     fetch('/logout', {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res)=>{
+      navigate("/loginteach");
+       if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    }).catch ((err) =>{
+      console.log(err);
+    });
+   
+   
   };
 
   useEffect(() => {
@@ -160,7 +185,7 @@ const Tlogin = () => {
             <span className="mx-2">Settings</span>
           </a>
         </div>
-        <button className="mr-8  group relative h-10 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+        <button type="button" onClick={ handlelogout }className="mr-8  group relative h-10 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
           <div className="absolute inset-0 w-3 bg-purple-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
           <span className="relative  text-black group-hover:text-white">
             LOGOUT
@@ -170,7 +195,7 @@ const Tlogin = () => {
       <br></br>
       <br></br>
       <h3 className="text-2xl   display: inline-block  text-gray-700 font-bold mb-6 ml-10 content-center ...">
-        WELCOME ..............@TEACHER
+       Welcome Prof. {userData.name}
       </h3>
 
       <br></br>

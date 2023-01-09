@@ -1,15 +1,46 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Link } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 const TakeAttend = (props) => {
   const handleDate = (date) => {
     props.setSelectedDate(date);
   };
+  const navigate = useNavigate();
+
+  //jwt authorisation
+  const[userData,setUserData]=useState({});
+  const  callSelectStud= async () => {
+    try {
+      const res = await fetch("/aftertlogin", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      setUserData(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        // navigate("/tlogin");
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+      navigate("/loginteach");
+    }
+  };
+
+  useEffect(() => {
+    callSelectStud();
+  }, []);
   return (
     <>
       <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">

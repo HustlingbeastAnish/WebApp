@@ -3,6 +3,7 @@ const route = express.Router();
 const services = require("../services/render");
 const controller = require("../controller/controller");
 const authenticate = require("../middleware/authenticate.js");
+const authenticatestu = require("../middleware/authenticatestud.js");
 const { Router } = require("express");
 
 route.get("/", (req, res) => {
@@ -31,6 +32,10 @@ route.put("/api/studdata/:id", controller.update);
 route.post("/api/alldates", controller.AllDates);
 
 route.get("/aftertlogin", authenticate, (req, res) => {
+  res.send(req.rootUser);
+});
+
+route.get("/afterslogin", authenticatestu, (req, res) => {
   res.send(req.rootUser);
 });
 

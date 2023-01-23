@@ -1,12 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import SideNavbar from "../StudentSection/SideNavbar";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
+
 function Slogin() {
   var [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  //jwt authorisation
+  const [userData, setUserData] = useState({});
+  const callSlogin = async () => {
+    try {
+      const res = await fetch("/afterslogin", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      setUserData(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        // navigate("/tlogin");
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+      navigate("/loginstud");
+    }
+  };
+
+  useEffect(() => {
+    callSlogin();
+  }, []);
   return (
     <div className="p-1 border-black-500 bg-gray-400">
       <div className="text-center text-3xl">
-        <h2 className="font-semibold">Welcome Student....</h2>
+        <h2 className="font-semibold">Welcome {userData.name}</h2>
       </div>
       <button
         // className={`${open && "rotate-180"}`}

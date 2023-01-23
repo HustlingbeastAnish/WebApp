@@ -3,6 +3,7 @@ const route = express.Router();
 const services = require("../services/render");
 const controller = require("../controller/controller");
 const authenticate = require("../middleware/authenticate.js");
+const authenticatestu = require("../middleware/authenticatestud.js");
 const { Router } = require("express");
 
 route.get("/", (req, res) => {
@@ -39,6 +40,14 @@ route.get("/aftertlogin", authenticate, (req, res) => {
 // Route for the forgot password
 route.post("/forgotpassword", controller.forgotpassword);
 route.get("/resetpassword/:id/:token", controller.resetpassword);
+
+route.get("/logout", (req, res) => {
+  res.clearCookie("jwtoken", { path: "/" });
+  res.status(200).send("user logout");
+});
+route.get("/afterslogin", authenticatestu, (req, res) => {
+  res.send(req.rootUser);
+});
 
 route.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });

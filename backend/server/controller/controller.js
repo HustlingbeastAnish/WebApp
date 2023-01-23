@@ -190,10 +190,15 @@ exports.findStud = async (req, res) => {
       console.log(password);
       return res.status(400).json({ error: "None of the feilds can be empty" });
     }
-    const emailExists = await Slogintuser.findOne({ email: email });
-    const PassMatch = await Slogintuser.findOne({ phone: password });
+    const emailExists = await Stuser.findOne({ email: email });
+    const PassMatch = await Stuser.findOne({ phone: password });
     console.log(emailExists);
     if (emailExists && PassMatch) {
+      const token = await emailExists.generateAuthToken();
+      res.cookie("jwtoken", token, {
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true,
+      });
       console.log("Login as Student Succesfully");
       res.json({ message: "Welcome Student" });
     } else {

@@ -28,20 +28,21 @@ const Changepass = (props) => {
   };
 
   const PostEdit = async (e) => {
-    console.log("Your is changing ...");
+    console.log(updatedTeacher);
     e.preventDefault();
-    const { _id, email, password } = updatedTeacher;
+    const { _id, name, email, subject, phone, roll } = updatedTeacher;
     console.log(_id);
-    console.log(email);
-    console.log(password);
     const res = await fetch(`/api/teacherdata/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       // content: "application/json",
       body: JSON.stringify({
         _id: _id,
+        name: name,
         email: email,
-        password: password,
+        subject: subject,
+        phone: phone,
+        roll: roll,
       }),
     });
   };
@@ -123,11 +124,14 @@ const Changepass = (props) => {
                 </div>
               </div>
               <button
-                type="submit"
-                onClick={PostEdit}
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="button"
+                disabled={isSame}
+                onClick={(e) => {
+                  // CheckisSame();
+                }}
+                class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
               >
-                Change Password
+                Update Password
               </button>
             </form>
           </div>

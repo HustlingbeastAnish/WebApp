@@ -28,7 +28,6 @@ const Changepass = (props) => {
   };
 
   const PostEdit = async (e) => {
-    console.log("Your is changing ...");
     e.preventDefault();
     const { _id, email, password } = updatedTeacher;
     console.log(_id);

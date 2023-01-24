@@ -24,7 +24,7 @@ function Resetpass(props) {
       }
     } catch (err) {
       console.log(err);
-      // navigate("/loginteach");
+      navigate("/loginteach");
     }
   };
   useEffect(() => {

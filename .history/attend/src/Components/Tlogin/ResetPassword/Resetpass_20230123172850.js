@@ -1,35 +1,35 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-function Resetpass(props) {
-  const navigate = useNavigate();
-  const callTlogin = async (props) => {
-    try {
-      const res = await fetch("/aftertlogin", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
-      const data = await res.json();
-      console.log(data);
-      props.setUserData(data);
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        // navigate("/tlogin");
-        throw error;
-      }
-    } catch (err) {
-      console.log(err);
-      // navigate("/loginteach");
+const callTlogin = async (props) => {
+  try {
+    const res = await fetch("/aftertlogin", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const data = await res.json();
+    console.log(data);
+    props.setUserData(data);
+    if (!res.status === 200) {
+      const error = new Error(res.error);
+      // navigate("/tlogin");
+      throw error;
     }
-  };
-  useEffect(() => {
-    callTlogin();
-  }, []);
+  } catch (err) {
+    console.log(err);
+    navigate("/loginteach");
+  }
+};
+
+useEffect(() => {
+  callTlogin();
+}, []);
+function Resetpass(props) {
   return (
     <div class="flex items-center justify-center min-h-screen p-5 bg-gray-600 min-w-screen">
       <div class="max-w-xl p-8 text-center text-gray-800 bg-white shadow-xl lg:max-w-3xl rounded-3xl lg:p-12">
@@ -65,10 +65,7 @@ function Resetpass(props) {
             </defs>
           </svg>
         </div>
-        <p>
-          We're happy you're here. Your email address {props.userData.email} is
-          verified:
-        </p>
+        <p>We're happy you're here. Your email address is verified:</p>
         <div class="mt-4">
           <Link to="changepass">
             <button

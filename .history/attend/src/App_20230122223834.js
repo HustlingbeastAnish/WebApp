@@ -68,27 +68,14 @@ function App() {
           <Route
             exact
             path="/forgotpassword"
-            element={
-              <Forgotpass
-                userData={userData}
-                setUserData={setUserData}
-                link={link}
-                SetLink={SetLink}
-              />
-            }
+            element={<Forgotpass link={link} SetLink={SetLink} />}
           ></Route>
         </Routes>
         <Routes>
           <Route
             exact
             path="/resetpassword"
-            element={
-              <Resetpass
-                userData={userData}
-                setUserData={setUserData}
-                link={link}
-              />
-            }
+            element={<Resetpass link={link} />}
           ></Route>
         </Routes>
         <Routes>
@@ -178,9 +165,7 @@ function App() {
           <Route
             exact
             path="/resetpassword/changepass"
-            element={
-              <Changepass userData={userData} setUserData={setUserData} />
-            }
+            element={<Changepass userData={userData/>}
           ></Route>
         </Routes>
       </BrowserRouter>

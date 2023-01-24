@@ -1,38 +1,12 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 const Forgotpass = (props) => {
-  // console.log(props.userData.name);
   const navigate = useNavigate();
   const [Arr, setArr] = useState({
     email: "",
     password: "",
   });
-  // const currUser = props.userData;
-  const callTlogin = async () => {
-    try {
-      const res = await fetch("/aftertlogin", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
-      const data = await res.json();
-      console.log(data);
-      props.setUserData(data);
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        // navigate("/tlogin");
-        throw error;
-      }
-    } catch (err) {
-      console.log(err);
-      // navigate("/loginteach");
-    }
-  };
-  // console.log(currUser.name);
+
   const [flag, setflag] = useState(false);
   let name, value;
   const handleChanges = (e) => {
@@ -67,18 +41,12 @@ const Forgotpass = (props) => {
       console.log(props.link);
     }
   };
-  useEffect(() => {
-    callTlogin();
-  }, []);
-
-  console.log(props.userData.name);
   return (
     <div>
       <div className="flex justify-center content-center">
         <form className="mt-20">
-          <h2 className="mb-12 font-semibold">
-            Password Reset for {props.userData.name}
-          </h2>
+          <h2>{props.userData.email}</h2>
+          <h2>{props.userData.name}</h2>
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -113,6 +81,7 @@ const Forgotpass = (props) => {
               required
             />
           </div>
+
           <div className="flex items-start mb-6">
             <div className="flex items-center h-5">
               <input

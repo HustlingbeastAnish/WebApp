@@ -8,6 +8,7 @@ const Forgotpass = (props) => {
     email: "",
     password: "",
   });
+
   // const currUser = props.userData;
   const callTlogin = async () => {
     try {

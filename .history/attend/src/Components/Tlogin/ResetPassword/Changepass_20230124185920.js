@@ -106,7 +106,6 @@ const Changepass = (props) => {
               </div>
               <button
                 type="button"
-                disabled={isSame}
                 onClick={(e) => {
                   // CheckisSame();
                 }}

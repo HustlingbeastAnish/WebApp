@@ -8,7 +8,8 @@ const Forgotpass = (props) => {
     email: "",
     password: "",
   });
-  // const currUser = props.userData;
+
+  const currUser = props.userData;
   const callTlogin = async () => {
     try {
       const res = await fetch("/aftertlogin", {
@@ -29,7 +30,7 @@ const Forgotpass = (props) => {
       }
     } catch (err) {
       console.log(err);
-      // navigate("/loginteach");
+      navigate("/loginteach");
     }
   };
   // console.log(currUser.name);
@@ -67,6 +68,7 @@ const Forgotpass = (props) => {
       console.log(props.link);
     }
   };
+
   useEffect(() => {
     callTlogin();
   }, []);

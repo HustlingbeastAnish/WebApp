@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 const Forgotpass = (props) => {
   // console.log(props.userData.name);
@@ -8,7 +7,8 @@ const Forgotpass = (props) => {
     email: "",
     password: "",
   });
-  // const currUser = props.userData;
+
+  const currUser = props.userData;
   const callTlogin = async () => {
     try {
       const res = await fetch("/aftertlogin", {
@@ -29,7 +29,7 @@ const Forgotpass = (props) => {
       }
     } catch (err) {
       console.log(err);
-      // navigate("/loginteach");
+      navigate("/loginteach");
     }
   };
   // console.log(currUser.name);
@@ -67,18 +67,16 @@ const Forgotpass = (props) => {
       console.log(props.link);
     }
   };
+
   useEffect(() => {
     callTlogin();
   }, []);
-
-  console.log(props.userData.name);
   return (
     <div>
       <div className="flex justify-center content-center">
         <form className="mt-20">
-          <h2 className="mb-12 font-semibold">
-            Password Reset for {props.userData.name}
-          </h2>
+          <h2>{currUser.name}</h2>
+          <h2>{props.userData.name}</h2>
           <div className="mb-6">
             <label
               htmlFor="email"

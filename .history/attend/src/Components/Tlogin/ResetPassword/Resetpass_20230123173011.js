@@ -24,7 +24,7 @@ function Resetpass(props) {
       }
     } catch (err) {
       console.log(err);
-      // navigate("/loginteach");
+      navigate("/loginteach");
     }
   };
   useEffect(() => {
@@ -65,10 +65,7 @@ function Resetpass(props) {
             </defs>
           </svg>
         </div>
-        <p>
-          We're happy you're here. Your email address {props.userData.email} is
-          verified:
-        </p>
+        <p>We're happy you're here. Your email address is verified:</p>
         <div class="mt-4">
           <Link to="changepass">
             <button

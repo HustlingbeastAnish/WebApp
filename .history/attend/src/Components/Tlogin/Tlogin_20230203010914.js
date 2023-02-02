@@ -8,11 +8,6 @@ const Tlogin = (props) => {
 
   const navigate = useNavigate();
   const currUser = props.userData;
-
-  // const str = enhanceName(currUser.name);
-  // console.log(currUser.name[0].toUpperCase() + currUser.name.slice(1));
-  // const str1 = currUser.name[0].toUpperCase() + currUser.name.slice(1);
-  // console.log(str);
   //jwt authorisation
 
   const callTlogin = async () => {
@@ -62,19 +57,6 @@ const Tlogin = (props) => {
   useEffect(() => {
     callTlogin();
   }, []);
-
-  function enhanceName(string) {
-    var str = string || " ";
-    var fullName = str.toLowerCase().split(" ");
-    for (var i = 0; i < fullName.length; i++) {
-      fullName[i][0] = fullName[i][0] || " ";
-      fullName[i] = fullName[i][0].toUpperCase() + fullName[i].slice(1);
-    }
-    // currUser.name = fullName;
-    console.log(fullName);
-    return fullName.join(" ");
-  }
-
   return (
     <div>
       <h3 className="text-3xl font-semibold text-gray-700 mb-6 ml-10 text-center ">
@@ -101,7 +83,7 @@ const Tlogin = (props) => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fillRule="evenodd"
+                  fill-rule="evenodd"
                   s
                   d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                   clip-rule="evenodd"

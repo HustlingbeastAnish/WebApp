@@ -9,10 +9,9 @@ const Tlogin = (props) => {
   const navigate = useNavigate();
   const currUser = props.userData;
 
-  // const str = enhanceName(currUser.name);
-  // console.log(currUser.name[0].toUpperCase() + currUser.name.slice(1));
-  // const str1 = currUser.name[0].toUpperCase() + currUser.name.slice(1);
-  // console.log(str);
+  const str = enhanceName(currUser.name);
+  console.log(currUser.name);
+  console.log(str);
   //jwt authorisation
 
   const callTlogin = async () => {
@@ -78,7 +77,7 @@ const Tlogin = (props) => {
   return (
     <div>
       <h3 className="text-3xl font-semibold text-gray-700 mb-6 ml-10 text-center ">
-        Welcome Prof. {currUser.name}
+        Welcome Prof. {str}
       </h3>
       <div className="flex">
         <div>

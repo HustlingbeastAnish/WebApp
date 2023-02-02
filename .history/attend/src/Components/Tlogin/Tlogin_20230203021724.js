@@ -10,8 +10,8 @@ const Tlogin = (props) => {
   const currUser = props.userData;
 
   // const str = enhanceName(currUser.name);
-  // console.log(currUser.name[0].toUpperCase() + currUser.name.slice(1));
-  // const str1 = currUser.name[0].toUpperCase() + currUser.name.slice(1);
+  console.log(currUser.name[0].toUpperCase() + currUser.name.slice(1));
+  const str1 = currUser.name[0].toUpperCase() + currUser.name.slice(1);
   // console.log(str);
   //jwt authorisation
 

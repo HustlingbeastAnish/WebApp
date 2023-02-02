@@ -10,9 +10,8 @@ const Tlogin = (props) => {
   const currUser = props.userData;
 
   // const str = enhanceName(currUser.name);
-  // console.log(currUser.name[0].toUpperCase() + currUser.name.slice(1));
-  // const str1 = currUser.name[0].toUpperCase() + currUser.name.slice(1);
-  // console.log(str);
+  console.log(currUser.name);
+  console.log(str);
   //jwt authorisation
 
   const callTlogin = async () => {
@@ -41,6 +40,9 @@ const Tlogin = (props) => {
 
   //logout functionality
   const handlelogout = () => {
+    str = str.toString();
+    // console.log(str[0]);
+    console.log("yeah");
     fetch("/logout", {
       method: "GET",
       headers: {
@@ -63,22 +65,19 @@ const Tlogin = (props) => {
     callTlogin();
   }, []);
 
-  function enhanceName(string) {
-    var str = string || " ";
+  function enhanceName(str) {
     var fullName = str.toLowerCase().split(" ");
     for (var i = 0; i < fullName.length; i++) {
-      fullName[i][0] = fullName[i][0] || " ";
       fullName[i] = fullName[i][0].toUpperCase() + fullName[i].slice(1);
     }
     // currUser.name = fullName;
     console.log(fullName);
     return fullName.join(" ");
   }
-
   return (
     <div>
       <h3 className="text-3xl font-semibold text-gray-700 mb-6 ml-10 text-center ">
-        Welcome Prof. {currUser.name}
+        Welcome Prof. {str}
       </h3>
       <div className="flex">
         <div>

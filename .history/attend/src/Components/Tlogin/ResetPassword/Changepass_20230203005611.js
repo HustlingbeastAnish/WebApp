@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import bcrypt from "bcryptjs";
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 // import { Link, useNavigate } from "react-router-dom";
 const Changepass = (props) => {
   const [updatedTeacher, setupdatedTeacher] = useState({
@@ -32,7 +33,7 @@ const Changepass = (props) => {
     console.log("Your is changing ...");
     e.preventDefault();
     const { _id, email } = updatedTeacher;
-    const password = await bcrypt.hash(updatedTeacher.password, 12);
+    const password = await bcrypt.hash(this.password, 12);
     console.log(_id);
     console.log(email);
     console.log(password);

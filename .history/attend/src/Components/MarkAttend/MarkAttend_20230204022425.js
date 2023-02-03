@@ -16,11 +16,9 @@ function MarkAttend(props) {
 
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
-  const yearr = props.SelectedDate.getFullYear();
-  console.log(yearr);
-  // yearr = yearr.slice(1);
+  const yearr = props.SelectedDate.getYear();
+
   const datee = `${dayy}-${monthh}-${yearr}`;
-  console.log(datee);
   const [currStudEmail, setcurrStudEmail] = useState("");
   const [currStudSubj, setcurrStudSubj] = useState("");
 

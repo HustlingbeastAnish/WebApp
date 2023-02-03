@@ -12,7 +12,6 @@ import "react-datepicker/dist/react-datepicker.css";
 const TakeAttend = (props) => {
   const handleDate = (date) => {
     props.setSelectedDate(date);
-    console.log(date);
   };
   const navigate = useNavigate();
 

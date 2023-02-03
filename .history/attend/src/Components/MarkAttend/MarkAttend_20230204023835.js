@@ -16,7 +16,7 @@ function MarkAttend(props) {
 
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
-  const yearr = props.SelectedDate.getFullYear();
+  const yearr = props.SelectedDate.getYear();
   console.log(yearr);
   // yearr = yearr.slice(1);
   const datee = `${dayy}-${monthh}-${yearr}`;

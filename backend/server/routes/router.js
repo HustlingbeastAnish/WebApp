@@ -44,4 +44,7 @@ route.get("/logout",(req,res)=>{
   res.status(200).send('user logout');
 })
 
+// Get request to get the details of student to see attendance
+route.get("/api/getstuddata/:email", controller.findStudbyemail);
+
 module.exports = route;

@@ -6,6 +6,7 @@ import SignUp from "./Components/SignUp/signup";
 import TeachStu from "./Components/TeachStu/TeachStu";
 import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
+import Seeattend from "./Components/Slogin/seeattend";
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -47,6 +48,9 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/tlogin" element={<Tlogin />}></Route>
+        </Routes>
+        <Routes>
+          <Route exact path="/seeattend" element={<Seeattend />}></Route>
         </Routes>
         <Routes>
           <Route exact path="/slogin" element={<Slogin />}></Route>

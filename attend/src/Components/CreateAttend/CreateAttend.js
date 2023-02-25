@@ -1,8 +1,39 @@
 import React from "react";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 const CreateAttend = () => {
   const navigate = useNavigate();
+
+//jwt authorisation
+  const[userData,setUserData]=useState({});
+  const  callcreateAttend= async () => {
+    try {
+      const res = await fetch("/aftertlogin", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      setUserData(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        // navigate("/tlogin");
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+      navigate("/loginteach");
+    }
+  };
+
+  useEffect(() => {
+    callcreateAttend();
+  }, []);
+
+
   // Creation of the details of the student
   const [Student, setStudent] = useState({
     name: "",
@@ -46,9 +77,10 @@ const CreateAttend = () => {
     });
 
     const data = await res.json();
-    if (!data || data.status === 500) {
-      window.alert("Invalid Registration");
+    if (!data || data.status === 422||data.error) {
       console.log("Invalid Registration");
+      window.alert("Invalid Registration");
+      
     } else {
       window.alert("Registration is done Successfully");
       navigate("/tlogin");

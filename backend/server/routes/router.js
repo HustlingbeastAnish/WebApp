@@ -2,11 +2,13 @@ const express = require("express");
 const route = express.Router();
 const services = require("../services/render");
 const controller = require("../controller/controller");
+const authenticate = require("../middleware/authenticate.js");
+const authenticatestu = require("../middleware/authenticatestud.js");
+const { Router } = require("express");
 
 route.get("/", (req, res) => {
   res.render(`index`);
 });
-
 // route.get("/api/add-user", services.add_user);
 //API Request
 //___________________________________________________________________________________
@@ -17,10 +19,32 @@ route.post("/api/users", controller.create);
 route.post("/api/userf", controller.find);
 
 // Get request to get the details of student with a feild
-route.get("/api/studdata/:subject", controller.findStudWithFeild);
+route.get("/api/studdata/:subject/:branch", controller.findStudWithFeild);
 // To check if a student is registered or not
 route.post("/api/userstud", controller.findStud);
 
 route.post("/api/students", controller.stucreate);
+
+route.post("/api/absentstud", controller.AbsentDates);
+
+// To Update a user using the put request
+route.put("/api/studdata/:id", controller.update);
+route.post("/api/alldates", controller.AllDates);
+
+route.get("/aftertlogin", authenticate, (req, res) => {
+  res.send(req.rootUser);
+});
+
+route.get("/afterslogin", authenticatestu, (req, res) => {
+  res.send(req.rootUser);
+});
+
+route.get("/logout",(req,res)=>{
+  res.clearCookie('jwtoken',{path:'/'});
+  res.status(200).send('user logout');
+})
+
+// Get request to get the details of student to see attendance
+route.get("/api/getstuddata/:email", controller.findStudbyemail);
 
 module.exports = route;

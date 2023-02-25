@@ -1,7 +1,58 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-function tlogin() {
+import { Link, useNavigate } from "react-router-dom";
+const Tlogin = () => {
+  const navigate = useNavigate();
+
+  //jwt authorisation
+  const[userData,setUserData]=useState({});
+  const callTlogin = async () => {
+    try {
+      const res = await fetch("/aftertlogin", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      setUserData(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        // navigate("/tlogin");
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+      navigate("/loginteach");
+    }
+  };
+
+//logout functionality
+  const handlelogout = () => {
+    
+     fetch('/logout', {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res)=>{
+      navigate("/loginteach");
+       if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    }).catch ((err) =>{
+      console.log(err);
+    });
+   
+   
+  };
+
+  useEffect(() => {
+    callTlogin();
+  }, []);
   return (
     <div>
       <div className="bg-gray-200 dark:bg-gray-800 flex">
@@ -134,7 +185,7 @@ function tlogin() {
             <span className="mx-2">Settings</span>
           </a>
         </div>
-        <button className="mr-8  group relative h-10 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+        <button type="button" onClick={ handlelogout }className="mr-8  group relative h-10 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
           <div className="absolute inset-0 w-3 bg-purple-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
           <span className="relative  text-black group-hover:text-white">
             LOGOUT
@@ -144,7 +195,7 @@ function tlogin() {
       <br></br>
       <br></br>
       <h3 className="text-2xl   display: inline-block  text-gray-700 font-bold mb-6 ml-10 content-center ...">
-        WELCOME ..............@TEACHER
+       Welcome Prof. {userData.name}
       </h3>
 
       <br></br>
@@ -228,13 +279,15 @@ function tlogin() {
                 Maecenas placerat facilisis mollis. Duis sagittis ligula in
                 sodales vehicula.
               </p>
-              <button
-                type="button"
-                className="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-mdb-ripple="true"
-              >
-                UPDATE
-              </button>
+              <Link to="/selectstud">
+                <button
+                  type="button"
+                  className="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                  data-mdb-ripple="true"
+                >
+                  UPDATE
+                </button>
+              </Link>
             </div>
           </div>
         </li>
@@ -286,6 +339,6 @@ function tlogin() {
       </ol>
     </div>
   );
-}
+};
 
-export default tlogin;
+export default Tlogin;

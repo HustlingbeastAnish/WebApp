@@ -1,19 +1,74 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, createContext } from "react";
 import MarkAttend from "../MarkAttend/MarkAttend";
-
-// Created a context to Share resources
-// const TeacherQueries = createContext();
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const TakeAttend = (props) => {
-  //Array containing the values to be shared
-  // const arr = [Subject, Branch];
+  const handleDate = (date) => {
+    props.setSelectedDate(date);
+  };
+  const navigate = useNavigate();
 
+
+//jwt authorisation
+  const[userData,setUserData]=useState({});
+  const callTakeAttend = async () => {
+    try {
+      const res = await fetch("/aftertlogin", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      setUserData(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        // navigate("/tlogin");
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+      navigate("/loginteach");
+    }
+  };
+
+
+  const PostAtt = async (e) => {
+    
+    const res = await fetch("/api/alldates", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        
+        subjectName: props.Subject,
+        datee: props.SelectedDate,
+        branch:props.Branch
+        
+      }),
+    });
+    const data = await res.json();
+    
+    if (!data || data.status === 422 || data.error) {
+      console.log("DATE NOT INCLUDED");
+    } else {
+      console.log("DATE INCLUDED");
+      navigate("/makeattend");
+    }
+  };
+useEffect(() => {
+    callTakeAttend();
+  }, []);
   return (
     <>
       <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">
@@ -52,47 +107,38 @@ const TakeAttend = (props) => {
               label="Subjects"
               onChange={props.handleChange}
             >
-              <MenuItem value={"Data Structures"}>Data Structures</MenuItem>
-              <MenuItem value={"Operating System"}>Operating System</MenuItem>
-              <MenuItem value={"Computer Networks"}>Computer Networks</MenuItem>
-              <MenuItem value={"Object Oriented Programming"}>
-                Object Oriented Programming
+              <MenuItem value={"Data_Structures"}>Data_Structures</MenuItem>
+              <MenuItem value={"Operating_System"}>Operating_System</MenuItem>
+              <MenuItem value={"Computer_Networks"}>Computer_Networks</MenuItem>
+              <MenuItem value={"Object_Oriented_Programming"}>
+                Object_Oriented_Programming
               </MenuItem>
               <MenuItem value={"DBMS"}>DBMS</MenuItem>
-              <MenuItem value={"Numerical Methods"}>Numerical Methods</MenuItem>
+              <MenuItem value={"Numerical_Methods"}>Numerical_Methods</MenuItem>
             </Select>
           </FormControl>
         </div>
 
         <div className="relative mt-10">
-          <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-gray-500 dark:text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </div>
-          <input
-            datepicker="true"
-            data-date={props.currentDate}
-            type="date"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Select date"
+          <h2 className="font-semibold text-xl">Please Select the Date </h2>
+          <DatePicker
+            selected={props.SelectedDate}
+            onChange={handleDate}
+            filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+            dateFormat={`dd/MM/yyyy`}
+            showYearDropdown
+            scrollableMonthYearDropdown
+            isClearable
           />
         </div>
 
         <div className="mt-40">
-          <Link to="/makeattend">
+         
             <button
               type="button"
+              onClick={
+                                PostAtt
+                              }
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Mark Attendance
@@ -110,7 +156,7 @@ const TakeAttend = (props) => {
                 ></path>
               </svg>
             </button>
-          </Link>
+        
         </div>
       </div>
       {/* <TeacherQueries.Provider value={"Siiuuu"}>

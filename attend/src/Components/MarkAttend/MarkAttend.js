@@ -1,23 +1,61 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
-import { useFetcher } from "react-router-dom";
-// import { TeacherQueries } from "../TakeAttend/TakeAttend";
-function MarkAttend(props) {
-  //   const value = useContext(TeacherQueries);
 
+function MarkAttend(props) {
   const currSubject = props.Subject;
   const currBranch = props.Branch;
 
+  const currSubjArr = currSubject.replaceAll(" ", "_");
+  console.log(currSubjArr);
+
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
-    // console.log(currSubject);
     fetchStudentDetails();
   }, []);
 
+  const dayy = props.SelectedDate.getDate();
+  const monthh = props.SelectedDate.getMonth();
+  const yearr = props.SelectedDate.getYear();
+
+  const datee = `${dayy}-${monthh}-${yearr}`;
+  const [currStudEmail, setcurrStudEmail] = useState("");
+  const [currStudSubj, setcurrStudSubj] = useState("");
+
+  const [FlagP, setFlagP] = useState(true);
+  const [FlagA, setFlagA] = useState(true);
+  const ClickedCheckPresent = (e) => {
+    setFlagA(!FlagA);
+  };
+
+  const PostAbs = async (e) => {
+    console.log(currStudEmail);
+    console.log(currBranch);
+    console.log(currSubjArr);
+    console.log(datee);
+
+    const res = await fetch("/api/absentstud", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: currStudEmail,
+        subjectName: currSubjArr,
+        datee: datee,
+      }),
+    });
+    const data = await res.json();
+    if (!data || data.status === 422 || data.error) {
+      console.log("Student has been marked absent");
+    } else {
+      console.log("Student has not been marked absent");
+    }
+  };
+
   const fetchStudentDetails = () => {
     axios
-      .get(`http://localhost:3002/api/studdata/${currSubject}`)
+      .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
         console.log(res.data);
@@ -25,13 +63,14 @@ function MarkAttend(props) {
       })
       .catch((err) => {
         console.log(err);
+        console.log("Data not fetched");
       });
   };
   return (
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
-          Showing Details for {props.currentDate}
+          Showing Details for {`${dayy}/${monthh}/${yearr}`}
         </h2>
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
           <div className="flex justify-between items-center py-4 bg-white dark:bg-gray-800 ">
@@ -129,46 +168,62 @@ function MarkAttend(props) {
                           {elem.name}
                         </div>
                         <div className="font-normal text-gray-500">
-                          {elem.email}
+                          {elem.emaizl}
                         </div>
                       </div>
                     </th>
-                    <td className="py-4 px-6">{`BTECH/10076/21`}</td>
-                    <td className="py-4 px-6">{elem.subject}</td>
-                    <td className="py-4 px-6">{elem.branch}</td>
+                    <td className="py-4 px-6">{elem.roll}</td>
+                    <td className="py-4 px-6">{currSubject}</td>
+                    <td className="py-4 px-6">{currBranch}</td>
                     <div>
-                      <th scope="col" className="p-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-all-search"
-                            type="checkbox"
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-all-search"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </th>
-                      <th scope="col" className="p-4">
-                        <div class="flex items-center">
-                          <input
-                            id="checkbox-all-search"
-                            type="checkbox"
-                            class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-all-search"
-                            className="sr-only"
-                          >
-                            Red
-                          </label>
-                        </div>
-                      </th>
+                      <div className="flex">
+                        <h2 className="mt-3">Present</h2>
+                        <th scope="col" className="p-4">
+                          <div className="flex items-center">
+                            <input
+                              id="checkbox-all-search"
+                              onClick={ClickedCheckPresent}
+                              disabled={!FlagP}
+                              type="checkbox"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                            <label
+                              htmlFor="checkbox-all-search"
+                              className="sr-only"
+                            >
+                              checkbox
+                            </label>
+                          </div>
+                        </th>
+                      </div>
+                      <div className="flex">
+                        <h2 className="mt-3">Absent</h2>
+                        <th scope="col" className="p-4">
+                          <div class="flex items-center">
+                            <input
+                              id="checkbox-all-search"
+                              type="checkbox"
+                              onClick={(e) => {
+                                console.log(elem.subject);
+                                setFlagP(!FlagP);
+                                setcurrStudEmail(elem.email);
+                                setcurrStudSubj(elem.subject);
+                                PostAbs();
+                              }}
+                              disabled={!FlagA}
+                              class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                            <label
+                              htmlFor="checkbox-all-search"
+                              className="sr-only"
+                            >
+                              Red
+                            </label>
+                          </div>
+                        </th>
+                      </div>
                     </div>
-                    <td className="py-4 px-6">{`NULL`}</td>
+                    <td className="py-4 px-6">NULL</td>
                   </tr>
                 );
               })}
@@ -176,7 +231,6 @@ function MarkAttend(props) {
           </table>
         </div>
       </div>
-      {/* </TeacherQueries.Consumer> */}
     </>
   );
 }

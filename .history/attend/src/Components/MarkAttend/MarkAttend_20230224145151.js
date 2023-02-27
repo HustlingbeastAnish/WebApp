@@ -182,7 +182,7 @@ function MarkAttend(props) {
                           type="checkbox"
                           value=""
                           class="sr-only peer"
-                          onClick={() => {
+                          onClick={(e) => {
                             // console.log(arr[idx]);
                             // arr[idx] = 1 - arr[idx];
                             // console.log(arr[idx]);

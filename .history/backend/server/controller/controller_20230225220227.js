@@ -5,6 +5,7 @@ var Subjectsatt = require("../model/subjects.js");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const Stloginuser = require("../model/stuLogin");
 
 exports.create = async (req, res) => {
   const { name, email, password } = req.body;
@@ -192,12 +193,11 @@ exports.findStud = async (req, res) => {
     }
     const emailExists = await Stuser.findOne({ email: email });
     const PassMatch = await Stuser.findOne({ phone: password });
-    // console.log(emailExists);
-    console.log(PassMatch);
+    console.log(emailExists);
     if (emailExists && PassMatch) {
       const token = await emailExists.generateAuthToken();
       res.cookie("jwtoken", token, {
-        expires: new Date(Date.now() + 2589200000),
+        expires: new Date(Date.now() + 25892000000),
         httpOnly: true,
       });
       console.log("Login as Student Succesfully");
@@ -207,7 +207,6 @@ exports.findStud = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    console.log("Shit");
   }
 };
 
@@ -254,28 +253,6 @@ exports.update = (req, res) => {
       res.status(500).send({ message: "Error Update user false Information " });
     });
 };
-
-exports.updateteacher = (req, res) => {
-  if (!req.body) {
-    res.status(400).send({ message: "Data to be updated cannot be empty" });
-  }
-  const id = req.params.id;
-  userdb
-    .findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-    .then((data) => {
-      if (!data) {
-        res.status(404).send({
-          message: `Cannot Update a user with ${id} , Maybe User not found`,
-        });
-      } else {
-        res.send(data);
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({ message: "Error Update user false Information " });
-    });
-};
-
 exports.AllDates = async (req, res) => {
   try {
     const { subjectName, datee, branch } = req.body;
@@ -332,41 +309,30 @@ exports.AllDates = async (req, res) => {
   }
 };
 
-// Controller for the forgot password
-exports.forgotpassword = async (req, res) => {
-  const { email } = req.body;
+exports.findStudbyemail = async (req, res) => {
   try {
-    const oldUser = await userdb.findOne({ email });
-    if (!oldUser) {
-      res.status(404).json({ error: "No User With this email exists" });
-      console.log("No User With this email exists");
+    if (!req.body) {
+      console.log("No student with a branch found");
+      return res.status(404).json({ err: "Feilds cannot be empty" });
     }
-    const secret = process.env.SECRET_KEY + oldUser.password;
-    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
-      expiresIn: "7m",
-    });
-    const link = `http://localhost:3002/resetpassword/${oldUser._id}/${token}`;
-    // console.log(link);
-    res.json({ message: `${link}` });
-    res.render("Verified");
-  } catch (error) {
-    console.log(error);
-  }
-};
 
-exports.resetpassword = async (req, res) => {
-  const { id, token } = req.params;
-  console.log(req.params);
-  const oldUser = await userdb.findOne({ _id: id });
-  if (!oldUser) {
-    res.status(404).json({ error: "No User With this email exists" });
-  }
-  const secret = process.env.SECRET_KEY + oldUser.password;
-  try {
-    const verify = jwt.verify(token, secret);
-    res.send(`Your Email is Verified `);
-    res.status(201).json({ message: "Verified" });
-  } catch (error) {
-    res.send("Not verified");
+    const email = req.params.email;
+    console.log("ok");
+    console.log(email);
+    Stloginuser.find({ email: email })
+      .then((data) => {
+        if (!data) {
+          console.log("No student with a branch found");
+          res.status(404).json({ err: "No student with a branch found" });
+        } else {
+          res.send(data);
+        }
+      })
+      .catch((err) => {
+        console.log("No student with a branch found");
+        res.status(500).send({ message: "Some error occurred" });
+      });
+  } catch (err) {
+    console.log(err);
   }
 };

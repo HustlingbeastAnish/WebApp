@@ -192,7 +192,7 @@ exports.findStud = async (req, res) => {
     }
     const emailExists = await Stuser.findOne({ email: email });
     const PassMatch = await Stuser.findOne({ phone: password });
-    // console.log(emailExists);
+    console.log(emailExists);
     console.log(PassMatch);
     if (emailExists && PassMatch) {
       const token = await emailExists.generateAuthToken();

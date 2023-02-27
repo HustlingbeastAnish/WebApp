@@ -14,10 +14,7 @@ function MarkAttend(props) {
     fetchStudentDetails();
   }, []);
 
-  var arr = [];
-  for (let i = 0; i < 10000; i++) {
-    arr.push(1);
-  }
+  // var [arr, setarr] = useState([]);
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
   const yearr = props.SelectedDate.getFullYear();
@@ -66,7 +63,6 @@ function MarkAttend(props) {
         console.log("Data not fetched");
       });
   };
-
   return (
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
@@ -182,19 +178,11 @@ function MarkAttend(props) {
                           type="checkbox"
                           value=""
                           class="sr-only peer"
-                          onClick={() => {
-                            // console.log(arr[idx]);
-                            // arr[idx] = 1 - arr[idx];
-                            // console.log(arr[idx]);
-                            // for (let i = 0; i < 5; i++) {
-                            //   console.log(arr[i]);
-                            // }
-                            console.log(elem.name);
-                          }}
+                          // onClick={() => {}}
                         />
                         <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
                         <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                          {arr[idx] === 1 ? "Absent" : "Present"}
+                          {arr[idx] === 1 ? "Present" : "Absent"}
                         </span>
                       </label>
                     </div>

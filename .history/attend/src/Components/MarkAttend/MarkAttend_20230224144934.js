@@ -184,7 +184,7 @@ function MarkAttend(props) {
                           class="sr-only peer"
                           onClick={() => {
                             // console.log(arr[idx]);
-                            // arr[idx] = 1 - arr[idx];
+                            arr[idx] = 1 - arr[idx];
                             // console.log(arr[idx]);
                             // for (let i = 0; i < 5; i++) {
                             //   console.log(arr[i]);

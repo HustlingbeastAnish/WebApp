@@ -47,4 +47,5 @@ stuSchema.methods.generateAuthToken = async function () {
   }
 };
 const Stuser = mongoose.model("STUSER", stuSchema);
+
 module.exports = Stuser;

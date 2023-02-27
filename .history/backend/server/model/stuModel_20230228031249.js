@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 
 const stuSchema = new mongoose.Schema({
   name: {
@@ -35,8 +34,10 @@ const stuSchema = new mongoose.Schema({
     },
   ],
 });
+const Stuser = mongoose.model("STUSER", stuSchema);
 
-stuSchema.methods.generateAuthToken = async function () {
+// Generation of token for stuser
+Schema.methods.generateAuthToken = async function () {
   try {
     let tokenUser = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
     this.tokens = this.tokens.concat({ token: tokenUser });
@@ -46,5 +47,5 @@ stuSchema.methods.generateAuthToken = async function () {
     console.log(err);
   }
 };
-const Stuser = mongoose.model("STUSER", stuSchema);
+
 module.exports = Stuser;

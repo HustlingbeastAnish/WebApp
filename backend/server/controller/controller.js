@@ -5,6 +5,7 @@ var Subjectsatt = require("../model/subjects.js");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const Stloginuser = require("../model/stuLogin");
 
 exports.create = async (req, res) => {
   const { name, email, password } = req.body;
@@ -330,6 +331,36 @@ exports.AllDates = async (req, res) => {
   }
 };
 
+
+exports.findStudbyemail = async (req, res) => {
+  try {
+    if (!req.body) { console.log("No student with a branch found");
+      return res.status(404).json({ err: "Feilds cannot be empty" });
+     
+    }
+
+    const email = req.params.email;
+    console.log("ok");
+    console.log(email);
+    Stloginuser.find({ email:email })
+      .then((data) => {
+        if (!data) { console.log("No student with a branch found");
+          res.status(404).json({ err: "No student with a branch found" });
+          
+        } else {
+         
+          res.send(data);
+        }
+      })
+      .catch((err) => {
+        console.log("No student with a branch found");
+        res.status(500).send({ message: "Some error occurred" });
+      });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // Controller for the forgot password
 exports.forgotpassword = async (req, res) => {
   const { email } = req.body;
@@ -368,3 +399,4 @@ exports.resetpassword = async (req, res) => {
     res.send("Not verified");
   }
 };
+

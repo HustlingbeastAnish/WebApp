@@ -41,7 +41,7 @@ route.get("/afterslogin", authenticatestu, (req, res) => {
 });
 
 // Route to get the details of the student from the collection stloginusers
-route.get("/detailstloginusers/:email", controller.getstlogindetails);
+route.get("/detailstloginusers/:id", controller.getstlogindetails);
 
 // Route for the forgot password
 route.post("/forgotpassword", controller.forgotpassword);

@@ -73,12 +73,7 @@ function MarkAttend(props) {
       .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
       .then((res) => {
         console.log(res.data.Data_Structures.length);
-        Setabsentcount((absentcount) => ({
-          ...absentcount,
-          [idx]: (((31 - res.data.Data_Structures.length) / 31) * 100).toFixed(
-            2
-          ),
-        }));
+        arr[idx] = res.data.Data_Structures.length;
       })
       .catch((err) => {
         console.log(err);
@@ -209,7 +204,7 @@ function MarkAttend(props) {
                         </span>
                       </label>
                     </div>
-                    <td className="py-4 px-6">{absentcount[idx]}</td>
+                    <td className="py-4 px-6">{arr[idx]}</td>
                   </tr>
                 );
               })}

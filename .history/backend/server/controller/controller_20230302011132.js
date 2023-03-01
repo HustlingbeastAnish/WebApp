@@ -233,27 +233,17 @@ exports.findStudWithFeild = async (req, res) => {
   }
 };
 
-exports.getstlogindetails = async (req, res) => {
-  try {
-    if (!req.body) {
-      return res.status(404).json({ err: "None of the fields can be empty" });
+
+exports.create =async (req,res)=>{
+  try{
+    if(!req.body)
+    {
+      return res.status(404).json({err:"None of the fields can be empty"});
     }
-    const studemail = req.params.email;
-    Slogintuser.findOne({ email: studemail })
-      .then((data) => {
-        if (!data) {
-          res.status(400).json({ err: "No Such field found" });
-        } else {
-          res.send(data);
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({ message: "Some error occurred" });
-      });
-  } catch (err) {
-    console.log(err);
+    const studid=req.params.id;
+    stloginuser.findOne({_id:})
   }
-};
+}
 exports.update = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Data to be updated cannot be empty" });

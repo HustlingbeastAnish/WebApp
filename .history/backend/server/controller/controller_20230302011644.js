@@ -238,8 +238,8 @@ exports.getstlogindetails = async (req, res) => {
     if (!req.body) {
       return res.status(404).json({ err: "None of the fields can be empty" });
     }
-    const studemail = req.params.email;
-    Slogintuser.findOne({ email: studemail })
+    const studid = req.params.id;
+    Slogintuser.findOne({ _id: studid })
       .then((data) => {
         if (!data) {
           res.status(400).json({ err: "No Such field found" });

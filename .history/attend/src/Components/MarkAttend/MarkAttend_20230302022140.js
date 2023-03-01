@@ -75,9 +75,7 @@ function MarkAttend(props) {
         console.log(res.data.Data_Structures.length);
         Setabsentcount((absentcount) => ({
           ...absentcount,
-          [idx]: (((31 - res.data.Data_Structures.length) / 31) * 100).toFixed(
-            2
-          ),
+          [idx]: ((31 - res.data.Data_Structures.length) / 31) * 100,
         }));
       })
       .catch((err) => {

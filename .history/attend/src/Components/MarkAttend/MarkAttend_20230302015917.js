@@ -13,8 +13,10 @@ function MarkAttend(props) {
   useEffect(() => {
     fetchStudentDetails();
   }, []);
-
-  const [arr, setarr] = useState({});
+  var arr = [];
+  for (let i = 0; i < 10000; i++) {
+    arr.push(0);
+  }
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
   const yearr = props.SelectedDate.getFullYear();
@@ -25,10 +27,7 @@ function MarkAttend(props) {
   const [currStudEmail, setcurrStudEmail] = useState("");
   const [currStudSubj, setcurrStudSubj] = useState("");
 
-  const [absentcount, Setabsentcount] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0,
-  ]);
+  const [absentcount, Setabsentcount] = useState(0);
   const PostAbs = async (e) => {
     console.log(currStudEmail);
     console.log(currBranch);
@@ -73,12 +72,7 @@ function MarkAttend(props) {
       .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
       .then((res) => {
         console.log(res.data.Data_Structures.length);
-        Setabsentcount((absentcount) => ({
-          ...absentcount,
-          [idx]: (((31 - res.data.Data_Structures.length) / 31) * 100).toFixed(
-            2
-          ),
-        }));
+        arr[idx] = res.data.Data_Structures.length;
       })
       .catch((err) => {
         console.log(err);
@@ -209,7 +203,7 @@ function MarkAttend(props) {
                         </span>
                       </label>
                     </div>
-                    <td className="py-4 px-6">{absentcount[idx]}</td>
+                    <td className="py-4 px-6">{arr[idx]}</td>
                   </tr>
                 );
               })}

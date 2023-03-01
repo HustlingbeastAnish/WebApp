@@ -13,8 +13,10 @@ function MarkAttend(props) {
   useEffect(() => {
     fetchStudentDetails();
   }, []);
-
-  const [arr, setarr] = useState({});
+  var arr = [];
+  for (let i = 0; i < 10000; i++) {
+    arr.push(1);
+  }
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
   const yearr = props.SelectedDate.getFullYear();
@@ -25,10 +27,6 @@ function MarkAttend(props) {
   const [currStudEmail, setcurrStudEmail] = useState("");
   const [currStudSubj, setcurrStudSubj] = useState("");
 
-  const [absentcount, Setabsentcount] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0,
-  ]);
   const PostAbs = async (e) => {
     console.log(currStudEmail);
     console.log(currBranch);
@@ -68,17 +66,11 @@ function MarkAttend(props) {
       });
   };
 
-  const FetchAttendanceDetails = (elem, idx) => {
+  const FetchAttendanceDetails = () => {
     axios
-      .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+      .get(`http://localhost:3002/detailstloginusers/${studid}`)
       .then((res) => {
-        console.log(res.data.Data_Structures.length);
-        Setabsentcount((absentcount) => ({
-          ...absentcount,
-          [idx]: (((31 - res.data.Data_Structures.length) / 31) * 100).toFixed(
-            2
-          ),
-        }));
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -177,6 +169,7 @@ function MarkAttend(props) {
                     <td className="p-4 w-4">
                       <h1>{idx + 1}</h1>
                     </td>
+                    console.log(elem);
                     <th
                       scope="row"
                       className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
@@ -200,7 +193,14 @@ function MarkAttend(props) {
                           value=""
                           class="sr-only peer"
                           onClick={() => {
-                            FetchAttendanceDetails(elem, idx);
+                            // console.log(arr[idx]);
+                            // arr[idx] = 1 - arr[idx];
+                            // console.log(arr[idx]);
+                            // for (let i = 0; i < 5; i++) {
+                            //   console.log(arr[i]);
+                            // }
+                            FetchAttendanceDetails();
+                            console.log(elem.name);
                           }}
                         />
                         <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
@@ -209,7 +209,7 @@ function MarkAttend(props) {
                         </span>
                       </label>
                     </div>
-                    <td className="py-4 px-6">{absentcount[idx]}</td>
+                    <td className="py-4 px-6">NULL</td>
                   </tr>
                 );
               })}

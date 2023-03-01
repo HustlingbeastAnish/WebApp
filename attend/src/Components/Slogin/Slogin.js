@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SideNavbar from "../StudentSection/SideNavbar";
 
@@ -8,6 +8,7 @@ function Slogin() {
   const navigate = useNavigate();
 
   //jwt authorisation
+
   const[userData,setUserData]=useState({
         
     name: 'okay',
@@ -20,6 +21,7 @@ function Slogin() {
     
     
   });
+
   const callSlogin = async () => {
     try {
       const res = await fetch("/afterslogin", {
@@ -47,7 +49,7 @@ function Slogin() {
   useEffect(() => {
     callSlogin();
   }, []);
-  
+
   return (
     <div className="p-1 border-black-500 bg-gray-400">
       <div className="text-center text-3xl">
@@ -148,5 +150,4 @@ function Slogin() {
     </div>
   );
 }
-
 export default Slogin;

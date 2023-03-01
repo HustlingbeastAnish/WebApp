@@ -16,12 +16,16 @@ import UpdateStud from "./Components/UpdateStud/UpdateStud";
 import SelectStud from "./Components/UpdateStud/SelectStud";
 import MarkAttend from "./Components/MarkAttend/MarkAttend";
 import EditStud from "./Components/EditModal/EditModal";
+import TeacherEdit from "./Components/Tlogin/TeacherEdit";
+import Forgotpass from "./Components/Tlogin/ResetPassword/Forgotpass";
+import Resetpass from "./Components/Tlogin/ResetPassword/Resetpass";
+import Changepass from "./Components/Tlogin/ResetPassword/Changepass";
 
 function App() {
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
   const [SelectedDate, setSelectedDate] = useState(new Date());
-
+  console.log(SelectedDate);
   // Array for the update Student
   const [Upstud, setUpstud] = useState({});
 
@@ -31,6 +35,11 @@ function App() {
   const handleChangeBranch = (e) => {
     setBranch(e.target.value);
   };
+
+  // Link containing the gmail verification
+  const [link, SetLink] = useState("");
+  // State Containing the logged user's details
+  const [userData, setUserData] = useState({});
   return (
     <>
       <BrowserRouter>
@@ -47,13 +56,44 @@ function App() {
           <Route exact path="/" element={<TeachStu />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/tlogin" element={<Tlogin />}></Route>
+          <Route
+            exact
+            path="/tlogin"
+            element={<Tlogin userData={userData} setUserData={setUserData} />}
+          ></Route>
         </Routes>
         <Routes>
           <Route exact path="/seeattend" element={<Seeattend />}></Route>
         </Routes>
         <Routes>
           <Route exact path="/slogin" element={<Slogin />}></Route>
+        </Routes>
+        <Routes>
+          <Route
+            exact
+            path="/forgotpassword"
+            element={
+              <Forgotpass
+                userData={userData}
+                setUserData={setUserData}
+                link={link}
+                SetLink={SetLink}
+              />
+            }
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route
+            exact
+            path="/resetpassword"
+            element={
+              <Resetpass
+                userData={userData}
+                setUserData={setUserData}
+                link={link}
+              />
+            }
+          ></Route>
         </Routes>
         <Routes>
           <Route
@@ -126,6 +166,24 @@ function App() {
                 Branch={Branch}
                 SelectedDate={SelectedDate}
               />
+            }
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route
+            exact
+            path="/editteacher"
+            element={
+              <TeacherEdit userData={userData} setUserData={setUserData} />
+            }
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route
+            exact
+            path="/resetpassword/changepass"
+            element={
+              <Changepass userData={userData} setUserData={setUserData} />
             }
           ></Route>
         </Routes>

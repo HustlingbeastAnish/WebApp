@@ -253,19 +253,41 @@ exports.update = (req, res) => {
       res.status(500).send({ message: "Error Update user false Information " });
     });
 };
+
+exports.updateteacher = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "Data to be updated cannot be empty" });
+  }
+  const id = req.params.id;
+  userdb
+    .findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot Update a user with ${id} , Maybe User not found`,
+        });
+      } else {
+        res.send(data);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error Update user false Information " });
+    });
+};
+
 exports.AllDates = async (req, res) => {
   try {
-    const { subjectName, datee,branch } = req.body;
-    if (!subjectName || !datee||!branch) {
+    const { subjectName, datee, branch } = req.body;
+    if (!subjectName || !datee || !branch) {
       res.status(422).json({ error: "fill in all details" });
       console.log("fill in all details");
     } else {
-      Subjectsatt.find({ [subjectName+"_"+branch]: { $exists: true } })
+      Subjectsatt.find({ [subjectName + "_" + branch]: { $exists: true } })
         .then((data) => {
           console.log(data);
           if (!data[0]) {
             const newuser = new Subjectsatt({
-              [subjectName+"_"+branch]: [datee],
+              [subjectName + "_" + branch]: [datee],
             });
             newuser
               .save()
@@ -281,8 +303,8 @@ exports.AllDates = async (req, res) => {
               });
           } else {
             Subjectsatt.updateOne(
-              { [subjectName+"_"+branch]: { $exists: true } },
-              { $addToSet: { [subjectName+"_"+branch]: datee } },
+              { [subjectName + "_" + branch]: { $exists: true } },
+              { $addToSet: { [subjectName + "_" + branch]: datee } },
               (error, data) => {
                 if (error) {
                   console.log(error);
@@ -308,6 +330,7 @@ exports.AllDates = async (req, res) => {
     console.log(error);
   }
 };
+
 
 exports.findStudbyemail = async (req, res) => {
   try {
@@ -337,3 +360,43 @@ exports.findStudbyemail = async (req, res) => {
     console.log(err);
   }
 };
+
+// Controller for the forgot password
+exports.forgotpassword = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const oldUser = await userdb.findOne({ email });
+    if (!oldUser) {
+      res.status(404).json({ error: "No User With this email exists" });
+      console.log("No User With this email exists");
+    }
+    const secret = process.env.SECRET_KEY + oldUser.password;
+    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
+      expiresIn: "7m",
+    });
+    const link = `http://localhost:3002/resetpassword/${oldUser._id}/${token}`;
+    // console.log(link);
+    res.json({ message: `${link}` });
+    res.render("Verified");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.resetpassword = async (req, res) => {
+  const { id, token } = req.params;
+  console.log(req.params);
+  const oldUser = await userdb.findOne({ _id: id });
+  if (!oldUser) {
+    res.status(404).json({ error: "No User With this email exists" });
+  }
+  const secret = process.env.SECRET_KEY + oldUser.password;
+  try {
+    const verify = jwt.verify(token, secret);
+    res.send(`Your Email is Verified `);
+    res.status(201).json({ message: "Verified" });
+  } catch (error) {
+    res.send("Not verified");
+  }
+};
+

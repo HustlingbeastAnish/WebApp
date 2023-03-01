@@ -14,19 +14,19 @@ function MarkAttend(props) {
     fetchStudentDetails();
   }, []);
 
+  var arr = [];
+  for (let i = 0; i < 10000; i++) {
+    arr.push(1);
+  }
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
-  const yearr = props.SelectedDate.getYear();
-
+  const yearr = props.SelectedDate.getFullYear();
+  console.log(yearr);
+  // yearr = yearr.slice(1);
   const datee = `${dayy}-${monthh}-${yearr}`;
+  console.log(datee);
   const [currStudEmail, setcurrStudEmail] = useState("");
   const [currStudSubj, setcurrStudSubj] = useState("");
-
-  const [FlagP, setFlagP] = useState(true);
-  const [FlagA, setFlagA] = useState(true);
-  const ClickedCheckPresent = (e) => {
-    setFlagA(!FlagA);
-  };
 
   const PostAbs = async (e) => {
     console.log(currStudEmail);
@@ -66,6 +66,7 @@ function MarkAttend(props) {
         console.log("Data not fetched");
       });
   };
+
   return (
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
@@ -176,52 +177,26 @@ function MarkAttend(props) {
                     <td className="py-4 px-6">{currSubject}</td>
                     <td className="py-4 px-6">{currBranch}</td>
                     <div>
-                      <div className="flex">
-                        <h2 className="mt-3">Present</h2>
-                        <th scope="col" className="p-4">
-                          <div className="flex items-center">
-                            <input
-                              id="checkbox-all-search"
-                              onClick={ClickedCheckPresent}
-                              disabled={!FlagP}
-                              type="checkbox"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                            <label
-                              htmlFor="checkbox-all-search"
-                              className="sr-only"
-                            >
-                              checkbox
-                            </label>
-                          </div>
-                        </th>
-                      </div>
-                      <div className="flex">
-                        <h2 className="mt-3">Absent</h2>
-                        <th scope="col" className="p-4">
-                          <div class="flex items-center">
-                            <input
-                              id="checkbox-all-search"
-                              type="checkbox"
-                              onClick={(e) => {
-                                console.log(elem.subject);
-                                setFlagP(!FlagP);
-                                setcurrStudEmail(elem.email);
-                                setcurrStudSubj(elem.subject);
-                                PostAbs();
-                              }}
-                              disabled={!FlagA}
-                              class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                            <label
-                              htmlFor="checkbox-all-search"
-                              className="sr-only"
-                            >
-                              Red
-                            </label>
-                          </div>
-                        </th>
-                      </div>
+                      <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          value=""
+                          class="sr-only peer"
+                          onClick={() => {
+                            // console.log(arr[idx]);
+                            // arr[idx] = 1 - arr[idx];
+                            // console.log(arr[idx]);
+                            // for (let i = 0; i < 5; i++) {
+                            //   console.log(arr[i]);
+                            // }
+                            console.log(elem.name);
+                          }}
+                        />
+                        <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          {arr[idx] === 1 ? "Absent" : "Present"}
+                        </span>
+                      </label>
                     </div>
                     <td className="py-4 px-6">NULL</td>
                   </tr>

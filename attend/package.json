@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
     "flowbite": "^1.5.5",
     "moment": "^2.29.4",
@@ -48,8 +49,18 @@
     ]
   },
   "devDependencies": {
+    "assert": "^2.0.0",
     "autoprefixer": "^10.4.13",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
     "postcss": "^8.4.19",
-    "tailwindcss": "^3.2.4"
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tailwindcss": "^3.2.4",
+    "url": "^0.11.0"
   }
 }

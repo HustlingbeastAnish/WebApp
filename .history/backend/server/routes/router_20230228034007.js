@@ -36,6 +36,7 @@ route.post("/api/alldates", controller.AllDates);
 route.get("/aftertlogin", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
+
 route.get("/afterslogin", authenticatestu, (req, res) => {
   res.send(req.rootUser);
 });
@@ -48,4 +49,13 @@ route.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("user logout");
 });
+route.get("/afterslogin", authenticatestu, (req, res) => {
+  res.send(req.rootUser);
+});
+
+route.get("/logout", (req, res) => {
+  res.clearCookie("jwtoken", { path: "/" });
+  res.status(200).send("user logout");
+});
+
 module.exports = route;

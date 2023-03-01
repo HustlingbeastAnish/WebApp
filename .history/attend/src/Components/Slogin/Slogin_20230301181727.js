@@ -35,8 +35,6 @@ function Slogin() {
   useEffect(() => {
     callSlogin();
   }, []);
-
-  console.log(userData.name);
   return (
     <div className="p-1 border-black-500 bg-gray-400">
       <div className="text-center text-3xl">
@@ -136,4 +134,5 @@ function Slogin() {
     </div>
   );
 }
+
 export default Slogin;

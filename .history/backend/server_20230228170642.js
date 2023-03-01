@@ -6,11 +6,11 @@ const connectDB = require("./server/database/connection");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-const bodyparser = require("body-parser");
 
 // var cors = require("cors");
 
 // app.use(cors());
+// const bodyparser = require("body-parser");
 mongoose.set("strictQuery", true);
 dotenv.config({ path: "./config.env" });
 // app.set("veiw engine", "html");
@@ -27,7 +27,7 @@ app.use(morgan("tiny"));
 connectDB();
 
 //Parse Request to the Body
-// app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.urlencoded({ extended: true }));
 
 // To Load The routers
 app.use("/", require("./server/routes/router"));

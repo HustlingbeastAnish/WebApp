@@ -4,7 +4,6 @@ const User = require("../model/stuModel.js");
 const authenticatestud = async (req, res, next) => {
   try {
     const token = req.cookies.jwtoken;
-    console.log(token);
     const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
     const rootUser = await User.findOne({
       id: verifyToken._id,
@@ -14,6 +13,7 @@ const authenticatestud = async (req, res, next) => {
     if (!rootUser) {
       throw new Error("user not found");
     }
+    console.log(rootUser);
     req.token = token;
     req.rootUser = rootUser;
     req.userID = rootUser._id;

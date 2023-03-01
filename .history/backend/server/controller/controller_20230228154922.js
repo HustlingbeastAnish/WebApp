@@ -192,11 +192,12 @@ exports.findStud = async (req, res) => {
     }
     const emailExists = await Stuser.findOne({ email: email });
     const PassMatch = await Stuser.findOne({ phone: password });
-    console.log(emailExists);
+    // console.log(emailExists);
+    console.log(PassMatch);
     if (emailExists && PassMatch) {
       const token = await emailExists.generateAuthToken();
       res.cookie("jwtoken", token, {
-        expires: new Date(Date.now() + 25892000000),
+        expires: new Date(Date.now() + 2589200000),
         httpOnly: true,
       });
       console.log("Login as Student Succesfully");
@@ -206,6 +207,7 @@ exports.findStud = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    console.log("Shit");
   }
 };
 

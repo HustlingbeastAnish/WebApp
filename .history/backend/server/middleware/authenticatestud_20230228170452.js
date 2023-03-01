@@ -14,6 +14,7 @@ const authenticatestud = async (req, res, next) => {
     if (!rootUser) {
       throw new Error("user not found");
     }
+    console.log(rootUser);
     req.token = token;
     req.rootUser = rootUser;
     req.userID = rootUser._id;

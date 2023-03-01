@@ -29,23 +29,19 @@ route.post("/api/absentstud", controller.AbsentDates);
 
 // To Update a user using the put request
 route.put("/api/studdata/:id", controller.update);
-route.put("/api/teacherdata/:id", controller.updateteacher);
-
 route.post("/api/alldates", controller.AllDates);
 
 route.get("/aftertlogin", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
+
 route.get("/afterslogin", authenticatestu, (req, res) => {
   res.send(req.rootUser);
 });
-
-// Route for the forgot password
-route.post("/forgotpassword", controller.forgotpassword);
-route.get("/resetpassword/:id/:token", controller.resetpassword);
 
 route.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("user logout");
 });
+
 module.exports = route;

@@ -252,7 +252,6 @@ exports.update = (req, res) => {
       res.status(500).send({ message: "Error Update user false Information " });
     });
 };
-
 exports.updateteacher = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Data to be updated cannot be empty" });
@@ -273,7 +272,6 @@ exports.updateteacher = (req, res) => {
       res.status(500).send({ message: "Error Update user false Information " });
     });
 };
-
 exports.AllDates = async (req, res) => {
   try {
     const { subjectName, datee, branch } = req.body;
@@ -327,44 +325,5 @@ exports.AllDates = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-  }
-};
-
-// Controller for the forgot password
-exports.forgotpassword = async (req, res) => {
-  const { email } = req.body;
-  try {
-    const oldUser = await userdb.findOne({ email });
-    if (!oldUser) {
-      res.status(404).json({ error: "No User With this email exists" });
-      console.log("No User With this email exists");
-    }
-    const secret = process.env.SECRET_KEY + oldUser.password;
-    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
-      expiresIn: "7m",
-    });
-    const link = `http://localhost:3002/resetpassword/${oldUser._id}/${token}`;
-    // console.log(link);
-    res.json({ message: `${link}` });
-    res.render("Verified");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-exports.resetpassword = async (req, res) => {
-  const { id, token } = req.params;
-  console.log(req.params);
-  const oldUser = await userdb.findOne({ _id: id });
-  if (!oldUser) {
-    res.status(404).json({ error: "No User With this email exists" });
-  }
-  const secret = process.env.SECRET_KEY + oldUser.password;
-  try {
-    const verify = jwt.verify(token, secret);
-    res.send(`Your Email is Verified `);
-    res.status(201).json({ message: "Verified" });
-  } catch (error) {
-    res.send("Not verified");
   }
 };

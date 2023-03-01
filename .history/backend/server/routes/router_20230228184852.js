@@ -36,7 +36,7 @@ route.post("/api/alldates", controller.AllDates);
 route.get("/aftertlogin", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
-route.get("/afterslogin", authenticatestu, (req, res) => {
+route.get("/afterslogin", authenticatestud, (req, res) => {
   res.send(req.rootUser);
 });
 

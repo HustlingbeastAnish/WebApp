@@ -4,7 +4,6 @@ const User = require("../model/stuModel.js");
 const authenticatestud = async (req, res, next) => {
   try {
     const token = req.cookies.jwtoken;
-    console.log(token);
     const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
     const rootUser = await User.findOne({
       id: verifyToken._id,

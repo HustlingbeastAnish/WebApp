@@ -7,7 +7,7 @@ function MarkAttend(props) {
   const currBranch = props.Branch;
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
-  // console.log(currSubjArr);
+  console.log(currSubjArr);
 
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
@@ -18,10 +18,10 @@ function MarkAttend(props) {
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
   const yearr = props.SelectedDate.getFullYear();
-  // console.log(yearr);
+  console.log(yearr);
   // yearr = yearr.slice(1);
   const datee = `${dayy}-${monthh}-${yearr}`;
-  // console.log(datee);
+  console.log(datee);
   const [currStudEmail, setcurrStudEmail] = useState("");
   const [currStudSubj, setcurrStudSubj] = useState("");
 
@@ -31,22 +31,36 @@ function MarkAttend(props) {
   ]);
 
   const [absent, Setabsent] = useState([
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
-    ["", "0"],
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0,
+  ]);
+
+  const [mappedname, setmappedname] = useState([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
   ]);
   const PostAbs = async (e) => {
-    // console.log(currStudEmail);
-    // console.log(currBranch);
-    // console.log(currSubjArr);
-    // console.log(datee);
+    console.log(currStudEmail);
+    console.log(currBranch);
+    console.log(currSubjArr);
+    console.log(datee);
 
     const res = await fetch("/api/absentstud", {
       method: "POST",
@@ -72,6 +86,8 @@ function MarkAttend(props) {
       .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
+        console.log(res.data);
+        console.log(studentData);
       })
       .catch((err) => {
         console.log(err);
@@ -83,7 +99,7 @@ function MarkAttend(props) {
     axios
       .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
       .then((res) => {
-        // console.log(res.data.Data_Structures.length);
+        console.log(res.data.Data_Structures.length);
         Setabsentcount((absentcount) => ({
           ...absentcount,
           [idx]: (((31 - res.data.Data_Structures.length) / 31) * 100).toFixed(
@@ -96,13 +112,13 @@ function MarkAttend(props) {
       });
   };
 
-  const HandleAbsentees = (elem, idx) => {
+  const HandleAbsentees = (idx) => {
     Setabsent((absent) => ({
       ...absent,
-      [idx]: [elem.name, absent[idx][1] === "1" ? "0" : "1"],
+      [idx]: 1 - absent[idx],
     }));
   };
-  console.log(absent);
+  console.log(mappedname);
   return (
     <>
       <div className="bg-gray-700 border-black flex flex-col items-center">
@@ -191,6 +207,10 @@ function MarkAttend(props) {
             </thead>
             <tbody>
               {studentData.map((elem, idx) => {
+                setmappedname((mappedname) => ({
+                  ...mappedname,
+                  [idx]: elem.name,
+                }));
                 return (
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="p-4 w-4">
@@ -219,13 +239,13 @@ function MarkAttend(props) {
                           value=""
                           class="sr-only peer"
                           onClick={() => {
-                            HandleAbsentees(elem, idx);
+                            HandleAbsentees(idx);
                             FetchAttendanceDetails(elem, idx);
                           }}
                         />
                         <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
                         <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                          {absent[idx][1] === "1" ? "Absent" : "Present"}
+                          {absent[idx] === 1 ? "Absent" : "Present"}
                         </span>
                       </label>
                     </div>

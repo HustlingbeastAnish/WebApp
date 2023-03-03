@@ -205,7 +205,7 @@ function MarkAttend(props) {
                           {elem.name}
                         </div>
                         <div className="font-normal text-gray-500">
-                          {elem.email}
+                          {elem.emaizl}
                         </div>
                       </div>
                     </th>

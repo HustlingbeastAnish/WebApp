@@ -8,7 +8,20 @@ function Slogin() {
   const navigate = useNavigate();
 
   //jwt authorisation
-  const [userData, setUserData] = useState({});
+
+  const[userData,setUserData]=useState({
+        
+    name: 'okay',
+    email: 'iamokay@gmail.com',
+    phone: 9334185858,
+    roll: 'BTERCH/10483/21',
+    branch: 'physics',
+    subject: [ 'physics', 'bio' ],
+    __v: 31,
+    
+    
+  });
+
   const callSlogin = async () => {
     try {
       const res = await fetch("/afterslogin", {
@@ -19,6 +32,7 @@ function Slogin() {
         },
         credentials: "include",
       });
+     
       const data = await res.json();
       setUserData(data);
       console.log(data);
@@ -40,6 +54,7 @@ function Slogin() {
     <div className="p-1 border-black-500 bg-gray-400">
       <div className="text-center text-3xl">
         <h2 className="font-semibold">Welcome {userData.name}</h2>
+        <h2 className="font-semibold">Welcome {userData.subject.length}</h2>
       </div>
       <button
         // className={`${open && "rotate-180"}`}
@@ -84,7 +99,18 @@ function Slogin() {
               <a
                 href="/#"
                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
+            // <a
+            //   href="/seeattend"
+            //   class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            // >
+              // Go
+              <svg
+                aria-hidden="true"
+                class="w-4 h-4 ml-2 -mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              />
                 Go
                 <svg
                   aria-hidden="true"

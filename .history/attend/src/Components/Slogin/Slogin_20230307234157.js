@@ -40,6 +40,7 @@ function Slogin() {
     <div className="p-1 border-black-500 bg-gray-400">
       <div className="text-center text-3xl">
         <h2 className="font-semibold">Welcome {userData.name}</h2>
+        <h2 className="font-semibold">Welcome {userData.subject.length}</h2>
       </div>
       <button
         // className={`${open && "rotate-180"}`}

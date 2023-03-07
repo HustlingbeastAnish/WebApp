@@ -8,7 +8,17 @@ function Slogin() {
   const navigate = useNavigate();
 
   //jwt authorisation
-  const [userData, setUserData] = useState({});
+
+  const [userData, setUserData] = useState({
+    name: "okay",
+    email: "iamokay@gmail.com",
+    phone: 9334185858,
+    roll: "BTERCH/10483/21",
+    branch: "physics",
+    subject: ["physics", "bio"],
+    __v: 31,
+  });
+
   const callSlogin = async () => {
     try {
       const res = await fetch("/afterslogin", {
@@ -19,6 +29,7 @@ function Slogin() {
         },
         credentials: "include",
       });
+
       const data = await res.json();
       setUserData(data);
       console.log(data);
@@ -40,6 +51,7 @@ function Slogin() {
     <div className="p-1 border-black-500 bg-gray-400">
       <div className="text-center text-3xl">
         <h2 className="font-semibold">Welcome {userData.name}</h2>
+        <h2 className="font-semibold">Welcome {userData.subject.length}</h2>
       </div>
       <button
         // className={`${open && "rotate-180"}`}

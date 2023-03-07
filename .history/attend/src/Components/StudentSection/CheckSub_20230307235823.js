@@ -95,7 +95,7 @@ const CheckSub = () => {
                     Subjects
                   </th>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Status
+                    Action
                   </th>
                 </tr>
               </thead>

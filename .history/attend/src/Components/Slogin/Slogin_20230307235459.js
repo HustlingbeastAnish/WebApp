@@ -103,7 +103,7 @@ function Slogin() {
             </Link>
           </div>
           <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
-            <Link to="/checkattend">
+            <Link to="/seeattend">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Check Attendance in the respective subjects
               </h5>

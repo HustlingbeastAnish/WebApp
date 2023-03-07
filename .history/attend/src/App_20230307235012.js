@@ -21,7 +21,6 @@ import Forgotpass from "./Components/Tlogin/ResetPassword/Forgotpass";
 import Resetpass from "./Components/Tlogin/ResetPassword/Resetpass";
 import Changepass from "./Components/Tlogin/ResetPassword/Changepass";
 import CheckSub from "./Components/StudentSection/CheckSub";
-import CheckAttend from "./Components/StudentSection/CheckAttend";
 
 function App() {
   const [Subject, setSubject] = useState("");
@@ -74,10 +73,7 @@ function App() {
           <Route exact path="/checksubs" element={<CheckSub />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/seeattend" element={<Seeattend />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/checkattend" element={<CheckAttend />}></Route>
+          <Route exact path="/seeattend" element={<Seeattend}></Route>
         </Routes>
         <Routes>
           <Route

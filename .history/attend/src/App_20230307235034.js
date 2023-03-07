@@ -21,8 +21,7 @@ import Forgotpass from "./Components/Tlogin/ResetPassword/Forgotpass";
 import Resetpass from "./Components/Tlogin/ResetPassword/Resetpass";
 import Changepass from "./Components/Tlogin/ResetPassword/Changepass";
 import CheckSub from "./Components/StudentSection/CheckSub";
-import CheckAttend from "./Components/StudentSection/CheckAttend";
-
+import Seeattend from "./Components/Slogin/seeattend";
 function App() {
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
@@ -75,9 +74,6 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/seeattend" element={<Seeattend />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/checkattend" element={<CheckAttend />}></Route>
         </Routes>
         <Routes>
           <Route

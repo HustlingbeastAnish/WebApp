@@ -88,14 +88,14 @@ const CheckSub = () => {
       {flag && (
         <div className="m-2">
           <div class="flex justify-center">
-            <table class="w-2/3 text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-96 text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-white-100 uppercase bg-gray- dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
                     Subjects
                   </th>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Status
+                    Action
                   </th>
                 </tr>
               </thead>

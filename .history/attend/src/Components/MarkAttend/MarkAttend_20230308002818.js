@@ -7,49 +7,68 @@ function MarkAttend(props) {
   const currBranch = props.Branch;
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
-  console.log(currSubjArr);
+  // console.log(currSubjArr);
 
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
     fetchStudentDetails();
   }, []);
 
+  const [arr, setarr] = useState({});
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
-  const yearr = props.SelectedDate.getYear();
-
+  const yearr = props.SelectedDate.getFullYear();
+  // console.log(yearr);
+  // yearr = yearr.slice(1);
   const datee = `${dayy}-${monthh}-${yearr}`;
+  // console.log(datee);
   const [currStudEmail, setcurrStudEmail] = useState("");
   const [currStudSubj, setcurrStudSubj] = useState("");
 
-  const [FlagP, setFlagP] = useState(true);
-  const [FlagA, setFlagA] = useState(true);
-  const ClickedCheckPresent = (e) => {
-    setFlagA(!FlagA);
-  };
+  const [absentcount, Setabsentcount] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0,
+  ]);
 
+  const [absent, Setabsent] = useState([
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+    ["", "0"],
+  ]);
   const PostAbs = async (e) => {
-    console.log(currStudEmail);
-    console.log(currBranch);
+    console.log(absent);
     console.log(currSubjArr);
-    console.log(datee);
-
-    const res = await fetch("/api/absentstud", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: currStudEmail,
-        subjectName: currSubjArr,
-        datee: datee,
-      }),
-    });
-    const data = await res.json();
-    if (!data || data.status === 422 || data.error) {
-      console.log("Student has been marked absent");
-    } else {
-      console.log("Student has not been marked absent");
+    console.log("Please waiting your attendance is getting posted");
+    for (let i = 0; i < 4; i++) {
+      if (absent[i][1] === "0") {
+        continue;
+      } else {
+        const res = await fetch("/api/absentstud", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: absent[i][0],
+            subjectName: currSubjArr,
+            datee: datee,
+          }),
+        });
+        const data = await res.json();
+        console.log(data);
+        if (!data || data.status === 422 || data.error) {
+          console.log("Student has been marked absent");
+        } else {
+          console.log("Student has not been marked absent");
+        }
+      }
     }
   };
 
@@ -58,13 +77,37 @@ function MarkAttend(props) {
       .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
-        console.log(res.data);
-        console.log(studentData);
       })
       .catch((err) => {
         console.log(err);
         console.log("Data not fetched");
       });
+  };
+
+  const FetchAttendanceDetails = (elem, idx) => {
+    axios
+      .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+      .then((res) => {
+        // let p = res.data.subjectName;
+        console.log(res.data.subjectName);
+        Setabsentcount((absentcount) => ({
+          ...absentcount,
+          [idx]: (
+            ((31 - 2 * 4 - res.data.subjectName.length) / 31) *
+            100
+          ).toFixed(2),
+        }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const HandleAbsentees = (elem, idx) => {
+    Setabsent((absent) => ({
+      ...absent,
+      [idx]: [elem.email, absent[idx][1] === "1" ? "0" : "1"],
+    }));
   };
   return (
     <>
@@ -168,7 +211,7 @@ function MarkAttend(props) {
                           {elem.name}
                         </div>
                         <div className="font-normal text-gray-500">
-                          {elem.email}
+                          {elem.emaizl}
                         </div>
                       </div>
                     </th>
@@ -176,60 +219,36 @@ function MarkAttend(props) {
                     <td className="py-4 px-6">{currSubject}</td>
                     <td className="py-4 px-6">{currBranch}</td>
                     <div>
-                      <div className="flex">
-                        <h2 className="mt-3">Present</h2>
-                        <th scope="col" className="p-4">
-                          <div className="flex items-center">
-                            <input
-                              id="checkbox-all-search"
-                              onClick={ClickedCheckPresent}
-                              disabled={!FlagP}
-                              type="checkbox"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                            <label
-                              htmlFor="checkbox-all-search"
-                              className="sr-only"
-                            >
-                              checkbox
-                            </label>
-                          </div>
-                        </th>
-                      </div>
-                      <div className="flex">
-                        <h2 className="mt-3">Absent</h2>
-                        <th scope="col" className="p-4">
-                          <div class="flex items-center">
-                            <input
-                              id="checkbox-all-search"
-                              type="checkbox"
-                              onClick={(e) => {
-                                console.log(elem.subject);
-                                setFlagP(!FlagP);
-                                setcurrStudEmail(elem.email);
-                                setcurrStudSubj(elem.subject);
-                                PostAbs();
-                              }}
-                              disabled={!FlagA}
-                              class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                            <label
-                              htmlFor="checkbox-all-search"
-                              className="sr-only"
-                            >
-                              Red
-                            </label>
-                          </div>
-                        </th>
-                      </div>
+                      <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          value=""
+                          class="sr-only peer"
+                          onClick={() => {
+                            HandleAbsentees(elem, idx);
+                            FetchAttendanceDetails(elem, idx);
+                          }}
+                        />
+                        <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          {absent[idx][1] === "1" ? "Absent" : "Present"}
+                        </span>
+                      </label>
                     </div>
-                    <td className="py-4 px-6">NULL</td>
+                    <td className="py-4 px-6">{absentcount[idx]}</td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
         </div>
+        <button
+          type="button"
+          onClick={PostAbs}
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5 mb-5"
+        >
+          Post Attendance
+        </button>
       </div>
     </>
   );

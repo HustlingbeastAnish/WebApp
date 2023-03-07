@@ -21,9 +21,9 @@ function Slogin() {
       });
       const data = await res.json();
       setUserData(data);
+      console.log(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
-        // navigate("/tlogin");
         throw error;
       }
     } catch (err) {
@@ -36,11 +36,11 @@ function Slogin() {
     callSlogin();
   }, []);
 
-  console.log(userData.name);
   return (
     <div className="p-1 border-black-500 bg-gray-400">
       <div className="text-center text-3xl">
         <h2 className="font-semibold">Welcome {userData.name}</h2>
+        <h2 className="font-semibold">Welcome {userData.subject.length}</h2>
       </div>
       <button
         // className={`${open && "rotate-180"}`}

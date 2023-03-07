@@ -50,8 +50,14 @@ route.get("/checksubjects/:email", controller.getsubjectsenrolled);
 route.post("/forgotpassword", controller.forgotpassword);
 route.get("/resetpassword/:id/:token", controller.resetpassword);
 
+
+// Get request to get the details of student to see attendance
+route.get("/api/getstuddata/:email", controller.findStudbyemail);
+
+
 route.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("user logout");
 });
+
 module.exports = route;

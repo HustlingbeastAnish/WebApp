@@ -135,20 +135,7 @@ const CheckSub = (props) => {
             height: 500,
           }}
         >
-          <Bar
-            data={props.studData}
-            options={{
-              plugins: {
-                legend: {
-                  labels: {
-                    font: {
-                      size: 20,
-                    },
-                  },
-                },
-              },
-            }}
-          />
+          <Bar data={props.studData} options={{}} />
         </div>
       </div>
     </div>

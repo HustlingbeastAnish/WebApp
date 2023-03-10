@@ -29,12 +29,11 @@ import { studentData } from "./Components/StudentSection/data";
 function App() {
   // Creating the labels and datasets of chart
   const [studData, setstudData] = useState({
-    labels: studentData.map((data) => data.subject),
+    labels: studentData.map((data) => data.year),
     datasets: [
       {
         label: "Attendance Percentage",
-        data: studentData.map((data) => data.attendance),
-        backgroundColor: ["violet", "blue", "green", "red", "gray"],
+        data: studentData.map((data) => data.userGain),
       },
     ],
   });

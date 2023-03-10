@@ -34,7 +34,7 @@ function App() {
       {
         label: "Attendance Percentage",
         data: studentData.map((data) => data.attendance),
-        backgroundColor: ["violet", "blue", "green", "red", "gray"],
+        backgroundColor:
       },
     ],
   });

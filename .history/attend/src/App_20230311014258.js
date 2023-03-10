@@ -33,8 +33,7 @@ function App() {
     datasets: [
       {
         label: "Attendance Percentage",
-        data: studentData.map((data) => data.attendance),
-        backgroundColor: ["violet", "blue", "green", "red", "gray"],
+        data: studentData.map((data) => data.attendace),
       },
     ],
   });

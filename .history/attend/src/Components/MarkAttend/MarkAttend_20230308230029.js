@@ -8,6 +8,7 @@ function MarkAttend(props) {
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
   // console.log(currSubjArr);
+
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
     fetchStudentDetails();
@@ -36,6 +37,8 @@ function MarkAttend(props) {
     ["", "0"],
   ]);
   const PostAbs = async (e) => {
+    console.log(absent);
+    console.log(currSubjArr);
     console.log("Please waiting your attendance is getting posted");
     for (let i = 0; i < 4; i++) {
       if (absent[i][1] === "0") {
@@ -69,6 +72,7 @@ function MarkAttend(props) {
       .then((res) => {
         setstudentData(res.data);
         console.log("Tay Keith F these niggas up");
+        console.log(studentData);
       })
       .catch((err) => {
         console.log(err);
@@ -80,17 +84,16 @@ function MarkAttend(props) {
     axios
       .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
-        console.log(res.data.currSubjArr);
+        console.log(res.data.subjectName);
         Setabsentcount((absentcount) => ({
           ...absentcount,
           [idx]: (
-            ((31 - 2 * 4 - res.data.Data_Structures.length) / 31) *
+            ((31 - 2 * 4 - res.data.subjectName.length) / 31) *
             100
           ).toFixed(2),
         }));
       })
       .catch((err) => {
-        console.log("attendance calculation not possible ");
         console.log(err);
       });
   };

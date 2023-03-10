@@ -25,20 +25,7 @@ import CheckAttend from "./Components/StudentSection/CheckAttend";
 
 // For Graphical Visualization of attendance
 import { studentData } from "./Components/StudentSection/data";
-
 function App() {
-  // Creating the labels and datasets of chart
-  const [studData, setstudData] = useState({
-    labels: studentData.map((data) => data.subject),
-    datasets: [
-      {
-        label: "Attendance Percentage",
-        data: studentData.map((data) => data.attendance),
-        backgroundColor: ["violet", "blue", "green", "red", "gray"],
-      },
-    ],
-  });
-
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
   const [SelectedDate, setSelectedDate] = useState(new Date());
@@ -92,13 +79,7 @@ function App() {
           <Route exact path="/seeattend" element={<Seeattend />}></Route>
         </Routes>
         <Routes>
-          <Route
-            exact
-            path="/checkattend"
-            element={
-              <CheckAttend studData={studData} setstudData={setstudData} />
-            }
-          ></Route>
+          <Route exact path="/checkattend" element={<CheckAttend />}></Route>
         </Routes>
         <Routes>
           <Route

@@ -7,7 +7,7 @@ function MarkAttend(props) {
   const currBranch = props.Branch;
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
-  // console.log(currSubjArr);
+  console.log(currSubjArr);
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
     fetchStudentDetails();

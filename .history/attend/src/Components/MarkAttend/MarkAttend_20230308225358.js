@@ -8,15 +8,22 @@ function MarkAttend(props) {
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
   // console.log(currSubjArr);
+
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
     fetchStudentDetails();
   }, []);
 
+  const [arr, setarr] = useState({});
   const dayy = props.SelectedDate.getDate();
   const monthh = props.SelectedDate.getMonth();
   const yearr = props.SelectedDate.getFullYear();
+  // console.log(yearr);
+  // yearr = yearr.slice(1);
   const datee = `${dayy}-${monthh}-${yearr}`;
+  // console.log(datee);
+  const [currStudEmail, setcurrStudEmail] = useState("");
+  const [currStudSubj, setcurrStudSubj] = useState("");
 
   const [absentcount, Setabsentcount] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -36,6 +43,8 @@ function MarkAttend(props) {
     ["", "0"],
   ]);
   const PostAbs = async (e) => {
+    console.log(absent);
+    console.log(currSubjArr);
     console.log("Please waiting your attendance is getting posted");
     for (let i = 0; i < 4; i++) {
       if (absent[i][1] === "0") {
@@ -68,7 +77,7 @@ function MarkAttend(props) {
       .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
-        console.log("Tay Keith F these niggas up");
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -76,21 +85,21 @@ function MarkAttend(props) {
       });
   };
 
+  console.log(studentData);
   const FetchAttendanceDetails = (elem, idx) => {
     axios
       .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
-        console.log(res.data.currSubjArr);
+        console.log(res.data.subjectName);
         Setabsentcount((absentcount) => ({
           ...absentcount,
           [idx]: (
-            ((31 - 2 * 4 - res.data.Data_Structures.length) / 31) *
+            ((31 - 2 * 4 - res.data.subjectName.length) / 31) *
             100
           ).toFixed(2),
         }));
       })
       .catch((err) => {
-        console.log("attendance calculation not possible ");
         console.log(err);
       });
   };
@@ -203,7 +212,7 @@ function MarkAttend(props) {
                           {elem.name}
                         </div>
                         <div className="font-normal text-gray-500">
-                          {elem.email}
+                          {elem.emaizl}
                         </div>
                       </div>
                     </th>

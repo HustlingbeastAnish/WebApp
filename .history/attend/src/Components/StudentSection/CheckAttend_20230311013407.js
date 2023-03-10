@@ -128,28 +128,11 @@ const CheckSub = (props) => {
           </div>
         </div>
       )}
-      <div className="flex justify-center items-center">
-        <div
-          style={{
-            width: 700,
-            height: 500,
-          }}
-        >
-          <Bar
-            data={props.studData}
-            options={{
-              plugins: {
-                legend: {
-                  labels: {
-                    font: {
-                      size: 20,
-                    },
-                  },
-                },
-              },
-            }}
-          />
-        </div>
+      <div className="flex justify-center "
+      style={{
+        width:700px;
+      }}>
+        <Bar data={props.studData} />
       </div>
     </div>
   );

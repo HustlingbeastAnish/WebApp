@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import {Chart as chartjs}
 const CheckSub = (props) => {
   const navigate = useNavigate();
 
@@ -71,6 +71,7 @@ const CheckSub = (props) => {
   console.log(StudSubjects.subject);
   return (
     <div>
+      <Bar data={props.studData} />
       <div className="flex flex-col justify-center items-center">
         <div className="">
           <div className="m-2 text-4xl font-semibold">
@@ -128,29 +129,6 @@ const CheckSub = (props) => {
           </div>
         </div>
       )}
-      <div className="flex justify-center items-center">
-        <div
-          style={{
-            width: 700,
-            height: 500,
-          }}
-        >
-          <Bar
-            data={props.studData}
-            options={{
-              plugins: {
-                legend: {
-                  labels: {
-                    font: {
-                      size: 20,
-                    },
-                  },
-                },
-              },
-            }}
-          />
-        </div>
-      </div>
     </div>
   );
 };

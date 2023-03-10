@@ -142,7 +142,7 @@ const CheckSub = (props) => {
                 legend: {
                   labels: {
                     font: {
-                      size: 20,
+                      size: 56,
                     },
                   },
                 },

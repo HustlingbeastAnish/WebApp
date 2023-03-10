@@ -6,7 +6,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { studentData } from "./data";
 
 const CheckSub = () => {
-  const [StudSubjects, SetStudentSubjects] = useState(["DSA", "DEV", "WEB3"]);
+  const [StudSubjects, SetStudentSubjects] = useState([]);
   const [studData, setstudData] = useState({
     labels: StudSubjects.map((data) => data),
     datasets: [
@@ -66,7 +66,7 @@ const CheckSub = () => {
         );
       }
       SetStudentSubjects(data.subject);
-      console.log(StudSubjects);
+      console.log(studen);
       if (!res.status === 200) {
         const error = new Error(res.error);
         navigate("/tlogin");

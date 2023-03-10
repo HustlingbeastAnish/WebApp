@@ -79,7 +79,13 @@ function App() {
           <Route exact path="/seeattend" element={<Seeattend />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/checkattend" element={<CheckAttend />}></Route>
+          <Route
+            exact
+            path="/checkattend"
+            element={
+              <CheckAttend studData={studData} setstudData={setstudData} />
+            }
+          ></Route>
         </Routes>
         <Routes>
           <Route

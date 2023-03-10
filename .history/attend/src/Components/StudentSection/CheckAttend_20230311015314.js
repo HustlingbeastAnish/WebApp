@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
-import { studentData } from "./data";
+import { studentData } from "./Components/StudentSection/data";
 
-const CheckSub = () => {
-  const [StudSubjects, SetStudentSubjects] = useState(["DSA", "DEV", "WEB3"]);
+const CheckSub = (props) => {
   const [studData, setstudData] = useState({
-    labels: StudSubjects.map((data) => data),
+    labels: studentData.map((data) => data.subject),
     datasets: [
       {
         label: "Attendance Percentage",
@@ -48,6 +47,7 @@ const CheckSub = () => {
 
   // Array Storing all the subjects in which he is enrolled
   const [flag, setflag] = useState(false);
+  const [StudSubjects, SetStudentSubjects] = useState([]);
   const getSubjects = async () => {
     try {
       setflag(true);
@@ -66,7 +66,6 @@ const CheckSub = () => {
         );
       }
       SetStudentSubjects(data.subject);
-      console.log(StudSubjects);
       if (!res.status === 200) {
         const error = new Error(res.error);
         navigate("/tlogin");
@@ -82,6 +81,7 @@ const CheckSub = () => {
   useEffect(() => {
     callSlogin();
   }, []);
+  console.log(StudSubjects.subject);
   return (
     <div>
       <div className="flex flex-col justify-center items-center">
@@ -149,7 +149,7 @@ const CheckSub = () => {
           }}
         >
           <Bar
-            data={studData}
+            data={props.studData}
             options={{
               plugins: {
                 legend: {

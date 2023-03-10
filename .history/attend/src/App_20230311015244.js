@@ -24,8 +24,11 @@ import CheckSub from "./Components/StudentSection/CheckSub";
 import CheckAttend from "./Components/StudentSection/CheckAttend";
 
 // For Graphical Visualization of attendance
+import { studentData } from "./Components/StudentSection/data";
 
 function App() {
+  // Creating the labels and datasets of chart
+
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
   const [SelectedDate, setSelectedDate] = useState(new Date());
@@ -79,7 +82,13 @@ function App() {
           <Route exact path="/seeattend" element={<Seeattend />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/checkattend" element={<CheckAttend />}></Route>
+          <Route
+            exact
+            path="/checkattend"
+            element={
+              <CheckAttend studData={studData} setstudData={setstudData} />
+            }
+          ></Route>
         </Routes>
         <Routes>
           <Route

@@ -6,9 +6,9 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { studentData } from "./data";
 
 const CheckSub = () => {
-  const [StudSubjects, SetStudentSubjects] = useState(["DSA", "DEV", "WEB3"]);
+  const [StudSubjects, SetStudentSubjects] = useState([]);
   const [studData, setstudData] = useState({
-    labels: StudSubjects.map((data) => data),
+    labels: StudSubjects.map((data) => data.subject),
     datasets: [
       {
         label: "Attendance Percentage",
@@ -66,7 +66,6 @@ const CheckSub = () => {
         );
       }
       SetStudentSubjects(data.subject);
-      console.log(StudSubjects);
       if (!res.status === 200) {
         const error = new Error(res.error);
         navigate("/tlogin");
@@ -82,6 +81,7 @@ const CheckSub = () => {
   useEffect(() => {
     callSlogin();
   }, []);
+  console.log(StudSubjects.subject);
   return (
     <div>
       <div className="flex flex-col justify-center items-center">

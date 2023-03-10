@@ -6,7 +6,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { studentData } from "./data";
 
 const CheckSub = () => {
-  const [StudSubjects, SetStudentSubjects] = useState(["DSA", "DEV", "WEB3"]);
+  const [StudSubjects, SetStudentSubjects] = useState([]);
   const [studData, setstudData] = useState({
     labels: StudSubjects.map((data) => data),
     datasets: [

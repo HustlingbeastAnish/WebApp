@@ -7,7 +7,7 @@ function MarkAttend(props) {
   const currBranch = props.Branch;
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
-  console.log(currSubjArr);
+  // console.log(currSubjArr);
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
     fetchStudentDetails();
@@ -80,8 +80,7 @@ function MarkAttend(props) {
     axios
       .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
-        console.log(res.data.props.Subject);
-        console.log(res.data.Data_Structures);
+        console.log(res.data.currSubjArr);
         Setabsentcount((absentcount) => ({
           ...absentcount,
           [idx]: (

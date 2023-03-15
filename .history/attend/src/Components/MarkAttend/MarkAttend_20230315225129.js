@@ -80,7 +80,7 @@ function MarkAttend(props) {
     axios
       .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
-        console.log(res.data.props.Subject);
+        console.log(res.data.currSubjArr);
         console.log(res.data.Data_Structures);
         Setabsentcount((absentcount) => ({
           ...absentcount,

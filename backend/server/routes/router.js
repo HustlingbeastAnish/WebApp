@@ -20,6 +20,8 @@ route.post("/api/userf", controller.find);
 
 // Get request to get the details of student with a feild
 route.get("/api/studdata/:subject/:branch", controller.findStudWithFeild);
+// Get request to get the total number of classes
+route.get("/api/classesddata/:subject/:branch", controller.totalnoofclasses);
 // To check if a student is registered or not
 route.post("/api/userstud", controller.findStud);
 
@@ -30,6 +32,7 @@ route.post("/api/absentstud", controller.AbsentDates);
 // To Update a user using the put request
 route.put("/api/studdata/:id", controller.update);
 route.put("/api/teacherdata/:id", controller.updateteacher);
+
 
 route.post("/api/alldates", controller.AllDates);
 

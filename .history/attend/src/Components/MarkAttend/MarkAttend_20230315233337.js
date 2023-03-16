@@ -17,7 +17,7 @@ function MarkAttend(props) {
   const monthh = props.SelectedDate.getMonth();
   const yearr = props.SelectedDate.getFullYear();
   const datee = `${dayy}-${monthh}-${yearr}`;
-  // console.log(props.SelectedDate);
+  console.log(monthh);
   const [absentcount, Setabsentcount] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0,
@@ -84,7 +84,7 @@ function MarkAttend(props) {
         Setabsentcount((absentcount) => ({
           ...absentcount,
           [idx]: (
-            ((31 - 2 * 4 - res.data[currSubjArr].length) / 31) *
+            ((31 - 2 * 4 - res.data.Data_Structures.length) / 31) *
             100
           ).toFixed(2),
         }));

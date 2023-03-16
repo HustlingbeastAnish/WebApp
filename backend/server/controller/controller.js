@@ -3,6 +3,7 @@ var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
 
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Stloginuser = require("../model/stuLogin");
@@ -447,3 +448,26 @@ exports.resetpassword = async (req, res) => {
   }
 };
 
+exports.totalnoofclasses = async (req, res) => {
+  try {
+    if (!req.body) {
+      return res.status(404).json({ err: "Feilds cannot be empty" });
+    }
+
+    const subj = req.params.subject;
+    const branch = req.params.branch;
+    Subjectsatt.find({ [subj + "_" + branch]: { $exists: true } })
+      .then((data) => {
+        if (!data) {
+          res.status(404).json({ err: "No student with a branch found" });
+        } else {
+          res.send(data);
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({ message: "Some error occurred" });
+      });
+  } catch (err) {
+    console.log(err);
+  }
+};

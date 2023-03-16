@@ -10,6 +10,7 @@ function MarkAttend(props) {
   console.log(currSubjArr);
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
+    fetchtotalclasses();
     fetchStudentDetails();
   }, []);
 
@@ -37,7 +38,7 @@ function MarkAttend(props) {
   ]);
   const PostAbs = async (e) => {
     console.log("Please waiting your attendance is getting posted");
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 10000; i++) {
       if (absent[i][1] === "0") {
         continue;
       } else {
@@ -65,9 +66,27 @@ function MarkAttend(props) {
 
   const fetchStudentDetails = () => {
     axios
-      .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
+      .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
+        console.log("Tay Keith F these niggas up");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("Data not fetched");
+      });
+  };
+  const [totalnoofclasses, settotalnoofclasses] = useState(31);
+  const temp = currSubject + "_" + currBranch;
+  const fetchtotalclasses = () => {
+    axios
+      .get(
+        `http://localhost:3002/api/classesddata/${currSubject}/${currBranch}`
+      )
+      .then((res) => {
+        //console.log(temp)
+        //console.log(res.data[0][temp].length);
+        settotalnoofclasses(res.data[0][temp].length);
       })
       .catch((err) => {
         console.log(err);
@@ -76,15 +95,18 @@ function MarkAttend(props) {
   };
 
   const FetchAttendanceDetails = (elem, idx) => {
+    console.log(props.Subject + "dubiu");
     axios
-      .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
+      .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
       .then((res) => {
-        // console.log(res.data.props.Sub);
-        console.log(res.data.Data_Structures);
+        console.log(res.data[props.Subject]);
+        // console.log(props.Subject+"dubiu");
+        //console.log(res.data.Data_Structures);
         Setabsentcount((absentcount) => ({
           ...absentcount,
           [idx]: (
-            ((31 - 2 * 4 - res.data[currSubjArr].length) / 31) *
+            ((totalnoofclasses - res.data[props.Subject].length) /
+              totalnoofclasses) *
             100
           ).toFixed(2),
         }));
@@ -122,6 +144,7 @@ function MarkAttend(props) {
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
+                      zz
                     >
                       <path
                         fill-rule="evenodd"

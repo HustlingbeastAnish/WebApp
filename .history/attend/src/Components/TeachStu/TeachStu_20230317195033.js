@@ -14,8 +14,9 @@ function teachstu() {
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
               Best Attendance App For Students
             </h1>
-            <p class="max-w-2xl mb-6 font-light text-4xl text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-              "Stay on track with ease - Your attendance made simple!"
+            <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+              From Teachers to Students , TracKnAttend gamifies the Attendance
+              Management
             </p>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />{" "}
             <div className="flex justify-evenly items-center">
@@ -47,15 +48,10 @@ function teachstu() {
               </div>
             </div>
           </div>
-          <div class="mt-20 lg:mt-0 lg:col-span-5 lg:flex">
+          <div class="hidden  lg:mt-0 lg:col-span-5 lg:flex">
             <img
+              // src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
               src={Landing2}
-              // width="560px"
-              // height="660px"
-              style={{
-                marginTop: "90px",
-                borderRadius: "30px",
-              }}
               alt="mockup"
             />
           </div>

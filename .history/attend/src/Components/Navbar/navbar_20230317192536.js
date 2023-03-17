@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TrackLogo from "../images/TrackLogo.png";
 function navbar() {
   return (
-    <nav className="p-1 bg-gray-600 shadow md:flex md:items-center md:justify-between fixed top-0 w-full">
+    <nav className="p-3 bg-black shadow md:flex md:items-center md:justify-between fixed top-0 w-full">
       <div className="flex justify-between items-center ">
         <span className=" cursor-pointer">
           <img

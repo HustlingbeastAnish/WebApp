@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TrackLogo from "../images/TrackLogo.png";
 function navbar() {
   return (
-    <nav className="p-1 bg-gray-600 shadow md:flex md:items-center md:justify-between fixed top-0 w-full">
+    <nav className="p-5 bg-gray-800 shadow md:flex md:items-center md:justify-between">
       <div className="flex justify-between items-center ">
         <span className=" cursor-pointer">
           <img
@@ -25,10 +25,6 @@ function navbar() {
         <li className="mx-4 my-6 md:my-0">
           <a
             href="/#"
-            style={{
-              fontFamily: "Labrada",
-              fontSize: "25px",
-            }}
             className="text-xl hover:text-cyan-500 duration-500 text-white"
           >
             HOME
@@ -37,10 +33,6 @@ function navbar() {
         <li className="mx-4 my-6 md:my-0">
           <a
             href="/#"
-            style={{
-              fontFamily: "Labrada",
-              fontSize: "25px",
-            }}
             className="text-xl hover:text-cyan-500 duration-500  text-white"
           >
             ABOUT
@@ -49,10 +41,6 @@ function navbar() {
         <li className="mx-4 my-6 md:my-0">
           <a
             href="/#"
-            style={{
-              fontFamily: "Labrada",
-              fontSize: "25px",
-            }}
             className="text-xl hover:text-cyan-500 duration-500  text-white"
           >
             CONTACT

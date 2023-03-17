@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/navbar.js";
 import TrackLogo from "../images/TrackLogo.png";
-import Landing from "../images/Landing.svg";
-import Landing2 from "../images/Landing2.svg";
 function teachstu() {
   return (
     <div className="bg-gray-900">
@@ -14,48 +12,41 @@ function teachstu() {
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
               Best Attendance App For Students
             </h1>
-            <p class="max-w-2xl mb-6 font-light text-4xl text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-              "Stay on track with ease - Your attendance made simple!"
+            <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+              From Teachers to Students , TracKnAttend gamifies the Attendance
+              Management
             </p>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />{" "}
-            <div className="flex justify-evenly items-center">
-              <div>
-                <h2 className="font-semibold text-white font-extrabold">
-                  Login as Teacher
-                </h2>
-                <Link to="/loginteach">
-                  <button
-                    type="submit"
-                    className="block w-28  bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
-                  >
-                    Login
-                  </button>
-                </Link>
-              </div>
-              <div>
-                <h2 className="font-semibold text-white font-extrabold">
-                  Login as Student
-                </h2>
-                <Link to="/loginstud">
-                  <button
-                    type="submit"
-                    className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
-                  >
-                    Login
-                  </button>
-                </Link>
-              </div>
-            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <form>
+              <h1 className="text-white font-bold text-4xl font-sans">
+                LOGIN AS A TEACHER
+              </h1>
+              <Link to="/loginteach">
+                <button
+                  type="submit"
+                  className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+                >
+                  Login
+                </button>
+              </Link>
+            </form>
           </div>
-          <div class="mt-20 lg:mt-0 lg:col-span-5 lg:flex">
+          {/* <form>
+            <h1 className="text-white font-bold text-4xl font-sans">
+              LOGIN AS A Student
+            </h1>
+            <Link to="/loginteach">
+              <button
+                type="submit"
+                className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+              >
+                Login
+              </button>
+            </Link> */}
+          {/* </form> */}
+          <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img
-              src={Landing2}
-              // width="560px"
-              // height="660px"
-              style={{
-                marginTop: "90px",
-                borderRadius: "30px",
-              }}
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
               alt="mockup"
             />
           </div>
@@ -226,7 +217,7 @@ function teachstu() {
               We didn't reinvent the wheel
             </h2>
             <p class="mb-4">
-              TracKnAlert application offers numerous benefits, including
+              My attendance application offers numerous benefits, including
               improved attendance tracking, streamlined data management, and
               enhanced user-friendliness. With this app, users can easily view
               attendance data, generate reports, and raise queries. It also

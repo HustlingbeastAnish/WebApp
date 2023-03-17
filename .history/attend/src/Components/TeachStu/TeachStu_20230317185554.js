@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/navbar.js";
-import TrackLogo from "../images/TrackLogo.png";
-import Landing from "../images/Landing.svg";
-import Landing2 from "../images/Landing2.svg";
 function teachstu() {
   return (
     <div className="bg-gray-900">
@@ -14,48 +11,32 @@ function teachstu() {
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
               Best Attendance App For Students
             </h1>
-            <p class="max-w-2xl mb-6 font-light text-4xl text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-              "Stay on track with ease - Your attendance made simple!"
+            <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+              From Teachers to Students , TracKnAttend gamifies the Attendance
+              Management
             </p>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />{" "}
-            <div className="flex justify-evenly items-center">
-              <div>
-                <h2 className="font-semibold text-white font-extrabold">
-                  Login as Teacher
-                </h2>
-                <Link to="/loginteach">
-                  <button
-                    type="submit"
-                    className="block w-28  bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
-                  >
-                    Login
-                  </button>
-                </Link>
-              </div>
-              <div>
-                <h2 className="font-semibold text-white font-extrabold">
-                  Login as Student
-                </h2>
-                <Link to="/loginstud">
-                  <button
-                    type="submit"
-                    className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
-                  >
-                    Login
-                  </button>
-                </Link>
-              </div>
-            </div>
+            <a
+              href="/#"
+              class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+            >
+              Get started
+              <svg
+                class="w-5 h-5 ml-2 -mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
           </div>
-          <div class="mt-20 lg:mt-0 lg:col-span-5 lg:flex">
+          <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img
-              src={Landing2}
-              // width="560px"
-              // height="660px"
-              style={{
-                marginTop: "90px",
-                borderRadius: "30px",
-              }}
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
               alt="mockup"
             />
           </div>
@@ -88,13 +69,12 @@ function teachstu() {
                 </svg>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">
-                Attendance Management
+                One-Click Attendance
               </h3>
               <p class="text-gray-500 dark:text-gray-400">
-                Tracks absences and late arrivals, allowing teachers to take
-                corrective action and enforce attendance policies.Allows
-                students to check the dates on which they were absent and
-                present through a heatmap
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
+                iste aut, eius ea hic nostrum, distinctio officia saepe
+                cupiditate reprehenderit temporibus natus sed! .
               </p>
             </div>
             <div>
@@ -109,13 +89,13 @@ function teachstu() {
                 </svg>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">
-                User Friendly Interface
+                User Freindly Interface
               </h3>
               <p class="text-gray-500 dark:text-gray-400">
-                Simple and Intuitive User interface that makes it easy for
-                teachers and students to navigate the app. Visuals, such as
-                charts and graphs, to help students understand their attendance
-                data.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum
+                perspiciatis hic dolore, porro cumque suscipit asperiores
+                excepturi ratione deserunt rem rerum exercitationem. Voluptatem
+                hic officiis rerum, possimus impedit adipisci quaerat.
               </p>
             </div>
             <div>
@@ -138,9 +118,10 @@ function teachstu() {
                 Easy Manipulation of Attendance
               </h3>
               <p class="text-gray-500 dark:text-gray-400">
-                Implements authentication features, with salting and hashing of
-                the user's password to ensure that there is security and only
-                authorized employees can access the app and clock in/out.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
+                optio quia voluptatem fugiat! Qui perferendis eum ut excepturi
+                commodi impedit, nulla corporis doloremque laborum nam, fuga
+                incidunt ratione, quisquam iure.
               </p>
             </div>
             <div>
@@ -163,10 +144,10 @@ function teachstu() {
                 Graphical Visualization of Attendance
               </h3>
               <p class="text-gray-500 dark:text-gray-400">
-                Uses Charts to visually represent attendance data. Provide
-                insights into attendance patterns, such as attendance trends,
-                absences, and tardiness, which helps managers to identify issues
-                and take corrective action.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
+                illum quisquam earum molestiae vitae voluptatum ad ut possimus
+                doloremque quam ipsam iure, accusamus eum temporibus! Impedit
+                fuga veritatis consectetur quod?
               </p>
             </div>
             <div>
@@ -184,10 +165,10 @@ function teachstu() {
                 Raise Query
               </h3>
               <p class="text-gray-500 dark:text-gray-400">
-                Provides a dedicated query feature, which allows employees to
-                raise queries regarding their attendance data. The app allows
-                students to attach evidence, such as a doctor's note or a
-                screenshot of their attendance data, to support their query.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+                similique rerum pariatur consequuntur, tempore eos doloribus?
+                Nam voluptatibus dolore minus corporis ut atque, consequatur
+                voluptates nulla tenetur enim!
               </p>
             </div>
             <div>
@@ -209,10 +190,9 @@ function teachstu() {
                 Teacher/Student Seperate Panels
               </h3>
               <p class="text-gray-500 dark:text-gray-400">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla,
-                dolorum harum vero sequi voluptatum, praesentium similique
-                exercitationem doloremque eos commodi cupiditate aliquid,
-                deleniti velit? Praesentium.
+                Keep your company’s lights on with customizable, iterative, and
+                structured workflows built for all efficient teams and
+                individual.
               </p>
             </div>
           </div>
@@ -222,20 +202,19 @@ function teachstu() {
       <section class="bg-gray-900">
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
           <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 class="mb-4 text-4xl font-extrabold text-white">
+            <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">
               We didn't reinvent the wheel
             </h2>
             <p class="mb-4">
-              TracKnAlert application offers numerous benefits, including
-              improved attendance tracking, streamlined data management, and
-              enhanced user-friendliness. With this app, users can easily view
-              attendance data, generate reports, and raise queries. It also
-              provides graphical visualization of attendance data and enables
-              automated notification systems. By facilitating real-time
-              attendance data management, it helps to improve decision-making
-              and supports accurate record-keeping. Overall, my attendance
-              application helps to increase productivity, reduce errors, and
-              enhance overall organizational efficiency.
+              We are strategists, designers and developers. Innovators and
+              problem solvers. Small enough to be simple and quick, but big
+              enough to deliver the scope you want at the pace you need. Small
+              enough to be simple and quick, but big enough to deliver the scope
+              you want at the pace you need.
+            </p>
+            <p>
+              We are strategists, designers and developers. Innovators and
+              problem solvers. Small enough to be simple and quick.
             </p>
           </div>
           <div class="grid grid-cols-2 gap-4 mt-8">
@@ -253,14 +232,59 @@ function teachstu() {
         </div>
       </section>
 
+      <section class="bg-gray-800">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+          <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+              Powering innovation at{" "}
+              <span class="font-extrabold">200,000+</span> companies worldwide
+            </h2>
+            <p class="mb-4 font-light">
+              Track work across the enterprise through an open, collaborative
+              platform. Link issues across Jira and ingest data from other
+              software development tools, so your IT support and operations
+              teams have richer contextual information to rapidly respond to
+              requests, incidents, and changes.
+            </p>
+            <p class="mb-4 font-medium">
+              Deliver great service experiences fast - without the complexity of
+              traditional ITSM solutions.Accelerate critical development work,
+              eliminate toil, and deploy changes with ease.
+            </p>
+            <a
+              href="/#"
+              class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700"
+            >
+              Learn more
+              <svg
+                class="ml-1 w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <footer class="p-4 bg-gray-800">
         <div class="mx-auto max-w-screen-xl">
           <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
               <a href="https://flowbite.com" class="flex items-center">
-                <img src={TrackLogo} class="mr-3 h-8" alt="FlowBite Logo" />
+                <img
+                  src="https://flowbite.com/docs/images/logo.svg"
+                  class="mr-3 h-8"
+                  alt="FlowBite Logo"
+                />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                  TracKnAttend
+                  Flowbite
                 </span>
               </a>
             </div>
@@ -272,12 +296,12 @@ function teachstu() {
                 <ul class="text-gray-600 dark:text-gray-400">
                   <li class="mb-4">
                     <a href="/#" class="hover:underline">
-                      TrackNAlert
+                      Flowbite
                     </a>
                   </li>
                   <li>
                     <a href="/#" class="hover:underline">
-                      Contact
+                      Tailwind CSS
                     </a>
                   </li>
                 </ul>

@@ -46,6 +46,12 @@ function navbar() {
             CONTACT
           </a>
         </li>
+        <Link
+          className="bg-blue-700 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded "
+          to="/signup"
+        >
+          Register Now
+        </Link>
       </ul>
     </nav>
   );

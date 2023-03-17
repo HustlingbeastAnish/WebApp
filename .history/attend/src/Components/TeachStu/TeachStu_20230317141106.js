@@ -24,7 +24,7 @@ function teachstu() {
               <Link to="/signup">
                 <button
                   type="submit"
-                  className="block w-40 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+                  className="block w-48 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
                 >
                   Register Now
                 </button>

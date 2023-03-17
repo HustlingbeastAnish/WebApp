@@ -6,15 +6,7 @@ function navbar() {
     <nav className="p-5 bg-gray-800 shadow md:flex md:items-center md:justify-between">
       <div className="flex justify-between items-center ">
         <span className=" cursor-pointer">
-          <img
-            src={TrackLogo}
-            alt=""
-            width="60px"
-            height="60px"
-            style={{
-              borderRadius: "30px",
-            }}
-          />
+          <img src={TrackLogo} alt="" width="200px" />
         </span>
 
         <span className="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -46,6 +38,12 @@ function navbar() {
             CONTACT
           </a>
         </li>
+        <Link
+          className="bg-blue-700 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded "
+          to="/signup"
+        >
+          Register Now
+        </Link>
       </ul>
     </nav>
   );

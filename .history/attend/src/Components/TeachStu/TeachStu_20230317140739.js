@@ -12,24 +12,20 @@ function teachstu() {
             <h1 className="text-white font-bold text-4xl font-sans">
               LOGIN AS A TEACHER
             </h1>
-            <div className="flex justify-evenly ">
-              <Link to="/loginteach">
-                <button
-                  type="submit"
-                  className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
-                >
-                  Login
-                </button>
-              </Link>
-              <Link to="/signup">
-                <button
-                  type="submit"
-                  className="block w-40 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
-                >
-                  Register Now
-                </button>
-              </Link>
-            </div>
+            <Link to="/loginteach">
+              <button
+                type="submit"
+                className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+              >
+                Login
+              </button>
+            </Link>
+            <Link
+              className="bg-blue-700 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded "
+              to="/signup"
+            >
+              Register Now
+            </Link>
           </form>
         </div>
         <div className="flex w-1/2 justify-center items-center bg-white">

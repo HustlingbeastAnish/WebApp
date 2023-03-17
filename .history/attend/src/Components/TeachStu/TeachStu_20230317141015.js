@@ -12,7 +12,7 @@ function teachstu() {
             <h1 className="text-white font-bold text-4xl font-sans">
               LOGIN AS A TEACHER
             </h1>
-            <div className="flex justify-evenly ">
+            <div className="flex ">
               <Link to="/loginteach">
                 <button
                   type="submit"
@@ -24,7 +24,7 @@ function teachstu() {
               <Link to="/signup">
                 <button
                   type="submit"
-                  className="block w-40 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+                  className="block w-28 bg-white text-indigo-800mt-4 py-2 rounded-2xl font-bold mb-2"
                 >
                   Register Now
                 </button>

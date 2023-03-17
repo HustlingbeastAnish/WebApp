@@ -1,20 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TrackLogo from "../images/TrackLogo.png";
 function navbar() {
   return (
     <nav className="p-5 bg-gray-800 shadow md:flex md:items-center md:justify-between">
       <div className="flex justify-between items-center ">
-        <span className=" cursor-pointer">
-          <img
-            src={TrackLogo}
-            alt=""
-            width="60px"
-            height="60px"
-            style={{
-              borderRadius: "30px",
-            }}
-          />
+        <span className="text-2xl font-[Poppins] cursor-pointer text-white">
+          <h2>TracKnAlert</h2>
         </span>
 
         <span className="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -46,6 +37,12 @@ function navbar() {
             CONTACT
           </a>
         </li>
+        <Link
+          className="bg-blue-700 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded "
+          to="/signup"
+        >
+          Register Now
+        </Link>
       </ul>
     </nav>
   );

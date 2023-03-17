@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/navbar.js";
 import TrackLogo from "../images/TrackLogo.png";
+import Landing from "../images/Landing.svg";
 import Landing2 from "../images/Landing2.svg";
 function teachstu() {
   return (
@@ -19,7 +20,9 @@ function teachstu() {
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />{" "}
             <div className="flex justify-evenly items-center">
               <div>
-                <h2 className=" text-white font-extrabold">Login as Teacher</h2>
+                <h2 className="font-semibold text-white font-extrabold">
+                  Login as Teacher
+                </h2>
                 <Link to="/loginteach">
                   <button
                     type="submit"
@@ -240,7 +243,7 @@ function teachstu() {
             <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
               <a
                 href="/#"
-                class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                class="text-gray-500 hover:text-gray-900 h-20 dark:hover:text-white"
               >
                 <svg
                   class="w-5 h-5"

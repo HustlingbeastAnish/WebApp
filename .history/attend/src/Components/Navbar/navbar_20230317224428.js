@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import TrackLogo from "../images/TrackLogo.png";
 function navbar() {
   return (
@@ -27,7 +28,7 @@ function navbar() {
             style={{
               fontSize: "25px",
             }}
-            className="text-xl hover:text-cyan-500 text-extrabold duration-500 font-extrabold text-white"
+            className="text-xl hover:text-cyan-500 text-extrabold duration-500 text-white"
           >
             HOME
           </a>
@@ -36,6 +37,7 @@ function navbar() {
           <a
             href="/#"
             style={{
+              fontFamily: "Labrada",
               fontSize: "25px",
             }}
             className="text-xl hover:text-cyan-500 duration-500  font-extrabold text-white"

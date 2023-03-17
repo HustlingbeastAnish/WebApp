@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/navbar.js";
 import TrackLogo from "../images/TrackLogo.png";
+import Landing from "../images/Landing.svg";
 import Landing2 from "../images/Landing2.svg";
 function teachstu() {
   return (
@@ -19,7 +20,9 @@ function teachstu() {
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />{" "}
             <div className="flex justify-evenly items-center">
               <div>
-                <h2 className=" text-white font-extrabold">Login as Teacher</h2>
+                <h2 className="font-semibold text-white font-extrabold">
+                  Login as Teacher
+                </h2>
                 <Link to="/loginteach">
                   <button
                     type="submit"
@@ -227,13 +230,49 @@ function teachstu() {
                 </span>
               </a>
             </div>
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+              <div>
+                <h2 class="mb-6 text-sm font-semibold  uppercase text-white">
+                  Follow us
+                </h2>
+                <ul class=" text-white">
+                  <li class="mb-4">
+                    <a href="/#" class="hover:underline ">
+                      Github
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/#" class="hover:underline">
+                      Discord
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="mb-6 text-sm font-semibold0 uppercase text-white">
+                  Legal
+                </h2>
+                <ul class="text-white">
+                  <li class="mb-4">
+                    <a href="/#" class="hover:underline">
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/#" class="hover:underline">
+                      Terms &amp; Conditions
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
           <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div class="sm:flex sm:items-center sm:justify-between">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
               © 2022{" "}
               <a href="/#" class="hover:underline">
-                TracKnAlert
+                Your website
               </a>
               . All Rights Reserved.
             </span>

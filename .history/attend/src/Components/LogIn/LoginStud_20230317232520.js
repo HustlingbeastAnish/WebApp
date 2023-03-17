@@ -2,8 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Navbar/navbar.js";
-import login1 from "../images/Login1.svg";
-
 function Login() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
@@ -12,7 +10,7 @@ function Login() {
   const PostLogIn = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/userf", {
+    const res = await fetch("/api/userstud", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,28 +30,22 @@ function Login() {
     } else {
       window.alert("Successfully Logged In");
       console.log("Successfully Logged In");
-      navigate("/tlogin");
+      navigate("/slogin");
     }
   };
 
   return (
     <div>
       <Navbar />
-      <section className="h-screen bg-gray-400">
-        <div className="container px-6 py-12 h-full w-full">
-          <div className="flex items-center justify-center mt-7 h-full text-gray-800">
-            <div className="border-black border-[2px] p-10 rounded-xl bg-gray-400">
-              <h1 className="text-center text-3xl font-extrabold mb-5">
-                LogIn as Teacher
+      <section className="h-screen bg-gray-500">
+        <div className="container px-6 py-12 h-full">
+          <div className="flex justify-center items-center h-full g-6 text-gray-600 ">
+            <div className="border-black border-[4px] p-10 rounded-xl bg-gray-200">
+              <h1 className="text-center text-3xl font-semibold mb-5">
+                LogIn as Student
               </h1>
-              <label
-                htmlFor="exampleInputPassword2"
-                className="form-label text-black inline-block mb-3"
-              >
-                Enter Email Address
-              </label>
               <form method="POST">
-                <div className="mb-6 w-full" id="email">
+                <div className="mb-6" id="email">
                   <input
                     type="text"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -66,12 +58,6 @@ function Login() {
                   />
                 </div>
                 <div className="mb-6">
-                  <label
-                    htmlFor="exampleInputPassword2"
-                    className="form-label text-black inline-block mb-3"
-                  >
-                    Enter Password
-                  </label>
                   <input
                     type="password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -116,12 +102,6 @@ function Login() {
                 <p className="text-sm font-semibold mt-2 pt-1 mb-0">
                   Don't have an account?
                 </p>
-                <Link
-                  to="/signup"
-                  className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
-                >
-                  Register
-                </Link>
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                   <p className="text-center font-semibold mx-4 mb-0">OR</p>
                 </div>

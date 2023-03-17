@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/navbar.js";
 import TrackLogo from "../images/TrackLogo.png";
+import Landing from "../images/Landing.svg";
 import Landing2 from "../images/Landing2.svg";
 function teachstu() {
   return (

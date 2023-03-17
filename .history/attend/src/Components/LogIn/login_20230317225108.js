@@ -39,19 +39,13 @@ function Login() {
   return (
     <div>
       <Navbar />
-      <section className="h-screen bg-gray-400">
-        <div className="container px-6 py-12 h-full w-full">
-          <div className="flex items-center justify-center mt-7 h-full text-gray-800">
-            <div className="border-black border-[2px] p-10 rounded-xl bg-gray-400">
-              <h1 className="text-center text-3xl font-extrabold mb-5">
+      <section className="h-screen bg-gray-800">
+        <div className="container px-6 py-12 h-full">
+          <div className="flex items-center h-full text-gray-800 ">
+            <div className="border-black border-[4px] p-10 rounded-xl bg-gray-400">
+              <h1 className="text-center text-3xl font-semibold mb-5">
                 LogIn as Teacher
               </h1>
-              <label
-                htmlFor="exampleInputPassword2"
-                className="form-label text-black inline-block mb-3"
-              >
-                Enter Email Address
-              </label>
               <form method="POST">
                 <div className="mb-6 w-full" id="email">
                   <input
@@ -66,12 +60,6 @@ function Login() {
                   />
                 </div>
                 <div className="mb-6">
-                  <label
-                    htmlFor="exampleInputPassword2"
-                    className="form-label text-black inline-block mb-3"
-                  >
-                    Enter Password
-                  </label>
                   <input
                     type="password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -131,6 +119,17 @@ function Login() {
                   Continue with Google
                 </button>
               </form>
+            </div>
+            <div class="mt-20 lg:mt-0 lg:col-span-5 lg:flex">
+              <h2 className=""></h2>
+              <img
+                src={login1}
+                style={{
+                  marginTop: "90px",
+                  borderRadius: "30px",
+                }}
+                alt="mockup"
+              />
             </div>
           </div>
         </div>

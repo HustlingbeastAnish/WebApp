@@ -2,6 +2,47 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Navbar/navbar.js";
+function Login() {
+  const navigate = useNavigate();
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  const PostLogIn = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("/api/userstud", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 400 || !data || data.error) {
+      console.log(data);
+      window.alert("Please Enter valid user Credentials");
+      console.log("Please enter valid user Credentials");
+    } else {
+      window.alert("Successfully Logged In");
+      console.log("Successfully Logged In");
+      navigate("/slogin");
+    }
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <section className="h-screen bg-gray-500">
+        <div className="container px-6 py-12 h-full">
+          import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Navbar from "../Navbar/navbar.js";
 import login1 from "../images/Login1.svg";
 
 function Login() {
@@ -133,6 +174,14 @@ function Login() {
               </form>
             </div>
           </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default Login;
+v>
         </div>
       </section>
     </div>

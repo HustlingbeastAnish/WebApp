@@ -36,6 +36,7 @@ function navbar() {
           <a
             href="/#"
             style={{
+              fontFamily: "Labrada",
               fontSize: "25px",
             }}
             className="text-xl hover:text-cyan-500 duration-500  font-extrabold text-white"

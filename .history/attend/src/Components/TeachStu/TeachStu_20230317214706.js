@@ -219,23 +219,23 @@ function teachstu() {
         </div>
       </section>
 
-      <footer class="p-4 bg-black">
+      <footer class="p-4 bg-gray-800">
         <div class="mx-auto max-w-screen-xl">
           <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
               <a href="https://flowbite.com" class="flex items-center">
                 <img src={TrackLogo} class="mr-3 h-8" alt="FlowBite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                   TracKnAttend
                 </span>
               </a>
             </div>
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                <h2 class="mb-6 text-sm font-semibold uppercase text-white">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Resources
                 </h2>
-                <ul class=" text-white">
+                <ul class="text-gray-600 dark:text-gray-400">
                   <li class="mb-4">
                     <a href="/#" class="hover:underline">
                       TrackNAlert
@@ -249,10 +249,10 @@ function teachstu() {
                 </ul>
               </div>
               <div>
-                <h2 class="mb-6 text-sm font-semibold  uppercase text-white">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Follow us
                 </h2>
-                <ul class=" text-white">
+                <ul class="text-gray-600 dark:text-gray-400">
                   <li class="mb-4">
                     <a href="/#" class="hover:underline ">
                       Github
@@ -266,10 +266,10 @@ function teachstu() {
                 </ul>
               </div>
               <div>
-                <h2 class="mb-6 text-sm font-semibold0 uppercase text-white">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Legal
                 </h2>
-                <ul class="text-white">
+                <ul class="text-gray-600 dark:text-gray-400">
                   <li class="mb-4">
                     <a href="/#" class="hover:underline">
                       Privacy Policy

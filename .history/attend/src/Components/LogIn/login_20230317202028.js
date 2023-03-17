@@ -39,8 +39,8 @@ function Login() {
       <Navbar />
       <section className="h-screen bg-gray-800">
         <div className="container px-6 py-12 h-full">
-          <div className="flex items-center h-full text-gray-800 ">
-            <div className="border-black border-[4px] p-10 rounded-xl bg-gray-400">
+          <div className="flex justify-center items-center h-full g-6 text-gray-800 ">
+            <div className="border-black border-[4px] p-10 rounded-xl bg-gray-500">
               <h1 className="text-center text-3xl font-semibold mb-5">
                 LogIn as Teacher
               </h1>

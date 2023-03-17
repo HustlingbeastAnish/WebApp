@@ -232,10 +232,10 @@ function teachstu() {
             </div>
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                <h2 class="mb-6 text-sm font-semibold uppercase text-white">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">
                   Resources
                 </h2>
-                <ul class=" text-white">
+                <ul class="text-gray-600 text-white">
                   <li class="mb-4">
                     <a href="/#" class="hover:underline">
                       TrackNAlert
@@ -249,10 +249,10 @@ function teachstu() {
                 </ul>
               </div>
               <div>
-                <h2 class="mb-6 text-sm font-semibold  uppercase text-white">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">
                   Follow us
                 </h2>
-                <ul class=" text-white">
+                <ul class="text-gray-600 text-white">
                   <li class="mb-4">
                     <a href="/#" class="hover:underline ">
                       Github
@@ -266,10 +266,10 @@ function teachstu() {
                 </ul>
               </div>
               <div>
-                <h2 class="mb-6 text-sm font-semibold0 uppercase text-white">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Legal
                 </h2>
-                <ul class="text-white">
+                <ul class="text-gray-600 dark:text-gray-400">
                   <li class="mb-4">
                     <a href="/#" class="hover:underline">
                       Privacy Policy

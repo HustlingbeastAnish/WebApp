@@ -275,17 +275,17 @@ const CreateAttend = () => {
                 label="Subjects"
                 onChange={handle}
               >
-                <MenuItem value={"Data_Structures"}>Data Structures</MenuItem>
-                <MenuItem value={"Operating_System"}>Operating System</MenuItem>
+                <MenuItem value={"Data_Structures"}>Data_Structures</MenuItem>
+                <MenuItem value={"Operating_System"}>Operating_System</MenuItem>
                 <MenuItem value={"Computer_Networks"}>
-                  Computer Networks
+                  Computer_Networks
                 </MenuItem>
                 <MenuItem value={"Object_Oriented_Programming"}>
-                  Object Oriented Programming
+                  Object_Oriented_Programming
                 </MenuItem>
                 <MenuItem value={"DBMS"}>DBMS</MenuItem>
                 <MenuItem value={"Numerical_Methods"}>
-                  Numerical Methods
+                  Numerical_Methods
                 </MenuItem>
               </Select>
             </FormControl>

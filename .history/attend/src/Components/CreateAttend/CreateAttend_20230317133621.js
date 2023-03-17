@@ -248,7 +248,7 @@ const CreateAttend = () => {
             m-0
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleInputPassword2"
-              placeholder="Roll Number"
+              placeholder="BTECH/1****/22"
             />
           </div>
           <div className="w-full mb-5">
@@ -275,17 +275,17 @@ const CreateAttend = () => {
                 label="Subjects"
                 onChange={handle}
               >
-                <MenuItem value={"Data_Structures"}>Data Structures</MenuItem>
-                <MenuItem value={"Operating_System"}>Operating System</MenuItem>
-                <MenuItem value={"Computer_Networks"}>
-                  Computer Networks
+                <MenuItem value={"Data Structures"}>Data_Structures</MenuItem>
+                <MenuItem value={"Operating System"}>Operating_System</MenuItem>
+                <MenuItem value={"Computer Networks"}>
+                  Computer_Networks
                 </MenuItem>
-                <MenuItem value={"Object_Oriented_Programming"}>
-                  Object Oriented Programming
+                <MenuItem value={"Object Oriented Programming"}>
+                  Object_Oriented_Programming
                 </MenuItem>
                 <MenuItem value={"DBMS"}>DBMS</MenuItem>
-                <MenuItem value={"Numerical_Methods"}>
-                  Numerical Methods
+                <MenuItem value={"Numerical Methods"}>
+                  Numerical_Methods
                 </MenuItem>
               </Select>
             </FormControl>

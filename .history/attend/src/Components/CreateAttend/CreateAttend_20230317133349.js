@@ -157,12 +157,6 @@ const CreateAttend = () => {
             />
           </div>
           <div className="w-full mb-2">
-            <label
-              htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
-            >
-              Select Branch
-            </label>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label font-semibold">
                 Branch
@@ -221,7 +215,7 @@ const CreateAttend = () => {
               placeholder="Password"
             />
           </div>
-          <div className="form-group mb-3">
+          <div className="form-group mb-6">
             <label
               htmlFor="exampleInputPassword2"
               className="form-label inline-block mb-2 text-gray-700"
@@ -248,16 +242,10 @@ const CreateAttend = () => {
             m-0
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleInputPassword2"
-              placeholder="Roll Number"
+              placeholder="Password"
             />
           </div>
           <div className="w-full mb-5">
-            <label
-              htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
-            >
-              Select Subject
-            </label>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
               <Select
@@ -275,17 +263,17 @@ const CreateAttend = () => {
                 label="Subjects"
                 onChange={handle}
               >
-                <MenuItem value={"Data_Structures"}>Data Structures</MenuItem>
-                <MenuItem value={"Operating_System"}>Operating System</MenuItem>
-                <MenuItem value={"Computer_Networks"}>
-                  Computer Networks
+                <MenuItem value={"Data Structures"}>Data_Structures</MenuItem>
+                <MenuItem value={"Operating System"}>Operating_System</MenuItem>
+                <MenuItem value={"Computer Networks"}>
+                  Computer_Networks
                 </MenuItem>
-                <MenuItem value={"Object_Oriented_Programming"}>
-                  Object Oriented Programming
+                <MenuItem value={"Object Oriented Programming"}>
+                  Object_Oriented_Programming
                 </MenuItem>
                 <MenuItem value={"DBMS"}>DBMS</MenuItem>
-                <MenuItem value={"Numerical_Methods"}>
-                  Numerical Methods
+                <MenuItem value={"Numerical Methods"}>
+                  Numerical_Methods
                 </MenuItem>
               </Select>
             </FormControl>

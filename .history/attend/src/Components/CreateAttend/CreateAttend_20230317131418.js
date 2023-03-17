@@ -1,10 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 const CreateAttend = () => {
   const navigate = useNavigate();
 
@@ -92,7 +88,7 @@ const CreateAttend = () => {
     <div className="flex justify-center items-center">
       <div className="block p-6 rounded-lg shadow-lg bg-gray-300 max-w-xl w-[450px] mt-5">
         <form>
-          <div className="form-group mb-3">
+          <div className="form-group mb-6">
             <label
               htmlFor="exampleInputEmail2"
               className="form-label inline-block mb-2 text-gray-700"
@@ -124,7 +120,7 @@ const CreateAttend = () => {
               placeholder="Enter name"
             />
           </div>
-          <div className="form-group mb-3">
+          <div className="form-group mb-6">
             <label
               htmlFor="exampleInputEmail2"
               className="form-label inline-block mb-2 text-gray-700"
@@ -156,31 +152,16 @@ const CreateAttend = () => {
               placeholder="Enter email"
             />
           </div>
-          <div className="w-full mb-2">
-            <label
-              htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
-            >
-              Select Branch
-            </label>
+          <div className="mt-10">
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label font-semibold">
-                Branch
-              </InputLabel>
+              <InputLabel id="demo-simple-select-label">Branch</InputLabel>
               <Select
-                style={{
-                  borderRadius: "8px",
-                  height: "45px",
-                  fontSize: "15px",
-                  backgroundColor: "white",
-                  borderColor: "black",
-                }}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={Student.branch}
-                name="branch"
+                value={props.Branch}
+                style={{ width: "450px" }}
                 label="Branches"
-                onChange={handle}
+                onChange={props.handleChangeBranch}
               >
                 <MenuItem value={"CSE"}>CSE</MenuItem>
                 <MenuItem value={"IT"}>IT</MenuItem>
@@ -191,7 +172,7 @@ const CreateAttend = () => {
               </Select>
             </FormControl>
           </div>
-          <div className="form-group mb-2">
+          <div className="form-group mb-6">
             <label
               htmlFor="exampleInputPassword2"
               className="form-label inline-block mb-2 text-gray-700"
@@ -221,7 +202,7 @@ const CreateAttend = () => {
               placeholder="Password"
             />
           </div>
-          <div className="form-group mb-3">
+          <div className="form-group mb-6">
             <label
               htmlFor="exampleInputPassword2"
               className="form-label inline-block mb-2 text-gray-700"
@@ -248,47 +229,38 @@ const CreateAttend = () => {
             m-0
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleInputPassword2"
-              placeholder="Roll Number"
+              placeholder="Password"
             />
           </div>
-          <div className="w-full mb-5">
+          <div className="form-group mb-6">
             <label
-              htmlFor="exampleInputEmail2"
+              htmlFor="exampleInputPassword2"
               className="form-label inline-block mb-2 text-gray-700"
             >
-              Select Subject
+              Enter Subject
             </label>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                name="subject"
-                id="demo-simple-select"
-                value={Student.subject}
-                style={{
-                  borderRadius: "8px",
-                  height: "45px",
-                  fontSize: "15px",
-                  backgroundColor: "white",
-                  borderColor: "black",
-                }}
-                label="Subjects"
-                onChange={handle}
-              >
-                <MenuItem value={"Data_Structures"}>Data Structures</MenuItem>
-                <MenuItem value={"Operating_System"}>Operating System</MenuItem>
-                <MenuItem value={"Computer_Networks"}>
-                  Computer Networks
-                </MenuItem>
-                <MenuItem value={"Object_Oriented_Programming"}>
-                  Object Oriented Programming
-                </MenuItem>
-                <MenuItem value={"DBMS"}>DBMS</MenuItem>
-                <MenuItem value={"Numerical_Methods"}>
-                  Numerical Methods
-                </MenuItem>
-              </Select>
-            </FormControl>
+            <input
+              type="subject"
+              name="subject"
+              value={Student.subject}
+              onChange={handle}
+              className="form-control block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="exampleInputPassword2"
+              placeholder="Enter the subject"
+            />
           </div>
           <button
             type="submit"

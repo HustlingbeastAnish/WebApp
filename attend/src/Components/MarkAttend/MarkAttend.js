@@ -8,10 +8,17 @@ function MarkAttend(props) {
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
   console.log(currSubjArr);
-  const [studentData, setstudentData] = useState([{}]);
+  const [studentData, setstudentData] = useState([
+    {
+       
+    }
+   
+]);
+  
   useEffect(() => {
     fetchtotalclasses();
     fetchStudentDetails();
+   // FetchAttendance();
   }, []);
 
   const dayy = props.SelectedDate.getDate();
@@ -68,7 +75,9 @@ function MarkAttend(props) {
     axios
       .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
+        console.log(res.data);
         setstudentData(res.data);
+        
         console.log("Tay Keith F these niggas up");
       })
       .catch((err) => {
@@ -94,7 +103,45 @@ function MarkAttend(props) {
       });
   };
 
-  const FetchAttendanceDetails = (elem, idx) => {
+  const FetchChangedAttendanceDetails = (elem, idx) => {
+    console.log(props.Subject + "dubiu");
+    axios
+      .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+      .then((res) => {
+        console.log(res.data[props.Subject]);
+        // console.log(props.Subject+"dubiu");
+        //console.log(res.data.Data_Structures);
+        if(absent[idx][1]==="1")
+        {
+        Setabsentcount((absentcount) => ({
+          ...absentcount,
+          [idx]: (
+            ((totalnoofclasses - res.data[props.Subject].length) /
+              totalnoofclasses) *
+            100
+          ).toFixed(2),
+        }));
+      }
+      else{
+        Setabsentcount((absentcount) => ({
+          ...absentcount,
+          [idx]: (
+            ((totalnoofclasses - res.data[props.Subject].length-1) /
+              totalnoofclasses) *
+            100
+          ).toFixed(2),
+        }));
+      }
+      })
+      .catch((err) => {
+        console.log("attendance calculation not possible ");
+        console.log(err);
+      });
+  };
+
+  //fetching in initial attendance
+/*
+  const FetchAttendance = studentData.map((elem, idx) => {
     console.log(props.Subject + "dubiu");
     axios
       .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
@@ -115,8 +162,8 @@ function MarkAttend(props) {
         console.log("attendance calculation not possible ");
         console.log(err);
       });
-  };
-
+  });
+*/
   const HandleAbsentees = (elem, idx) => {
     Setabsent((absent) => ({
       ...absent,
@@ -241,7 +288,7 @@ function MarkAttend(props) {
                           class="sr-only peer"
                           onClick={() => {
                             HandleAbsentees(elem, idx);
-                            FetchAttendanceDetails(elem, idx);
+                            FetchChangedAttendanceDetails(elem, idx);
                           }}
                         />
                         <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>

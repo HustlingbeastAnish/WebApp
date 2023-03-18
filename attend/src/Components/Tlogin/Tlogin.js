@@ -9,12 +9,7 @@ const Tlogin = (props) => {
   const navigate = useNavigate();
   const currUser = props.userData;
 
-  // const str = enhanceName(currUser.name);
-  // console.log(currUser.name[0].toUpperCase() + currUser.name.slice(1));
-  // const str1 = currUser.name[0].toUpperCase() + currUser.name.slice(1);
-  // console.log(str);
   //jwt authorisation
-
   const callTlogin = async () => {
     try {
       const res = await fetch("/aftertlogin", {
@@ -63,21 +58,9 @@ const Tlogin = (props) => {
     callTlogin();
   }, []);
 
-  function enhanceName(string) {
-    var str = string || " ";
-    var fullName = str.toLowerCase().split(" ");
-    for (var i = 0; i < fullName.length; i++) {
-      fullName[i][0] = fullName[i][0] || " ";
-      fullName[i] = fullName[i][0].toUpperCase() + fullName[i].slice(1);
-    }
-    // currUser.name = fullName;
-    console.log(fullName);
-    return fullName.join(" ");
-  }
-
   return (
-    <div>
-      <h3 className="text-3xl font-semibold text-gray-700 mb-6 ml-10 text-center ">
+    <div className="bg-gray-600">
+      <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center ">
         Welcome Prof. {currUser.name}
       </h3>
       <div className="flex">
@@ -114,23 +97,23 @@ const Tlogin = (props) => {
         <div className=" ml-5 flex flex-col">
           <div className="">
             <div className="md:flex flex-start">
-              <div className="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
-                <div className="flex justify-between mb-4">
-                  <a
-                    href="#!"
-                    className="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm"
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-200 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-black text-2xl font-extrabold inline-block "
                   >
-                    CREATE NEW CLASS
-                  </a>
+                    CREATE NEW STUDENT
+                  </label>
                 </div>
-                <p className="text-gray-700 mb-6">
-                  Looorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Quisque scelerisque diam non nisi semper
+                <p className="text-gray-900 font-semibold mb-2 ">
+                  Register New Students for their respective subjects and
+                  branches
                 </p>
                 <Link to="/createattend">
                   <button
                     type="button"
-                    className="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                   >
                     Create
@@ -141,60 +124,61 @@ const Tlogin = (props) => {
           </div>
           <div className="">
             <div className="md:flex flex-start">
-              <div className="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
-                <div className="flex justify-between mb-4">
-                  <a
-                    href="#!"
-                    className="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm"
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-200 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-black text-2xl font-extrabold inline-block "
                   >
-                    UPDATE CLASS
-                  </a>
+                    UPDATE STUDENT DETAILS
+                  </label>
                 </div>
-                <p className="text-gray-700 mb-6">
-                  Looorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Quisque scelerisque diam non nisi semper
+                <p className="text-gray-900 font-semibold mb-2 ">
+                  Update the existing students enrolled in thier respective
+                  courses
                 </p>
                 <Link to="/selectstud">
                   <button
                     type="button"
-                    className="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                   >
-                    UPDATE
+                    Update
                   </button>
                 </Link>
               </div>
             </div>
           </div>
           <div className="">
-            <div className="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
-              <div className="flex justify-between mb-4">
-                <a
-                  href="/#"
-                  className="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm"
-                >
-                  TAKE ATTENDANCE
-                </a>
+            <div className="md:flex flex-start">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-200 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-black text-2xl font-extrabold inline-block "
+                  >
+                    TAKE ATTENDANCE
+                  </label>
+                </div>
+                <p className="text-gray-900 font-semibold mb-2 ">
+                  Looorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Quisque scelerisque diam non nisi semper
+                </p>
+                <Link to="/takeattend">
+                  <button
+                    type="button"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                  >
+                    Take
+                  </button>
+                </Link>
               </div>
-              <p className="text-gray-700 mb-6">
-                Looorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Quisque scelerisque diam non nisi semper
-              </p>
-              <Link to="/takeattend">
-                <button
-                  type="button"
-                  className="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                  data-mdb-ripple="true"
-                >
-                  TAKE
-                </button>
-              </Link>
             </div>
           </div>
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 

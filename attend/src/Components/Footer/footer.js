@@ -1,68 +1,83 @@
 import React from "react";
 
-function footer() {
+function Footer() {
+  const gototop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
-    <footer>
-      <div className="bg-gray-800 pb-2">
-        <span className="text-2xl font-[Poppins] cursor-pointer text-white text-center">
-          <h2 className="mb-4 pt-4">TracKnAlert</h2>
-        </span>
-        <div className="text-center mb-4">
-          <input
-            className="text-center mr-1 ml-1 rounded-lg"
-            type="email"
-            placeholder="Enter your email"
-          ></input>
-          <button className="bg-cyan-400 hover:bg-cyan-700 rounded-lg pl-1 pr-1">
-            Subscribe Now!
-          </button>
-        </div>
-        <hr className="w-11/12 m-auto"></hr>
-        <div className="mb-2 mt-2">
-          <div className="w-1/3 inline-block text-center">
-            <a href="/#" className="text-white hover:text-cyan-500">
-              About us
+    <>
+      <footer className="bg-dark text-center text-white">
+        <div className="container p-4 pb-0">
+          <section className="mb-4">
+            <a
+              className="btn btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i className="fab fa-facebook-f"></i>
             </a>
-          </div>
-          <div className="w-1/3 inline-block text-center">
-            <a href="/#" className="text-white hover:text-cyan-500">
-              Our team
+            <a
+              className="btn btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i className="fab fa-twitter"></i>
             </a>
-          </div>
-          <div className="w-1/3 inline-block text-center">
-            <a href="/#" className="text-white hover:text-cyan-500">
-              Contact us
+            <a
+              className="btn btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i className="fab fa-google"></i>
             </a>
-          </div>
+            <a
+              className="btn btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a
+              className="btn btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              className="btn btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i className="fab fa-github"></i>
+            </a>
+            <a
+              className="btn btn-outline-light btn-floating"
+              href="#!"
+              role="button"
+              style={{
+                float: "right",
+                height: "70px",
+                top: "-10px",
+              }}
+              onClick={gototop}
+            >
+              <i class="fa-solid fa-arrow-up"></i>
+              <p>Go To Top</p>
+            </a>
+          </section>
         </div>
-        <hr className="w-11/12 m-auto"></hr>
-        <div className="text-center mt-2">
-          <h3 className="text-white inline">Follow us on :</h3>
-          <a href="/#">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"
-              alt="..."
-              className="h-6 w-6 inline ml-4"
-            ></img>
-          </a>
-          <a href="/#">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
-              alt="..."
-              className="h-6 w-6 inline ml-4"
-            ></img>
-          </a>
-          <a href="/#">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2111/2111398.png"
-              alt="..."
-              className="h-6 w-6 inline ml-4"
-            ></img>
+        <div className="text-center p-3" style={{ backgroundColor: "black" }}>
+          <a className="text-white" href="/#">
+            Portfolio Anish
           </a>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
 
-export default footer;
+export default Footer;

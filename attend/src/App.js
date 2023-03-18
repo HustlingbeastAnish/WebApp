@@ -22,7 +22,7 @@ import Resetpass from "./Components/Tlogin/ResetPassword/Resetpass";
 import Changepass from "./Components/Tlogin/ResetPassword/Changepass";
 import CheckSub from "./Components/StudentSection/CheckSub";
 import CheckAttend from "./Components/StudentSection/CheckAttend";
-
+import Footer from "./Components/Footer/footer";
 // For Graphical Visualization of attendance
 
 function App() {

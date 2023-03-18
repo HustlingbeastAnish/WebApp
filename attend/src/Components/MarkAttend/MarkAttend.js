@@ -8,17 +8,12 @@ function MarkAttend(props) {
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
   console.log(currSubjArr);
-  const [studentData, setstudentData] = useState([
-    {
-       
-    }
-   
-]);
-  
+  const [studentData, setstudentData] = useState([]);
+
   useEffect(() => {
-    fetchtotalclasses();
+   
     fetchStudentDetails();
-   // FetchAttendance();
+   
   }, []);
 
   const dayy = props.SelectedDate.getDate();
@@ -71,37 +66,66 @@ function MarkAttend(props) {
     }
   };
 
-  const fetchStudentDetails = () => {
+
+ const fetchStudentDetails = () => {
     axios
       .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         console.log(res.data);
-        setstudentData(res.data);
-        
+        const temp=res.data;
+        setstudentData(temp);
         console.log("Tay Keith F these niggas up");
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log("Data not fetched");
-      });
-  };
-  const [totalnoofclasses, settotalnoofclasses] = useState(31);
-  const temp = currSubject + "_" + currBranch;
-  const fetchtotalclasses = () => {
-    axios
+        axios
       .get(
         `http://localhost:3002/api/classesddata/${currSubject}/${currBranch}`
       )
       .then((res) => {
-        //console.log(temp)
-        //console.log(res.data[0][temp].length);
-        settotalnoofclasses(res.data[0][temp].length);
+       
+        const tempp = currSubject + "_" + currBranch;
+        settotalnoofclasses(res.data[0][tempp].length);
+        const totclass=res.data[0][tempp].length
+
+        temp.map((elem, idx) => {
+          console.log(props.Subject + "dubiu");
+          console.log(elem.email)
+    axios
+    .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+            .then((res) => {
+              console.log(res.data[props.Subject]);
+            
+              Setabsentcount((absentcount) => ({
+                ...absentcount,
+                [idx]: (
+                  ((totclass - res.data[props.Subject].length) /
+                  totclass) *
+                  100
+                ).toFixed(2),
+              }));
+            })
+            .catch((err) => {
+              console.log("attendance calculation not possible ");
+              console.log(err);
+            });
+        });
+
       })
       .catch((err) => {
         console.log(err);
         console.log("Data not fetched");
       });
+    
+
+      })
+
+      .catch((err) => {
+        console.log(err);
+        console.log("Data not fetched");
+      });
   };
+
+  
+  const [totalnoofclasses, settotalnoofclasses] = useState(10);
+ 
 
   const FetchChangedAttendanceDetails = (elem, idx) => {
     console.log(props.Subject + "dubiu");
@@ -111,27 +135,26 @@ function MarkAttend(props) {
         console.log(res.data[props.Subject]);
         // console.log(props.Subject+"dubiu");
         //console.log(res.data.Data_Structures);
-        if(absent[idx][1]==="1")
-        {
-        Setabsentcount((absentcount) => ({
-          ...absentcount,
-          [idx]: (
-            ((totalnoofclasses - res.data[props.Subject].length) /
-              totalnoofclasses) *
-            100
-          ).toFixed(2),
-        }));
-      }
-      else{
-        Setabsentcount((absentcount) => ({
-          ...absentcount,
-          [idx]: (
-            ((totalnoofclasses - res.data[props.Subject].length-1) /
-              totalnoofclasses) *
-            100
-          ).toFixed(2),
-        }));
-      }
+        if (absent[idx][1] === "1") {
+          Setabsentcount((absentcount) => ({
+            ...absentcount,
+            [idx]: (
+              ((totalnoofclasses - res.data[props.Subject].length) /
+                totalnoofclasses) *
+              100
+            ).toFixed(2),
+          }));
+        }
+        else {
+          Setabsentcount((absentcount) => ({
+            ...absentcount,
+            [idx]: (
+              ((totalnoofclasses - res.data[props.Subject].length - 1) /
+                totalnoofclasses) *
+              100
+            ).toFixed(2),
+          }));
+        }
       })
       .catch((err) => {
         console.log("attendance calculation not possible ");
@@ -139,31 +162,7 @@ function MarkAttend(props) {
       });
   };
 
-  //fetching in initial attendance
-/*
-  const FetchAttendance = studentData.map((elem, idx) => {
-    console.log(props.Subject + "dubiu");
-    axios
-      .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
-      .then((res) => {
-        console.log(res.data[props.Subject]);
-        // console.log(props.Subject+"dubiu");
-        //console.log(res.data.Data_Structures);
-        Setabsentcount((absentcount) => ({
-          ...absentcount,
-          [idx]: (
-            ((totalnoofclasses - res.data[props.Subject].length) /
-              totalnoofclasses) *
-            100
-          ).toFixed(2),
-        }));
-      })
-      .catch((err) => {
-        console.log("attendance calculation not possible ");
-        console.log(err);
-      });
-  });
-*/
+  
   const HandleAbsentees = (elem, idx) => {
     Setabsent((absent) => ({
       ...absent,

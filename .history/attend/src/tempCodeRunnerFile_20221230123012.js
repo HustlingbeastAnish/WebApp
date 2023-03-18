@@ -1,3 +1,0 @@
-oute
-            exact
-            path="/takeatte

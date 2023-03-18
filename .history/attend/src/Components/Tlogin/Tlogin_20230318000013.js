@@ -106,7 +106,7 @@ const Tlogin = (props) => {
                     CREATE NEW STUDENT
                   </label>
                 </div>
-                <p className="text-gray-900 font-semibold mb-2 ">
+                <p className="text-gray-900 font-semibold  ">
                   Register New Students for their respective subjects and
                   branches
                 </p>
@@ -133,17 +133,17 @@ const Tlogin = (props) => {
                     UPDATE STUDENT DETAILS
                   </label>
                 </div>
-                <p className="text-gray-900 font-semibold mb-2 ">
+                <p className="text-gray-900 font-semibold mb-6 ">
                   Update the existing students enrolled in thier respective
                   courses
                 </p>
-                <Link to="/selectstud">
+                <Link to="/createattend">
                   <button
                     type="button"
                     className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                   >
-                    Update
+                    Create
                   </button>
                 </Link>
               </div>
@@ -157,20 +157,20 @@ const Tlogin = (props) => {
                     htmlFor="exampleInputPassword2"
                     className="form-label text-black text-2xl font-extrabold inline-block "
                   >
-                    TAKE ATTENDANCE
+                    CREATE NEW STUDENT
                   </label>
                 </div>
-                <p className="text-gray-900 font-semibold mb-2 ">
+                <p className="text-gray-900 font-semibold mb-6 ">
                   Looorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Quisque scelerisque diam non nisi semper
                 </p>
-                <Link to="/takeattend">
+                <Link to="/createattend">
                   <button
                     type="button"
                     className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                   >
-                    Take
+                    Create
                   </button>
                 </Link>
               </div>

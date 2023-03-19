@@ -100,7 +100,7 @@ function MarkAttend(props) {
                   }));
                   setTimeout(() => {
                     setflag(true);
-                  }, 1000);
+                  });
                 })
                 .catch((err) => {
                   console.log("attendance calculation not possible ");

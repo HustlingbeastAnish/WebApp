@@ -98,9 +98,6 @@ function MarkAttend(props) {
                       100
                     ).toFixed(2),
                   }));
-                  setTimeout(() => {
-                    setflag(true);
-                  }, 1000);
                 })
                 .catch((err) => {
                   console.log("attendance calculation not possible ");

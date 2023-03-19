@@ -130,7 +130,7 @@ const CheckSub = (props) => {
           </div>
         </div>
       </div>
-      {!flag && <Spinner />}
+      <Spinner />
       {flag && (
         <div className="m-2">
           <div class="flex justify-center">

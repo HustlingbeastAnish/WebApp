@@ -6,7 +6,6 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { studentData } from "./data";
 import axios from "axios";
-import Spinner from "../Spinner/Spinner";
 
 const CheckSub = (props) => {
   const currBranch = "CSE";
@@ -101,6 +100,7 @@ const CheckSub = (props) => {
                   setTimeout(() => {
                     setflag(true);
                   }, 1000);
+                  setflag(true);
                 })
                 .catch((err) => {
                   console.log("attendance calculation not possible ");
@@ -130,7 +130,6 @@ const CheckSub = (props) => {
           </div>
         </div>
       </div>
-      {!flag && <Spinner />}
       {flag && (
         <div className="m-2">
           <div class="flex justify-center">

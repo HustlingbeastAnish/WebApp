@@ -45,10 +45,10 @@ function teachstu() {
           <div class="mt-20 lg:mt-0 lg:col-span-5 lg:flex">
             <img
               src={Landing2}
-              width="400vw"
+              width="560px"
               height="660px"
               style={{
-                marginTop: "90px",
+                marginTop: "80vh",
                 borderRadius: "30px",
               }}
               alt="mockup"

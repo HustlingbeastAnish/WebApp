@@ -3,6 +3,7 @@ var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
 
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Stloginuser = require("../model/stuLogin");
@@ -46,7 +47,7 @@ exports.stucreate = async (req, res) => {
           if (userexists) {
             Stuser.findOneAndUpdate(
               { email: email },
-              { $set: { subject: subject } },
+              { $push: { subject: subject } },
               (error, data) => {
                 if (error) {
                   console.log(error);
@@ -168,6 +169,7 @@ exports.find = async (req, res) => {
         expires: new Date(Date.now() + 25892000000),
         httpOnly: true,
       });
+
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
       } else {
@@ -191,7 +193,7 @@ exports.findStud = async (req, res) => {
       return res.status(400).json({ error: "None of the feilds can be empty" });
     }
     const emailExists = await Stuser.findOne({ email: email });
-    const PassMatch = await Stuser.findOne({ email: email, phone: password });
+    const PassMatch = await Stuser.findOne({ phone: password });
     console.log(emailExists);
     if (emailExists && PassMatch) {
       const token = await emailExists.generateAuthToken();
@@ -377,22 +379,24 @@ exports.AllDates = async (req, res) => {
   }
 };
 
+
 exports.findStudbyemail = async (req, res) => {
   try {
-    if (!req.body) {
-      console.log("No student with a branch found");
+    if (!req.body) { console.log("No student with a branch found");
       return res.status(404).json({ err: "Feilds cannot be empty" });
+     
     }
 
     const email = req.params.email;
     console.log("ok");
     console.log(email);
-    Stloginuser.find({ email: email })
+    Stloginuser.find({ email:email })
       .then((data) => {
-        if (!data) {
-          console.log("No student with a branch found");
+        if (!data) { console.log("No student with a branch found");
           res.status(404).json({ err: "No student with a branch found" });
+          
         } else {
+         
           res.send(data);
         }
       })

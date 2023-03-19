@@ -168,6 +168,7 @@ exports.find = async (req, res) => {
         expires: new Date(Date.now() + 25892000000),
         httpOnly: true,
       });
+
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
       } else {

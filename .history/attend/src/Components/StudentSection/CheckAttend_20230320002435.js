@@ -156,9 +156,6 @@ const CheckSub = (props) => {
               <thead class="text-xs text-white-100 uppercase bg-gray- dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Sl No.
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-2xl font-bold">
                     Subjects
                   </th>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
@@ -167,21 +164,12 @@ const CheckSub = (props) => {
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
                     Attendance
                   </th>
-                  <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Subject Code
-                  </th>
                 </tr>
               </thead>
               {StudSubjects.map((elem, idx) => {
                 return (
                   <tbody>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        {idx}
-                      </th>
                       <th
                         scope="row"
                         class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
@@ -199,12 +187,6 @@ const CheckSub = (props) => {
                         class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         {TotalAttendancePerSubjectRef.current[idx]}
-                      </th>
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        CS237A
                       </th>
                     </tr>
                   </tbody>
@@ -238,7 +220,7 @@ const CheckSub = (props) => {
                 }}
               />
             </div>
-            <div className="mt-10 mb-10">
+            <div className="mt-10 mb-2">
               <Line
                 data={studDataRef.current}
                 options={{
@@ -267,7 +249,6 @@ const CheckSub = (props) => {
                       },
                     },
                   },
-                  aspectRatio: 1.5,
                 }}
               />
             </div>

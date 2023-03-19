@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import useState from "react-usestateref";
 import { useNavigate } from "react-router-dom";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { studentData } from "./data";
 import axios from "axios";
@@ -156,9 +156,6 @@ const CheckSub = (props) => {
               <thead class="text-xs text-white-100 uppercase bg-gray- dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Sl No.
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-2xl font-bold">
                     Subjects
                   </th>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
@@ -167,21 +164,12 @@ const CheckSub = (props) => {
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
                     Attendance
                   </th>
-                  <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Subject Code
-                  </th>
                 </tr>
               </thead>
               {StudSubjects.map((elem, idx) => {
                 return (
                   <tbody>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        {idx}
-                      </th>
                       <th
                         scope="row"
                         class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
@@ -200,12 +188,6 @@ const CheckSub = (props) => {
                       >
                         {TotalAttendancePerSubjectRef.current[idx]}
                       </th>
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        CS237A
-                      </th>
                     </tr>
                   </tbody>
                 );
@@ -222,55 +204,34 @@ const CheckSub = (props) => {
               height: 500,
             }}
           >
-            <div className="mt-10 mb-2">
-              <Bar
-                data={studDataRef.current}
-                options={{
-                  plugins: {
-                    legend: {
-                      labels: {
-                        font: {
-                          size: 20,
-                        },
+            <Bar
+              data={studDataRef.current}
+              options={{
+                plugins: {
+                  legend: {
+                    labels: {
+                      font: {
+                        size: 20,
                       },
                     },
                   },
-                }}
-              />
-            </div>
-            <div className="mt-10 mb-10">
-              <Line
-                data={studDataRef.current}
-                options={{
-                  plugins: {
-                    legend: {
-                      labels: {
-                        font: {
-                          size: 20,
-                        },
+                },
+              }}
+            />
+            <Line
+              data={studDataRef.current}
+              options={{
+                plugins: {
+                  legend: {
+                    labels: {
+                      font: {
+                        size: 20,
                       },
                     },
                   },
-                }}
-              />
-            </div>
-            <div className="mt-15 mb-5">
-              <Pie
-                data={studDataRef.current}
-                options={{
-                  plugins: {
-                    legend: {
-                      labels: {
-                        font: {
-                          size: 20,
-                        },
-                      },
-                    },
-                  },
-                  aspectRatio: 1.5,
-                }}
-              />
-            </div>
+                },
+              }}
+            />
           </div>
         </div>
       )}

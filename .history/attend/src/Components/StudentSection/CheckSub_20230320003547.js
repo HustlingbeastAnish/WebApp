@@ -47,16 +47,10 @@ const CheckSub = (props) => {
               <thead class="text-xs text-white-100 uppercase bg-gray- dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Sl No.
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-2xl font-bold">
                     Subjects
                   </th>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
                     Status
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Subject Code
                   </th>
                 </tr>
               </thead>
@@ -68,12 +62,6 @@ const CheckSub = (props) => {
                         scope="row"
                         class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
                       >
-                        {idx}
-                      </th>
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                      >
                         {elem}
                       </th>
                       <th
@@ -81,12 +69,6 @@ const CheckSub = (props) => {
                         class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Enrolled
-                      </th>
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        CS237A
                       </th>
                     </tr>
                   </tbody>

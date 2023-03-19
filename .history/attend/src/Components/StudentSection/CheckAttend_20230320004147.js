@@ -168,7 +168,7 @@ const CheckSub = (props) => {
                     Attendance
                   </th>
                   <th scope="col" class="px-6 py-3 text-2xl font-bold">
-                    Subject Code
+                    Subjects
                   </th>
                 </tr>
               </thead>
@@ -199,12 +199,6 @@ const CheckSub = (props) => {
                         class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         {TotalAttendancePerSubjectRef.current[idx]}
-                      </th>
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        CS237A
                       </th>
                     </tr>
                   </tbody>

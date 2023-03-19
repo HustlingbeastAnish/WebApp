@@ -17,16 +17,12 @@ const CheckSub = (props) => {
     "DSA",
     "DEV",
   ]);
-  const [
-    TotalClassesPerSubject,
-    setTotalClassesPerSubject,
-    TotalClassesPerSubjectRef,
-  ] = useState([0, 0, 0]);
-  const [
-    TotalAttendancePerSubject,
-    setTotalAttendancePerSubject,
-    TotalAttendancePerSubjectRef,
-  ] = useState([0, 0, 0]);
+  const [setTotalClassesPerSubject, TotalClassesPerSubjectRef] = useState([
+    0, 0, 0,
+  ]);
+  const [setTotalAttendancePerSubject, TotalAttendancePerSubjectRef] = useState(
+    [0, 0, 0]
+  );
 
   const [studData, setstudData, studDataRef] = useState({
     labels: studentData.map((data) => data.subject),
@@ -38,8 +34,6 @@ const CheckSub = (props) => {
       },
     ],
   });
-
-  const [flag, setflag] = useState(false);
 
   const getSubjects = () => {
     axios
@@ -97,7 +91,6 @@ const CheckSub = (props) => {
                       },
                     ],
                   });
-                  setflag(true);
                 })
                 .catch((err) => {
                   console.log("attendance calculation not possible ");
@@ -114,7 +107,6 @@ const CheckSub = (props) => {
         console.log(err);
       });
   };
-
   useEffect(() => {
     getSubjects();
   }, []);
@@ -159,12 +151,6 @@ const CheckSub = (props) => {
                     >
                       Enrolled
                     </th>
-                    <th
-                      scope="row"
-                      class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {TotalAttendancePerSubjectRef.current[idx]}
-                    </th>
                   </tr>
                 </tbody>
               );
@@ -173,31 +159,29 @@ const CheckSub = (props) => {
         </div>
       </div>
 
-      {flag && (
-        <div className="flex justify-center items-center">
-          <div
-            style={{
-              width: 700,
-              height: 500,
-            }}
-          >
-            <Bar
-              data={studDataRef.current}
-              options={{
-                plugins: {
-                  legend: {
-                    labels: {
-                      font: {
-                        size: 20,
-                      },
+      <div className="flex justify-center items-center">
+        <div
+          style={{
+            width: 700,
+            height: 500,
+          }}
+        >
+          <Bar
+            data={studDataRef.current}
+            options={{
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 20,
                     },
                   },
                 },
-              }}
-            />
-          </div>
+              },
+            }}
+          />
         </div>
-      )}
+      </div>
     </div>
   );
 };

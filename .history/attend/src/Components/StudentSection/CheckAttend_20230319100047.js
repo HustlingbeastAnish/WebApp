@@ -97,8 +97,8 @@ const CheckSub = (props) => {
                       },
                     ],
                   });
-                  setflag(true);
                 })
+                setflag(true;
                 .catch((err) => {
                   console.log("attendance calculation not possible ");
                   console.log(err);
@@ -158,12 +158,6 @@ const CheckSub = (props) => {
                       class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       Enrolled
-                    </th>
-                    <th
-                      scope="row"
-                      class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {TotalAttendancePerSubjectRef.current[idx]}
                     </th>
                   </tr>
                 </tbody>

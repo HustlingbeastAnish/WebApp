@@ -39,8 +39,6 @@ const CheckSub = (props) => {
     ],
   });
 
-  const [flag, setflag] = useState(false);
-
   const getSubjects = () => {
     axios
       .get(`http://localhost:3002/checksubjects/${userData.email}`)
@@ -97,7 +95,6 @@ const CheckSub = (props) => {
                       },
                     ],
                   });
-                  setflag(true);
                 })
                 .catch((err) => {
                   console.log("attendance calculation not possible ");
@@ -114,7 +111,6 @@ const CheckSub = (props) => {
         console.log(err);
       });
   };
-
   useEffect(() => {
     getSubjects();
   }, []);
@@ -159,12 +155,6 @@ const CheckSub = (props) => {
                     >
                       Enrolled
                     </th>
-                    <th
-                      scope="row"
-                      class="px-6 py-4 font-medium text-xl text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {TotalAttendancePerSubjectRef.current[idx]}
-                    </th>
                   </tr>
                 </tbody>
               );
@@ -173,31 +163,29 @@ const CheckSub = (props) => {
         </div>
       </div>
 
-      {flag && (
-        <div className="flex justify-center items-center">
-          <div
-            style={{
-              width: 700,
-              height: 500,
-            }}
-          >
-            <Bar
-              data={studDataRef.current}
-              options={{
-                plugins: {
-                  legend: {
-                    labels: {
-                      font: {
-                        size: 20,
-                      },
+      <div className="flex justify-center items-center">
+        <div
+          style={{
+            width: 700,
+            height: 500,
+          }}
+        >
+          <Bar
+            data={studDataRef.current}
+            options={{
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 20,
                     },
                   },
                 },
-              }}
-            />
-          </div>
+              },
+            }}
+          />
         </div>
-      )}
+      </div>
     </div>
   );
 };

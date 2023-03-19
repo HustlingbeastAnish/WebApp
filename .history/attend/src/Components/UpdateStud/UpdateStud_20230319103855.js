@@ -40,7 +40,7 @@ function Updatestud(props) {
   };
   return (
     <>
-      <div>{!flag && <Spinner />}</div>
+      <div className="mt-20">{!flag && <Spinner />}</div>
       {flag && (
         <div className="bg-gray-700 border-black mb-5 flex flex-col items-center">
           <h2 className="text-center font-semibold text-3xl mt-2 text-white">

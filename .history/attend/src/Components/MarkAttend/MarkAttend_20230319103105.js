@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
-import Spinner from "../Spinner/Spinner";
 
 function MarkAttend(props) {
   const currSubject = props.Subject;
@@ -168,7 +167,6 @@ function MarkAttend(props) {
           Showing Details for {`${dayy}/${monthh}/${yearr}`}
         </h2>
 
-        {!flag && <Spinner />}
         {flag && (
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
             <div className="flex justify-between items-center py-4 bg-white dark:bg-gray-800 ">

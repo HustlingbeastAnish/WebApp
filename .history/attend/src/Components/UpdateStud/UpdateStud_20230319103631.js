@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Spinner from "../Spinner/Spinner";
 
 function Updatestud(props) {
   const navigate = useNavigate();
@@ -28,10 +27,7 @@ function Updatestud(props) {
       .then((res) => {
         setstudentData(res.data);
         console.log(res.data);
-
-        setTimeout(() => {
-          setflag(true);
-        }, 1000);
+        console.log(studentData);
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +36,6 @@ function Updatestud(props) {
   };
   return (
     <>
-      <div>{!flag && <Spinner />}</div>
       {flag && (
         <div className="bg-gray-700 border-black mb-5 flex flex-col items-center">
           <h2 className="text-center font-semibold text-3xl mt-2 text-white">

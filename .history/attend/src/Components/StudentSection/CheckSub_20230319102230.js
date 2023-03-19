@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import useState from "react-usestateref";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Spinner from "../Spinner/Spinner";
 
 const CheckSub = (props) => {
   const navigate = useNavigate();
@@ -37,11 +36,19 @@ const CheckSub = (props) => {
           <div className="m-2 text-4xl font-semibold">
             Welcome {userData.name} to DashBoard
           </div>
+          <div className="flex justify-center">
+            <button
+              type="button"
+              class="text-white bg-purple-700 mt-3 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 w-25 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              onClick={getSubjects}
+            >
+              Click to view Subject List
+            </button>
+          </div>
         </div>
       </div>
-      {!flag && <Spinner />}
       {flag && (
-        <div className="m-20">
+        <div className="m-2">
           <div class="flex justify-center">
             <table class="w-2/3 text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-white-100 uppercase bg-gray- dark:bg-gray-700 dark:text-gray-400">

@@ -37,11 +37,10 @@ const CheckSub = (props) => {
           <div className="m-2 text-4xl font-semibold">
             Welcome {userData.name} to DashBoard
           </div>
-        </div>
       </div>
       {!flag && <Spinner />}
       {flag && (
-        <div className="m-20">
+        <div className="m-2">
           <div class="flex justify-center">
             <table class="w-2/3 text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-white-100 uppercase bg-gray- dark:bg-gray-700 dark:text-gray-400">

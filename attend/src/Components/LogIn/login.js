@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Navbar/navbar.js";
 import login1 from "../images/Login1.svg";
+import Swal from 'sweetalert2'
 
 function Login() {
   const navigate = useNavigate();
@@ -26,13 +27,26 @@ function Login() {
     const data = await res.json();
     console.log(data);
     if (data.status === 400 || !data || data.error) {
-      console.log(data);
-      window.alert("Please Enter valid user Credentials");
-      console.log("Please enter valid user Credentials");
+      
+      
+      Swal.fire({
+        title: 'Bad Credentials',
+        text: 'Please enter valid details',
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      })
+      
+    
     } else {
-      window.alert("Successfully Logged In");
+      Swal.fire({
+        title: 'Login Successful',
+        icon: 'success',
+        timer: 1000,
+      })
       console.log("Successfully Logged In");
-      navigate("/tlogin");
+      setTimeout(() => {
+        navigate("/tlogin");
+      }, 1500);
     }
   };
 

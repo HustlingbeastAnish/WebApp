@@ -2,14 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Navbar/navbar.js";
+import Swal from 'sweetalert2'
+
 function Login() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-
   const PostLogIn = async (e) => {
     e.preventDefault();
-
     const res = await fetch("/api/userstud", {
       method: "POST",
       headers: {
@@ -20,20 +20,31 @@ function Login() {
         password,
       }),
     });
-
     const data = await res.json();
     console.log(data);
     if (data.status === 400 || !data || data.error) {
-      console.log(data);
-      window.alert("Please Enter valid user Credentials");
-      console.log("Please enter valid user Credentials");
+      
+      
+      Swal.fire({
+        title: 'Bad Credentials',
+        text: 'Please enter valid details',
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      })
+      
+    
     } else {
-      window.alert("Successfully Logged In");
+      Swal.fire({
+        title: 'Login Successful',
+        icon: 'success',
+        timer: 1000,
+      })
       console.log("Successfully Logged In");
-      navigate("/slogin");
+      setTimeout(() => {
+        navigate("/slogin");
+      }, 1500);
     }
   };
-
   return (
     <div>
       <Navbar />

@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import "flowbite";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 function MarkAttend(props) {
+  const navigate = useNavigate();
+
   const currSubject = props.Subject;
   const currBranch = props.Branch;
 
@@ -21,8 +25,7 @@ function MarkAttend(props) {
   const datee = `${dayy}-${monthh}-${yearr}`;
   // console.log(props.SelectedDate);
   const [absentcount, Setabsentcount] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0,
+    
   ]);
 
   const [absent, Setabsent] = useState([
@@ -38,7 +41,7 @@ function MarkAttend(props) {
     ["", "0"],
   ]);
   const PostAbs = async (e) => {
-    console.log("Please waiting your attendance is getting posted");
+    
     for (let i = 0; i < 10; i++) {
       if (absent[i][1] === "0") {
         continue;
@@ -57,12 +60,36 @@ function MarkAttend(props) {
         const data = await res.json();
         console.log(data);
         if (!data || data.status === 422 || data.error) {
+          Swal.fire({
+            title: 'Failure',
+            text: 'Attendance Not Posted ',
+            icon: 'error',
+            confirmButtonText: 'Retry'
+          })
           console.log("Student has been marked absent");
         } else {
+          Swal.fire({
+            title: 'Attendance Posted Sucessfully',
+            icon: 'success',
+            timer: 1000,
+          })
+          setTimeout(() => {
+            navigate("/tlogin");
+          }, 1500);
+       
+        
           console.log("Student has not been marked absent");
         }
       }
     }
+    Swal.fire({
+      title: 'Attendance Posted Sucessfully',
+      icon: 'success',
+      timer: 1000,
+    })
+    setTimeout(() => {
+      navigate("/tlogin");
+    }, 1500);
   };
   const [flag, setflag] = useState(false);
 
@@ -100,7 +127,7 @@ function MarkAttend(props) {
                   }));
                   setTimeout(() => {
                     setflag(true);
-                  }, 1000);
+                  }, 0);
                 })
                 .catch((err) => {
                   console.log("attendance calculation not possible ");
@@ -239,7 +266,7 @@ function MarkAttend(props) {
             </div>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-black dark:bg-gray-700 dark:text-gray-400">
-                <tr class="even:bg-grey">
+              <tr class="even:bg-grey">
                   <th scope="col" className="py-3 px-6 text-white">
                     No.
                   </th>

@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Swal from 'sweetalert2'
 const CreateAttend = () => {
   const navigate = useNavigate();
 
@@ -80,11 +81,29 @@ const CreateAttend = () => {
     });
 
     const data = await res.json();
-    if (!data || data.status === 422 || data.error) {
+    if(data.status === 422 )
+    {
+      Swal.fire({
+        title: 'Bad Credentials',
+        text: 'Please fill in all details',
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      })
+    }
+    if (!data || data.error) {
       console.log("Invalid Registration");
-      window.alert("Invalid Registration");
+      Swal.fire({
+        title: 'Bad Credentials',
+        text: 'User Already Exists with required fields',
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      })
     } else {
-      window.alert("Registration is done Successfully");
+      Swal.fire({
+        title: 'Student added successfully',
+        icon: 'success',
+        timer: 1000,
+      })
       navigate("/tlogin");
     }
   };

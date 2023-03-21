@@ -3,6 +3,7 @@ var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
 
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Stloginuser = require("../model/stuLogin");
@@ -38,7 +39,7 @@ exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;
     if (!name || !email || !phone || !roll || !subject || !branch) {
-      res.status(422).json({ error: "fill in all details" });
+      return res.status(422).json({ error: "fill in all details" });
     } else {
       console.log(req.body);
       Stuser.findOne({ email: email })
@@ -80,7 +81,8 @@ exports.stucreate = async (req, res) => {
             subject: [subject],
             branch: branch,
           });
-          stuser
+        
+           stuser
             .save()
             .then(() => {
               const stloginuser = new Slogintuser({
@@ -168,6 +170,7 @@ exports.find = async (req, res) => {
         expires: new Date(Date.now() + 25892000000),
         httpOnly: true,
       });
+
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
       } else {
@@ -282,7 +285,7 @@ exports.getsubjectsenrolled = (req, res) => {
 };
 exports.update = (req, res) => {
   if (!req.body) {
-    res.status(400).send({ message: "Data to be updated cannot be empty" });
+    return res.status(400).send({ message: "Data to be updated cannot be empty" });
   }
   const id = req.params.id;
   Stuser.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
@@ -292,7 +295,7 @@ exports.update = (req, res) => {
           message: `Cannot Update a user with ${id} , Maybe User not found`,
         });
       } else {
-        res.send(data);
+        return res.status(201).send({ message: "success" });
       }
     })
     .catch((err) => {
@@ -377,22 +380,24 @@ exports.AllDates = async (req, res) => {
   }
 };
 
+
 exports.findStudbyemail = async (req, res) => {
   try {
-    if (!req.body) {
-      console.log("No student with a branch found");
+    if (!req.body) { console.log("No student with a branch found");
       return res.status(404).json({ err: "Feilds cannot be empty" });
+     
     }
 
     const email = req.params.email;
     console.log("ok");
     console.log(email);
-    Stloginuser.find({ email: email })
+    Stloginuser.find({ email:email })
       .then((data) => {
-        if (!data) {
-          console.log("No student with a branch found");
+        if (!data) { console.log("No student with a branch found");
           res.status(404).json({ err: "No student with a branch found" });
+          
         } else {
+         
           res.send(data);
         }
       })

@@ -10,7 +10,7 @@ import {
 import useState from "react-usestateref";
 
 const GradePortal = (props) => {
-  const [Student, setStudent] = useState({
+  const [Student, setStudent, StudentRef] = useState({
     name: props.AuthorizedStud.name,
     email: props.AuthorizedStud.email,
     subject: "DSA",
@@ -26,8 +26,8 @@ const GradePortal = (props) => {
   const PostGrade = async (e) => {
     console.log(Student);
     e.preventDefault();
-    const { name, email, subject, marks } = Student;
-    const res = await fetch("http://localhost:3002/gradepost", {
+    const { name, email, subject, marks } = StudentRef.current;
+    const res = await fetch("http://localhost:8080/gradepost", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

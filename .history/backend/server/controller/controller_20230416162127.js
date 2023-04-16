@@ -2,7 +2,6 @@ var userdb = require("../model/model");
 var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
-var Grades = require("../model/grade");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -56,7 +55,7 @@ exports.gradeStore = async (req, res) => {
         const updatedSubject = await Grades.findOneAndUpdate(
           { email: email },
           {
-            $addToSet: { subject: subObj },
+            $push: { subject: subObj },
           },
           { new: true }
         );
@@ -66,7 +65,7 @@ exports.gradeStore = async (req, res) => {
             updatedSubject,
           });
         } else {
-          res.status(500).json({ error: "Error in updating subject" });
+          res.status(500).json({ message: "Error in updating subject" });
         }
       } else {
         res.status(400).json({ error: "Subject already exists for the email" });
@@ -86,7 +85,6 @@ exports.gradeStore = async (req, res) => {
       }
     }
   } catch (err) {
-    console.log("Some errors");
     console.log(err);
   }
 };

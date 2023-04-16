@@ -41,8 +41,62 @@ route.get("/aftertlogin", authenticate, (req, res) => {
 route.get("/afterslogin", authenticatestu, (req, res) => {
   res.send(req.rootUser);
 });
-// To store the grade of the student
-route.post("/gradepost", controller.gradeStore);
+
+router.post("/gradepost", async (req, res) => {
+  const { name, email, subject, marks } = req.body;
+  console.log(req.body);
+  if (!name || !email || !subject || !marks) {
+    res.status(400).json({ error: "Please fill in all the details" });
+  }
+  try {
+    const subObj = {
+      subject,
+      marks,
+    };
+    const findEmail = await Grades.findOne({ email: email });
+    if (findEmail) {
+      if (
+        findEmail.subject.filter((e) => {
+          return e.subject == subject;
+        }).length == 0
+      ) {
+        const updatedSubject = await Grades.findOneAndUpdate(
+          { email: email },
+          {
+            $push: { subject: subObj },
+          },
+          { new: true }
+        );
+        if (updatedSubject) {
+          res.status(200).json({
+            message: "Successfully updated the subject",
+            updatedSubject,
+          });
+        } else {
+          res.status(500).json({ message: "Error in updating subject" });
+        }
+      } else {
+        res.status(400).json({ error: "Subject already exists for the email" });
+      }
+    } else {
+      const arr = [subObj];
+      const student = new Grades({
+        name,
+        email,
+        subject: arr,
+      });
+      const stud = await student.save();
+      if (stud) {
+        res.status(201).json({ message: "Grade entry Successful" });
+      } else {
+        res.status(400).json({ error: "Grade Entry Failed" });
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 // Route to get the details of the student from the collection stloginusers
 route.get("/detailstloginusers/:email", controller.getstlogindetails);
 

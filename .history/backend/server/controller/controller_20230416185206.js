@@ -2,7 +2,7 @@ var userdb = require("../model/model");
 var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
-var Grades = require("../model/grade");
+var Grades = require("../model/model");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");

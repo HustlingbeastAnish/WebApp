@@ -23,7 +23,7 @@ import Changepass from "./Components/Tlogin/ResetPassword/Changepass";
 import CheckSub from "./Components/StudentSection/CheckSub";
 import CheckAttend from "./Components/StudentSection/CheckAttend";
 import Job from "./Components/JobPortal/JobPortal";
-import Grades from "./Components/GradePortal/GradePortal";
+import Grades from "../../backend/server/model/grade";
 // For Graphical Visualization of attendance
 
 function App() {
@@ -64,16 +64,7 @@ function App() {
           <Route exact path="/" element={<TeachStu />}></Route>
         </Routes>
         <Routes>
-          <Route
-            exact
-            path="/grades"
-            element={
-              <Grades
-                AuthorizedStud={AuthorizedStud}
-                setAuthorizedStud={setAuthorizedStud}
-              />
-            }
-          ></Route>
+          <Route exact path="/grades" element={<Grades />}></Route>
         </Routes>
         <Routes>
           <Route exact path="/job" element={<Job />}></Route>

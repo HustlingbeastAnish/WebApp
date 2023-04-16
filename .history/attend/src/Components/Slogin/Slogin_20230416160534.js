@@ -133,13 +133,13 @@ function Slogin(props) {
             </Link>
           </div>
           <div class="max-w-sm p-6 bg-white border  h-2/5 border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
-            <Link to="/grades">
+            <Link to="/checkattend">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Track your Grades
+                Track for Grades
               </h5>
               <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Track your grades and marks here and get pictorial view of your
-                grades
+                Get details for your attendance percentage ,number of present
+                days ,number of leaves etc
               </p>
               <a
                 href="/#"

@@ -64,19 +64,19 @@ function App() {
           <Route exact path="/" element={<TeachStu />}></Route>
         </Routes>
         <Routes>
+          <Route exact path="/grades" element={<Grades />}></Route>
+        </Routes>
+        <Routes>
           <Route
             exact
-            path="/grades"
+            path="/job"
             element={
-              <Grades
+              <Job
                 AuthorizedStud={AuthorizedStud}
                 setAuthorizedStud={setAuthorizedStud}
               />
             }
           ></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/job" element={<Job />}></Route>
         </Routes>
         <Routes>
           <Route

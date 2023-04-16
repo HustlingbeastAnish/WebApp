@@ -41,8 +41,8 @@ route.get("/aftertlogin", authenticate, (req, res) => {
 route.get("/afterslogin", authenticatestu, (req, res) => {
   res.send(req.rootUser);
 });
-// To store the grade of the student
 route.post("/gradepost", controller.gradeStore);
+
 // Route to get the details of the student from the collection stloginusers
 route.get("/detailstloginusers/:email", controller.getstlogindetails);
 

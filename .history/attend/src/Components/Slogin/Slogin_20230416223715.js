@@ -68,11 +68,9 @@ function Slogin(props) {
         </div>
       </button>
       <div className="flex ">
-        <div className="h-full">
-          <SideNavbar open={open} />
-        </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div class="p-6 h bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4 md:h-1/2 lg:h-2/5">
+        <SideNavbar open={open} />
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div class="max-w-sm p-6 h-2/5 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
             <a href="/#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Click to check Intership Opportunities
@@ -103,7 +101,7 @@ function Slogin(props) {
               </a>
             </Link>
           </div>
-          <div class="p-6 h bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4 md:h-1/2 lg:h-2/5">
+          <div class="max-w-sm p-6 bg-white border  h-2/5 border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
             <Link to="/checkattend">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Check Attendance in the respective subjects
@@ -133,7 +131,7 @@ function Slogin(props) {
               </a>
             </Link>
           </div>
-          <div class="p-6 h bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4 md:h-2/3 lg:h-2/5">
+          <div class="max-w-sm p-6 bg-white border  h-2/5 border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
             <Link to="/grades">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Track your Grades

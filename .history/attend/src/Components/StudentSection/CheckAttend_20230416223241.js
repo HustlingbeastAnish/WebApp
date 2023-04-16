@@ -69,7 +69,7 @@ const CheckSub = (props) => {
               }));
               axios
                 .get(
-                  `http://localhost:8080/detailstloginusers/${userData.email}`
+                  `http://localhost:3002/detailstloginusers/${userData.email}`
                 )
                 .then((res) => {
                   setTotalAttendancePerSubject((TotalAttendancePerSubject) => ({

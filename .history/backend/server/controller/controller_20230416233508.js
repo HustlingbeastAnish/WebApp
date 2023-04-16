@@ -255,10 +255,16 @@ exports.getgrades = async (req, res) => {
       ) {
         res.status(400).json({ error: "Grades failed" });
       } else {
-        const arr = emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        });
-        res.send(arr[0]);
+        const arr = [
+          emailExists.subject.filter((e) => {
+            return e.subject == subject;
+          }),
+        ];
+        res.send(
+          emailExists.subject.filter((e) => {
+            return e.subject == subject;
+          })
+        );
       }
     } else {
       res.status(400).json({ error: "Please Enter valid User Credentials" });

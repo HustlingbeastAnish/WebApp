@@ -60,7 +60,7 @@ const CheckSub = (props) => {
           const temp = currSubject + "_" + currBranch;
           axios
             .get(
-              `http://localhost:8080/api/classesddata/${StudSubjectsRef.current[i]}/${currBranch}`
+              `http://localhost:3002/api/classesddata/${StudSubjectsRef.current[i]}/${currBranch}`
             )
             .then((res) => {
               setTotalClassesPerSubject((TotalClassesPerSubject) => ({
@@ -69,7 +69,7 @@ const CheckSub = (props) => {
               }));
               axios
                 .get(
-                  `http://localhost:8080/detailstloginusers/${userData.email}`
+                  `http://localhost:3002/detailstloginusers/${userData.email}`
                 )
                 .then((res) => {
                   setTotalAttendancePerSubject((TotalAttendancePerSubject) => ({

@@ -238,35 +238,43 @@ exports.find = async (req, res) => {
     console.log(err);
   }
 };
-exports.getgrades = async (req, res) => {
-  try {
-    const { email, subject } = req.body;
-    if (!email || !subject) {
-      console.log(email);
-      console.log(subject);
-      return res.status(400).json({ error: "None of the feilds can be empty" });
-    }
-    const emailExists = await Grades.findOne({ email: email });
-    if (emailExists) {
-      if (
-        emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        }).length == 0
-      ) {
-        res.status(400).json({ error: "Grades failed" });
-      } else {
-        const arr = emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        });
-        res.send(arr[0]);
-      }
-    } else {
-      res.status(400).json({ error: "Please Enter valid User Credentials" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
+// exports.getgrades = async (req, res) => {
+//   try {
+//     const { email, subject } = req.body;
+//     if (!email || !subject) {
+//       console.log(email);
+//       console.log(subject);
+//       return res.status(400).json({ error: "None of the feilds can be empty" });
+//     }
+//     const emailExists = await Grades.findOne({ email: email });
+//     if (emailExists) {
+//       if (
+//         emailExists.subject.filter((e) => {
+//           return e.subject == subject;
+//         }).length == 0
+//       ) {
+//         res.status(400).json({ error: "Grades failed" });
+//       } else {
+//         const arr = emailExists.subject.filter((e) => {
+//           return e.subject == subject;
+//         });
+
+//         // let val = arr[0][0];
+//         // arr[0].filter((e) => {
+//         //   res.send(e.marks);
+//         // });
+//         res.send(${arr[0]});
+//         for (let key in obj) {
+//           console.log(`${key}: ${obj[key]}`);
+//         }
+//       }
+//     } else {
+//       res.status(400).json({ error: "Please Enter valid User Credentials" });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 exports.findStud = async (req, res) => {
   try {

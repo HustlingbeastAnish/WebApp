@@ -3,6 +3,7 @@ var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
 var Grades = require("../model/grade");
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Stloginuser = require("../model/stuLogin");
@@ -89,7 +90,6 @@ exports.gradeStore = async (req, res) => {
     console.log(err);
   }
 };
-
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;
@@ -238,35 +238,6 @@ exports.find = async (req, res) => {
     console.log(err);
   }
 };
-exports.getgrades = async (req, res) => {
-  try {
-    const { email, subject } = req.body;
-    if (!email || !subject) {
-      console.log(email);
-      console.log(subject);
-      return res.status(400).json({ error: "None of the feilds can be empty" });
-    }
-    const emailExists = await Grades.findOne({ email: email });
-    if (emailExists) {
-      if (
-        emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        }).length == 0
-      ) {
-        res.status(400).json({ error: "Grades failed" });
-      } else {
-        const arr = emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        });
-        res.send(arr[0]);
-      }
-    } else {
-      res.status(400).json({ error: "Please Enter valid User Credentials" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 exports.findStud = async (req, res) => {
   try {
@@ -301,6 +272,7 @@ exports.findStudWithFeild = async (req, res) => {
     if (!req.body) {
       return res.status(404).json({ err: "Feilds cannot be empty" });
     }
+
     const subj = req.params.subject;
     const branch = req.params.branch;
     Stuser.find({ subject: subj, branch: branch })

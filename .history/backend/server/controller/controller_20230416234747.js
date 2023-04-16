@@ -258,7 +258,11 @@ exports.getgrades = async (req, res) => {
         const arr = emailExists.subject.filter((e) => {
           return e.subject == subject;
         });
-        res.send(arr[0]);
+
+        // let val = arr[0][0];
+        arr[0].filter((e) => {
+          return e.marks;
+        });
       }
     } else {
       res.status(400).json({ error: "Please Enter valid User Credentials" });

@@ -3,6 +3,7 @@ var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
 var Grades = require("../model/grade");
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Stloginuser = require("../model/stuLogin");
@@ -89,7 +90,6 @@ exports.gradeStore = async (req, res) => {
     console.log(err);
   }
 };
-
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;
@@ -243,22 +243,25 @@ exports.getgrades = async (req, res) => {
     const { email, subject } = req.body;
     if (!email || !subject) {
       console.log(email);
-      console.log(subject);
+      console.log(password);
       return res.status(400).json({ error: "None of the feilds can be empty" });
     }
-    const emailExists = await Grades.findOne({ email: email });
+
+    const emailExists = await userdb.findOne({ email: email });
+    console.log(emailExists);
     if (emailExists) {
-      if (
-        emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        }).length == 0
-      ) {
-        res.status(400).json({ error: "Grades failed" });
+      const PassMatch = await bcrypt.compare(password, emailExists.password);
+
+      const token = await emailExists.generateAuthToken();
+      res.cookie("jwtoken", token, {
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true,
+      });
+
+      if (!PassMatch) {
+        res.status(400).json({ error: "Please Enter valid User Credentials" });
       } else {
-        const arr = emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        });
-        res.send(arr[0]);
+        res.json({ message: "User SignIn Successfully" });
       }
     } else {
       res.status(400).json({ error: "Please Enter valid User Credentials" });
@@ -301,6 +304,7 @@ exports.findStudWithFeild = async (req, res) => {
     if (!req.body) {
       return res.status(404).json({ err: "Feilds cannot be empty" });
     }
+
     const subj = req.params.subject;
     const branch = req.params.branch;
     Stuser.find({ subject: subj, branch: branch })

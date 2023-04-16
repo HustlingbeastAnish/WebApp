@@ -258,6 +258,11 @@ exports.getgrades = async (req, res) => {
         const arr = emailExists.subject.filter((e) => {
           return e.subject == subject;
         });
+
+        // let val = arr[0][0];
+        // arr[0].filter((e) => {
+        //   res.send(e.marks);
+        // });
         res.send(arr[0]);
       }
     } else {

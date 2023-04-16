@@ -68,7 +68,7 @@ function Slogin(props) {
         </div>
       </button>
       <div className="flex ">
-        <div className="h-full">
+        <div className="md:h-1/2 lg:h-2/5">
           <SideNavbar open={open} />
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

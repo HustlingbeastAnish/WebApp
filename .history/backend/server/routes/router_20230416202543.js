@@ -44,17 +44,20 @@ route.get("/afterslogin", authenticatestu, (req, res) => {
 // To store the grade of the student
 route.post("/gradepost", controller.gradeStore);
 
-// Route to get the details the data of the grades
-route.get("/getgrade", controller.getgrades);
+route.get("/getgrade", controller.getGrade);
 // Route to get the details of the student from the collection stloginusers
 route.get("/detailstloginusers/:email", controller.getstlogindetails);
+
 // Route to get the details of the subjects in which a student is enrolled
 route.get("/checksubjects/:email", controller.getsubjectsenrolled);
+
 // Route for the forgot password
 route.post("/forgotpassword", controller.forgotpassword);
 route.get("/resetpassword/:id/:token", controller.resetpassword);
+
 // Get request to get the details of student to see attendance
 route.get("/api/getstuddata/:email", controller.findStudbyemail);
+
 route.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("user logout");

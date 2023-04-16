@@ -68,9 +68,7 @@ function Slogin(props) {
         </div>
       </button>
       <div className="flex ">
-        <div className="h-full">
-          <SideNavbar open={open} />
-        </div>
+        <SideNavbar open={open} />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div class="p-6 h bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4 md:h-1/2 lg:h-2/5">
             <a href="/#">

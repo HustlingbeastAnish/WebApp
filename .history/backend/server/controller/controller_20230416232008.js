@@ -255,11 +255,19 @@ exports.getgrades = async (req, res) => {
       ) {
         res.status(400).json({ error: "Grades failed" });
       } else {
-        const arr = emailExists.subject.filter((e) => {
-          return e.subject == subject;
-        });
-        res.send(arr[0]);
+        res.send(
+          emailExists.subject.filter((e) => {
+            return e.subject == subject;
+          })
+        );
       }
+      // const subjectExists = await Grades.findOne({ subject: subject });
+      // if (subjectExists) {
+      //   res.send(subjectExists);
+      //   console.log(subjectExists.subject.subject);
+      // } else {
+      //   res.status(400).json({ error: "Grades failed" });
+      // }
     } else {
       res.status(400).json({ error: "Please Enter valid User Credentials" });
     }

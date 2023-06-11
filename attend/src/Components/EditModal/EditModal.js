@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const EditModal = (props) => {
@@ -29,7 +29,7 @@ const EditModal = (props) => {
     e.preventDefault();
     const { _id, name, email, subject, phone, roll } = updatedStud;
     console.log(_id);
-    const res = await fetch(`/api/studdata/${_id}`, {
+    const res = await fetch(`http://localhost:8080/api/studdata/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       // content: "application/json",
@@ -42,30 +42,34 @@ const EditModal = (props) => {
       }),
     });
     const data = await res.json();
-    console.log(data.status)
-    if(data.status === 422 || data.status===400|| data.status===404||data.status===500)
-    {
+    console.log(data.status);
+    if (
+      data.status === 422 ||
+      data.status === 400 ||
+      data.status === 404 ||
+      data.status === 500
+    ) {
       Swal.fire({
-        title: 'Bad Credentials',
-        text: 'Please fill in all details',
-        icon: 'error',
-        confirmButtonText: 'Retry'
-      })
+        title: "Bad Credentials",
+        text: "Please fill in all details",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     }
     if (!data || data.error) {
       console.log("Invalid Registration");
       Swal.fire({
-        title: 'Bad Credentials',
-        text: 'User Already Exists with required fields',
-        icon: 'error',
-        confirmButtonText: 'Retry'
-      })
+        title: "Bad Credentials",
+        text: "User Already Exists with required fields",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     } else {
       Swal.fire({
-        title: 'Updation Successful',
-        icon: 'success',
+        title: "Updation Successful",
+        icon: "success",
         timer: 1000,
-      })
+      });
       navigate("/updatestud");
     }
   };
@@ -111,7 +115,7 @@ const EditModal = (props) => {
                 Email address
               </label>
             </div>
-        
+
             <div class="grid md:grid-cols-2 md:gap-6">
               <div class="relative z-0 mb-6 w-full group">
                 <input

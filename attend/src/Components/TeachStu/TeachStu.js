@@ -157,7 +157,7 @@ function teachstu() {
               <h3 class="mb-2 text-xl font-bold dark:text-white">
                 Graphical Visualization of Attendance
               </h3>
-              <p class="text-gray-500 text-gray-400">
+              <p class="text-gray-500">
                 Uses Charts to visually represent attendance data. Provide
                 insights into attendance patterns, such as attendance trends,
                 absences, and tardiness, which helps managers to identify issues

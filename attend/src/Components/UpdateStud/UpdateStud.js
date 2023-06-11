@@ -24,7 +24,7 @@ function Updatestud(props) {
   const [flag, setflag] = useState(false);
   const fetchStudentDetails = () => {
     axios
-      .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
+      .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
         console.log(res.data);

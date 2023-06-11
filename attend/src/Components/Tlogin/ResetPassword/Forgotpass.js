@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import TrackLogo from "../../images/cclogo.png";
 import { Link, useNavigate } from "react-router-dom";
+
 const Forgotpass = (props) => {
-  // console.log(props.userData.name);
   const navigate = useNavigate();
   const [Arr, setArr] = useState({
     email: "",
     password: "",
   });
-  // const currUser = props.userData;
+
   const callTlogin = async () => {
     try {
       const res = await fetch("/aftertlogin", {
@@ -24,16 +25,14 @@ const Forgotpass = (props) => {
       props.setUserData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
-        // navigate("/tlogin");
         throw error;
       }
     } catch (err) {
       console.log(err);
-      // navigate("/loginteach");
     }
   };
-  // console.log(currUser.name);
-  const [flag, setflag] = useState(false);
+
+  const [flag, setFlag] = useState(false);
   let name, value;
   const handleChanges = (e) => {
     name = e.target.name;
@@ -62,106 +61,139 @@ const Forgotpass = (props) => {
     } else {
       console.log("Verification in process");
       props.SetLink(data.message);
-      setflag(true);
-      // console.log("Heyyy");
+      setFlag(true);
       console.log(props.link);
     }
   };
+
   useEffect(() => {
     callTlogin();
   }, []);
 
   console.log(props.userData.name);
+
+  const closeModal = () => {
+    setFlag(false);
+  };
+
   return (
-    <div>
-      <div className="flex justify-center content-center">
-        <form className="mt-20">
-          <h2 className="mb-12 font-semibold">
-            Password Reset for {props.userData.name}
-          </h2>
-          <div className="mb-6">
-            <label
-              htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Enter Your email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={Arr.email}
-              onChange={handleChanges}
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Enter Your Old Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={Arr.password}
-              onChange={handleChanges}
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              required
-            />
-          </div>
-          <div className="flex items-start mb-6">
-            <div className="flex items-center h-5">
-              <input
-                id="terms"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                required
-              />
-            </div>
-            <label
-              htmlFor="terms"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              I confirm that the above email is valid
-            </label>
-          </div>
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            onClick={PostReq}
+    <div className="bg-gray-500 h-screen">
+      <section class="bg-gray-900">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <a
+            href="/#"
+            class="flex items-center mb-6 text-2xl font-semibold text-white-900 dark:text-white"
           >
-            Verify Email
-          </button>
-        </form>
-      </div>
+            <img class="w-8 h-8 mr-2" src={TrackLogo} alt="logo" />
+            TracKnAttend
+          </a>
+          <div class="w-full p-6 bg-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+            <h2 class="mb-1 text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-black">
+              Change Password
+            </h2>
+            <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Enter Your email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={Arr.email}
+                  onChange={handleChanges}
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Enter Your Old Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={Arr.password}
+                  onChange={handleChanges}
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your Old Passsword"
+                  required
+                />
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input
+                    id="newsletter"
+                    aria-describedby="newsletter"
+                    type="checkbox"
+                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                    required=""
+                  />
+                </div>
+                <div class="ml-3 text-sm">
+                  <label
+                    for="newsletter"
+                    class="font-light text-gray-500 dark:text-gray-300"
+                  >
+                    I accept the{" "}
+                    <a
+                      class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      href="/#"
+                    >
+                      Terms and Conditions
+                    </a>
+                  </label>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <button
+                  type="submit"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onClick={PostReq}
+                >
+                  Verify Email
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
       {flag && (
-        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Click on the below button to verify your email
-          </p>
-          <Link to="/resetpassword">
-            <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Click Here to verfiy
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+          <div className="relative w-auto max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Click on the below button to verify your email
+            </p>
+            <button
+              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={PostReq}
+            >
+              Click Here to verify
               <svg
                 aria-hidden="true"
-                class="w-4 h-4 ml-2 -mr-1"
+                className="w-4 h-4 ml-2 -mr-1"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </button>
-          </Link>
+          </div>
         </div>
       )}
     </div>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Navbar/navbar.js";
 import login1 from "../images/Login1.svg";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function Login() {
   const navigate = useNavigate();
@@ -27,22 +27,18 @@ function Login() {
     const data = await res.json();
     console.log(data);
     if (data.status === 400 || !data || data.error) {
-      
-      
       Swal.fire({
-        title: 'Bad Credentials',
-        text: 'Please enter valid details',
-        icon: 'error',
-        confirmButtonText: 'Retry'
-      })
-      
-    
+        title: "Bad Credentials",
+        text: "Please enter valid details",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     } else {
       Swal.fire({
-        title: 'Login Successful',
-        icon: 'success',
+        title: "Login Successful",
+        icon: "success",
         timer: 1000,
-      })
+      });
       console.log("Successfully Logged In");
       setTimeout(() => {
         navigate("/tlogin");
@@ -111,12 +107,14 @@ function Login() {
                       Remember me
                     </label>
                   </div>
-                  <a
-                    href="#!"
-                    className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-                  >
-                    Forgot password?
-                  </a>
+                  <Link to="/forgotpassword">
+                    <a
+                      href="#!"
+                      className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                    >
+                      Forgot password?
+                    </a>
+                  </Link>
                 </div>
                 <button
                   type="submit"

@@ -3,7 +3,7 @@ import "flowbite";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function MarkAttend(props) {
   const navigate = useNavigate();
@@ -20,13 +20,11 @@ function MarkAttend(props) {
   }, []);
 
   const dayy = props.SelectedDate.getDate();
-  const monthh = props.SelectedDate.getMonth();
+  const monthh = props.SelectedDate.getMonth() + 1;
   const yearr = props.SelectedDate.getFullYear();
   const datee = `${dayy}-${monthh}-${yearr}`;
   // console.log(props.SelectedDate);
-  const [absentcount, Setabsentcount] = useState([
-    
-  ]);
+  const [absentcount, Setabsentcount] = useState([]);
 
   const [absent, Setabsent] = useState([
     ["", "0"],
@@ -41,7 +39,6 @@ function MarkAttend(props) {
     ["", "0"],
   ]);
   const PostAbs = async (e) => {
-    
     for (let i = 0; i < 10; i++) {
       if (absent[i][1] === "0") {
         continue;
@@ -61,32 +58,31 @@ function MarkAttend(props) {
         console.log(data);
         if (!data || data.status === 422 || data.error) {
           Swal.fire({
-            title: 'Failure',
-            text: 'Attendance Not Posted ',
-            icon: 'error',
-            confirmButtonText: 'Retry'
-          })
+            title: "Failure",
+            text: "Attendance Not Posted ",
+            icon: "error",
+            confirmButtonText: "Retry",
+          });
           console.log("Student has been marked absent");
         } else {
           Swal.fire({
-            title: 'Attendance Posted Sucessfully',
-            icon: 'success',
+            title: "Attendance Posted Sucessfully",
+            icon: "success",
             timer: 1000,
-          })
+          });
           setTimeout(() => {
             navigate("/tlogin");
           }, 1500);
-       
-        
+
           console.log("Student has not been marked absent");
         }
       }
     }
     Swal.fire({
-      title: 'Attendance Posted Sucessfully',
-      icon: 'success',
+      title: "Attendance Posted Sucessfully",
+      icon: "success",
       timer: 1000,
-    })
+    });
     setTimeout(() => {
       navigate("/tlogin");
     }, 1500);
@@ -95,7 +91,7 @@ function MarkAttend(props) {
 
   const fetchStudentDetails = () => {
     axios
-      .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
+      .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         console.log(res.data);
         const temp = res.data;
@@ -103,7 +99,7 @@ function MarkAttend(props) {
         console.log("Tay Keith F these niggas up");
         axios
           .get(
-            `http://localhost:3002/api/classesddata/${currSubject}/${currBranch}`
+            `http://localhost:8080/api/classesddata/${currSubject}/${currBranch}`
           )
           .then((res) => {
             const tempp = currSubject + "_" + currBranch;
@@ -114,7 +110,7 @@ function MarkAttend(props) {
               console.log(props.Subject + "dubiu");
               console.log(elem.email);
               axios
-                .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+                .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
                 .then((res) => {
                   console.log(res.data[props.Subject]);
 
@@ -152,7 +148,7 @@ function MarkAttend(props) {
   const FetchChangedChangedAttendanceDetails = (elem, idx) => {
     console.log(props.Subject + "dubiu");
     axios
-      .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+      .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
         console.log(res.data[props.Subject]);
         // console.log(props.Subject+"dubiu");
@@ -266,7 +262,7 @@ function MarkAttend(props) {
             </div>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-black dark:bg-gray-700 dark:text-gray-400">
-              <tr class="even:bg-grey">
+                <tr class="even:bg-grey">
                   <th scope="col" className="py-3 px-6 text-white">
                     No.
                   </th>

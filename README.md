@@ -14,7 +14,7 @@ We are a bunch of coding maniacs from BIT Mesra who love to explore and work on 
 Name | Role | Github |
 --- | --- | --- |
 Sumit Agarwal | Backend Developer | https://github.com/sumit2002agarwal |
-Anish Kumar Singh | Backend Developer | https://github.com/HusltingbeastAnish |
+Anish Kumar Singh | Backend Developer | https://github.com/HustlingbeastAnish |
 Aayush Singh | Frontend Developer | https://github.com/singhaayush5 |
 Aayush Garg | Frontend Developer | https://github.com/aysh2603 |
 

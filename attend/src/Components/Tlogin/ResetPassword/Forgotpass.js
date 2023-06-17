@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import TrackLogo from "../../images/cclogo.png";
 import { Link, useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Verifycard from "./Verifycard";
 
 const Forgotpass = (props) => {
+  const [modalShow, setModalShow] = React.useState(false);
   const navigate = useNavigate();
   const [Arr, setArr] = useState({
     email: "",
     password: "",
   });
-
   const callTlogin = async () => {
     try {
       const res = await fetch("/aftertlogin", {
@@ -41,6 +44,7 @@ const Forgotpass = (props) => {
   };
 
   const PostReq = async (e) => {
+    setModalShow(true);
     console.log("Changing your password");
     e.preventDefault();
 
@@ -65,17 +69,10 @@ const Forgotpass = (props) => {
       console.log(props.link);
     }
   };
-
   useEffect(() => {
     callTlogin();
   }, []);
-
   console.log(props.userData.name);
-
-  const closeModal = () => {
-    setFlag(false);
-  };
-
   return (
     <div className="bg-gray-500 h-screen">
       <section class="bg-gray-900">
@@ -155,47 +152,20 @@ const Forgotpass = (props) => {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <button
-                  type="submit"
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  onClick={PostReq}
-                >
-                  Verify Email
-                </button>
+                <Link to="/resetpassword">
+                  <button
+                    type="submit"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    // onClick={PostReq}
+                  >
+                    Verify Email
+                  </button>
+                </Link>
               </div>
             </form>
           </div>
         </div>
       </section>
-
-      {flag && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-          <div className="relative w-auto max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Click on the below button to verify your email
-            </p>
-            <button
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              onClick={PostReq}
-            >
-              Click Here to verify
-              <svg
-                aria-hidden="true"
-                className="w-4 h-4 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

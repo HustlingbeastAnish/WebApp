@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import TrackLogo from "../../images/cclogo.png";
-import { Link, useNavigate } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Verifycard from "./Verifycard";
+import { useNavigate } from "react-router-dom";
 
 const Forgotpass = (props) => {
-  const [modalShow, setModalShow] = React.useState(false);
   const navigate = useNavigate();
   const [Arr, setArr] = useState({
     email: "",
@@ -44,7 +40,6 @@ const Forgotpass = (props) => {
   };
 
   const PostReq = async (e) => {
-    setModalShow(true);
     console.log("Changing your password");
     e.preventDefault();
 
@@ -64,6 +59,7 @@ const Forgotpass = (props) => {
       console.log("No Such Email Exists");
     } else {
       console.log("Verification in process");
+      navigate("/resetpassword");
       props.SetLink(data.message);
       setFlag(true);
       console.log(props.link);
@@ -152,15 +148,13 @@ const Forgotpass = (props) => {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <Link to="/resetpassword">
-                  <button
-                    type="submit"
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    // onClick={PostReq}
-                  >
-                    Verify Email
-                  </button>
-                </Link>
+                <button
+                  type="submit"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onClick={PostReq}
+                >
+                  Verify Email
+                </button>
               </div>
             </form>
           </div>

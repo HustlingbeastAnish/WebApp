@@ -5,6 +5,7 @@ import Navbar from "../Navbar/navbar.js";
 import login1 from "../images/Login1.svg";
 import Swal from "sweetalert2";
 import TrackLogo from "../images/cclogo.png";
+
 function Login() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
@@ -49,20 +50,20 @@ function Login() {
   return (
     <div>
       <Navbar />
-      <section class="bg-gray-900">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <section className="bg-gray-900">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a
             href="/#"
-            class="flex items-center mb-6 text-2xl font-semibold text-white-900 dark:text-white"
+            className="flex items-center mb-6 text-2xl font-semibold text-white-900 dark:text-white"
           >
-            <img class="w-8 h-8 mr-2" src={TrackLogo} alt="logo" />
+            <img className="w-8 h-8 mr-2" src={TrackLogo} alt="logo" />
             TracKnAttend
           </a>
-          <div class="w-full p-6 bg-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
-            <h2 class="mb-1 text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-black">
+          <div className="w-full p-6 bg-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+            <h2 className="mb-1 text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-black">
               LogIn as Teacher
             </h2>
-            <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
+            <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
               <div>
                 <label
                   htmlFor="email"
@@ -104,29 +105,41 @@ function Login() {
                 />
               </div>
 
-              <div class="flex items-start">
-                <div class="flex items-center h-5">
+              <div className="flex items-start justify-between">
+                <div className="flex items-center h-5">
                   <input
                     id="newsletter"
                     aria-describedby="newsletter"
                     type="checkbox"
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                     required=""
                   />
                 </div>
-                <div class="ml-3 text-sm">
-                  <label
-                    for="newsletter"
-                    class="font-light text-gray-500 dark:text-gray-300"
-                  >
-                    I accept the{" "}
-                    <a
-                      class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                      href="/#"
+                <div className="ml-3 text-sm flex flex-row">
+                  <div>
+                    <label
+                      htmlFor="newsletter"
+                      className="font-light text-gray-500 dark:text-gray-300"
                     >
-                      Terms and Conditions
-                    </a>
-                  </label>
+                      I accept the{" "}
+                      <a
+                        className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                        href="/#"
+                      >
+                        Terms and Conditions
+                      </a>
+                    </label>
+                  </div>
+                  <div>
+                    <Link to="/forgotpassword">
+                      <a
+                        href="#!"
+                        className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                      >
+                        Forgot password?
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </div>
               <div className="flex items-center justify-center">

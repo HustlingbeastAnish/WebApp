@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const CreateAttend = () => {
   const navigate = useNavigate();
 
@@ -81,40 +81,39 @@ const CreateAttend = () => {
     });
 
     const data = await res.json();
-    if(data.status === 422 )
-    {
+    if (data.status === 422) {
       Swal.fire({
-        title: 'Bad Credentials',
-        text: 'Please fill in all details',
-        icon: 'error',
-        confirmButtonText: 'Retry'
-      })
+        title: "Bad Credentials",
+        text: "Please fill in all details",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     }
     if (!data || data.error) {
       console.log("Invalid Registration");
       Swal.fire({
-        title: 'Bad Credentials',
-        text: 'User Already Exists with required fields',
-        icon: 'error',
-        confirmButtonText: 'Retry'
-      })
+        title: "Bad Credentials",
+        text: "User Already Exists with required fields",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     } else {
       Swal.fire({
-        title: 'Student added successfully',
-        icon: 'success',
+        title: "Student added successfully",
+        icon: "success",
         timer: 1000,
-      })
+      });
       navigate("/tlogin");
     }
   };
   return (
-    <div className="flex justify-center items-center">
-      <div className="block p-6 rounded-lg shadow-lg bg-gray-300 max-w-xl w-[450px] mt-5">
+    <div className="flex justify-center items-center h-screen bg-gray-900">
+      <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-xl w-[450px] mt-5">
         <form>
           <div className="form-group mb-3">
             <label
               htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label inline-block mb-2 text-white"
             >
               Name
             </label>
@@ -146,7 +145,7 @@ const CreateAttend = () => {
           <div className="form-group mb-3">
             <label
               htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label inline-block mb-2 text-white"
             >
               Email address
             </label>
@@ -178,7 +177,7 @@ const CreateAttend = () => {
           <div className="w-full mb-2">
             <label
               htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label inline-block mb-2 text-white"
             >
               Select Branch
             </label>
@@ -213,7 +212,7 @@ const CreateAttend = () => {
           <div className="form-group mb-2">
             <label
               htmlFor="exampleInputPassword2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label inline-block mb-2 text-white"
             >
               Phone Number
             </label>
@@ -243,7 +242,7 @@ const CreateAttend = () => {
           <div className="form-group mb-3">
             <label
               htmlFor="exampleInputPassword2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label inline-block mb-2 text-white"
             >
               Roll Number
             </label>
@@ -273,7 +272,7 @@ const CreateAttend = () => {
           <div className="w-full mb-5">
             <label
               htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label inline-block mb-2 text-white"
             >
               Select Subject
             </label>

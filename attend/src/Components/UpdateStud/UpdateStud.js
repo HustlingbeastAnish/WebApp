@@ -42,12 +42,12 @@ function Updatestud(props) {
     <>
       <div>{!flag && <Spinner />}</div>
       {flag && (
-        <div className="bg-gray-700 border-black mb-5 flex flex-col items-center">
+        <div className="bg-gray-900 h-screen border-black mb-5 flex flex-col items-center">
           <h2 className="text-center font-semibold text-3xl mt-2 text-white">
             Showing Details
           </h2>
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
-            <div className="flex justify-between items-center py-4 bg-white dark:bg-gray-800 ">
+            <div className="flex justify-between items-center py-4 bg-gray-600 dark:bg-gray-800 ">
               <div className="mx-96 w-96">
                 <form class="flex items-center">
                   <label for="simple-search" class="sr-only">
@@ -72,7 +72,7 @@ function Updatestud(props) {
                     <input
                       type="text"
                       id="simple-search"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="bg-gray-600 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search"
                       required
                     />
@@ -100,7 +100,7 @@ function Updatestud(props) {
                 </form>
               </div>
             </div>
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table className="w-full text-sm text-left text-white dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-black dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="py-3 px-6 text-white">
@@ -129,19 +129,19 @@ function Updatestud(props) {
               <tbody>
                 {studentData.map((elem, idx) => {
                   return (
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr className="bg-gray-600 border-b dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600">
                       <td className="p-4 w-4">
                         <h1 className="text-center">{idx + 1}</h1>
                       </td>
                       <th
                         scope="row"
-                        className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
+                        className="flex items-center py-4 px-6 text-white whitespace-nowrap dark:text-white"
                       >
                         <div className="pl-3">
                           <div className="text-base font-semibold">
                             {elem.name}
                           </div>
-                          <div className="font-normal text-gray-500">
+                          <div className="font-normal text-white">
                             {elem.email}
                           </div>
                         </div>

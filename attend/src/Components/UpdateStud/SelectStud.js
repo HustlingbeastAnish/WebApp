@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -14,8 +14,8 @@ const TakeAttend = (props) => {
   const navigate = useNavigate();
 
   //jwt authorisation
-  const[userData,setUserData]=useState({});
-  const  callSelectStud= async () => {
+  const [userData, setUserData] = useState({});
+  const callSelectStud = async () => {
     try {
       const res = await fetch("/aftertlogin", {
         method: "GET",
@@ -41,52 +41,147 @@ const TakeAttend = (props) => {
   useEffect(() => {
     callSelectStud();
   }, []);
+
   return (
     <>
-      <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">
-        <h1 className="font-semibold text-3xl">
-          Please from the below DropDown
+      <div className="flex border-black bg-gray-900 flex-col h-screen justify-center items-center">
+        <h1 className="font-semibold text-3xl text-white">
+          Please select from the options below
         </h1>
         <div className="mt-10">
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Branch</InputLabel>
+          <FormControl fullWidth style={{ border: "1px solid white" }}>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ color: "white" }}
+            >
+              Branch
+            </InputLabel>
             <Select
+              className=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={props.Branch}
-              style={{ width: "450px" }}
+              style={{ width: "450px", color: "white" }}
               label="Branches"
               onChange={props.handleChangeBranch}
             >
-              <MenuItem value={"CSE"}>CSE</MenuItem>
-              <MenuItem value={"IT"}>IT</MenuItem>
-              <MenuItem value={"ECE"}>ECE</MenuItem>
-              <MenuItem value={"EEE"}>EEE</MenuItem>
-              <MenuItem value={"MECH"}>MECH</MenuItem>
-              <MenuItem value={"CIVIL"}>CIVIL</MenuItem>
+              <MenuItem
+                value={"CSE"}
+                style={{ color: "black", border: "2px solid white" }}
+              >
+                CSE
+              </MenuItem>
+              <MenuItem
+                value={"IT"}
+                style={{ color: "black", border: "2px solid white" }}
+              >
+                IT
+              </MenuItem>
+              <MenuItem
+                value={"ECE"}
+                style={{ color: "black", border: "2px solid white" }}
+              >
+                ECE
+              </MenuItem>
+              <MenuItem
+                value={"EEE"}
+                style={{ color: "black", border: "2px solid white" }}
+              >
+                EEE
+              </MenuItem>
+              <MenuItem
+                value={"MECH"}
+                style={{ color: "black", border: "2px solid white" }}
+              >
+                MECH
+              </MenuItem>
+              <MenuItem
+                value={"CIVIL"}
+                style={{ color: "black", border: "2px solid white" }}
+              >
+                CIVIL
+              </MenuItem>
             </Select>
           </FormControl>
         </div>
 
         <div className="mt-10">
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
+          <FormControl fullWidth style={{ border: "1px solid white" }}>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ color: "white" }}
+            >
+              Subjects
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={props.Subject}
-              style={{ width: "450px" }}
+              style={{ width: "450px", color: "white" }}
               label="Subjects"
               onChange={props.handleChange}
             >
-              <MenuItem value={"Data Structures"}>Data_Structures</MenuItem>
-              <MenuItem value={"Operating System"}>Operating_System</MenuItem>
-              <MenuItem value={"Computer Networks"}>Computer_Networks</MenuItem>
-              <MenuItem value={"Object Oriented Programming"}>
+              <MenuItem
+                value={"Data Structures"}
+                style={{
+                  color:
+                    props.Subject === "Data Structures" ? "white" : "black",
+                  border: "2px solid white",
+                }}
+              >
+                Data_Structures
+              </MenuItem>
+              <MenuItem
+                value={"Operating System"}
+                style={{
+                  color:
+                    props.Subject === "Operating System" ? "white" : "black",
+                  border: "2px solid white",
+                }}
+              >
+                Operating_System
+              </MenuItem>
+              <MenuItem
+                value={"Computer Networks"}
+                style={{
+                  color:
+                    props.Subject === "Computer Networks" ? "white" : "black",
+                  border: "2px solid white",
+                }}
+              >
+                Computer_Networks
+              </MenuItem>
+              <MenuItem
+                value={"Object Oriented Programming"}
+                style={{
+                  color:
+                    props.Subject === "Object Oriented Programming"
+                      ? "white"
+                      : "black",
+                  border: "2px solid white",
+                }}
+              >
                 Object_Oriented_Programming
               </MenuItem>
-              <MenuItem value={"DBMS"}>DBMS</MenuItem>
-              <MenuItem value={"Numerical Methods"}>Numerical_Methods</MenuItem>
+              <MenuItem
+                value={"DBMS"}
+                style={{
+                  color: props.Subject === "DBMS" ? "white" : "black",
+                  border: "2px solid white",
+                }}
+              >
+                DBMS
+              </MenuItem>
+              <MenuItem
+                value={"Numerical Methods"}
+                style={{
+                  color:
+                    props.Subject === "Numerical Methods" ? "white" : "black",
+                  border: "2px solid white",
+                }}
+              >
+                Numerical_Methods
+              </MenuItem>
             </Select>
           </FormControl>
         </div>
@@ -118,4 +213,5 @@ const TakeAttend = (props) => {
     </>
   );
 };
+
 export default TakeAttend;

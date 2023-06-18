@@ -2,8 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Navbar/navbar.js";
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
+import TrackLogo from "../images/cclogo.png";
 function Login() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
@@ -23,22 +23,18 @@ function Login() {
     const data = await res.json();
     console.log(data);
     if (data.status === 400 || !data || data.error) {
-      
-      
       Swal.fire({
-        title: 'Bad Credentials',
-        text: 'Please enter valid details',
-        icon: 'error',
-        confirmButtonText: 'Retry'
-      })
-      
-    
+        title: "Bad Credentials",
+        text: "Please enter valid details",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     } else {
       Swal.fire({
-        title: 'Login Successful',
-        icon: 'success',
+        title: "Login Successful",
+        icon: "success",
         timer: 1000,
-      })
+      });
       console.log("Successfully Logged In");
       setTimeout(() => {
         navigate("/slogin");
@@ -48,93 +44,96 @@ function Login() {
   return (
     <div>
       <Navbar />
-      <section className="h-screen bg-gray-400 mt-7">
-        <div className="container px-6 py-12 h-full">
-          <div className="flex justify-center items-center h-full g-6 text-gray-800 ">
-            <div className="border-black border-[2px] p-10 rounded-xl bg-gray-400">
-              <h1 className="text-center text-3xl font-extrabold mb-5">
-                LogIn as Student
-              </h1>
-              <form method="POST">
-                <div className="mb-6" id="email">
-                  <label
-                    htmlFor="exampleInputPassword2"
-                    className="form-label text-black inline-block mb-3"
-                  >
-                    Enter Email Address
-                  </label>
+      <section class="bg-gray-900">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <a
+            href="/#"
+            class="flex items-center mb-6 text-2xl font-semibold text-white-900 dark:text-white"
+          >
+            <img class="w-8 h-8 mr-2" src={TrackLogo} alt="logo" />
+            TracKnAttend
+          </a>
+          <div class="w-full p-6 bg-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+            <h2 class="mb-1 text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-black">
+              LogIn as Student
+            </h2>
+            <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Enter Your email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setemail(e.target.value);
+                  }}
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Enter Your Old Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => {
+                    setpassword(e.target.value);
+                  }}
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your Old Passsword"
+                  required
+                />
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
                   <input
-                    type="text"
-                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Email address"
-                    name="email"
-                    value={email}
-                    onChange={(e) => {
-                      setemail(e.target.value);
-                    }}
+                    id="newsletter"
+                    aria-describedby="newsletter"
+                    type="checkbox"
+                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                    required=""
                   />
                 </div>
-                <div className="mb-6">
+                <div class="ml-3 text-sm">
                   <label
-                    htmlFor="exampleInputPassword2"
-                    className="form-label text-black inline-block mb-3"
+                    for="newsletter"
+                    class="font-light text-gray-500 dark:text-gray-300"
                   >
-                    Enter Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => {
-                      setpassword(e.target.value);
-                    }}
-                  />
-                </div>
-                <div className="flex justify-between items-center mb-6">
-                  <div className="form-group form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      id="exampleCheck3"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="exampleCheck2"
+                    I accept the{" "}
+                    <a
+                      class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      href="/#"
                     >
-                      Remember me
-                    </label>
-                  </div>
-                  <a
-                    href="#!"
-                    className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-                  >
-                    Forgot password?
-                  </a>
+                      Terms and Conditions
+                    </a>
+                  </label>
                 </div>
+              </div>
+              <div className="flex items-center justify-center">
                 <button
                   type="submit"
-                  className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-                  data-mdb-ripple="true"
-                  data-mdb-ripple-color="light"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   onClick={PostLogIn}
                 >
-                  Log In
+                  LogIn
                 </button>
-                <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                  Don't have an account?
-                </p>
-                <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
-                  <p className="text-center font-semibold mx-4 mb-0">OR</p>
-                </div>
-
-                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-blue-700 rounded w-96 mx-28">
-                  {/* <i className="fa-brands fa-google"></i> */}
-                  Continue with Google
-                </button>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </section>

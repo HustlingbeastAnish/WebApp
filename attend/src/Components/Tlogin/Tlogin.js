@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SideNavbar from "../StudentSection/SideNavbar";
+import Globe from "../../svgs/globe.jsx";
 const Tlogin = (props) => {
   // To open and close the sidebar
   const [open, setOpen] = useState(false);
@@ -59,54 +60,24 @@ const Tlogin = (props) => {
   }, []);
 
   return (
-    <div className="bg-gray-600">
+    <div className="bg-gray-900 h-screen">
       <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center ">
         Welcome Prof. {currUser.name}
       </h3>
       <div className="flex">
-        <div>
-          <button
-            // className={`${open && "rotate-180"}`}
-            style={{ width: "40px", height: "28px", margin: "8px" }}
-            onClick={(e) => {
-              setOpen(!open);
-            }}
-          >
-            <div
-              class={`relative w-10 h-10 overflow-hidden bg-gray-${
-                !open ? 700 : 100
-              } rounded-full dark:bg-gray-600`}
-            >
-              <svg
-                class="absolute w-12 h-12 text-gray-400 -left-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  s
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </div>
-          </button>
-          <SideNavbar open={open} currUser={currUser} isTeach={true} />
-        </div>
         <div className=" ml-5 flex flex-col">
           <div className="">
             <div className="md:flex flex-start">
-              <div className="block p-6 rounded-lg shadow-lg bg-gray-200 max-w-md ml-6 mb-10">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
                 <div className="flex justify-between mb-4 ">
                   <label
                     htmlFor="exampleInputPassword2"
-                    className="form-label text-black text-2xl font-extrabold inline-block "
+                    className="form-label text-white text-2xl font-extrabold inline-block "
                   >
                     CREATE NEW STUDENT
                   </label>
                 </div>
-                <p className="text-gray-900 font-semibold mb-2 ">
+                <p className="text-white font-semibold mb-2 ">
                   Register New Students for their respective subjects and
                   branches
                 </p>
@@ -124,16 +95,16 @@ const Tlogin = (props) => {
           </div>
           <div className="">
             <div className="md:flex flex-start">
-              <div className="block p-6 rounded-lg shadow-lg bg-gray-200 max-w-md ml-6 mb-10">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
                 <div className="flex justify-between mb-4 ">
                   <label
                     htmlFor="exampleInputPassword2"
-                    className="form-label text-black text-2xl font-extrabold inline-block "
+                    className="form-label text-white text-2xl font-extrabold inline-block "
                   >
                     UPDATE STUDENT DETAILS
                   </label>
                 </div>
-                <p className="text-gray-900 font-semibold mb-2 ">
+                <p className="text-white font-semibold mb-2 ">
                   Update the existing students enrolled in thier respective
                   courses
                 </p>
@@ -151,16 +122,16 @@ const Tlogin = (props) => {
           </div>
           <div className="">
             <div className="md:flex flex-start">
-              <div className="block p-6 rounded-lg shadow-lg bg-gray-200 max-w-md ml-6 mb-10">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
                 <div className="flex justify-between mb-4 ">
                   <label
                     htmlFor="exampleInputPassword2"
-                    className="form-label text-black text-2xl font-extrabold inline-block "
+                    className="form-label text-white text-2xl font-extrabold inline-block "
                   >
                     TAKE ATTENDANCE
                   </label>
                 </div>
-                <p className="text-gray-900 font-semibold mb-2 ">
+                <p className="text-white font-semibold mb-2 ">
                   Looorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Quisque scelerisque diam non nisi semper
                 </p>
@@ -177,6 +148,7 @@ const Tlogin = (props) => {
             </div>
           </div>
         </div>
+        <Globe />
       </div>
     </div>
   );

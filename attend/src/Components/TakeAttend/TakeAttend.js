@@ -4,8 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
-import { useContext, createContext } from "react";
-import MarkAttend from "../MarkAttend/MarkAttend";
+import "./Takeattend.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -67,18 +66,27 @@ const TakeAttend = (props) => {
   }, []);
   return (
     <>
-      <div className="flex border-black bg-gray-200 flex-col h-[670px] justify-center items-center">
-        <h1 className="font-semibold text-3xl">
+      <div className="flex border-black bg-gray-900 flex-col h-screen justify-center items-center">
+        <h1 className="font-semibold text-3xl text-white">
           Please from the below DropDown
         </h1>
         <div className="mt-10">
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Branch</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ color: "white" }}
+            >
+              Branch
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={props.Branch}
-              style={{ width: "450px" }}
+              style={{
+                width: "450px",
+                color: "white",
+                border: "2px solid white",
+              }}
               label="Branches"
               onChange={props.handleChangeBranch}
             >
@@ -94,12 +102,21 @@ const TakeAttend = (props) => {
 
         <div className="mt-10">
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Subjects</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              style={{ color: "white" }}
+            >
+              Subjects
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={props.Subject}
-              style={{ width: "450px" }}
+              style={{
+                width: "450px",
+                color: "white",
+                border: "2px solid white",
+              }}
               label="Subjects"
               onChange={props.handleChange}
             >
@@ -116,8 +133,11 @@ const TakeAttend = (props) => {
         </div>
 
         <div className="relative mt-10">
-          <h2 className="font-semibold text-xl">Please Select the Date </h2>
+          <h2 className="font-semibold text-xl text-white">
+            Please Select the Date{" "}
+          </h2>
           <DatePicker
+            className="custom-datepicker"
             selected={props.SelectedDate}
             onChange={handleDate}
             filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
@@ -155,4 +175,3 @@ const TakeAttend = (props) => {
   );
 };
 export default TakeAttend;
-// export { TeacherQueries };

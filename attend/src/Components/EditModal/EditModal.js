@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
+import TrackLogo from "../images/cclogo.png";
 const EditModal = (props) => {
   const navigate = useNavigate();
   const [updatedStud, setupdatedStud] = useState({
@@ -76,95 +76,105 @@ const EditModal = (props) => {
 
   return (
     <>
-      <div className="border-black">
-        <div className="flex justify-center mt-20 p-20 m-20  bg-gray-200">
-          <form method="PUT">
-            <div class="relative z-0 mb-6 w-full group">
-              <input
-                name="name"
-                type="text"
-                value={updatedStud.name}
-                onChange={handleEdit}
-                id="floating_password"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                for="floating_name"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Name
-              </label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-              <input
-                type="email"
-                name="email"
-                id="floating_email"
-                value={updatedStud.email}
-                onChange={handleEdit}
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                for="floating_email"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Email address
-              </label>
-            </div>
-
-            <div class="grid md:grid-cols-2 md:gap-6">
-              <div class="relative z-0 mb-6 w-full group">
+      <section className="bg-gray-900">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <a
+            href="/#"
+            className="flex items-center mb-6 text-2xl font-semibold text-white-900 dark:text-white"
+          >
+            <img className="w-8 h-8 mr-2" src={TrackLogo} alt="logo" />
+            TracKnAttend
+          </a>
+          <div className="w-full p-6 bg-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+            <h2 className="mb-1 text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-black">
+              LogIn as Teacher
+            </h2>
+            <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Update Your Name
+                </label>
                 <input
-                  type="tel"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                  name="phone"
-                  value={updatedStud.phone}
+                  type="name"
+                  id="name"
+                  name="name"
+                  value={updatedStud.name}
                   onChange={handleEdit}
-                  id="floating_phone"
-                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
                   required
                 />
-                <label
-                  for="floating_phone"
-                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  PhoneNumber
-                </label>
               </div>
-              <div class="relative z-0 mb-6 w-full group">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Update Your Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={updatedStud.email}
+                  onChange={handleEdit}
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Update Your Phone Number
+                </label>
+                <input
+                  name="phone"
+                  value={updatedStud.phone}
+                  id="floating_phone"
+                  onChange={handleEdit}
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Update Your Roll Number
+                </label>
                 <input
                   type="text"
                   name="roll"
                   value={updatedStud.roll}
                   onChange={handleEdit}
                   id="floating_company"
-                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
                   required
                 />
-                <label
-                  for="floating_roll"
-                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Roll Number
-                </label>
               </div>
-            </div>
-            <button
-              type="submit"
-              onClick={PostEdit}
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Submit
-            </button>
-          </form>
+              <div className="flex items-start justify-between"></div>
+              <div className="flex items-center justify-center">
+                <button
+                  type="submit"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onClick={PostEdit}
+                >
+                  Update Changes
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

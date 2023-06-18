@@ -89,7 +89,7 @@ function Login() {
                   htmlFor="password"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Enter Your Old Password
+                  Enter Your Password
                 </label>
                 <input
                   type="password"
@@ -100,7 +100,7 @@ function Login() {
                     setpassword(e.target.value);
                   }}
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                  placeholder="Enter your Old Passsword"
+                  placeholder="Enter your Passsword"
                   required
                 />
               </div>

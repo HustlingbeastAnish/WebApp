@@ -3,7 +3,7 @@ import React from "react";
 function Spinner() {
   return (
     <div>
-      <div class="text-center">
+      <div class="text-center ">
         <div role="status">
           <svg
             aria-hidden="true"

@@ -198,15 +198,14 @@ function MarkAttend(props) {
   };
   return (
     <>
-      <div className="bg-gray-700 border-black flex flex-col items-center">
+      <div className="bg-gray-900 h-screen border-black flex flex-col items-center">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
           Showing Details for {`${dayy}/${monthh}/${yearr}`}
         </h2>
-
         {!flag && <Spinner />}
         {flag && (
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
-            <div className="flex justify-between items-center py-4 bg-white dark:bg-gray-800 ">
+            <div className="flex justify-between items-center py-4 bg-gray-600 dark:bg-gray-800 ">
               <div className="mx-96 w-96">
                 <form class="flex items-center">
                   <label for="simple-search" class="sr-only">
@@ -220,7 +219,6 @@ function MarkAttend(props) {
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
-                        zz
                       >
                         <path
                           fill-rule="evenodd"
@@ -232,7 +230,7 @@ function MarkAttend(props) {
                     <input
                       type="text"
                       id="simple-search"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="bg-gray-600 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search"
                       required
                     />
@@ -289,26 +287,26 @@ function MarkAttend(props) {
               <tbody>
                 {studentData.map((elem, idx) => {
                   return (
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr className="bg-gray-600 border-b dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600">
                       <td className="p-4 w-4">
                         <h1>{idx + 1}</h1>
                       </td>
                       <th
                         scope="row"
-                        className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
+                        className="flex items-center py-4 px-6 text-white whitespace-nowrap dark:text-white"
                       >
                         <div className="pl-3">
                           <div className="text-base font-semibold">
                             {elem.name}
                           </div>
-                          <div className="font-normal text-gray-500">
+                          <div className="font-normal text-white">
                             {elem.email}
                           </div>
                         </div>
                       </th>
-                      <td className="py-4 px-6">{elem.roll}</td>
-                      <td className="py-4 px-6">{currSubject}</td>
-                      <td className="py-4 px-6">{currBranch}</td>
+                      <td className="py-4 px-6 text-white">{elem.roll}</td>
+                      <td className="py-4 px-6 text-white">{currSubject}</td>
+                      <td className="py-4 px-6 text-white">{currBranch}</td>
                       <div>
                         <label class="relative inline-flex items-center mr-5 cursor-pointer">
                           <input
@@ -321,12 +319,14 @@ function MarkAttend(props) {
                             }}
                           />
                           <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                          <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          <span class="ml-3 text-sm font-medium text-white dark:text-gray-300">
                             {absent[idx][1] === "1" ? "Absent" : "Present"}
                           </span>
                         </label>
                       </div>
-                      <td className="py-4 px-6">{absentcount[idx]}</td>
+                      <td className="py-4 px-6 text-white">
+                        {absentcount[idx]}
+                      </td>
                     </tr>
                   );
                 })}

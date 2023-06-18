@@ -1,0 +1,20 @@
+.custom-datepicker {
+  background-color: gray;
+}
+.react-datepicker__month-container {
+  background-color: gray;
+}
+
+.react-datepicker__header {
+  background-color: gray;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: white;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -12,6 +12,8 @@ var cors = require("cors");
 
 app.use(cors());
 mongoose.set("strictQuery", true);
+
+// config is used to set the path of env file
 dotenv.config({ path: "./.env" });
 // app.set("veiw engine", "html");
 app.use(express.static("public"));

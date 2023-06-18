@@ -229,6 +229,7 @@ exports.find = async (req, res) => {
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
       } else {
+        console.log("Yummy Yummy");
         res.json({ message: "User SignIn Successfully" });
       }
     } else {
@@ -507,7 +508,6 @@ exports.forgotpassword = async (req, res) => {
       expiresIn: "7m",
     });
     const link = `http://localhost:3002/resetpassword/${oldUser._id}/${token}`;
-    // console.log(link);
     res.json({ message: `${link}` });
     res.render("Verified");
   } catch (error) {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import SideNavbar from "../StudentSection/SideNavbar";
-
+import Globe from "../../svgs/globe.jsx";
 function Slogin(props) {
   const [open, setOpen] = useState(false);
 
@@ -37,133 +36,94 @@ function Slogin(props) {
   }, []);
 
   return (
-    <div className="p-1 border-black-500 bg-gray-400">
-      <div className="text-center text-3xl">
-        <h2 className="font-semibold">Welcome {userData.name}</h2>
-      </div>
-      <button
-        // className={`${open && "rotate-180"}`}
-        style={{ width: "40px", height: "28px", margin: "8px" }}
-        onClick={(e) => {
-          setOpen(!open);
-        }}
-      >
-        <div
-          class={`relative w-10 h-10 overflow-hidden bg-gray-${
-            !open ? 700 : 100
-          } rounded-full dark:bg-gray-600`}
-        >
-          <svg
-            class="absolute w-12 h-12 text-gray-400 -left-1"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </div>
-      </button>
-      <div className="flex ">
-        <div className="h-full">
-          <SideNavbar open={open} />
-        </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div class="p-6 h bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4 md:h-1/2 lg:h-2/5">
-            <a href="/#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Click to check Intership Opportunities
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              See the list of Opportunities Available
-            </p>
-            <Link to="/job">
-              <a
-                href="/#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Go
-                <svg
-                  aria-hidden="true"
-                  class="w-4 h-4 ml-2 -mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </Link>
+    <div className="bg-gray-900 h-screen">
+      <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center ">
+        Welcome Prof. {userData.name}
+      </h3>
+      <div className="flex">
+        <div className=" ml-5 flex flex-col">
+          <div className="">
+            <div className="md:flex flex-start">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-white text-2xl font-extrabold inline-block "
+                  >
+                    Explore Job/Intership Opportunities
+                  </label>
+                </div>
+                <p className="text-white font-semibold mb-2 ">
+                  Find out the best job Opportunities based on your filters
+                </p>
+                <Link to="/job">
+                  <button
+                    type="button"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                  >
+                    Find
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
-          <div class="p-6 h bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4 md:h-1/2 lg:h-2/5">
-            <Link to="/checkattend">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Check Attendance in the respective subjects
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Get details for your attendance percentage ,number of present
-                days ,number of leaves etc
-              </p>
-              <a
-                href="/#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Go
-                <svg
-                  aria-hidden="true"
-                  class="w-4 h-4 ml-2 -mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </Link>
+          <div className="">
+            <div className="md:flex flex-start">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-white text-2xl font-extrabold inline-block "
+                  >
+                    UPDATE STUDENT DETAILS
+                  </label>
+                </div>
+                <p className="text-white font-semibold mb-2 ">
+                  Update the existing students enrolled in thier respective
+                  courses
+                </p>
+                <Link to="/selectstud">
+                  <button
+                    type="button"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                  >
+                    Update
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
-          <div class="p-6 h bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4 md:h-2/3 lg:h-2/5">
-            <Link to="/grades">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Track your Grades
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Track your grades and marks here and get pictorial view of your
-                grades
-              </p>
-              <a
-                href="/#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Go
-                <svg
-                  aria-hidden="true"
-                  class="w-4 h-4 ml-2 -mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </Link>
+          <div className="">
+            <div className="md:flex flex-start">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-white text-2xl font-extrabold inline-block "
+                  >
+                    TAKE ATTENDANCE
+                  </label>
+                </div>
+                <p className="text-white font-semibold mb-2 ">
+                  Looorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Quisque scelerisque diam non nisi semper
+                </p>
+                <Link to="/takeattend">
+                  <button
+                    type="button"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                  >
+                    Take
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
+        <Globe />
       </div>
     </div>
   );

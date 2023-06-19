@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import SideNavbar from "../StudentSection/SideNavbar";
-
+import Globe from "../../svgs/globe.jsx";
 function Slogin(props) {
   const [open, setOpen] = useState(false);
 
@@ -32,108 +31,72 @@ function Slogin(props) {
       navigate("/loginstud");
     }
   };
-
   useEffect(() => {
     callSlogin();
   }, []);
 
   return (
-    <div className="p-1 border-black-500 bg-gray-400">
-      <div className="text-center text-3xl">
-        <h2 className="font-semibold">Welcome {userData.name}</h2>
-      </div>
-      <button
-        // className={`${open && "rotate-180"}`}
-        style={{ width: "40px", height: "28px", margin: "8px" }}
-        onClick={(e) => {
-          setOpen(!open);
-        }}
-      >
-        <div
-          class={`relative w-10 h-10 overflow-hidden bg-gray-${
-            !open ? 700 : 100
-          } rounded-full dark:bg-gray-600`}
-        >
-          <svg
-            class="absolute w-12 h-12 text-gray-400 -left-1"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </div>
-      </button>
-      <div className="flex ">
-        <SideNavbar open={open} />
-        <div className="flex flex-col">
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
-            <a href="/#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Veiws Subjects In which You are enrolled
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              See the lists of Subjects in which you are enrolled for the
-              current semester
-            </p>
-            <Link to="/checksubs">
-              <a
-                href="/#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Go
-                <svg
-                  aria-hidden="true"
-                  class="w-4 h-4 ml-2 -mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </Link>
+    <div className="bg-gray-900 h-screen">
+      <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center ">
+        Welcome Prof. {userData.name}
+      </h3>
+      <div className="flex justify-center items-center">
+        <div className=" ml-5 flex flex-col">
+          <div className="">
+            <div className="md:flex flex-start">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-white text-2xl font-extrabold inline-block "
+                  >
+                    Explore Job/Intership Opportunities
+                  </label>
+                </div>
+                <p className="text-white font-semibold mb-2 ">
+                  Find out the best job Opportunities based on your filters
+                </p>
+                <Link to="/job">
+                  <button
+                    type="button"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                  >
+                    Find
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 m-4">
-            <Link to="/checkattend">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Check Attendance in the respective subjects
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Get details for your attendance percentage ,number of present
-                days ,number of leaves etc
-              </p>
-              <a
-                href="/#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Go
-                <svg
-                  aria-hidden="true"
-                  class="w-4 h-4 ml-2 -mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </Link>
+          <div className="">
+            <div className="md:flex flex-start">
+              <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
+                <div className="flex justify-between mb-4 ">
+                  <label
+                    htmlFor="exampleInputPassword2"
+                    className="form-label text-white text-2xl font-extrabold inline-block "
+                  >
+                    CHECK ATTENDANCE IN RESPECTIVE SUBJECTS
+                  </label>
+                </div>
+                <p className="text-white font-semibold mb-2 ">
+                  Get details for your attendance percentage ,number of present
+                  days ,number of leaves etc
+                </p>
+                <Link to="/checkattend">
+                  <button
+                    type="button"
+                    className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                  >
+                    Check
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
+        <Globe />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 8080;
 const connectDB = require("./server/database/connection");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
@@ -12,7 +12,9 @@ var cors = require("cors");
 
 app.use(cors());
 mongoose.set("strictQuery", true);
-dotenv.config({ path: "./config.env" });
+
+// config is used to set the path of env file
+dotenv.config({ path: "./.env" });
 // app.set("veiw engine", "html");
 app.use(express.static("public"));
 app.use(express.json());

@@ -3,7 +3,7 @@ import "flowbite";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function MarkAttend(props) {
   const navigate = useNavigate();
@@ -20,13 +20,11 @@ function MarkAttend(props) {
   }, []);
 
   const dayy = props.SelectedDate.getDate();
-  const monthh = props.SelectedDate.getMonth();
+  const monthh = props.SelectedDate.getMonth() + 1;
   const yearr = props.SelectedDate.getFullYear();
   const datee = `${dayy}-${monthh}-${yearr}`;
   // console.log(props.SelectedDate);
-  const [absentcount, Setabsentcount] = useState([
-    
-  ]);
+  const [absentcount, Setabsentcount] = useState([]);
 
   const [absent, Setabsent] = useState([
     ["", "0"],
@@ -41,7 +39,6 @@ function MarkAttend(props) {
     ["", "0"],
   ]);
   const PostAbs = async (e) => {
-    
     for (let i = 0; i < 10; i++) {
       if (absent[i][1] === "0") {
         continue;
@@ -61,32 +58,31 @@ function MarkAttend(props) {
         console.log(data);
         if (!data || data.status === 422 || data.error) {
           Swal.fire({
-            title: 'Failure',
-            text: 'Attendance Not Posted ',
-            icon: 'error',
-            confirmButtonText: 'Retry'
-          })
+            title: "Failure",
+            text: "Attendance Not Posted ",
+            icon: "error",
+            confirmButtonText: "Retry",
+          });
           console.log("Student has been marked absent");
         } else {
           Swal.fire({
-            title: 'Attendance Posted Sucessfully',
-            icon: 'success',
+            title: "Attendance Posted Sucessfully",
+            icon: "success",
             timer: 1000,
-          })
+          });
           setTimeout(() => {
             navigate("/tlogin");
           }, 1500);
-       
-        
+
           console.log("Student has not been marked absent");
         }
       }
     }
     Swal.fire({
-      title: 'Attendance Posted Sucessfully',
-      icon: 'success',
+      title: "Attendance Posted Sucessfully",
+      icon: "success",
       timer: 1000,
-    })
+    });
     setTimeout(() => {
       navigate("/tlogin");
     }, 1500);
@@ -95,7 +91,7 @@ function MarkAttend(props) {
 
   const fetchStudentDetails = () => {
     axios
-      .get(`http://localhost:3002/api/studdata/${currSubjArr}/${currBranch}`)
+      .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         console.log(res.data);
         const temp = res.data;
@@ -103,7 +99,7 @@ function MarkAttend(props) {
         console.log("Tay Keith F these niggas up");
         axios
           .get(
-            `http://localhost:3002/api/classesddata/${currSubject}/${currBranch}`
+            `http://localhost:8080/api/classesddata/${currSubject}/${currBranch}`
           )
           .then((res) => {
             const tempp = currSubject + "_" + currBranch;
@@ -114,7 +110,7 @@ function MarkAttend(props) {
               console.log(props.Subject + "dubiu");
               console.log(elem.email);
               axios
-                .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+                .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
                 .then((res) => {
                   console.log(res.data[props.Subject]);
 
@@ -152,7 +148,7 @@ function MarkAttend(props) {
   const FetchChangedChangedAttendanceDetails = (elem, idx) => {
     console.log(props.Subject + "dubiu");
     axios
-      .get(`http://localhost:3002/detailstloginusers/${elem.email}`)
+      .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
         console.log(res.data[props.Subject]);
         // console.log(props.Subject+"dubiu");
@@ -202,15 +198,14 @@ function MarkAttend(props) {
   };
   return (
     <>
-      <div className="bg-gray-700 border-black flex flex-col items-center">
+      <div className="bg-gray-900 h-screen border-black flex flex-col items-center">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
           Showing Details for {`${dayy}/${monthh}/${yearr}`}
         </h2>
-
         {!flag && <Spinner />}
         {flag && (
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
-            <div className="flex justify-between items-center py-4 bg-white dark:bg-gray-800 ">
+            <div className="flex justify-between items-center py-4 bg-gray-600 dark:bg-gray-800 ">
               <div className="mx-96 w-96">
                 <form class="flex items-center">
                   <label for="simple-search" class="sr-only">
@@ -224,7 +219,6 @@ function MarkAttend(props) {
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
-                        zz
                       >
                         <path
                           fill-rule="evenodd"
@@ -236,7 +230,7 @@ function MarkAttend(props) {
                     <input
                       type="text"
                       id="simple-search"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="bg-gray-600 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search"
                       required
                     />
@@ -266,7 +260,7 @@ function MarkAttend(props) {
             </div>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-black dark:bg-gray-700 dark:text-gray-400">
-              <tr class="even:bg-grey">
+                <tr class="even:bg-grey">
                   <th scope="col" className="py-3 px-6 text-white">
                     No.
                   </th>
@@ -293,26 +287,26 @@ function MarkAttend(props) {
               <tbody>
                 {studentData.map((elem, idx) => {
                   return (
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                      <td className="p-4 w-4">
+                    <tr className="bg-gray-600 border-b dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600">
+                      <td className="p-4 w-4 text-white">
                         <h1>{idx + 1}</h1>
                       </td>
                       <th
                         scope="row"
-                        className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
+                        className="flex items-center py-4 px-6 text-white whitespace-nowrap dark:text-white"
                       >
                         <div className="pl-3">
                           <div className="text-base font-semibold">
                             {elem.name}
                           </div>
-                          <div className="font-normal text-gray-500">
+                          <div className="font-normal text-white">
                             {elem.email}
                           </div>
                         </div>
                       </th>
-                      <td className="py-4 px-6">{elem.roll}</td>
-                      <td className="py-4 px-6">{currSubject}</td>
-                      <td className="py-4 px-6">{currBranch}</td>
+                      <td className="py-4 px-6 text-white">{elem.roll}</td>
+                      <td className="py-4 px-6 text-white">{currSubject}</td>
+                      <td className="py-4 px-6 text-white">{currBranch}</td>
                       <div>
                         <label class="relative inline-flex items-center mr-5 cursor-pointer">
                           <input
@@ -325,12 +319,14 @@ function MarkAttend(props) {
                             }}
                           />
                           <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                          <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          <span class="ml-3 text-sm font-medium text-white dark:text-gray-300">
                             {absent[idx][1] === "1" ? "Absent" : "Present"}
                           </span>
                         </label>
                       </div>
-                      <td className="py-4 px-6">{absentcount[idx]}</td>
+                      <td className="py-4 px-6 text-white">
+                        {absentcount[idx]}
+                      </td>
                     </tr>
                   );
                 })}
@@ -352,5 +348,4 @@ function MarkAttend(props) {
     </>
   );
 }
-
 export default MarkAttend;

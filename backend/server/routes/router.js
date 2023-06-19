@@ -33,7 +33,6 @@ route.post("/api/absentstud", controller.AbsentDates);
 route.put("/api/studdata/:id", controller.update);
 route.put("/api/teacherdata/:id", controller.updateteacher);
 
-
 route.post("/api/alldates", controller.AllDates);
 
 route.get("/aftertlogin", authenticate, (req, res) => {

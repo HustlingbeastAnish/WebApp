@@ -8,7 +8,7 @@ import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import Seeattend from "./Components/Slogin/seeattend";
 import "./App.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TakeAttend from "./Components/TakeAttend/TakeAttend";
 import CreateAttend from "./Components/CreateAttend/CreateAttend";
@@ -22,7 +22,8 @@ import Resetpass from "./Components/Tlogin/ResetPassword/Resetpass";
 import Changepass from "./Components/Tlogin/ResetPassword/Changepass";
 import CheckSub from "./Components/StudentSection/CheckSub";
 import CheckAttend from "./Components/StudentSection/CheckAttend";
-import Footer from "./Components/Footer/footer";
+import Job from "./Components/JobPortal/JobPortal";
+import Grades from "./Components/GradePortal/GradePortal";
 // For Graphical Visualization of attendance
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
 
   // Link containing the gmail verification
   const [link, SetLink] = useState("");
+  const about = useRef(null);
+  const contact = useRef(null);
   // State Containing the logged user's details
   const [userData, setUserData] = useState({});
   return (
@@ -60,7 +63,26 @@ function App() {
           <Route exact path="/signup" element={<SignUp />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/" element={<TeachStu />}></Route>
+          <Route
+            exact
+            path="/"
+            element={<TeachStu about={about} contact={contact} />}
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route
+            exact
+            path="/grades"
+            element={
+              <Grades
+                AuthorizedStud={AuthorizedStud}
+                setAuthorizedStud={setAuthorizedStud}
+              />
+            }
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route exact path="/job" element={<Job />}></Route>
         </Routes>
         <Routes>
           <Route

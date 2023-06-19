@@ -35,6 +35,7 @@ exports.create = async (req, res) => {
   }
 };
 
+
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;

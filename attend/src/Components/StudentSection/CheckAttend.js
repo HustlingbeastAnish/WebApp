@@ -190,7 +190,7 @@ const CheckSub = (props) => {
               {StudSubjects.map((elem, idx) => {
                 return (
                   <tbody>
-                    <tr class="bg-gray-600 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 row-height">
+                    <tr class="bg-gray-600 dark:bg-gray-800 dark:border-gray-70 row-height">
                       <th
                         scope="row"
                         class="px-6 py-2 font-medium text-xl text-white whitespace-nowrap dark:text-white"
@@ -227,7 +227,7 @@ const CheckSub = (props) => {
               })}
             </table>
           </div>
-          <div class="flex justify-center">
+          <div class="flex justify-center mt-3">
             <div class="flex justify-center">
               <div class="rounded-md shadow-sm bg-white" role="group">
                 <button
@@ -237,7 +237,7 @@ const CheckSub = (props) => {
                     setflagLine(false);
                     setflagPie(false);
                   }}
-                  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+                  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
                 >
                   <svg
                     fill="#000000"
@@ -264,7 +264,7 @@ const CheckSub = (props) => {
                     setflagLine(false);
                     setflagPie(true);
                   }}
-                  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+                  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900  focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
                 >
                   <svg
                     viewBox="0 0 15 15"
@@ -298,7 +298,7 @@ const CheckSub = (props) => {
                     setflagLine(true);
                     setflagPie(false);
                   }}
-                  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900  hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+                  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -347,7 +347,7 @@ const CheckSub = (props) => {
                       legend: {
                         labels: {
                           font: {
-                            size: 20,
+                            size: 12,
                           },
                         },
                       },
@@ -365,7 +365,7 @@ const CheckSub = (props) => {
                       legend: {
                         labels: {
                           font: {
-                            size: 20,
+                            size: 12,
                           },
                         },
                       },
@@ -383,7 +383,7 @@ const CheckSub = (props) => {
                       legend: {
                         labels: {
                           font: {
-                            size: 20,
+                            size: 12,
                           },
                         },
                       },

@@ -288,7 +288,7 @@ function MarkAttend(props) {
                 {studentData.map((elem, idx) => {
                   return (
                     <tr className="bg-gray-600 border-b dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600">
-                      <td className="p-4 w-4">
+                      <td className="p-4 w-4 text-white">
                         <h1>{idx + 1}</h1>
                       </td>
                       <th

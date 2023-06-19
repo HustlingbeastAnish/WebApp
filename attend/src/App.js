@@ -8,7 +8,7 @@ import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import Seeattend from "./Components/Slogin/seeattend";
 import "./App.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TakeAttend from "./Components/TakeAttend/TakeAttend";
 import CreateAttend from "./Components/CreateAttend/CreateAttend";
@@ -46,6 +46,8 @@ function App() {
 
   // Link containing the gmail verification
   const [link, SetLink] = useState("");
+  const about = useRef(null);
+  const contact = useRef(null);
   // State Containing the logged user's details
   const [userData, setUserData] = useState({});
   return (
@@ -61,7 +63,11 @@ function App() {
           <Route exact path="/signup" element={<SignUp />}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/" element={<TeachStu />}></Route>
+          <Route
+            exact
+            path="/"
+            element={<TeachStu about={about} contact={contact} />}
+          ></Route>
         </Routes>
         <Routes>
           <Route

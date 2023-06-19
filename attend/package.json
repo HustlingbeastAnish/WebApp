@@ -24,6 +24,7 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.8.9",
     "react-usestateref": "^1.0.8",
     "reactstrap": "^9.2.0",
     "sweetalert2": "^11.7.3",

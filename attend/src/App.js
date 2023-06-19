@@ -7,6 +7,7 @@ import TeachStu from "./Components/TeachStu/TeachStu";
 import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import Seeattend from "./Components/Slogin/seeattend";
+import { UserProvider } from './Contexts/usercontext';
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -50,18 +51,22 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <UserProvider>
+      <Routes>
+          <Route exact path="/" element={<TeachStu />}></Route>
+        </Routes>
         <Routes>
           <Route exact path="/loginteach" element={<LoginT />}></Route>
         </Routes>
+    
+        
         <Routes>
           <Route exact path="/loginstud" element={<LoginS />}></Route>
         </Routes>
         <Routes>
           <Route exact path="/signup" element={<SignUp />}></Route>
         </Routes>
-        <Routes>
-          <Route exact path="/" element={<TeachStu />}></Route>
-        </Routes>
+      
         <Routes>
           <Route
             exact
@@ -231,6 +236,7 @@ function App() {
             }
           ></Route>
         </Routes>
+        </UserProvider>
       </BrowserRouter>
     </>
   );

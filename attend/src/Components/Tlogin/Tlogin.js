@@ -1,38 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SideNavbar from "../StudentSection/SideNavbar";
+import UserContext from "../../Contexts/usercontext.js";
+
 const Tlogin = (props) => {
   // To open and close the sidebar
-  const [open, setOpen] = useState(false);
+ 
+ 
+const {currentUser, setCurrentUser}=useContext(UserContext);
+  
+const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
-  const currUser = props.userData;
+ 
 
-  //jwt authorisation
-  const callTlogin = async () => {
-    try {
-      const res = await fetch("/aftertlogin", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
-      const data = await res.json();
-      console.log(data);
-      props.setUserData(data);
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        // navigate("/tlogin");
-        throw error;
-      }
-    } catch (err) {
-      console.log(err);
-      navigate("/loginteach");
-    }
-  };
+ 
+  
+
 
   //logout functionality
   const handlelogout = () => {
@@ -54,14 +39,15 @@ const Tlogin = (props) => {
       });
   };
 
-  useEffect(() => {
-    callTlogin();
-  }, []);
+
 
   return (
-    <div className="bg-gray-600">
+    <>
+   {currentUser.email==null?navigate("/loginteach"):null}
+
+      <div className="bg-gray-600">
       <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center ">
-        Welcome Prof. {currUser.name}
+        Welcome Prof. {currentUser.name}
       </h3>
       <div className="flex">
         <div>
@@ -92,7 +78,7 @@ const Tlogin = (props) => {
               </svg>
             </div>
           </button>
-          <SideNavbar open={open} currUser={currUser} isTeach={true} />
+          <SideNavbar open={open} currUser={currentUser} isTeach={true} />
         </div>
         <div className=" ml-5 flex flex-col">
           <div className="">
@@ -179,6 +165,7 @@ const Tlogin = (props) => {
         </div>
       </div>
     </div>
+    </> 
   );
 };
 

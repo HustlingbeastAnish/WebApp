@@ -5,7 +5,6 @@ import Navbar from "../Navbar/navbar.js";
 import login1 from "../images/Login1.svg";
 import Swal from 'sweetalert2'
 
-
 function Login() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
@@ -13,56 +12,42 @@ function Login() {
 
   const PostLogIn = async (e) => {
     e.preventDefault();
- 
 
-    try {
-      const res = await fetch("/api/userf", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-  
-      const data = await res.json();
-  
+    const res = await fetch("/api/userf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
 
-			
-      if (data.status === 400 || !data || data.error) {
+    const data = await res.json();
+    console.log(data);
+    if (data.status === 400 || !data || data.error) {
       
       
-        Swal.fire({
-          title: 'Bad Credentials',
-          text: 'Please enter valid details',
-          icon: 'error',
-          confirmButtonText: 'Retry'
-        })
-        
+      Swal.fire({
+        title: 'Bad Credentials',
+        text: 'Please enter valid details',
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      })
       
-      } else {
-        Swal.fire({
-          title: 'Login Successful',
-          icon: 'success',
-          timer: 1000,
-        })
-       
-        console.log("Successfully Logged In");
-        setTimeout(() => {
-          navigate("/tlogin");
-        }, 1500);
-      }
-
-
-
-		} 
-    catch (error) {
-			console.error('error', error);
-		}
-
- 
+    
+    } else {
+      Swal.fire({
+        title: 'Login Successful',
+        icon: 'success',
+        timer: 1000,
+      })
+      console.log("Successfully Logged In");
+      setTimeout(() => {
+        navigate("/tlogin");
+      }, 1500);
+    }
   };
 
   return (

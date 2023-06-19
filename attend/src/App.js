@@ -3,7 +3,7 @@ import "flowbite/dist/flowbite.js";
 import LoginT from "./Components/LogIn/login";
 import LoginS from "./Components/LogIn/LoginStud";
 import SignUp from "./Components/SignUp/signup";
-import TeachStu from "./Components/TeachStu/TeachStu";
+import Landing from "./Components/Landing/Landing.jsx";
 import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
 import Seeattend from "./Components/Slogin/seeattend";
@@ -66,7 +66,7 @@ function App() {
           <Route
             exact
             path="/"
-            element={<TeachStu about={about} contact={contact} />}
+            element={<Landing about={about} contact={contact} />}
           ></Route>
         </Routes>
         <Routes>

@@ -21,30 +21,30 @@ function Teachstu() {
   return (
     <div className="bg-gray-900">
       <Navbar about={aboutRef} contact={contactRef} />
-      <section class="bg-gray-900">
-        <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <div class="mr-auto place-self-center lg:col-span-7">
-            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl text-white">
+      <section className="bg-gray-900 h-screen">
+        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+          <div className="mr-auto place-self-center lg:col-span-7">
+            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl text-white">
               Best App for Students
             </h1>
-            <p class="max-w-2xl mb-6 font-light text-4xl text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+            <p className="max-w-2xl mb-6 font-light text-4xl text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
               "Stay on track with ease - Your Management made simpler!"
             </p>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />{" "}
-            <div className="flex justify-evenly items-center">
+            <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <div className="flex flex-col lg:flex-row justify-evenly items-center">
               <div>
-                <h2 className=" text-white font-extrabold">Login as Teacher</h2>
+                <h2 className="text-white font-extrabold">Login as Teacher</h2>
                 <Link to="/loginteach">
                   <button
                     type="submit"
-                    className="block w-28  bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+                    className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
                   >
                     Login
                   </button>
                 </Link>
               </div>
               <div>
-                <h2 className=" text-white font-extrabold">Login as Student</h2>
+                <h2 className="text-white font-extrabold">Login as Student</h2>
                 <Link to="/loginstud">
                   <button
                     type="submit"
@@ -56,23 +56,21 @@ function Teachstu() {
               </div>
             </div>
           </div>
-          <div class="mt-20 lg:mt-0 lg:col-span-5 lg:flex">
+          <div className="mt-20 lg:mt-0 lg:col-span-5 lg:flex">
             <img
               src={Landing2}
-              width="400vw"
-              height="660px"
-              style={{
-                marginTop: "90px",
-                borderRadius: "30px",
-              }}
+              className="w-400vw h-660px mt-90px rounded-30px"
               alt="mockup"
             />
           </div>
         </div>
       </section>
-      <About ref={aboutRef} />
+      <div className="h-screen">
+        <About ref={aboutRef} />
+      </div>
       <Footer />
     </div>
   );
 }
+
 export default Teachstu;

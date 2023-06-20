@@ -29,7 +29,7 @@ function Footer(props) {
                 <a href="/#" class="hover:underline">
                   CollegeCompanion
                 </a>
-                . All Rights Reserved.
+                . Developed by Sumit Agarwal and Anish Kumar Singh.
               </span>
               <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                 <a

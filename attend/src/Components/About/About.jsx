@@ -9,7 +9,7 @@ function About() {
             <h2 class="mb-4 text-4xl font-extrabold text-white">
               Tracking Daily Task made
             </h2>
-            <p class="text-gray-500 sm:text-xl dark:text-gray-400">
+            <p class="text-gray-400 sm:text-xl dark:text-gray-400">
               Here a few Domains on which We Have Our Special Focus
             </p>
           </div>
@@ -32,7 +32,7 @@ function About() {
               <h3 class="mb-2 text-xl font-bold text-white">
                 Attendance Management
               </h3>
-              <p class="text-gray-500 dark:text-gray-400">
+              <p class="text-gray-400 dark:text-gray-400">
                 Tracks absences and late arrivals, allowing teachers to take
                 corrective action and enforce attendance policies.Allows
                 students to check the dates on which they were absent and
@@ -53,7 +53,7 @@ function About() {
               <h3 class="mb-2 text-xl font-bold text-white">
                 User Friendly Interface
               </h3>
-              <p class="text-gray-500 dark:text-gray-400">
+              <p class="text-gray-400 dark:text-gray-400">
                 Simple and Intuitive User interface that makes it easy for
                 teachers and students to navigate the app. Visuals, such as
                 charts and graphs, to help students understand their attendance
@@ -76,10 +76,10 @@ function About() {
                   <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
                 </svg>
               </div>
-              <h3 class="mb-2 text-xl font-bold dark:text-white">
+              <h3 class="mb-2 text-xl font-bold text-white">
                 Easy Manipulation of Attendance
               </h3>
-              <p class="text-gray-500 text-gray-400">
+              <p class="text-gray-400">
                 Implements authentication features, with salting and hashing of
                 the user's password to ensure that there is security and only
                 authorized employees can access the app and clock in/out.
@@ -101,10 +101,10 @@ function About() {
                   ></path>
                 </svg>
               </div>
-              <h3 class="mb-2 text-xl font-bold dark:text-white">
+              <h3 class="mb-2 text-xl font-bold text-white">
                 Graphical Visualization of Attendance
               </h3>
-              <p class="text-gray-500">
+              <p class="text-gray-400">
                 Uses Charts to visually represent attendance data. Provide
                 insights into attendance patterns, such as attendance trends,
                 absences, and tardiness, which helps managers to identify issues
@@ -122,10 +122,10 @@ function About() {
                   <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
                 </svg>
               </div>
-              <h3 class="mb-2 text-xl font-bold dark:text-white">
+              <h3 class="mb-2 text-xl font-bold text-white">
                 Raise Query
               </h3>
-              <p class="text-gray-500 text-gray-400">
+              <p class=" text-gray-400">
                 Provides a dedicated query feature, which allows employees to
                 raise queries regarding their attendance data. The app allows
                 students to attach evidence, such as a doctor's note or a
@@ -147,10 +147,10 @@ function About() {
                   ></path>
                 </svg>
               </div>
-              <h3 class="mb-2 text-xl font-bold dark:text-white">
+              <h3 class="mb-2 text-xl font-bold text-white">
                 Teacher/Student Seperate Panels
               </h3>
-              <p class="text-gray-500 dark:text-gray-400">
+              <p class=" text-gray-400">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla,
                 dolorum harum vero sequi voluptatum, praesentium similique
                 exercitationem doloremque eos commodi cupiditate aliquid,

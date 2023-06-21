@@ -30,21 +30,21 @@ function Teachstu() {
             <p class="max-w-2xl mb-6 font-light text-4xl text-gray-400 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
               "Stay on track with ease - Your Management made simpler!"
             </p>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />{" "}
-            <div className="flex justify-evenly items-center">
+            <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <div className="flex flex-col lg:flex-row justify-evenly items-center">
               <div>
-                <h2 className=" text-white font-extrabold">Login as Teacher</h2>
+                <h2 className="text-white font-extrabold">Login as Teacher</h2>
                 <Link to="/loginteach">
                   <button
                     type="submit"
-                    className="block w-28  bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+                    className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
                   >
                     Login
                   </button>
                 </Link>
               </div>
               <div>
-                <h2 className=" text-white font-extrabold">Login as Student</h2>
+                <h2 className="text-white font-extrabold">Login as Student</h2>
                 <Link to="/loginstud">
                   <button
                     type="submit"
@@ -70,9 +70,12 @@ function Teachstu() {
           </div>
         </div>
       </section>
-      <About ref={aboutRef} />
+      <div className="h-screen">
+        <About ref={aboutRef} />
+      </div>
       <Footer />
     </div>
   );
 }
+
 export default Teachstu;

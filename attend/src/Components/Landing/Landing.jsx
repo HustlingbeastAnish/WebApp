@@ -21,7 +21,7 @@ function Teachstu() {
   return (
     <div className="bg-gray-900">
       <Navbar about={aboutRef} contact={contactRef} />
-      <section class="bg-gray-900">
+      <section class="bg-gray-900" id="home">
         <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div class="mr-auto place-self-center lg:col-span-7">
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl text-white">
@@ -56,7 +56,7 @@ function Teachstu() {
               </div>
             </div>
           </div>
-          <div class="mt-10 ml-20 lg:mt-0 lg:col-span-5 lg:flex">
+          <div class=" ml-10 mt-10 lg:ml-20 lg:mt-0 lg:col-span-5 lg:flex lg:mb-10">
             <img
               src="logo-color.png"
               width="400vw"
@@ -70,10 +70,13 @@ function Teachstu() {
           </div>
         </div>
       </section>
-      <div className="h-screen">
+      <div className="h-screen " id="about">
         <About ref={aboutRef} />
       </div>
+      <div id="foot">
       <Footer />
+      </div>
+      
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TrackLogo from "../images/cclogo.png";
+import { HashLink } from 'react-router-hash-link';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +16,8 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link
-                to="/"
+              <HashLink
+                smooth to="/#home"
                 onMouseEnter={(e) => {
                   e.target.style.transform = "scale(1.1)";
                 }}
@@ -25,13 +26,13 @@ function Navbar() {
                 }}
               >
                 <img className="h-8 w-8" src={TrackLogo} alt="Logo" />
-              </Link>
+              </HashLink>
             </div>
           </div>
           <div className="hidden md:block">
             <div className="ml-auto flex items-baseline space-x-4">
-              <Link
-                to="/"
+            <HashLink
+                smooth to="/#home"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold"
                 onMouseEnter={(e) => {
                   e.target.style.color = "red";
@@ -43,9 +44,9 @@ function Navbar() {
                 }}
               >
                 HOME
-              </Link>
-              <Link
-                to="/#"
+              </HashLink>
+              <HashLink
+               smooth to="/#about"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold"
                 onMouseEnter={(e) => {
                   e.target.style.color = "red";
@@ -57,9 +58,9 @@ function Navbar() {
                 }}
               >
                 ABOUT
-              </Link>
-              <Link
-                to="/#"
+              </HashLink>
+              <HashLink
+                smooth to="/#foot"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold"
                 onMouseEnter={(e) => {
                   e.target.style.color = "red";
@@ -71,7 +72,7 @@ function Navbar() {
                 }}
               >
                 CONTACT
-              </Link>
+              </HashLink>
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">
@@ -124,8 +125,8 @@ function Navbar() {
       {isOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link
-              to="/"
+            <HashLink
+              to="/#home"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               onMouseEnter={(e) => {
                 e.target.style.color = "red";
@@ -135,9 +136,9 @@ function Navbar() {
               }}
             >
               HOME
-            </Link>
-            <Link
-              to="/#"
+            </HashLink>
+            <HashLink
+              to="/#about"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               onMouseEnter={(e) => {
                 e.target.style.color = "red";
@@ -147,9 +148,9 @@ function Navbar() {
               }}
             >
               ABOUT
-            </Link>
-            <Link
-              to="/#"
+            </HashLink>
+            <HashLink
+              to="/#foot"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               onMouseEnter={(e) => {
                 e.target.style.color = "red";
@@ -159,7 +160,7 @@ function Navbar() {
               }}
             >
               CONTACT
-            </Link>
+            </HashLink>
           </div>
         </div>
       )}

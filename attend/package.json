@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.4",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
     "react-usestateref": "^1.0.8",

@@ -1,0 +1,7 @@
+.card-container {
+  margin-bottom: 20px; /* Add margin bottom to create spacing between cards */
+}
+
+.card-container:last-child {
+  margin-bottom: 0; /* Remove margin bottom for the last card */
+}

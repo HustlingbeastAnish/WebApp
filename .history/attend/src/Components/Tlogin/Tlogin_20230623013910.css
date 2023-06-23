@@ -1,0 +1,22 @@
+.card-label {
+  font-size: 7xl;
+  margin-top: 5;
+}
+
+@media (max-width: 1000px) {
+  .card-label {
+    margin-top: 8;
+  }
+}
+
+@media (max-width: 750px) {
+  .card-label {
+    margin-top: 12;
+  }
+}
+
+@media (max-width: 450px) {
+  .card-label {
+    margin-top: 50;
+  }
+}

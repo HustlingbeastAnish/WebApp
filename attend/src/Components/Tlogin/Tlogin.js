@@ -148,7 +148,18 @@ const Tlogin = (props) => {
             </div>
           </div>
         </div>
-        <Globe />
+        <div class=" ml-10 mt-10 lg:ml-20 lg:mt-0 lg:col-span-10  lg:mb-10">
+            <img
+              src="logo-no-background.png"
+              width="800vw"
+              height="660px"
+              style={{
+                marginTop: "90px",
+                
+              }}
+              alt="mockup"
+            />
+          </div>
       </div>
     </div>
   );

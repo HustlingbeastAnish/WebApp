@@ -47,8 +47,8 @@ exports.stucreate = async (req, res) => {
           if (userexists) {
             Stuser.findOneAndUpdate(
               { email: email },
-              { $set: { subject: subject } },
-              (error, data) => {
+              { $addToSet: { subject: subject } },
+               (error, data) => {
                 if (error) {
                   console.log(error);
                 } else {

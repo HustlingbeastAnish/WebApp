@@ -78,16 +78,10 @@ const EditModal = (props) => {
     <>
       <section className="bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <a
-            href="/#"
-            className="flex items-center mb-6 text-2xl font-semibold text-white-900 dark:text-white"
-          >
-            <img className="w-8 h-8 mr-2" src={TrackLogo} alt="logo" />
-            TracKnAttend
-          </a>
+          
           <div className="w-full p-6 bg-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
             <h2 className="mb-1 text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-black">
-              LogIn as Teacher
+             Edit Student's Details
             </h2>
             <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
               <div>
@@ -95,7 +89,7 @@ const EditModal = (props) => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Update Your Name
+                  Update  Name
                 </label>
                 <input
                   type="name"
@@ -113,7 +107,7 @@ const EditModal = (props) => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Update Your Email
+                  Update  Email
                 </label>
                 <input
                   type="email"
@@ -131,7 +125,7 @@ const EditModal = (props) => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Update Your Phone Number
+                  Update  Phone Number
                 </label>
                 <input
                   name="phone"
@@ -148,7 +142,7 @@ const EditModal = (props) => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Update Your Roll Number
+                  Update Roll Number
                 </label>
                 <input
                   type="text"

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/navbar.js";
-
+import Swal from "sweetalert2";
 const Signup = () => {
   const navigate = useNavigate();
   // Creating and Initializing an empty array named user
@@ -10,6 +10,7 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
+    secretkey:""
   });
 
   // Variables for refrencing
@@ -27,6 +28,22 @@ const Signup = () => {
     console.log("postdata");
     e.preventDefault();
 
+
+   if(user.secretkey!="secret")
+   {
+    Swal.fire({
+      title: "Bad Credentials",
+      text: "Invlaid Secret Key",
+      icon: "error",
+      confirmButtonText: "Retry",
+    });
+
+  
+
+   }
+
+else{
+
     const { name, email, password } = user;
     const res = await fetch("/api/users", {
       method: "POST",
@@ -43,14 +60,23 @@ const Signup = () => {
     const data = await res.json();
 
     if (data.status === 400 || !data || data.error) {
-      window.alert("Invalid Registration");
-      console.log("Invalid Registration");
+      Swal.fire({
+        title: "Bad Credentials",
+        text: "Please try again",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     } else {
-      window.alert("Successfull Registration");
-      console.log("Successfull Registration");
+      Swal.fire({
+        title: "Registration Successful",
+        icon: "success",
+        timer: 1000,
+      });
+      navigate("/loginteach");
     }
-    // Redirect to the login page once the user is registered
-    navigate("/loginteach");
+ 
+   
+  }
   };
 
   return (
@@ -62,6 +88,20 @@ const Signup = () => {
           <h3 className="text-2xl font-bold text-center">Join us</h3>
           <form action="">
             <div className="mt-4">
+              <div>
+                <label className="block" htmlFor="secretkey">
+                 SECRET KEY
+                </label>
+                <input
+                  type="text"
+                  name="secretkey"
+                  value={user.secretkey}
+                  onChange={handle}
+                  placeholder="Enter the Secret Key"
+                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+              <br></br>
               <div>
                 <label className="block" htmlFor="Name">
                   Name
@@ -107,9 +147,7 @@ const Signup = () => {
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                 />
               </div>
-              <span className="text-xs text-red-400">
-                Password must be same!
-              </span>
+              
               <div className="flex">
                 <button
                   className="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"

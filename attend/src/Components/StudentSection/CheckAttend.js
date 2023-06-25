@@ -179,12 +179,7 @@ const CheckSub = (props) => {
                   >
                     Attendance
                   </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3 text-xl text-white font-bold"
-                  >
-                    Subject Code
-                  </th>
+                  
                 </tr>
               </thead>
               {StudSubjects.map((elem, idx) => {
@@ -195,7 +190,7 @@ const CheckSub = (props) => {
                         scope="row"
                         class="px-6 py-2 font-medium text-xl text-white whitespace-nowrap dark:text-white"
                       >
-                        {idx}
+                        {idx+1}
                       </th>
                       <th
                         scope="row"
@@ -215,12 +210,7 @@ const CheckSub = (props) => {
                       >
                         {TotalAttendancePerSubjectRef.current[idx]}
                       </th>
-                      <th
-                        scope="row"
-                        class="px-6 py-2 font-medium text-xl text-white whitespace-nowrap dark:text-white"
-                      >
-                        CS237A
-                      </th>
+                     
                     </tr>
                   </tbody>
                 );

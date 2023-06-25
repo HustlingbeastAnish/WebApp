@@ -38,7 +38,7 @@ function Slogin(props) {
   return (
     <div className="bg-gray-900 h-screen">
       <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center ">
-        Welcome Prof. {userData.name}
+        Welcome  {userData.name}
       </h3>
       <div className="flex justify-center items-center">
         <div className=" ml-5 flex flex-col">
@@ -96,7 +96,18 @@ function Slogin(props) {
             </div>
           </div>
         </div>
-        <Globe />
+        <div class=" ml-10 mt-10 lg:ml-20 lg:mt-0 lg:col-span-10  lg:mb-10">
+            <img
+              src="logo-no-background.png"
+              width="800vw"
+              height="660px"
+              style={{
+                marginTop: "90px",
+                
+              }}
+              alt="mockup"
+            />
+          </div>
       </div>
     </div>
   );

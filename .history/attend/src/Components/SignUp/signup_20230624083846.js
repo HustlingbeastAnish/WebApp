@@ -111,7 +111,9 @@ const Signup = () => {
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                 />
               </div>
-              <span className="text-xs text-white">Passwords must match!</span>
+              <span className="text-xs text-red-400 text-white">
+                Passwords must match!
+              </span>
               <div className="flex">
                 <button
                   type="submit"

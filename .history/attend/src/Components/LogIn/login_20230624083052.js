@@ -135,16 +135,6 @@ function Login() {
                 </div>
               </div>
             </div>
-            <div>
-              <Link to="/signup">
-                <a
-                  href="#!"
-                  className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out text-sm"
-                >
-                  Don't have a account ? Register Now!
-                </a>
-              </Link>
-            </div>
             <div className="flex items-center justify-center">
               <button
                 type="submit"
@@ -153,6 +143,16 @@ function Login() {
               >
                 LogIn
               </button>
+            </div>
+            <div>
+              <Link to="/forgotpassword">
+                <a
+                  href="#!"
+                  className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                >
+                  Forgot password?
+                </a>
+              </Link>
             </div>
           </form>
         </div>

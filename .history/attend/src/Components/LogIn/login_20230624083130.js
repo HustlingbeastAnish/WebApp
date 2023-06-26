@@ -139,9 +139,9 @@ function Login() {
               <Link to="/signup">
                 <a
                   href="#!"
-                  className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out text-sm"
+                  className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
                 >
-                  Don't have a account ? Register Now!
+                  Don't have a account
                 </a>
               </Link>
             </div>

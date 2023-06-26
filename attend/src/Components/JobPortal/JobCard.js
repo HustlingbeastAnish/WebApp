@@ -21,7 +21,7 @@ function JobCard(props) {
             {jobDesc}
           </p>
           <a
-            href={elem.redirect_url}
+            href={elem.redirect_url} target="_blank"
             class="inline-flex items-center text-black hover:underline"
           >
             Explore More

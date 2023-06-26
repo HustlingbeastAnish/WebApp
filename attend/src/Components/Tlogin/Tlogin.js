@@ -3,6 +3,7 @@ import useState from "react-usestateref";
 import { Link, useNavigate } from "react-router-dom";
 import "./Tlogin.css";
 import Globe from "../../svgs/globe.jsx";
+import Navbarlogin from "../Navbar/navbarlogin.js";
 const Tlogin = (props) => {
   // To open and close the sidebar
   const [size, setsize, sizeRef] = useState(600);
@@ -22,15 +23,15 @@ const Tlogin = (props) => {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
+      
       props.setUserData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
-        // navigate("/tlogin");
+       
         throw error;
       }
     } catch (err) {
-      console.log(err);
+     
       navigate("/loginteach");
     }
   };
@@ -51,7 +52,7 @@ const Tlogin = (props) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        
       });
   };
 
@@ -60,23 +61,24 @@ const Tlogin = (props) => {
   }, []);
 
   return (
+    <>
+      <Navbarlogin/>
+    
     <div className="bg-gray-900 h-screen">
-      <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center">
-        Welcome Prof. {currUser.name}
-      </h3>
+      
       <div className="flex flex-wrap justify-center">
-        <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4">
+        <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4  mt-10">
           <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-md ml-6 mb-10">
             <div className="flex justify-between mb-4">
               <label
                 htmlFor="exampleInputPassword2"
                 className="form-label text-white text-2xl font-extrabold inline-block"
               >
-                CREATE NEW STUDENT
+                ADD NEW STUDENT
               </label>
             </div>
             <p className="text-white font-semibold mb-2">
-              Register New Students for their respective subjects and branches
+              Register New Students for their respective subject and branch
             </p>
             <Link to="/createattend">
               <button
@@ -84,7 +86,7 @@ const Tlogin = (props) => {
                 className="inline-block px-4 py-1.5 text-extrabold bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                 data-mdb-ripple="true"
               >
-                Create
+                ADD
               </button>
             </Link>
           </div>
@@ -133,8 +135,21 @@ const Tlogin = (props) => {
             </Link>
           </div>
         </div>
+        <div class=" ml-10 mt-10 lg:ml-20 lg:mt-0 lg:col-span-10  lg:mb-10">
+            <img
+              src="logo-no-background.png"
+              width="800vw"
+              height="660px"
+              style={{
+                marginTop: "90px",
+                
+              }}
+              alt="mockup"
+            />
+          </div>
       </div>
     </div>
+    </>
   );
 };
 

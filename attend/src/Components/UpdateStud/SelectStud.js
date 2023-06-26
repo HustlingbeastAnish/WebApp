@@ -6,6 +6,7 @@ import Select from "@mui/material/Select";
 import { Link } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
+import Navbarlogin from "../Navbar/navbarlogin";
 
 const TakeAttend = (props) => {
   const handleDate = (date) => {
@@ -33,7 +34,7 @@ const TakeAttend = (props) => {
         throw error;
       }
     } catch (err) {
-      console.log(err);
+      
       navigate("/loginteach");
     }
   };
@@ -44,6 +45,7 @@ const TakeAttend = (props) => {
 
   return (
     <>
+    <Navbarlogin/>
       <div className="flex border-black bg-gray-900 flex-col h-screen justify-center items-center">
         <h1 className="font-semibold text-3xl text-white">
           Please select from the options below

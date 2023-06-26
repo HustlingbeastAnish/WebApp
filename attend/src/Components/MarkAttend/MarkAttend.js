@@ -4,6 +4,7 @@ import axios from "axios";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Navbarlogin from "../Navbar/navbarlogin";
 
 function MarkAttend(props) {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function MarkAttend(props) {
   const currBranch = props.Branch;
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
-  console.log(currSubjArr);
+
   const [studentData, setstudentData] = useState([]);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ function MarkAttend(props) {
   const monthh = props.SelectedDate.getMonth() + 1;
   const yearr = props.SelectedDate.getFullYear();
   const datee = `${dayy}-${monthh}-${yearr}`;
-  // console.log(props.SelectedDate);
+
   const [absentcount, Setabsentcount] = useState([]);
 
   const [absent, Setabsent] = useState([
@@ -55,15 +56,10 @@ function MarkAttend(props) {
           }),
         });
         const data = await res.json();
-        console.log(data);
+
         if (!data || data.status === 422 || data.error) {
-          Swal.fire({
-            title: "Failure",
-            text: "Attendance Not Posted ",
-            icon: "error",
-            confirmButtonText: "Retry",
-          });
-          console.log("Student has been marked absent");
+         
+         
         } else {
           Swal.fire({
             title: "Attendance Posted Sucessfully",
@@ -74,18 +70,11 @@ function MarkAttend(props) {
             navigate("/tlogin");
           }, 1500);
 
-          console.log("Student has not been marked absent");
+          
         }
       }
     }
-    Swal.fire({
-      title: "Attendance Posted Sucessfully",
-      icon: "success",
-      timer: 1000,
-    });
-    setTimeout(() => {
-      navigate("/tlogin");
-    }, 1500);
+
   };
   const [flag, setflag] = useState(false);
 
@@ -93,10 +82,10 @@ function MarkAttend(props) {
     axios
       .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
-        console.log(res.data);
+    
         const temp = res.data;
         setstudentData(temp);
-        console.log("Tay Keith F these niggas up");
+     
         axios
           .get(
             `http://localhost:8080/api/classesddata/${currSubject}/${currBranch}`
@@ -107,12 +96,11 @@ function MarkAttend(props) {
             const totclass = res.data[0][tempp].length;
 
             temp.map((elem, idx) => {
-              console.log(props.Subject + "dubiu");
-              console.log(elem.email);
+          
               axios
                 .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
                 .then((res) => {
-                  console.log(res.data[props.Subject]);
+                
 
                   Setabsentcount((absentcount) => ({
                     ...absentcount,
@@ -126,33 +114,28 @@ function MarkAttend(props) {
                   }, 0);
                 })
                 .catch((err) => {
-                  console.log("attendance calculation not possible ");
-                  console.log(err);
+                
                 });
             });
           })
           .catch((err) => {
-            console.log(err);
-            console.log("Data not fetched");
+          
           });
       })
 
       .catch((err) => {
-        console.log(err);
-        console.log("Data not fetched");
+       
       });
   };
 
   const [totalnoofclasses, settotalnoofclasses] = useState(10);
 
   const FetchChangedChangedAttendanceDetails = (elem, idx) => {
-    console.log(props.Subject + "dubiu");
+    
     axios
       .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
-        console.log(res.data[props.Subject]);
-        // console.log(props.Subject+"dubiu");
-        //console.log(res.data.Data_Structures);
+    
         if (absent[idx][1] === "1") {
           if (absent[idx][1] === "1") {
             Setabsentcount((absentcount) => ({
@@ -185,8 +168,7 @@ function MarkAttend(props) {
         }
       })
       .catch((err) => {
-        console.log("attendance calculation not possible ");
-        console.log(err);
+       
       });
   };
 
@@ -198,7 +180,8 @@ function MarkAttend(props) {
   };
   return (
     <>
-      <div className="bg-gray-900 h-screen border-black flex flex-col items-center">
+    <Navbarlogin/>
+      <div className="bg-gray-900 h-screen border-black flex flex-col items-center pt-10">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
           Showing Details for {`${dayy}/${monthh}/${yearr}`}
         </h2>
@@ -207,55 +190,7 @@ function MarkAttend(props) {
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
             <div className="flex justify-between items-center py-4 bg-gray-600 dark:bg-gray-800 ">
               <div className="mx-96 w-96">
-                <form class="flex items-center">
-                  <label for="simple-search" class="sr-only">
-                    Search
-                  </label>
-                  <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg
-                        aria-hidden="true"
-                        class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                    </div>
-                    <input
-                      type="text"
-                      id="simple-search"
-                      class="bg-gray-600 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search"
-                      required
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    <svg
-                      class="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      ></path>
-                    </svg>
-                    <span class="sr-only">Search</span>
-                  </button>
-                </form>
+                
               </div>
             </div>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

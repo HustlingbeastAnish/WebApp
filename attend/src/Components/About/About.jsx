@@ -149,10 +149,7 @@ function About() {
                 Teacher/Student Seperate Panels
               </h3>
               <p class=" text-gray-400">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla,
-                dolorum harum vero sequi voluptatum, praesentium similique
-                exercitationem doloremque eos commodi cupiditate aliquid,
-                deleniti velit? Praesentium.
+               Seperate login for teacher and students makes it easier for the user.On the otherside, it helps to keeps data organised and implements a clean interface.
               </p>
             </div>
           </div>

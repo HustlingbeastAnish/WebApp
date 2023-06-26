@@ -30,17 +30,7 @@ function Navbar() {
               </HashLink>
             </div>
           </div>
-          <h2
-            className="text-white font-semibold text-3xl lg:ml-40 mb-2"
-            onMouseEnter={(e) => {
-              e.target.style.color = "skyblue";
-              e.target.style.transform = "scale(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = "white";
-              e.target.style.transform = "scale(1)";
-            }}
-          >
+          <h2 className="text-white font-semibold text-3xl lg:ml-40 mb-2">
             College Companion
           </h2>
           <div className="hidden md:block">

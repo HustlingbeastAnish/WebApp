@@ -32,7 +32,7 @@ route.post("/api/absentstud", controller.AbsentDates);
 // To Update a user using the put request
 route.put("/api/studdata/:id", controller.update);
 route.put("/api/teacherdata/:id", controller.updateteacher);
-route.put("/api/changepassword/", controller.changepassword);
+route.put("/api/changepassword/:id", controller.changepassword);
 route.post("/api/alldates", controller.AllDates);
 
 route.get("/aftertlogin", authenticate, (req, res) => {

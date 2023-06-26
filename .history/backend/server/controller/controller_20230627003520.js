@@ -44,8 +44,9 @@ exports.changepassword = async (req, res) => {
 
   try {
     const emailExists = await userdb.findOne({ email: email });
+    const id = emailExists._id;
     if (emailExists) {
-      const PassMatch = await bcrypt.compare(pp, emailExists.password);
+      const PassMatch = bcrypt.compare(pp, emailExists.password);
 
       if (!PassMatch) {
         return res
@@ -54,22 +55,25 @@ exports.changepassword = async (req, res) => {
       }
 
       userdb.findByIdAndUpdate(
-        emailExists._id,
-        { password: await bcrypt.hash(cp, 12) },
-        { new: true }, // To get the updated document as a result
+        id,
+        { email: email },
+        { password: bcrypt.hash(cp, 12) },
         (error, data) => {
           if (error) {
-            return res.status(400).json({ error: "Error updating password" });
+            return res
+              .status(400)
+              .json({ error: "Please Enter valid User Credentials" });
           } else {
             return res
               .status(201)
-              .json({ message: "Password Changed Successfully" });
+              .json({ message: "Absent Marked SuccessFully" });
           }
         }
       );
-    } else {
-      res.status(400).json({ error: "Email doesn't exist" });
+      res.send(id);
+      return res.status(201).json({ message: "Absent Marked SuccessFully" });
     }
+    res.status(400).json({ error: "email dont exists" });
   } catch (err) {
     console.log(err);
   }

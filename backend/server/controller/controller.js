@@ -34,6 +34,58 @@ exports.create = async (req, res) => {
   }
 };
 
+
+/*
+exports.changepassword = async(req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "Data to be updated cannot be empty" });
+  }
+
+  const email = req.body.email;
+  const cp = req.body.cp;
+  const pp = req.body.pp;
+
+  try {
+    const emailExists = await userdb.findOne({ email: email });
+    if (emailExists) {
+      const PassMatch =  bcrypt.compare(pp, emailExists.password);
+    
+      if (!PassMatch) {
+        return res.status(400).json({ error: "Please Enter valid User Credentials" });
+      } 
+  
+    
+     
+      userdb.findOneAndUpdate(
+        { email: email },
+        { password: bcrypt.hash(cp, 12)},
+        (error, data) => {
+          if (error) {
+            return res.status(400).json({ error: "Please Enter valid User Credentials" });
+  
+          } else {
+            return res
+        .status(201)
+        .json({ message: "Absent Marked SuccessFully" });
+  
+          }
+        }
+      );
+      return res
+        .status(201)
+        .json({ message: "Absent Marked SuccessFully" });
+    }
+    res.status(400).json({ error: "email dont exists" });
+  } catch (err) {
+    console.log(err);
+  }
+ 
+
+
+ 
+};
+
+*/
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;
@@ -46,8 +98,8 @@ exports.stucreate = async (req, res) => {
           if (userexists) {
             Stuser.findOneAndUpdate(
               { email: email },
-              { $set: { subject: subject } },
-              (error, data) => {
+              { $addToSet: { subject: subject } },
+               (error, data) => {
                 if (error) {
                   console.log(error);
                 } else {
@@ -164,15 +216,16 @@ exports.find = async (req, res) => {
     if (emailExists) {
       const PassMatch = await bcrypt.compare(password, emailExists.password);
 
-      const token = await emailExists.generateAuthToken();
-      res.cookie("jwtoken", token, {
-        expires: new Date(Date.now() + 25892000000),
-        httpOnly: true,
-      });
+      
 
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
       } else {
+        const token = await emailExists.generateAuthToken();
+      res.cookie("jwtoken", token, {
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true,
+      });
         res.json({ message: "User SignIn Successfully" });
       }
     } else {
@@ -324,6 +377,10 @@ exports.updateteacher = (req, res) => {
       res.status(500).send({ message: "Error Update user false Information " });
     });
 };
+
+
+
+
 
 exports.AllDates = async (req, res) => {
   try {

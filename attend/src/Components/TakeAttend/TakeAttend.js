@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 import "./Takeattend.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Navbarlogin from "../Navbar/navbarlogin";
 
 const TakeAttend = (props) => {
   const handleDate = (date) => {
     props.setSelectedDate(date);
-    console.log(date);
+  
   };
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ const TakeAttend = (props) => {
         throw error;
       }
     } catch (err) {
-      console.log(err);
+    
       navigate("/loginteach");
     }
   };
@@ -55,9 +56,9 @@ const TakeAttend = (props) => {
     const data = await res.json();
 
     if (!data || data.status === 422 || data.error) {
-      console.log("DATE NOT INCLUDED");
+
     } else {
-      console.log("DATE INCLUDED");
+      
       navigate("/makeattend");
     }
   };
@@ -66,6 +67,7 @@ const TakeAttend = (props) => {
   }, []);
   return (
     <>
+    <Navbarlogin/>
       <div className="flex border-black bg-gray-900 flex-col h-screen justify-center items-center">
         <h1 className="font-semibold text-3xl text-white">
           Please from the below DropDown

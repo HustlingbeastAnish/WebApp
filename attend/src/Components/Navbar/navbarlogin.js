@@ -1,13 +1,32 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import TrackLogo from "../images/cclogo.png";
 import { HashLink } from 'react-router-hash-link';
-
-function Navbar() {
+import { Link, useNavigate } from "react-router-dom";
+function Navbarlogin() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+  const navigate = useNavigate();
+  //logout functionality
+  const handlelogout = () => {
+    fetch("/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        navigate("/loginteach");
+        if (!res.status === 200) {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -34,22 +53,9 @@ function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="ml-auto flex items-baseline space-x-4">
-            <HashLink
-                smooth to="/#home"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold"
-                onMouseEnter={(e) => {
-                  e.target.style.color = "red";
-                  e.target.style.transform = "scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = "white";
-                  e.target.style.transform = "scale(1)";
-                }}
-              >
-                HOME
-              </HashLink>
+            
               <HashLink
-               smooth to="/#about"
+               smooth to="/tprofile"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold"
                 onMouseEnter={(e) => {
                   e.target.style.color = "red";
@@ -60,22 +66,18 @@ function Navbar() {
                   e.target.style.transform = "scale(1)";
                 }}
               >
-                ABOUT
+                Profile
               </HashLink>
-              <HashLink
-                smooth to="/#contact"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold"
-                onMouseEnter={(e) => {
-                  e.target.style.color = "red";
-                  e.target.style.transform = "scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = "white";
-                  e.target.style.transform = "scale(1)";
-                }}
-              >
-                CONTACT
-              </HashLink>
+              <button
+              onClick={handlelogout}
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-xl font-semibold"
+              onMouseEnter={(e) => {
+                e.target.style.color = "red";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "white";
+              }}>  
+           Logout</button>
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">
@@ -128,8 +130,9 @@ function Navbar() {
       {isOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+           
             <HashLink
-              to="/#home"
+              to="/tprofile"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               onMouseEnter={(e) => {
                 e.target.style.color = "red";
@@ -138,32 +141,20 @@ function Navbar() {
                 e.target.style.color = "white";
               }}
             >
-              HOME
+              Profile
             </HashLink>
-            <HashLink
-              to="/#about"
+            <button
+              onClick={handlelogout}
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               onMouseEnter={(e) => {
                 e.target.style.color = "red";
               }}
               onMouseLeave={(e) => {
                 e.target.style.color = "white";
-              }}
-            >
-              ABOUT
-            </HashLink>
-            <HashLink
-              to="/#contact"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              onMouseEnter={(e) => {
-                e.target.style.color = "red";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = "white";
-              }}
-            >
-              CONTACT
-            </HashLink>
+              }}>
+            
+              
+           Logout</button>
           </div>
         </div>
       )}
@@ -171,4 +162,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbarlogin;

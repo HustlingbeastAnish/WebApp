@@ -1,53 +1,79 @@
 import React from "react";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import Swal from "sweetalert2";
 import { useNavigate, Link } from "react-router-dom";
 import TrackLogo from "../images/cclogo.png";
 import Navbarlogin from "../Navbar/navbarlogin";
-const EditModal = (props) => {
+const Tprofile = () => {
   const navigate = useNavigate();
-  const [updatedStud, setupdatedStud] = useState({
-    _id: props.Upstud._id,
-    name: props.Upstud.name,
-    email: props.Upstud.email,
-    subject: props.Subject,
-    phone: props.Upstud.phone,
-    roll: props.Upstud.roll,
+  const [data, setdata] = useState({
+   
   });
 
+  
 
- 
+
+   //jwt authorisation
+   const callTlogin = async () => {
+    try {
+      const res = await fetch("/aftertlogin", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+       setdata(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+      navigate("/loginteach");
+    }
+  };
+
+  useEffect(() => {
+    callTlogin();
+  }, []);
+
+
   let name, value;
   const handleEdit = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setupdatedStud({ ...updatedStud, [name]: value });
+    setdata({ ...data, [name]: value });
   };
 
   const PostEdit = async (e) => {
-  
+   
     e.preventDefault();
-    const { _id, name, email, subject, phone, roll } = updatedStud;
-  
-    const res = await fetch(`http://localhost:8080/api/studdata/${_id}`, {
-      method: "PUT",
+    console.log(data);
+    const {   email, pp,cp } = data;
+   
+    const res = await fetch("http://localhost:8080/api/changepassword", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      // content: "application/json",
+    
       body: JSON.stringify({
-        _id: _id,
-        name: name,
+       
+        
         email: email,
-        phone: phone,
-        roll: roll,
+        pp: pp,
+        cp: cp,
       }),
     });
-    const data = await res.json();
-  
+    const dataa = await res.json();
+    console.log(dataa);
     if (
-      data.status === 422 ||
-      data.status === 400 ||
-      data.status === 404 ||
-      data.status === 500
+      dataa.status === 422 ||
+      dataa.status === 400 ||
+      dataa.status === 404 ||
+      dataa.status === 500
     ) {
       Swal.fire({
         title: "Bad Credentials",
@@ -56,8 +82,8 @@ const EditModal = (props) => {
         confirmButtonText: "Retry",
       });
     }
-    if (!data || data.error) {
-  
+    if (!dataa || dataa.error) {
+      console.log("Invalid Registration");
       Swal.fire({
         title: "Bad Credentials",
         text: "User Already Exists with required fields",
@@ -70,7 +96,7 @@ const EditModal = (props) => {
         icon: "success",
         timer: 1000,
       });
-      navigate("/updatestud");
+     
     }
   };
 
@@ -82,7 +108,7 @@ const EditModal = (props) => {
           
           <div className="w-full p-6 bg-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
             <h2 className="mb-1 text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-black">
-             Edit Student's Details
+             Edit Your Details
             </h2>
             <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
               <div>
@@ -90,14 +116,14 @@ const EditModal = (props) => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Update  Name
+                    Name
                 </label>
                 <input
                   type="name"
                   id="name"
                   name="name"
-                  value={updatedStud.name}
-                  onChange={handleEdit}
+                  value={data.name}
+                  
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                   placeholder="Enter your email"
                   required
@@ -108,47 +134,49 @@ const EditModal = (props) => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Update  Email
+                    Email
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  value={updatedStud.email}
-                  onChange={handleEdit}
+                  value={data.email}
+                  
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                   placeholder="Enter your email"
                   required
                 />
               </div>
+              
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="pp"
                   className="block mb-2 text-sm font-medium text-white dark:text-white"
                 >
-                  Update  Phone Number
-                </label>
-                <input
-                  name="phone"
-                  value={updatedStud.phone}
-                  id="floating_phone"
-                  onChange={handleEdit}
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-white dark:text-white"
-                >
-                  Update Roll Number
+                  Enter Previous Password
                 </label>
                 <input
                   type="text"
-                  name="roll"
-                  value={updatedStud.roll}
+                  name="pp"
+                  value={data.pp}
+                  onChange={handleEdit}
+                  id="floating_company"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="cp"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                  Enter New Password
+                </label>
+                <input
+                  type="text"
+                  name="cp"
+                  value={data.cp}
                   onChange={handleEdit}
                   id="floating_company"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -173,4 +201,4 @@ const EditModal = (props) => {
     </>
   );
 };
-export default EditModal;
+export default Tprofile;

@@ -6,6 +6,7 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Swal from "sweetalert2";
+import Navbarlogin from "../Navbar/navbarlogin";
 const CreateAttend = () => {
   const navigate = useNavigate();
 
@@ -29,7 +30,7 @@ const CreateAttend = () => {
         throw error;
       }
     } catch (err) {
-      console.log(err);
+    
       navigate("/loginteach");
     }
   };
@@ -52,7 +53,7 @@ const CreateAttend = () => {
   let name, value;
 
   const handle = (e) => {
-    console.log(e);
+   
     name = e.target.name;
     value = e.target.value;
 
@@ -61,7 +62,7 @@ const CreateAttend = () => {
 
   const PostData = async (e) => {
     e.preventDefault();
-    console.log("Post The Students Data");
+    
     const { name, email, phone, roll, branch, subject } = Student;
 
     // Making a post request to the route /api/students
@@ -90,7 +91,7 @@ const CreateAttend = () => {
       });
     }
     if (!data || data.error) {
-      console.log("Invalid Registration");
+      
       Swal.fire({
         title: "Bad Credentials",
         text: "User Already Exists with required fields",
@@ -107,6 +108,9 @@ const CreateAttend = () => {
     }
   };
   return (
+    <>
+      <Navbarlogin/>
+   
     <div className="flex justify-center items-center h-screen bg-gray-900">
       <div className="block p-6 rounded-lg shadow-lg bg-gray-600 max-w-xl w-[450px] mt-5">
         <form>
@@ -236,7 +240,7 @@ const CreateAttend = () => {
             m-0
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleInputPassword2"
-              placeholder="Password"
+              placeholder="Enter phone number"
             />
           </div>
           <div className="form-group mb-3">
@@ -330,11 +334,12 @@ const CreateAttend = () => {
           ease-in-out"
             onClick={PostData}
           >
-            Create Student
+            Add Student
           </button>
         </form>
       </div>
     </div>
+    </>
   );
 };
 

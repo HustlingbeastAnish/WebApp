@@ -1,0 +1,11 @@
+@media (min-width: 600px) and (max-width: 768px) {
+  .card-container {
+    margin-bottom: 20px; /* Increase the margin between cards for smaller screens */
+  }
+}
+
+@media (min-width: 769px) {
+  .card-container {
+    margin-bottom: 10px; /* Default margin between cards for larger screens */
+  }
+}

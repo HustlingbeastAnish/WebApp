@@ -24,7 +24,7 @@ function Login() {
     });
 
     const data = await res.json();
-    console.log(data);
+    
     if (data.status === 400 || !data || data.error) {
       Swal.fire({
         title: "Bad Credentials",
@@ -38,7 +38,7 @@ function Login() {
         icon: "success",
         timer: 1000,
       });
-      console.log("Successfully Logged In");
+      
       setTimeout(() => {
         navigate("/tlogin");
       }, 1500);
@@ -99,20 +99,18 @@ function Login() {
             </div>
 
           
-              <div className="ml-3 text-sm flex flex-row">
-                
-                <div>
-                  <Link to="/signup">
-                    <a
-                      href="#!"
-                      className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-                    >
-                      Not yet Registered?
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            
+             
+          
+            <div>
+              <Link to="/signup">
+                <a
+                  href="#!"
+                  className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                >
+                  Don't have a account ? Register Now!
+                </a>
+              </Link>
+            </div>
             <div className="flex items-center justify-center">
               <button
                 type="submit"

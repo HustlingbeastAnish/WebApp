@@ -3,7 +3,6 @@ var Stuser = require("../model/stuModel");
 var Slogintuser = require("../model/stuLogin");
 var Subjectsatt = require("../model/subjects.js");
 
-
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Stloginuser = require("../model/stuLogin");
@@ -35,6 +34,58 @@ exports.create = async (req, res) => {
   }
 };
 
+
+/*
+exports.changepassword = async(req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "Data to be updated cannot be empty" });
+  }
+
+  const email = req.body.email;
+  const cp = req.body.cp;
+  const pp = req.body.pp;
+
+  try {
+    const emailExists = await userdb.findOne({ email: email });
+    if (emailExists) {
+      const PassMatch =  bcrypt.compare(pp, emailExists.password);
+    
+      if (!PassMatch) {
+        return res.status(400).json({ error: "Please Enter valid User Credentials" });
+      } 
+  
+    
+     
+      userdb.findOneAndUpdate(
+        { email: email },
+        { password: bcrypt.hash(cp, 12)},
+        (error, data) => {
+          if (error) {
+            return res.status(400).json({ error: "Please Enter valid User Credentials" });
+  
+          } else {
+            return res
+        .status(201)
+        .json({ message: "Absent Marked SuccessFully" });
+  
+          }
+        }
+      );
+      return res
+        .status(201)
+        .json({ message: "Absent Marked SuccessFully" });
+    }
+    res.status(400).json({ error: "email dont exists" });
+  } catch (err) {
+    console.log(err);
+  }
+ 
+
+
+ 
+};
+
+*/
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;
@@ -81,8 +132,8 @@ exports.stucreate = async (req, res) => {
             subject: [subject],
             branch: branch,
           });
-        
-           stuser
+
+          stuser
             .save()
             .then(() => {
               const stloginuser = new Slogintuser({
@@ -165,15 +216,16 @@ exports.find = async (req, res) => {
     if (emailExists) {
       const PassMatch = await bcrypt.compare(password, emailExists.password);
 
-      const token = await emailExists.generateAuthToken();
-      res.cookie("jwtoken", token, {
-        expires: new Date(Date.now() + 25892000000),
-        httpOnly: true,
-      });
+      
 
       if (!PassMatch) {
         res.status(400).json({ error: "Please Enter valid User Credentials" });
       } else {
+        const token = await emailExists.generateAuthToken();
+      res.cookie("jwtoken", token, {
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true,
+      });
         res.json({ message: "User SignIn Successfully" });
       }
     } else {
@@ -285,7 +337,9 @@ exports.getsubjectsenrolled = (req, res) => {
 };
 exports.update = (req, res) => {
   if (!req.body) {
-    return res.status(400).send({ message: "Data to be updated cannot be empty" });
+    return res
+      .status(400)
+      .send({ message: "Data to be updated cannot be empty" });
   }
   const id = req.params.id;
   Stuser.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
@@ -323,6 +377,10 @@ exports.updateteacher = (req, res) => {
       res.status(500).send({ message: "Error Update user false Information " });
     });
 };
+
+
+
+
 
 exports.AllDates = async (req, res) => {
   try {
@@ -380,24 +438,22 @@ exports.AllDates = async (req, res) => {
   }
 };
 
-
 exports.findStudbyemail = async (req, res) => {
   try {
-    if (!req.body) { console.log("No student with a branch found");
+    if (!req.body) {
+      console.log("No student with a branch found");
       return res.status(404).json({ err: "Feilds cannot be empty" });
-     
     }
 
     const email = req.params.email;
     console.log("ok");
     console.log(email);
-    Stloginuser.find({ email:email })
+    Stloginuser.find({ email: email })
       .then((data) => {
-        if (!data) { console.log("No student with a branch found");
+        if (!data) {
+          console.log("No student with a branch found");
           res.status(404).json({ err: "No student with a branch found" });
-          
         } else {
-         
           res.send(data);
         }
       })

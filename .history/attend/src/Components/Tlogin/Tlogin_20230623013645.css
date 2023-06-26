@@ -1,0 +1,18 @@
+.card-label {
+  font-size: 7xl;
+  margin-top: 5;
+}
+
+/* Styles for screen width up to 1000px */
+@media (max-width: 1000px) {
+  .card-label {
+    margin-top: 8;
+  }
+}
+
+/* Styles for screen width up to 750px */
+@media (max-width: 750px) {
+  .card-label {
+    margin-top: 12;
+  }
+}

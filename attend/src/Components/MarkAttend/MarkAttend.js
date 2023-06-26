@@ -4,6 +4,7 @@ import axios from "axios";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Navbarlogin from "../Navbar/navbarlogin";
 
 function MarkAttend(props) {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function MarkAttend(props) {
   const currBranch = props.Branch;
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
-  console.log(currSubjArr);
+
   const [studentData, setstudentData] = useState([]);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ function MarkAttend(props) {
   const monthh = props.SelectedDate.getMonth() + 1;
   const yearr = props.SelectedDate.getFullYear();
   const datee = `${dayy}-${monthh}-${yearr}`;
-  // console.log(props.SelectedDate);
+
   const [absentcount, Setabsentcount] = useState([]);
 
   const [absent, Setabsent] = useState([
@@ -55,7 +56,7 @@ function MarkAttend(props) {
           }),
         });
         const data = await res.json();
-        console.log(data);
+
         if (!data || data.status === 422 || data.error) {
          
          
@@ -81,10 +82,10 @@ function MarkAttend(props) {
     axios
       .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
-        console.log(res.data);
+    
         const temp = res.data;
         setstudentData(temp);
-        console.log("Tay Keith F these niggas up");
+     
         axios
           .get(
             `http://localhost:8080/api/classesddata/${currSubject}/${currBranch}`
@@ -95,12 +96,11 @@ function MarkAttend(props) {
             const totclass = res.data[0][tempp].length;
 
             temp.map((elem, idx) => {
-              console.log(props.Subject + "dubiu");
-              console.log(elem.email);
+          
               axios
                 .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
                 .then((res) => {
-                  console.log(res.data[props.Subject]);
+                
 
                   Setabsentcount((absentcount) => ({
                     ...absentcount,
@@ -114,33 +114,28 @@ function MarkAttend(props) {
                   }, 0);
                 })
                 .catch((err) => {
-                  console.log("attendance calculation not possible ");
-                  console.log(err);
+                
                 });
             });
           })
           .catch((err) => {
-            console.log(err);
-            console.log("Data not fetched");
+          
           });
       })
 
       .catch((err) => {
-        console.log(err);
-        console.log("Data not fetched");
+       
       });
   };
 
   const [totalnoofclasses, settotalnoofclasses] = useState(10);
 
   const FetchChangedChangedAttendanceDetails = (elem, idx) => {
-    console.log(props.Subject + "dubiu");
+    
     axios
       .get(`http://localhost:8080/detailstloginusers/${elem.email}`)
       .then((res) => {
-        console.log(res.data[props.Subject]);
-        // console.log(props.Subject+"dubiu");
-        //console.log(res.data.Data_Structures);
+    
         if (absent[idx][1] === "1") {
           if (absent[idx][1] === "1") {
             Setabsentcount((absentcount) => ({
@@ -173,8 +168,7 @@ function MarkAttend(props) {
         }
       })
       .catch((err) => {
-        console.log("attendance calculation not possible ");
-        console.log(err);
+       
       });
   };
 
@@ -186,7 +180,8 @@ function MarkAttend(props) {
   };
   return (
     <>
-      <div className="bg-gray-900 h-screen border-black flex flex-col items-center">
+    <Navbarlogin/>
+      <div className="bg-gray-900 h-screen border-black flex flex-col items-center pt-10">
         <h2 className="text-center font-semibold text-3xl mt-2 text-white">
           Showing Details for {`${dayy}/${monthh}/${yearr}`}
         </h2>

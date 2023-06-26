@@ -6,7 +6,9 @@ import SignUp from "./Components/SignUp/signup";
 import Landing from "./Components/Landing/Landing.jsx";
 import Slogin from "./Components/Slogin/Slogin";
 import Tlogin from "./Components/Tlogin/Tlogin";
+import Tprofile from "./Components/Tlogin/Tprofile";
 import Seeattend from "./Components/Slogin/seeattend";
+import Sprofile from "./Components/Slogin/Sprofile";
 import "./App.css";
 import { useState, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -23,9 +25,10 @@ import Changepass from "./Components/Tlogin/ResetPassword/Changepass";
 import CheckSub from "./Components/StudentSection/CheckSub";
 import CheckAttend from "./Components/StudentSection/CheckAttend";
 import Job from "./Components/JobPortal/JobPortal";
-import Grades from "./Components/GradePortal/GradePortal";
-// For Graphical Visualization of attendance
+import ErrorBoundary from "./Components/OopsError/ErrorBoundary";
 
+
+// For Graphical Visualization of attendance
 function App() {
   const [Subject, setSubject] = useState("");
   const [Branch, setBranch] = useState("");
@@ -33,7 +36,6 @@ function App() {
   console.log(SelectedDate);
   // Array for the update Student
   const [Upstud, setUpstud] = useState({});
-
   const handleChange = (e) => {
     setSubject(e.target.value);
   };
@@ -57,6 +59,12 @@ function App() {
           <Route exact path="/loginteach" element={<LoginT />}></Route>
         </Routes>
         <Routes>
+          <Route exact path="/tprofile" element={<Tprofile />}></Route>
+        </Routes>
+        <Routes>
+          <Route exact path="/sprofile" element={<Sprofile />}></Route>
+        </Routes>
+        <Routes>
           <Route exact path="/loginstud" element={<LoginS />}></Route>
         </Routes>
         <Routes>
@@ -69,28 +77,20 @@ function App() {
             element={<Landing about={about} contact={contact} />}
           ></Route>
         </Routes>
-        <Routes>
-          <Route
-            exact
-            path="/grades"
-            element={
-              <Grades
-                AuthorizedStud={AuthorizedStud}
-                setAuthorizedStud={setAuthorizedStud}
-              />
-            }
-          ></Route>
-        </Routes>
+        
+      
         <Routes>
           <Route exact path="/job" element={<Job />}></Route>
         </Routes>
-        <Routes>
-          <Route
-            exact
-            path="/tlogin"
-            element={<Tlogin userData={userData} setUserData={setUserData} />}
-          ></Route>
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route
+              exact
+              path="/tlogin"
+              element={<Tlogin userData={userData} setUserData={setUserData} />}
+            ></Route>
+          </Routes>
+        </ErrorBoundary>
         <Routes>
           <Route exact path="/seeattend" element={<Seeattend />}></Route>
         </Routes>

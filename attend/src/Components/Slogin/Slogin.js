@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Globe from "../../svgs/globe.jsx";
+import Navbarloginstud from "../Navbar/navbarloginstud";
+
 function Slogin(props) {
   const [open, setOpen] = useState(false);
 
@@ -19,7 +20,7 @@ function Slogin(props) {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
+
       setUserData(data);
       props.setAuthorizedStud(data);
       if (!res.status === 200) {
@@ -27,7 +28,7 @@ function Slogin(props) {
         throw error;
       }
     } catch (err) {
-      console.log(err);
+  
       navigate("/loginstud");
     }
   };
@@ -36,10 +37,11 @@ function Slogin(props) {
   }, []);
 
   return (
-    <div className="bg-gray-900 h-screen">
-      <h3 className="text-3xl font-extrabold text-gray-300 mb-6 ml-10 text-center ">
-        Welcome  {userData.name}
-      </h3>
+    <>
+      <Navbarloginstud/>
+  
+    <div className="bg-gray-900 h-screen pt-10">
+      
       <div className="flex justify-center items-center">
         <div className=" ml-5 flex flex-col">
           <div className="">
@@ -110,6 +112,7 @@ function Slogin(props) {
           </div>
       </div>
     </div>
+    </>
   );
 }
 export default Slogin;

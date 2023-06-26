@@ -29,6 +29,9 @@ function Navbar() {
               </HashLink>
             </div>
           </div>
+          <div className="text-white text-4xl lg:ml-40">
+           College Companion
+          </div>
           <div className="hidden md:block">
             <div className="ml-auto flex items-baseline space-x-4">
             <HashLink
@@ -60,7 +63,7 @@ function Navbar() {
                 ABOUT
               </HashLink>
               <HashLink
-                smooth to="/#foot"
+                smooth to="/#contact"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold"
                 onMouseEnter={(e) => {
                   e.target.style.color = "red";
@@ -150,7 +153,7 @@ function Navbar() {
               ABOUT
             </HashLink>
             <HashLink
-              to="/#foot"
+              to="/#contact"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               onMouseEnter={(e) => {
                 e.target.style.color = "red";

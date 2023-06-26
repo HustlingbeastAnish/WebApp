@@ -3,6 +3,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate, Link } from "react-router-dom";
 import TrackLogo from "../images/cclogo.png";
+import Navbarlogin from "../Navbar/navbarlogin";
 const EditModal = (props) => {
   const navigate = useNavigate();
   const [updatedStud, setupdatedStud] = useState({
@@ -14,9 +15,8 @@ const EditModal = (props) => {
     roll: props.Upstud.roll,
   });
 
-  console.log(updatedStud);
 
-  // console.log(props.Upstud._id);
+ 
   let name, value;
   const handleEdit = (e) => {
     name = e.target.name;
@@ -25,10 +25,10 @@ const EditModal = (props) => {
   };
 
   const PostEdit = async (e) => {
-    console.log(updatedStud);
+  
     e.preventDefault();
     const { _id, name, email, subject, phone, roll } = updatedStud;
-    console.log(_id);
+  
     const res = await fetch(`http://localhost:8080/api/studdata/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -42,7 +42,7 @@ const EditModal = (props) => {
       }),
     });
     const data = await res.json();
-    console.log(data.status);
+  
     if (
       data.status === 422 ||
       data.status === 400 ||
@@ -57,7 +57,7 @@ const EditModal = (props) => {
       });
     }
     if (!data || data.error) {
-      console.log("Invalid Registration");
+  
       Swal.fire({
         title: "Bad Credentials",
         text: "User Already Exists with required fields",
@@ -76,6 +76,7 @@ const EditModal = (props) => {
 
   return (
     <>
+    <Navbarlogin/>
       <section className="bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           

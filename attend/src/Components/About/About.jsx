@@ -1,9 +1,9 @@
 import React from "react";
-
+import Footer from "../Footer/footer";
 function About() {
   return (
     <div id="about">
-      <section class="bg-gray-800">
+      <div class="bg-gray-800 h-auto">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div class="max-w-screen-md mb-8 lg:mb-16">
             <h2 class="mb-4 text-4xl font-extrabold text-white">
@@ -122,9 +122,7 @@ function About() {
                   <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
                 </svg>
               </div>
-              <h3 class="mb-2 text-xl font-bold text-white">
-                Raise Query
-              </h3>
+              <h3 class="mb-2 text-xl font-bold text-white">Raise Query</h3>
               <p class=" text-gray-400">
                 Provides a dedicated query feature, which allows employees to
                 raise queries regarding their attendance data. The app allows
@@ -151,15 +149,15 @@ function About() {
                 Teacher/Student Seperate Panels
               </h3>
               <p class=" text-gray-400">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla,
-                dolorum harum vero sequi voluptatum, praesentium similique
-                exercitationem doloremque eos commodi cupiditate aliquid,
-                deleniti velit? Praesentium.
+               Seperate login for teacher and students makes it easier for the user.On the otherside, it helps to keeps data organised and implements a clean interface.
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

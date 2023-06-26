@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
+import Navbarlogin from "../Navbar/navbarlogin";
 
 function Updatestud(props) {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ function Updatestud(props) {
   const currBranch = props.Branch;
 
   const currSubjArr = currSubject.replaceAll(" ", "_");
-  console.log(currSubjArr);
+ 
 
   const [studentData, setstudentData] = useState([{}]);
   useEffect(() => {
@@ -17,7 +18,7 @@ function Updatestud(props) {
   }, []);
 
   const Slide = () => {
-    console.log(props.Upstud);
+
     navigate("/editstud");
   };
 
@@ -27,25 +28,24 @@ function Updatestud(props) {
       .get(`http://localhost:8080/api/studdata/${currSubjArr}/${currBranch}`)
       .then((res) => {
         setstudentData(res.data);
-        console.log(res.data);
+       
 
         setTimeout(() => {
           setflag(true);
         }, 1000);
       })
       .catch((err) => {
-        console.log(err);
-        console.log("Data not fetched");
+       
       });
   };
   return (
     <>
+    <Navbarlogin/>
+    
       <div>{!flag && <Spinner />}</div>
       {flag && (
-        <div className="bg-gray-900 h-screen border-black mb-5 flex flex-col items-center">
-          <h2 className="text-center font-semibold text-3xl mt-2 text-white">
-            Showing Details
-          </h2>
+        <div className="bg-gray-900 h-screen border-black mb-5 flex flex-col items-center pt-20">
+          
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mt-10">
             <div className="flex justify-between items-center py-4 bg-gray-600 dark:bg-gray-800 ">
               <div className="mx-96 w-96">

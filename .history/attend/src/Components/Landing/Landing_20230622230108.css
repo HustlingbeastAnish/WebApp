@@ -1,0 +1,17 @@
+@media (max-width: 1000px) {
+  .landlogo {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 800px) {
+  .landlogo {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .landlogo {
+    margin-top: 145px;
+  }
+}

@@ -1,0 +1,8 @@
+@media (max-width: 640px) {
+  .card-label {
+    font-size: lg;
+  }
+}
+.card-label {
+  font-size: 7xl;
+}

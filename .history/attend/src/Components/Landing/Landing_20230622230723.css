@@ -1,0 +1,26 @@
+@media (max-width: 1400px) {
+  .landlogo {
+    width: 400px;
+    height: 400x;
+  }
+}
+@media (max-width: 1000px) {
+  .landlogo {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 800px) {
+  .landlogo {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .landlogo {
+    width: 125px;
+    height: 125px;
+  }
+}

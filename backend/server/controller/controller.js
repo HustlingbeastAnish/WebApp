@@ -33,6 +33,7 @@ exports.create = async (req, res) => {
     console.log(err);
   }
 };
+
 exports.changepassword = async (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Data to be updated cannot be empty" });
@@ -73,6 +74,57 @@ exports.changepassword = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+
+};
+
+
+
+exports.changepasswordstu = async (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "Data to be updated cannot be empty" });
+  }
+
+  const email = req.body.email;
+  const cp = req.body.cp;
+  const pp = req.body.pp;
+  console.log(req.body)
+
+  try {
+    const emailExists = await Slogintuser.findOne({ email: email });
+    if (emailExists) {
+     
+ console.log(req.body)
+
+      if (emailExists.phone!=pp) {
+        return res
+          .status(400)
+          .json({ error: "Please Enter valid User Credentials" });
+      }
+
+      userdb.findByIdAndUpdate(
+        emailExists._id,
+        {  phone : cp },
+        { new: true }, 
+        (error, data) => {
+          if (error) {
+            return res.status(400).json({ error: "Error updating password" });
+          } else {
+            return res
+              .status(201)
+              .json({ message: "Password Changed Successfully" });
+          }
+        }
+      );
+    } else {
+      res.status(400).json({ error: "Email doesn't exist" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+
 };
 
 exports.stucreate = async (req, res) => {

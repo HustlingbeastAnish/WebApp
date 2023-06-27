@@ -56,19 +56,17 @@ const Tprofile = () => {
     const {   email, pp,cp } = data;
    
     const res = await fetch("http://localhost:8080/api/changepassword", {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
     
       body: JSON.stringify({
-       
-        
         email: email,
         pp: pp,
         cp: cp,
       }),
     });
     const dataa = await res.json();
-    console.log(dataa);
+   
     if (
       dataa.status === 422 ||
       dataa.status === 400 ||
@@ -76,17 +74,17 @@ const Tprofile = () => {
       dataa.status === 500
     ) {
       Swal.fire({
-        title: "Bad Credentials",
-        text: "Please fill in all details",
+        title: "Failure",
+        text: "Password updation failed",
         icon: "error",
         confirmButtonText: "Retry",
       });
     }
     if (!dataa || dataa.error) {
-      console.log("Invalid Registration");
+    
       Swal.fire({
-        title: "Bad Credentials",
-        text: "User Already Exists with required fields",
+        title: "Failure",
+        text: "Password updation failed",
         icon: "error",
         confirmButtonText: "Retry",
       });
@@ -96,6 +94,7 @@ const Tprofile = () => {
         icon: "success",
         timer: 1000,
       });
+      navigate("/tlogin")
      
     }
   };

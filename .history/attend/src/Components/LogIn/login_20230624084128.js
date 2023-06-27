@@ -24,7 +24,7 @@ function Login() {
     });
 
     const data = await res.json();
-    
+    console.log(data);
     if (data.status === 400 || !data || data.error) {
       Swal.fire({
         title: "Bad Credentials",
@@ -38,7 +38,7 @@ function Login() {
         icon: "success",
         timer: 1000,
       });
-      
+      console.log("Successfully Logged In");
       setTimeout(() => {
         navigate("/tlogin");
       }, 1500);
@@ -98,9 +98,43 @@ function Login() {
               />
             </div>
 
-          
-             
-          
+            <div className="flex items-start">
+              <div className="flex items-center h-5">
+                <input
+                  id="newsletter"
+                  aria-describedby="newsletter"
+                  type="checkbox"
+                  className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                  required=""
+                />
+              </div>
+              <div className="ml-3 text-sm flex flex-row">
+                <div>
+                  <label
+                    htmlFor="newsletter"
+                    className="font-light text-gray-500 dark:text-gray-300"
+                  >
+                    I accept the{" "}
+                    <a
+                      className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      href="/#"
+                    >
+                      Terms and Conditions
+                    </a>
+                  </label>
+                </div>
+                <div>
+                  <Link to="/forgotpassword">
+                    <a
+                      href="#!"
+                      className="ml-4 text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                    >
+                      Forgot password?
+                    </a>
+                  </Link>
+                </div>
+              </div>
+            </div>
             <div>
               <Link to="/signup">
                 <a

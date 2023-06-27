@@ -34,7 +34,8 @@ exports.create = async (req, res) => {
   }
 };
 
-exports.changepassword = async (req, res) => {
+/*
+exports.changepassword = async(req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Data to be updated cannot be empty" });
   }
@@ -46,87 +47,44 @@ exports.changepassword = async (req, res) => {
   try {
     const emailExists = await userdb.findOne({ email: email });
     if (emailExists) {
-      const PassMatch = await bcrypt.compare(pp, emailExists.password);
-
+      const PassMatch =  bcrypt.compare(pp, emailExists.password);
+    
       if (!PassMatch) {
-        return res
-          .status(400)
-          .json({ error: "Please Enter valid User Credentials" });
-      }
-
-      userdb.findByIdAndUpdate(
-        emailExists._id,
-        { password: await bcrypt.hash(cp, 12) },
-        { new: true }, // To get the updated document as a result
-        (error, data) => {
-          if (error) {
-            return res.status(400).json({ error: "Error updating password" });
-          } else {
-            return res
-              .status(201)
-              .json({ message: "Password Changed Successfully" });
-          }
-        }
-      );
-    } else {
-      res.status(400).json({ error: "Email doesn't exist" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-
-};
-
-
-
-exports.changepasswordstu = async (req, res) => {
-  if (!req.body) {
-    res.status(400).send({ message: "Data to be updated cannot be empty" });
-  }
-
-  const email = req.body.email;
-  const cp = req.body.cp;
-  const pp = req.body.pp;
-  console.log(req.body)
-
-  try {
-    const emailExists = await Slogintuser.findOne({ email: email });
-    if (emailExists) {
+        return res.status(400).json({ error: "Please Enter valid User Credentials" });
+      } 
+  
+    
      
- console.log(req.body)
-
-      if (emailExists.phone!=pp) {
-        return res
-          .status(400)
-          .json({ error: "Please Enter valid User Credentials" });
-      }
-
-      userdb.findByIdAndUpdate(
-        emailExists._id,
-        {  phone : cp },
-        { new: true }, 
+      userdb.findOneAndUpdate(
+        { email: email },
+        { password: bcrypt.hash(cp, 12)},
         (error, data) => {
           if (error) {
-            return res.status(400).json({ error: "Error updating password" });
+            return res.status(400).json({ error: "Please Enter valid User Credentials" });
+  
           } else {
             return res
-              .status(201)
-              .json({ message: "Password Changed Successfully" });
+        .status(201)
+        .json({ message: "Absent Marked SuccessFully" });
+  
           }
         }
       );
-    } else {
-      res.status(400).json({ error: "Email doesn't exist" });
+      return res
+        .status(201)
+        .json({ message: "Absent Marked SuccessFully" });
     }
+    res.status(400).json({ error: "email dont exists" });
   } catch (err) {
     console.log(err);
   }
+ 
+
+
+ 
 };
 
-
-
-};
-
+*/
 exports.stucreate = async (req, res) => {
   try {
     const { name, email, phone, roll, branch, subject } = req.body;

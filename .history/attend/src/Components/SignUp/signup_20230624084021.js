@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar/navbar.js";
-import Swal from "sweetalert2";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -10,7 +8,6 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
-    secretkey: "",
   });
 
   const handleInputChange = (e) => {
@@ -21,99 +18,53 @@ const Signup = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (user.secretkey != "secret") {
-      Swal.fire({
-        title: "Bad Credentials",
-        text: "Invlaid Secret Key",
-        icon: "error",
-        confirmButtonText: "Retry",
+    const { name, email, password } = user;
+
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+      window.alert("Password and Confirmed Password need to be the same");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
       });
-    } else {
-      const { name, email, password } = user;
 
-      const confirmPassword = document.getElementById("confirmPassword").value;
+      const data = await response.json();
 
-      if (password !== confirmPassword) {
-        Swal.fire({
-          title: "Error!!!",
-          text: "Password and Confirmed Password need to be the same",
-          icon: "error",
-          confirmButtonText: "Retry",
-        });
-        return;
+      if (response.status === 400 || !data || data.error) {
+        window.alert("Invalid Registration");
+        console.log("Invalid Registration");
+      } else {
+        window.alert("Successful Registration");
+        console.log("Successful Registration");
       }
 
-      try {
-        const response = await fetch("/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        });
-
-        const data = await response.json();
-
-        if (response.status === 400 || !data || data.error) {
-          Swal.fire({
-            title: "Bad Credentials",
-            text: "Please enter valid details",
-            icon: "error",
-            confirmButtonText: "Retry",
-          });
-        } else {
-          Swal.fire({
-            title: "Registration Successful",
-            icon: "success",
-            timer: 1000,
-          });
-          navigate("/loginteach");
-        }
-      } catch (error) {}
+      navigate("/loginteach");
+    } catch (error) {
+      console.log(error);
+      window.alert("An error occurred");
     }
   };
 
   return (
     <div>
-      <Navbar />
       <div className="flex items-center justify-center min-h-screen bg-gray-900">
         <div className="px-8 py-6 mx-4 mt-4 text-left bg-gray-600 shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
           <div className="flex justify-center"></div>
           <h3 className="text-2xl font-bold text-center text-white">Join us</h3>
           <form onSubmit={handleFormSubmit}>
             <div className="mt-4">
-              <div>
-                <label className="block text-white " htmlFor="secretkey">
-                  SECRET KEY
-                </label>
-                <input
-                  type="text"
-                  name="secretkey"
-                  value={user.secretkey}
-                  onChange={handleInputChange}
-                  placeholder="Enter the Secret Key"
-                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                />
-              </div>
-              <br></br>
-              <div>
-                <label className="block text-white " htmlFor="secretkey">
-                  SECRET KEY
-                </label>
-                <input
-                  type="text"
-                  name="secretkey"
-                  value={user.secretkey}
-                  onChange={handleInputChange}
-                  placeholder="Enter the Secret Key"
-                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                />
-              </div>
-              <br></br>
               <div>
                 <label className="block text-white" htmlFor="Name">
                   Name
@@ -160,7 +111,7 @@ const Signup = () => {
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                 />
               </div>
-
+              <span className="text-xs text-white">Passwords must match!</span>
               <div className="flex">
                 <button
                   type="submit"

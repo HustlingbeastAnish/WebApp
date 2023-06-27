@@ -59,12 +59,8 @@ const Signup = () => {
         const data = await response.json();
 
         if (response.status === 400 || !data || data.error) {
-          Swal.fire({
-            title: "Bad Credentials",
-            text: "Please enter valid details",
-            icon: "error",
-            confirmButtonText: "Retry",
-          });
+          window.alert("Invalid Registration");
+          console.log("Invalid Registration");
         } else {
           Swal.fire({
             title: "Registration Successful",
@@ -86,20 +82,6 @@ const Signup = () => {
           <h3 className="text-2xl font-bold text-center text-white">Join us</h3>
           <form onSubmit={handleFormSubmit}>
             <div className="mt-4">
-              <div>
-                <label className="block text-white " htmlFor="secretkey">
-                  SECRET KEY
-                </label>
-                <input
-                  type="text"
-                  name="secretkey"
-                  value={user.secretkey}
-                  onChange={handleInputChange}
-                  placeholder="Enter the Secret Key"
-                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                />
-              </div>
-              <br></br>
               <div>
                 <label className="block text-white " htmlFor="secretkey">
                   SECRET KEY
@@ -160,6 +142,7 @@ const Signup = () => {
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                 />
               </div>
+              <span className="text-xs text-white">Passwords must match!</span>
 
               <div className="flex">
                 <button

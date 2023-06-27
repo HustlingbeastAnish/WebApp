@@ -7,7 +7,7 @@ import Navbarloginstud from "../Navbar/navbarloginstud";
 const Sprofile = () => {
   const navigate = useNavigate();
   const [data, setdata] = useState({
-   
+
   });
 
   
@@ -52,16 +52,14 @@ const Sprofile = () => {
   const PostEdit = async (e) => {
    
     e.preventDefault();
-    console.log(data);
-    const {   email, pp,cp } = data;
-   
-    const res = await fetch("http://localhost:8080/api/changepassword", {
-      method: "POST",
+    
+    const {email, pp,cp } = data;
+   console.log(data);
+    const res = await fetch("http://localhost:8080/api/changepasswordstu", {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
     
       body: JSON.stringify({
-       
-        
         email: email,
         pp: pp,
         cp: cp,
@@ -76,17 +74,17 @@ const Sprofile = () => {
       dataa.status === 500
     ) {
       Swal.fire({
-        title: "Bad Credentials",
-        text: "Please fill in all details",
+        title: "Failure",
+        text: "Updation failed",
         icon: "error",
         confirmButtonText: "Retry",
       });
     }
     if (!dataa || dataa.error) {
-      console.log("Invalid Registration");
+     
       Swal.fire({
-        title: "Bad Credentials",
-        text: "User Already Exists with required fields",
+        title: "Failure",
+        text: "Updation failed",
         icon: "error",
         confirmButtonText: "Retry",
       });
@@ -96,7 +94,7 @@ const Sprofile = () => {
         icon: "success",
         timer: 1000,
       });
-     
+     navigate("/slogin")
     }
   };
 
@@ -148,6 +146,29 @@ const Sprofile = () => {
                 />
               </div>
               
+
+
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white dark:text-white"
+                >
+                    Phone
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={data.phone}
+                  
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+
               <div>
                 <label
                   htmlFor="pp"

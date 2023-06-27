@@ -82,7 +82,7 @@ exports.changepasswordstu = async (req, res) => {
   }
 
   const email = req.body.email;
-  const cp = req.body.cp;
+  const cp = req.body.cp.toString(); // Convert cp to a string
   const pp = req.body.pp;
   console.log(req.body);
 
@@ -99,7 +99,7 @@ exports.changepasswordstu = async (req, res) => {
 
       Stloginuser.findByIdAndUpdate(
         emailExists._id,
-        { phone: cp },
+        { phone: await bcrypt.hash(cp, 12) },
         { new: true },
         (error, data) => {
           if (error) {

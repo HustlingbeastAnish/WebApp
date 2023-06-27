@@ -97,7 +97,7 @@ exports.changepasswordstu = async (req, res) => {
           .json({ error: "Please Enter valid User Credentials" });
       }
 
-      Stloginuser.findByIdAndUpdate(
+      userdb.findByIdAndUpdate(
         emailExists._id,
         { phone: cp },
         { new: true },

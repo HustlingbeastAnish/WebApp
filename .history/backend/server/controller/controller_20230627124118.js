@@ -99,7 +99,7 @@ exports.changepasswordstu = async (req, res) => {
 
       Stloginuser.findByIdAndUpdate(
         emailExists._id,
-        { phone: cp },
+        { phone: await bcrypt.hash(cp, 12) },
         { new: true },
         (error, data) => {
           if (error) {
